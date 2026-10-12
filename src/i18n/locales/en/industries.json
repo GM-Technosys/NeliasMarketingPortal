@@ -1,0 +1,42 @@
+{
+  "items": {
+    "retail-distribution": {
+      "name": "Retail & Distribution",
+      "summary": "Coordinate sales, purchasing, stock and multi-location operations.",
+      "headline": "Stay on top of sales, purchasing and inventory."
+    },
+    "professional-services": {
+      "name": "Professional Services & Accounting",
+      "summary": "Bring client relationships, projects, timesheets, billing and reporting into a more connected workflow.",
+      "headline": "Keep clients, projects and invoicing connected."
+    },
+    "manufacturing": {
+      "name": "Manufacturing",
+      "summary": "Connect procurement, inventory, production planning and quality processes.",
+      "headline": "Connect purchasing, production and operational tracking."
+    },
+    "healthcare": {
+      "name": "Healthcare",
+      "summary": "Support administrative operations, procurement, stock and service workflows, subject to sector-specific requirements.",
+      "headline": "Organize activities and resources in one structured environment."
+    },
+    "hospitality": {
+      "name": "Hospitality",
+      "summary": "Bring purchasing, finance, workforce and operational management closer together.",
+      "headline": "Coordinate teams, purchasing and day-to-day operations."
+    },
+    "education-training": {
+      "name": "Education & Training",
+      "summary": "Support administration, billing, projects and institutional operations."
+    },
+    "insurance-financial-services": {
+      "name": "Insurance & Financial Services",
+      "summary": "Explore structured customer, service and operational workflows, subject to regulatory and integration validation.",
+      "headline": "Improve visibility across customers, cases and operations."
+    },
+    "energy-field-services": {
+      "name": "Energy & Field Services",
+      "summary": "Coordinate assets, maintenance, projects and field activities."
+    }
+  }
+}

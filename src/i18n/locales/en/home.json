@@ -1,0 +1,123 @@
+{
+  "hero": {
+    "title": "Your business is unique. Your management platform should be too.",
+    "subtitle": "Customers, sales, inventory, finances and operations — manage your business in an environment shaped around your industry."
+  },
+  "composition": {
+    "address": "yourcompany.nelias.app"
+  },
+  "scenarios": {
+    "title": "Does this sound familiar?",
+    "impactLabel": "Business impact",
+    "benefitLabel": "NELIAS benefit",
+    "items": {
+      "scattered": {
+        "title": "My information is scattered",
+        "impact": "Sales in one tool. Inventory in another. Accounting somewhere else. Projects, teams and customer requests scattered across disconnected systems.",
+        "benefit": "A unified platform approach for core management workflows."
+      },
+      "visibility": {
+        "title": "I lack visibility",
+        "impact": "Too many tools. Not enough visibility.",
+        "benefit": "Shared data foundations and reporting capabilities."
+      },
+      "time": {
+        "title": "My teams waste time",
+        "impact": "As businesses grow, disconnected information can slow decisions and multiply manual work.",
+        "benefit": "Connected workflows and progressively introduced automation."
+      }
+    }
+  },
+  "capabilities": {
+    "title": "Everything your business needs, in one place",
+    "openLabel": "See use case",
+    "modalLink": "Explore the Right Configuration",
+    "items": {
+      "customers": {
+        "title": "Customers",
+        "points": [
+          "Contacts",
+          "Opportunities",
+          "Pipelines",
+          "Customer interactions"
+        ]
+      },
+      "sales": {
+        "title": "Sales",
+        "points": [
+          "Contacts",
+          "Opportunities",
+          "Pipelines",
+          "Customer interactions"
+        ]
+      },
+      "purchasing": {
+        "title": "Purchasing",
+        "points": [
+          "Suppliers",
+          "Purchasing cycles",
+          "Inventory",
+          "Warehouse operations"
+        ]
+      },
+      "inventory": {
+        "title": "Inventory",
+        "points": [
+          "Suppliers",
+          "Purchasing cycles",
+          "Inventory",
+          "Warehouse operations"
+        ]
+      },
+      "finance": {
+        "title": "Finance",
+        "points": [
+          "Financial transactions",
+          "Financial operations"
+        ]
+      },
+      "projects": {
+        "title": "Projects",
+        "points": [
+          "Project planning & execution",
+          "Work monitoring"
+        ]
+      }
+    }
+  },
+  "industries": {
+    "title": "Choose your industry",
+    "suggestedLabel": "Suggested capabilities",
+    "viewIndustry": "View {{name}}",
+    "cta": "Explore Industries"
+  },
+  "journey": {
+    "title": "How it works",
+    "steps": [
+      {
+        "title": "Tell us about your business",
+        "text": "Select your industry, activities, size, users, legal entities and operational requirements."
+      },
+      {
+        "title": "Review your recommendation",
+        "text": "See the suggested plan, included capabilities, optional add-ons and integrations."
+      },
+      {
+        "title": "Choose your plan",
+        "text": "Review a transparent estimate based on plan, capacity and selected options."
+      },
+      {
+        "title": "Run your business",
+        "text": "Access your dedicated NELIAS environment, complete guided onboarding and evolve over time."
+      }
+    ]
+  },
+  "preview": {
+    "title": "See your NELIAS",
+    "alt": "Illustrative preview of a NELIAS workspace on desktop and mobile"
+  },
+  "final": {
+    "title": "A better way to manage starts here.",
+    "body": "Explore how NELIAS fits your business and find the right configuration for your team."
+  }
+}

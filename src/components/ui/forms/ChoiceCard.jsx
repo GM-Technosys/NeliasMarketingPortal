@@ -1,0 +1,86 @@
+import { forwardRef } from "react";
+import { Check } from "lucide-react";
+import { cn } from "@/lib/cn";
+
+/**
+ * Selectable card for choice selection in configurator and multi-choice forms.
+ *
+ * @param {Object} props
+ * @param {"radio"|"checkbox"} [props.type="radio"]
+ * @param {string} props.title
+ * @param {string} [props.description]
+ * @param {import("react").ComponentType} [props.icon]
+ * @param {import("react").ReactNode} [props.badge]
+ * @param {boolean} [props.disabled=false]
+ * @param {string} [props.className]
+ */
+export const ChoiceCard = forwardRef(function ChoiceCard(
+  {
+    type = "radio",
+    title,
+    description,
+    icon: IconComponent,
+    badge,
+    disabled = false,
+    className,
+    id,
+    ...inputProps
+  },
+  ref,
+) {
+  const isRadio = type === "radio";
+
+  return (
+    <label
+      htmlFor={id}
+      className={cn(
+        "group relative flex min-h-[4.5rem] cursor-pointer items-start gap-3.5 rounded-lg border border-line bg-surface p-4 transition-all select-none",
+        "hover:border-ink-400",
+        "has-[:checked]:border-azure-500 has-[:checked]:bg-azure-50 has-[:checked]:ring-1 has-[:checked]:ring-azure-500",
+        "has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-focus",
+        disabled && "pointer-events-none cursor-not-allowed opacity-50",
+        className,
+      )}
+    >
+      <input
+        ref={ref}
+        id={id}
+        type={type}
+        disabled={disabled}
+        className="peer sr-only"
+        {...inputProps}
+      />
+
+      {/* Optional leading icon */}
+      {IconComponent && (
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-ink-100 text-navy-900 transition-colors group-has-[:checked]:bg-azure-100 group-has-[:checked]:text-azure-700">
+          <IconComponent className="h-5 w-5" aria-hidden="true" />
+        </span>
+      )}
+
+      {/* Title, description and badge */}
+      <div className="flex-1 pr-6">
+        <div className="flex items-center gap-2">
+          <span className="leading-snug font-semibold text-navy-900">{title}</span>
+          {badge}
+        </div>
+        {description && <p className="mt-1 text-sm leading-relaxed text-fg-muted">{description}</p>}
+      </div>
+
+      {/* Explicit top-right status indicator */}
+      <span
+        aria-hidden="true"
+        className={cn(
+          "absolute top-4 right-4 flex h-5 w-5 shrink-0 items-center justify-center border-2 border-ink-500 transition-colors",
+          isRadio ? "rounded-full" : "rounded-xs",
+          "peer-checked:border-navy-900 peer-checked:bg-navy-900 peer-checked:[&>svg]:opacity-100",
+        )}
+      >
+        <Check
+          className="h-3.5 w-3.5 stroke-[3] text-white opacity-0 transition-opacity"
+          aria-hidden="true"
+        />
+      </span>
+    </label>
+  );
+});
