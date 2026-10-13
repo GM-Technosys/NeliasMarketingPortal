@@ -35,6 +35,10 @@
     "title": "Page introuvable | NELIAS",
     "description": "La page que vous recherchez n’existe pas."
   },
+  "configure": {
+    "title": "Configurer mon NELIAS | Plateforme sur mesure",
+    "description": "Configurez votre plateforme NELIAS selon votre secteur et les besoins de votre entreprise."
+  },
   "fallback": {
     "title": "NELIAS",
     "description": "Une seule plateforme. Plusieurs secteurs. Votre environnement, configuré automatiquement."

@@ -10,7 +10,7 @@ All French copy is an AI-drafted translation pending review by Debass or a nativ
 | `features` | 24 | Draft | Pending (Debass) | 2026-10-13 |
 | `home` | 64 | Draft | Pending (Debass) | 2026-10-13 |
 | `industries` | 22 | Draft | Pending (Debass) | 2026-10-13 |
-| `seo` | 20 | Draft | Pending (Debass) | 2026-10-13 |
+| `seo` | 22 | Draft | Pending (Debass) | 2026-10-13 |
 
 ## Terminology to Confirm
 

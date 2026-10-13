@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { buttonStyles } from "@/components/ui/button-styles";
 import { cn } from "@/lib/cn";
-import { features } from "@/config/features";
 import { EVENTS, track } from "@/lib/analytics";
 
 /**
@@ -12,10 +11,7 @@ import { EVENTS, track } from "@/lib/analytics";
 function resolveIntent(intent, t) {
   switch (intent) {
     case "configure":
-      if (features.configurator) {
-        return { to: "/configure", label: t("cta.configure") };
-      }
-      return { to: "/demo", label: t("cta.talkToAdvisor") };
+      return { to: "/configure", label: t("cta.configure") };
     case "demo":
       return { to: "/demo", label: t("cta.bookDemo") };
     case "contact":
