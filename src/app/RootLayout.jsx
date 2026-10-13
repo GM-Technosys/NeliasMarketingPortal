@@ -5,11 +5,12 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCta } from "@/components/layout/StickyMobileCta";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
+import { LanguageAnnouncer } from "@/components/common/LanguageAnnouncer";
 
 /**
  * Root layout wrapping all routes.
  * Contains utility bar, sticky header, main content landmark,
- * footer, sticky mobile CTA and scroll-to-top handler.
+ * footer, sticky mobile CTA, language announcer and scroll-to-top handler.
  */
 export default function RootLayout() {
   const mainRef = useRef(null);
@@ -24,6 +25,7 @@ export default function RootLayout() {
 
   return (
     <div className="flex min-h-dvh flex-col">
+      <LanguageAnnouncer />
       <UtilityBar />
       <Header />
       <main id="main-content" ref={mainRef} tabIndex={-1} className="flex-1 outline-none">

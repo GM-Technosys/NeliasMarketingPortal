@@ -1,75 +1,222 @@
+import { useState, useRef, useEffect, useId } from "react";
 import { useTranslation } from "react-i18next";
+import { Globe, ChevronDown, Check } from "lucide-react";
 import { features } from "@/config/features";
-import { EVENTS, track } from "@/lib/analytics";
+import { setLanguage } from "@/i18n/language";
 import { cn } from "@/lib/cn";
 
+const LANGUAGES = [
+  { code: "en", labelKey: "lang.en", shortKey: "lang.enShort" },
+  { code: "fr", labelKey: "lang.fr", shortKey: "lang.frShort" },
+];
+
 /**
- * Language switcher toggle. Hidden unless features.frenchEnabled is true.
+ * Accessible dropdown language selector with smooth transition and keyboard navigation.
+ * Hidden unless features.frenchEnabled is true.
  *
  * @param {Object} props
  * @param {"default"|"onDark"} [props.variant="default"]
+ * @param {"start"|"end"} [props.align]
+ * @param {"top"|"bottom"} [props.placement]
  * @param {string} [props.className]
  */
-export function LanguageSwitcher({ variant = "default", className }) {
+export function LanguageSwitcher({
+  variant = "default",
+  align,
+  placement,
+  className,
+}) {
   const { t, i18n } = useTranslation();
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef(null);
+  const triggerRef = useRef(null);
+  const menuId = useId();
+
+  // Close on outside click or escape key
+  useEffect(() => {
+    if (!isOpen) return;
+
+    function handlePointerDown(e) {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    }
+
+    function handleKeyDown(e) {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+        triggerRef.current?.focus();
+      }
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
 
   if (!features.frenchEnabled) {
     return null;
   }
 
   const currentLang = i18n.resolvedLanguage || i18n.language || "en";
-
-  const handleChange = (to) => {
-    if (to === currentLang) return;
-    i18n.changeLanguage(to);
-    track(EVENTS.LANGUAGE_CHANGE, { to });
-  };
-
   const isDark = variant === "onDark";
 
-  const activeClasses = isDark
-    ? "bg-white text-navy-950 font-bold shadow-xs"
-    : "bg-navy-900 text-white font-bold shadow-xs";
+  // Default to right-aligned & downwards on desktop onDark, left-aligned & upwards on mobile default
+  const resolvedAlign = align || (isDark ? "end" : "start");
+  const resolvedPlacement = placement || (isDark ? "bottom" : "top");
 
-  const inactiveClasses = isDark
-    ? "text-fg-inverse-muted hover:text-white hover:bg-white/10"
-    : "text-ink-600 hover:text-navy-900 hover:bg-ink-200/60";
+  const handleSelect = (langCode) => {
+    setIsOpen(false);
+    if (langCode !== currentLang) {
+      setLanguage(langCode);
+    }
+    triggerRef.current?.focus();
+  };
+
+  const handleTriggerKeyDown = (e) => {
+    if (e.key === "ArrowDown" || e.key === "ArrowUp" || e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setIsOpen((prev) => !prev);
+    }
+  };
+
+  const triggerClasses = isDark
+    ? cn(
+        "border-white/15 bg-white/5 text-white hover:bg-white/10 hover:border-white/25",
+        isOpen && "border-white/30 bg-white/15 shadow-xs",
+      )
+    : cn(
+        "border-line bg-surface text-navy-900 hover:bg-ink-50 hover:border-ink-300",
+        isOpen && "border-azure-500 bg-azure-50/50 shadow-xs ring-1 ring-azure-500",
+      );
+
+  const placementClasses =
+    resolvedPlacement === "top"
+      ? "bottom-full mb-2 origin-bottom"
+      : "top-full mt-2 origin-top";
+
+  const alignClasses =
+    resolvedAlign === "start" ? "left-0" : "right-0";
 
   return (
-    <div
-      role="group"
-      aria-label={t("a11y.language")}
-      className={cn(
-        "inline-flex items-center rounded-md border p-0.5 text-xs font-semibold",
-        isDark ? "border-white/15 bg-white/5" : "border-line bg-ink-50",
-        className,
+    <div ref={containerRef} className={cn("relative inline-block text-left", className)}>
+      <button
+        ref={triggerRef}
+        type="button"
+        id={`${menuId}-trigger`}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        aria-controls={`${menuId}-menu`}
+        aria-label={t("a11y.language")}
+        onClick={() => setIsOpen((prev) => !prev)}
+        onKeyDown={handleTriggerKeyDown}
+        className={cn(
+          "inline-flex h-8 items-center gap-1.5 rounded-md border px-2.5 text-xs font-semibold transition-all duration-200 cursor-pointer select-none",
+          "focus-visible:outline-2 focus-visible:outline-focus",
+          triggerClasses,
+        )}
+      >
+        <Globe
+          className={cn(
+            "h-3.5 w-3.5 shrink-0 transition-colors",
+            isDark ? "text-azure-400" : "text-azure-600",
+          )}
+          aria-hidden="true"
+        />
+        <span className="uppercase tracking-wide">{t(`lang.${currentLang}Short`)}</span>
+        <ChevronDown
+          className={cn(
+            "h-3 w-3 shrink-0 transition-transform duration-200 ease-soft",
+            isDark ? "text-fg-inverse-muted" : "text-ink-500",
+            isOpen && "rotate-180",
+          )}
+          aria-hidden="true"
+        />
+      </button>
+
+      {isOpen && (
+        <div
+          id={`${menuId}-menu`}
+          role="listbox"
+          aria-label={t("a11y.language")}
+          aria-activedescendant={`${menuId}-opt-${currentLang}`}
+          className={cn(
+            "absolute z-50 w-44 rounded-xl border p-1.5 shadow-raised backdrop-blur-md animate-modal-in",
+            placementClasses,
+            alignClasses,
+            isDark
+              ? "border-white/15 bg-navy-900/98 text-white"
+              : "border-line bg-white/98 text-navy-900",
+          )}
+        >
+          <div className="flex flex-col gap-1.5">
+            {LANGUAGES.map((lang) => {
+              const isSelected = currentLang === lang.code;
+              const itemClasses = isDark
+                ? cn(
+                    "border border-transparent text-fg-inverse-muted hover:text-white hover:bg-white/8",
+                    isSelected && "border-white/15 bg-white/12 text-white font-semibold shadow-2xs",
+                  )
+                : cn(
+                    "border border-transparent text-ink-700 hover:text-navy-900 hover:bg-ink-50",
+                    isSelected && "border-azure-200/80 bg-azure-50 text-navy-950 font-semibold shadow-2xs",
+                  );
+
+              const badgeClasses = isDark
+                ? cn(
+                    "bg-white/10 text-fg-inverse-muted",
+                    isSelected && "bg-azure-500/25 text-azure-300 border border-azure-400/30",
+                  )
+                : cn(
+                    "bg-ink-100 text-ink-600",
+                    isSelected && "bg-azure-100 text-azure-700 border border-azure-200",
+                  );
+
+              return (
+                <button
+                  key={lang.code}
+                  id={`${menuId}-opt-${lang.code}`}
+                  role="option"
+                  lang={lang.code}
+                  type="button"
+                  aria-selected={isSelected}
+                  onClick={() => handleSelect(lang.code)}
+                  className={cn(
+                    "flex w-full min-h-9 cursor-pointer items-center justify-between rounded-lg px-2.5 py-1.5 text-xs transition-all duration-150 text-left",
+                    "focus-visible:outline-2 focus-visible:outline-focus",
+                    itemClasses,
+                  )}
+                >
+                  <div className="flex items-center gap-2.5 truncate">
+                    <span
+                      className={cn(
+                        "inline-flex items-center justify-center rounded px-1.5 py-0.5 text-[10px] font-bold tracking-wider uppercase shrink-0",
+                        badgeClasses,
+                      )}
+                    >
+                      {t(lang.shortKey)}
+                    </span>
+                    <span className="truncate text-xs font-semibold">{t(lang.labelKey)}</span>
+                  </div>
+                  {isSelected && (
+                    <Check
+                      className={cn(
+                        "h-3.5 w-3.5 shrink-0 stroke-[2.5] ml-2",
+                        isDark ? "text-azure-400" : "text-azure-600",
+                      )}
+                      aria-hidden="true"
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
       )}
-    >
-      <button
-        type="button"
-        aria-label={t("lang.en")}
-        aria-pressed={currentLang === "en"}
-        onClick={() => handleChange("en")}
-        className={cn(
-          "inline-flex min-h-9 min-w-9 cursor-pointer items-center justify-center rounded px-2.5 py-1 transition-colors",
-          currentLang === "en" ? activeClasses : inactiveClasses,
-        )}
-      >
-        {t("lang.enShort")}
-      </button>
-      <button
-        type="button"
-        lang="fr"
-        aria-label={t("lang.fr")}
-        aria-pressed={currentLang === "fr"}
-        onClick={() => handleChange("fr")}
-        className={cn(
-          "inline-flex min-h-9 min-w-9 cursor-pointer items-center justify-center rounded px-2.5 py-1 transition-colors",
-          currentLang === "fr" ? activeClasses : inactiveClasses,
-        )}
-      >
-        {t("lang.frShort")}
-      </button>
     </div>
   );
 }

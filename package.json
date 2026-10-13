@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "format": "prettier --write .",
     "check:copy": "node scripts/check-copy.mjs",
-    "verify": "npm run lint && npm run build && npm run check:copy"
+    "check:i18n": "node scripts/check-i18n.mjs",
+    "verify": "npm run lint && npm run build && npm run check:copy && npm run check:i18n"
   },
   "dependencies": {
     "@fontsource-variable/outfit": "^5.3.0",

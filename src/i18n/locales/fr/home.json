@@ -1,1 +1,132 @@
-{}
+{
+  "hero": {
+    "eyebrow": "NELIAS | Plateforme de gestion d’entreprise",
+    "title": "Votre entreprise est unique. Votre plateforme de gestion devrait l’être aussi.",
+    "subtitle": "NELIAS réunit vos fonctions d’entreprise essentielles dans un environnement de gestion pensé selon le fonctionnement de votre entreprise."
+  },
+  "composition": { "address": "yourcompany.nelias.app" },
+  "problem": {
+    "title": "Trop d’outils. Pas assez de visibilité.",
+    "body": "Les ventes dans un outil. Les stocks dans un autre. La comptabilité ailleurs. Les projets, les équipes et les demandes clients dispersés entre des systèmes déconnectés. À mesure que l’entreprise grandit, l’information fragmentée ralentit les décisions et multiplie les tâches manuelles."
+  },
+  "scenarios": {
+    "title": "Cette situation vous parle\u00A0?",
+    "impactLabel": "Impact sur l’entreprise",
+    "benefitLabel": "Bénéfice NELIAS",
+    "items": {
+      "scattered": {
+        "title": "Mes informations sont dispersées",
+        "impact": "Systèmes déconnectés",
+        "benefit": "Une approche unifiée pour vos processus clés de gestion."
+      },
+      "visibility": {
+        "title": "Je manque de visibilité",
+        "impact": "Visibilité opérationnelle limitée",
+        "benefit": "Un socle de données partagé et des outils de reporting."
+      },
+      "time": {
+        "title": "Mes équipes perdent du temps",
+        "impact": "Tâches manuelles entre départements",
+        "benefit": "Des flux connectés et une automatisation progressive."
+      }
+    }
+  },
+  "approach": {
+    "title": "Partez de votre entreprise, pas d’un catalogue de logiciels.",
+    "body": "Indiquez à NELIAS votre secteur, la taille de votre entreprise, vos activités et vos priorités. NELIAS recommande les fonctionnalités et la configuration adaptées à vos opérations, évolutives au rythme de votre croissance.",
+    "pillars": {
+      "understand": { "title": "Comprendre", "text": "Recueillir le profil de votre entreprise et ses besoins opérationnels." },
+      "compose": { "title": "Composer", "text": "Recommander un environnement de gestion pertinent basé sur les règles de votre secteur." },
+      "evolve": { "title": "Évoluer", "text": "Ajouter des utilisateurs, fonctionnalités et intégrations au gré de vos besoins." }
+    }
+  },
+  "capabilities": {
+    "title": "Tout ce dont votre entreprise a besoin, au même endroit",
+    "lead": "Clients, ventes, stocks, finances et opérations\u00A0: gérez votre entreprise dans un environnement conçu selon votre secteur.",
+    "openLabel": "Voir le cas d’usage",
+    "viewingLabel": "Consultation",
+    "workflowsLabel": "Fonctionnalités clés et flux de gestion",
+    "modalLink": "Découvrir la bonne configuration",
+    "items": {
+      "customers": {
+        "title": "Clients",
+        "points": [
+          "Organiser les contacts",
+          "Opportunités commerciales",
+          "Cycles de vente",
+          "Interactions clients"
+        ]
+      },
+      "sales": {
+        "title": "Ventes",
+        "points": [
+          "Devis et propositions",
+          "Commandes et cycles de vente",
+          "Suivi du pipeline commercial",
+          "Historique des comptes clients"
+        ]
+      },
+      "purchasing": {
+        "title": "Achats",
+        "points": [
+          "Gérer les fournisseurs",
+          "Cycles d’approvisionnement",
+          "Bons de commande et validations",
+          "Rapprochement des factures fournisseurs"
+        ]
+      },
+      "inventory": {
+        "title": "Stocks",
+        "points": [
+          "Suivi des stocks et entrepôts",
+          "Niveaux de stock en temps réel",
+          "Inventaire multisite",
+          "Circuits de réapprovisionnement"
+        ]
+      },
+      "finance": {
+        "title": "Finance",
+        "points": [
+          "Opérations financières",
+          "Grand livre et journaux",
+          "Gestion financière clarifiée",
+          "Visibilité sur la trésorerie opérationnelle"
+        ]
+      },
+      "projects": {
+        "title": "Projets",
+        "points": [
+          "Planifier et ordonnancer les projets",
+          "Feuilles de temps et suivi des tâches",
+          "Suivre les activités par projet",
+          "Jalons et livrables"
+        ]
+      }
+    }
+  },
+  "industries": {
+    "title": "Différents secteurs. Une plateforme adaptable.",
+    "body": "De la distribution aux services professionnels, en passant par l’industrie, la santé, l’hôtellerie et les services financiers, NELIAS associe un socle commun et des configurations adaptées aux spécificités de chaque secteur.",
+    "selectorLabel": "Choisissez votre secteur",
+    "suggestedLabel": "Fonctionnalités suggérées",
+    "viewIndustry": "Voir {{name}}",
+    "cta": "Explorer les secteurs"
+  },
+  "journey": {
+    "title": "Comment ça marche",
+    "steps": [
+      { "title": "Présentez votre entreprise", "text": "Précisez votre secteur, vos activités, la taille de vos équipes, vos entités juridiques et vos priorités opérationnelles." },
+      { "title": "Découvrez votre recommandation", "text": "Consultez la formule suggérée, les fonctionnalités incluses, les modules complémentaires et les intégrations." },
+      { "title": "Choisissez votre formule", "text": "Accédez à une estimation transparente établie selon la formule, la capacité et les options retenues." },
+      { "title": "Pilotez votre activité", "text": "Accédez à votre environnement NELIAS dédié, suivez la prise en main guidée et faites évoluer vos outils dans la durée." }
+    ]
+  },
+  "preview": {
+    "title": "Découvrez votre NELIAS",
+    "alt": "Aperçu illustratif d’un espace de travail NELIAS sur ordinateur et mobile"
+  },
+  "final": {
+    "title": "Créez l’environnement adapté à votre prochaine étape de croissance.",
+    "body": "Découvrez comment NELIAS s’adapte à votre entreprise et trouvez la configuration adaptée à votre équipe."
+  }
+}

@@ -11,7 +11,7 @@ export function DesktopNav() {
   const { t } = useTranslation();
 
   return (
-    <nav aria-label={t("header.mainNavLabel")} className="hidden items-center gap-1 xl:flex">
+    <nav aria-label={t("header.mainNavLabel")} className="hidden items-center gap-0.5 xl:flex 2xl:gap-1">
       {mainNav.map(({ key, to }) => (
         <NavLink
           key={key}
@@ -20,9 +20,9 @@ export function DesktopNav() {
           onClick={() => track(EVENTS.NAV_CLICK, { key })}
           className={({ isActive }) =>
             cn(
-              "relative px-2.5 py-2 text-[0.9375rem] font-semibold whitespace-nowrap transition-colors",
+              "relative px-2 py-2 text-[0.9375rem] font-semibold whitespace-nowrap transition-colors 2xl:px-2.5",
               isActive
-                ? "text-navy-900 after:absolute after:right-2.5 after:bottom-0 after:left-2.5 after:h-0.5 after:bg-azure-500"
+                ? "text-navy-900 after:absolute after:right-2 after:bottom-0 after:left-2 after:h-0.5 after:bg-azure-500"
                 : "text-ink-700 hover:text-azure-600",
             )
           }

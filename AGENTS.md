@@ -9,7 +9,8 @@ npm run dev         # Start Vite dev server
 npm run lint        # Run oxlint
 npm run build       # Production build
 npm run check:copy  # Scan for banned pre-launch phrases
-npm run verify      # lint + build + check:copy
+npm run check:i18n  # Validate translation parity between en and fr
+npm run verify      # lint + build + check:copy + check:i18n
 npm run format      # Prettier
 ```
 
@@ -90,7 +91,7 @@ npm run format      # Prettier
 - The header is sticky (64px mobile, 72px from md). Anchor targets rely on `scroll-padding-top: 5.5rem`.
 - The logo PNG is opaque with a white background: use it only on white surfaces, or inside the white plate (`Logo variant="plate"`) on dark ones.
 - CTA rule: when `features.configurator` is false, show a single "Book a Demo" CTA, never two buttons to the same destination. Use `HeaderCtas` or `CtaLink`; do not hand-roll CTAs.
-- The language switcher is hidden until `features.frenchEnabled` is true.
+- The language switcher is visible by default (hidden only when `VITE_FEATURE_FRENCH=false`).
 - Navigation data lives in `src/config/navigation.js` only.
 
 ## UI kit
@@ -109,3 +110,16 @@ npm run format      # Prettier
 - The Home page uses PDF Section 3 ('ready-to-use copy': hero, the problem, the NELIAS approach, three pillars, industries teaser, closing conversion) as its skeleton, with the V3 interactive modules (scenarios, six capability cards, industry selector, four-step journey, product preview) embedded. Where the PDF contradicts itself, Section 3 wins on the hero and the closing; V3 supplies the module titles. Conflicts are marked `TODO(Debass)`.
 - Open copy items for Debass (marked `TODO(Debass)` in code): scenario impact/benefit texts, the six capability use cases, industry selector examples and capability mapping, validated product screenshots.
 - Mocks and previews contain no text, no numbers and no invented metrics, and always carry the "Illustrative preview" label.
+
+## Internationalisation (mandatory rules)
+
+1. Every visible string, `aria-label`, `alt`, `title`, `placeholder`, SEO text, error or validation message, tooltip and modal text comes from i18n through `useTranslation` / `t`. Never type display text in JSX, in `src/data/` or in `src/config/` (those hold ids, slugs, icons, flags and language-neutral contact data only). Dev-only pages (`DesignPreviewPage.jsx`, `UiKitPreviewPage.jsx`) are exempt.
+2. Every new or changed key MUST be added to BOTH `locales/en/<ns>.json` and `locales/fr/<ns>.json` in the same change: identical structure, array lengths and `{{placeholders}}`. Never leave `fr` empty or in English (except the kept names). This applies even when a task prompt supplies only English copy: translate it yourself using `docs/FRENCH_GLOSSARY.md`, and add the new keys to `docs/FRENCH_REVIEW.md` as "Draft".
+3. New namespaces are registered automatically from the JSON files (Vite glob). Create the `en` and `fr` file together.
+4. Never call `t()` at module scope or freeze its result in `useMemo`/`useState` without the language as a dependency; call it inside components so text updates when the language changes.
+5. Use `useFormat` / `src/lib/format.js` for numbers, currency (FCFA) and dates. Never hard-code separators.
+6. Follow `docs/FRENCH_GLOSSARY.md` (formal "vous", sentence case, typographic apostrophe, `\u00A0` before `: ; ? !`, glossary terms, kept names).
+7. `npm run check:i18n` is part of `npm run verify` and must pass. In development, missing keys are logged as `[i18n] missing key`.
+8. The French copy is an AI-drafted translation until Debass approves it (`docs/FRENCH_REVIEW.md`). Do not change English text while translating.
+9. The initial language is English (or `?lang=fr`); the choice is saved in localStorage `nelias-lang`. `VITE_FEATURE_FRENCH=false` hides the switcher.
+

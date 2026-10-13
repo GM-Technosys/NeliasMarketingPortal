@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useId } from "react";
+import { useTranslation } from "react-i18next";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/cn";
 
@@ -26,10 +27,12 @@ export function Tabs({
   variant = "underline",
   orientation = "horizontal",
   selectOnHover = false,
-  label = "Sections",
+  label,
   idPrefix: explicitPrefix,
   className,
 }) {
+  const { t } = useTranslation();
+  const resolvedLabel = label || t("ui.tabs");
   const generatedPrefix = useId();
   const idPrefix = explicitPrefix || generatedPrefix;
 
@@ -128,7 +131,7 @@ export function Tabs({
           <div
             role="tablist"
             aria-orientation="vertical"
-            aria-label={label}
+            aria-label={resolvedLabel}
             className="flex flex-col gap-1.5 rounded-xl border border-line bg-surface p-2 sm:p-2.5 shadow-2xs max-h-[460px] lg:max-h-none overflow-y-auto"
           >
             {items.map(({ id, label: tabLabel, icon: IconComponent }, index) => {
@@ -216,7 +219,7 @@ export function Tabs({
       >
         <div
           role="tablist"
-          aria-label={label}
+          aria-label={resolvedLabel}
           className={cn(
             "flex snap-x items-center min-w-max",
             variant === "underline"

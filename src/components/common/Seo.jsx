@@ -12,7 +12,7 @@ import { site } from "@/config/site";
  * @param {boolean} [props.noIndex] - Force noindex on this page
  */
 export function Seo({ pageKey, title, description, noIndex }) {
-  const { t } = useTranslation("seo");
+  const { t, i18n } = useTranslation("seo");
   const { pathname } = useLocation();
 
   const resolvedTitle =
@@ -26,6 +26,8 @@ export function Seo({ pageKey, title, description, noIndex }) {
   const canonical = site.url + (pathname === "/" ? "" : pathname.replace(/\/+$/, ""));
 
   const shouldNoIndex = noIndex || site.noindex;
+  const currentLang = i18n.resolvedLanguage || i18n.language || "en";
+  const ogLocale = currentLang === "fr" ? "fr_FR" : "en_US";
 
   return (
     <>
@@ -38,6 +40,7 @@ export function Seo({ pageKey, title, description, noIndex }) {
       <meta property="og:description" content={resolvedDesc} />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content={site.name} />
+      <meta property="og:locale" content={ogLocale} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary" />

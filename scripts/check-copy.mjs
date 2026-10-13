@@ -23,6 +23,16 @@ const BANNED = [
   "launching soon",
   "january 2027",
   "stay tuned",
+  // French pre-launch phrases
+  "bientôt disponible",
+  "prochainement",
+  "liste d’attente",
+  "liste d'attente",
+  "pré-lancement",
+  "prélancement",
+  "compte à rebours",
+  "restez connectés",
+  "janvier 2027",
 ];
 
 const EXTENSIONS = new Set([".js", ".jsx", ".json", ".css"]);

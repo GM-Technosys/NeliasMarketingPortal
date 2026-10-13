@@ -47,7 +47,8 @@
     "skipToContent": "Skip to main content",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "language": "Language"
+    "language": "Language",
+    "languageChanged": "Language changed to {{language}}"
   },
   "lang": {
     "en": "English",
@@ -60,6 +61,7 @@
     "optional": "optional",
     "close": "Close",
     "info": "More information",
+    "tabs": "Sections",
     "illustrativePreview": "Illustrative preview",
     "availability": {
       "available": "Available",
@@ -73,6 +75,10 @@
     "loading": "Loading",
     "externalLink": "(opens in a new tab)",
     "select": { "placeholder": "Select an option" }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "message": "The page you are looking for does not exist."
   },
   "devPlaceholder": "Placeholder page. Content is added in a later step."
 }

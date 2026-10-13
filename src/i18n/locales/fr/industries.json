@@ -1,1 +1,42 @@
-{}
+{
+  "items": {
+    "retail-distribution": {
+      "name": "Commerce de détail et distribution",
+      "summary": "Coordonnez les ventes, les approvisionnements, les stocks et les opérations multisites.",
+      "headline": "Gardez la maîtrise de vos ventes, de vos achats et de vos stocks."
+    },
+    "professional-services": {
+      "name": "Services professionnels et expertise comptable",
+      "summary": "Réunissez la relation client, les projets, les feuilles de temps, la facturation et le reporting au sein d’un flux connecté.",
+      "headline": "Gardez vos clients, projets et factures parfaitement reliés."
+    },
+    "manufacturing": {
+      "name": "Industrie et fabrication",
+      "summary": "Reliez les approvisionnements, les stocks, la planification de production et les démarches qualité.",
+      "headline": "Connectez les achats, la production et le suivi opérationnel."
+    },
+    "healthcare": {
+      "name": "Santé",
+      "summary": "Gérez les démarches administratives, les approvisionnements, les stocks et les flux de services, sous réserve des exigences propres au secteur.",
+      "headline": "Organisez vos activités et vos ressources dans un environnement structuré."
+    },
+    "hospitality": {
+      "name": "Hôtellerie et restauration",
+      "summary": "Rapprochez les achats, la finance, la gestion des équipes et le pilotage quotidien.",
+      "headline": "Coordonnez vos équipes, vos achats et vos opérations au quotidien."
+    },
+    "education-training": {
+      "name": "Éducation et formation",
+      "summary": "Accompagnez l’administration, la facturation, les projets et la gestion de vos établissements."
+    },
+    "insurance-financial-services": {
+      "name": "Assurance et services financiers",
+      "summary": "Découvrez des flux structurés pour la relation client, les services et les opérations, sous réserve des validations réglementaires et d’intégration.",
+      "headline": "Améliorez la visibilité sur vos clients, vos dossiers et vos opérations."
+    },
+    "energy-field-services": {
+      "name": "Énergie et interventions sur site",
+      "summary": "Coordonnez vos actifs, la maintenance, les projets et les interventions sur le terrain."
+    }
+  }
+}
