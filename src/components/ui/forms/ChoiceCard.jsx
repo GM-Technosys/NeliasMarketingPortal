@@ -24,17 +24,23 @@ export const ChoiceCard = forwardRef(function ChoiceCard(
     disabled = false,
     className,
     id,
+    onMouseEnter,
+    onMouseLeave,
     ...inputProps
   },
   ref,
 ) {
   const isRadio = type === "radio";
+  const hasDetails = Boolean(description);
 
   return (
     <label
       htmlFor={id}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       className={cn(
-        "group relative flex min-h-[4.5rem] cursor-pointer items-start gap-3.5 rounded-lg border border-line bg-surface p-4 transition-all select-none",
+        "group relative flex min-h-[4.5rem] cursor-pointer gap-3.5 rounded-lg border border-line bg-surface p-4 transition-all select-none",
+        hasDetails ? "items-start" : "items-center",
         "hover:border-ink-400",
         "has-[:checked]:border-azure-500 has-[:checked]:bg-azure-50 has-[:checked]:ring-1 has-[:checked]:ring-azure-500",
         "has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-focus",
@@ -59,7 +65,7 @@ export const ChoiceCard = forwardRef(function ChoiceCard(
       )}
 
       {/* Title, description and badge */}
-      <div className="flex-1 pr-6">
+      <div className={cn("flex-1 pr-6", !hasDetails && "flex items-center")}>
         <div className="flex items-center gap-2">
           <span className="leading-snug font-semibold text-navy-900">{title}</span>
           {badge}
@@ -71,7 +77,8 @@ export const ChoiceCard = forwardRef(function ChoiceCard(
       <span
         aria-hidden="true"
         className={cn(
-          "absolute top-4 right-4 flex h-5 w-5 shrink-0 items-center justify-center border-2 border-ink-500 transition-colors",
+          "absolute right-4 flex h-5 w-5 shrink-0 items-center justify-center border-2 border-ink-500 transition-colors",
+          hasDetails ? "top-4" : "top-1/2 -translate-y-1/2",
           isRadio ? "rounded-full" : "rounded-xs",
           "peer-checked:border-navy-900 peer-checked:bg-navy-900 peer-checked:[&>svg]:opacity-100",
         )}

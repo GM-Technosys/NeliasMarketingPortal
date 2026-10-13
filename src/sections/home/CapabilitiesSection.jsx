@@ -1,37 +1,41 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Check } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Modal } from "@/components/ui/Modal";
+import { Badge } from "@/components/ui/Badge";
 import { TextLink } from "@/components/ui/TextLink";
 import { Reveal } from "@/components/ui/Reveal";
 import { CapabilityCard } from "./CapabilityCard";
 import { capabilityCards } from "@/data/home-content";
 
-// TODO(Debass): the PDF promises a "plain-language use case" per card but supplies none. The shared capability sentence is a stand-in, and Customers/Sales (and Purchasing/Inventory) show the same stand-in sentence.
 export function CapabilitiesSection() {
   const { t } = useTranslation();
   const [activeId, setActiveId] = useState(null);
 
-  const activeCard = capabilityCards.find((card) => card.id === activeId) || null;
+  const activeCard =
+    capabilityCards.find((card) => card.id === activeId) || null;
 
   return (
     <Section
       id="capabilities"
-      tone="default"
+      tone="tint"
       spacing="lg"
       aria-labelledby="capabilities-heading"
     >
       <Container>
         <Reveal>
           <SectionHeading
+            as="h2"
             id="capabilities-heading"
             title={t("home:capabilities.title")}
+            lead={t("home:capabilities.lead")}
           />
         </Reveal>
 
-        <Reveal delay={120}>
+        <Reveal delay={90}>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-5">
             {capabilityCards.map((card) => (
               <CapabilityCard
@@ -44,7 +48,7 @@ export function CapabilitiesSection() {
           </div>
         </Reveal>
 
-        {/* Single shared use-case modal */}
+        {/* Modal with bullet points in 2 columns (two in each row) */}
         <Modal
           open={Boolean(activeCard)}
           onClose={() => setActiveId(null)}
@@ -60,17 +64,28 @@ export function CapabilitiesSection() {
 
             return (
               <div className="space-y-6">
+                <div>
+                  <Badge tone="info" size="sm" className="mb-3">
+                    {t(`features:areas.${activeCard.area}.name`)}
+                  </Badge>
+                  <p className="text-sm text-fg-muted mb-4">
+                    {t(`features:areas.${activeCard.area}.description`)}
+                  </p>
+                </div>
+
                 {hasPoints ? (
-                  <ul className="grid grid-cols-2 gap-x-6 gap-y-3.5">
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3.5">
                     {points.map((point, index) => (
                       <li
                         key={index}
-                        className="flex items-center gap-2.5 text-base font-medium text-navy-900"
+                        className="flex items-center gap-2.5 text-base font-semibold text-navy-900"
                       >
                         <span
-                          className="h-2 w-2 shrink-0 rounded-full bg-azure-500"
+                          className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-azure-50 text-azure-600 border border-azure-200"
                           aria-hidden="true"
-                        />
+                        >
+                          <Check className="h-3 w-3 stroke-[2.5]" />
+                        </span>
                         <span>{point}</span>
                       </li>
                     ))}

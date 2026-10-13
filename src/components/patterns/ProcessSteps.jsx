@@ -1,14 +1,17 @@
 import { useRef } from "react";
+import { User, Settings2, CheckCircle2, Zap } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { cn } from "@/lib/cn";
 
+const defaultIcons = [User, Settings2, CheckCircle2, Zap];
+
 /**
- * Sequential process steps list with numbered markers, supporting 3 or 4 columns
- * and optional animated scroll entrance with connector line.
+ * Sequential process steps list with circular icons, dashed wave connector,
+ * and step badges matching the modern multi-step journey layout.
  *
  * @param {Object} props
- * @param {Array<{ title: string, text: string }>} props.steps
+ * @param {Array<{ title: string, text: string, icon?: import("react").ComponentType }>} props.steps
  * @param {number} [props.headingLevel=3]
  * @param {3|4} [props.columns=3]
  * @param {boolean} [props.animated=false]
@@ -17,12 +20,16 @@ import { cn } from "@/lib/cn";
 export function ProcessSteps({
   steps = [],
   headingLevel = 3,
-  columns = 3,
+  columns = 4,
   animated = false,
   className,
 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, threshold: 0.15 });
+  const isInView = useInView(ref, {
+    once: true,
+    threshold: 0.02,
+    rootMargin: "0px 0px 50px 0px",
+  });
   const prefersReduced = usePrefersReducedMotion();
 
   const isVisible = !animated || prefersReduced || isInView;
@@ -34,29 +41,73 @@ export function ProcessSteps({
       : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3";
 
   return (
-    <div ref={ref} className="relative">
-      {/* Animated connector line behind markers (desktop lg and up only when animated is true) */}
-      {animated && (
-        <div
-          className="hidden lg:block absolute top-[46px] left-[6%] right-[6%] h-0.5 bg-ink-200 z-0 pointer-events-none"
-          role="presentation"
-        >
-          <div
-            className={cn(
-              "h-full bg-azure-500 origin-left transition-transform duration-900 ease-soft",
-              isVisible ? "scale-x-100" : "scale-x-0",
-            )}
-          />
-        </div>
-      )}
+    <div ref={ref} className="relative w-full">
+      {/* Dashed wave connector line between step circles on desktop (lg and up) */}
+      <svg
+        className="pointer-events-none absolute top-12 left-0 z-0 hidden h-20 w-full text-ink-300 lg:block"
+        viewBox="0 0 1000 80"
+        fill="none"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        {columns === 4 ? (
+          <>
+            {/* Wave 1 to 2 (curves down) */}
+            <path
+              d="M 180 40 Q 250 75 320 40"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeDasharray="8 8"
+              strokeLinecap="round"
+            />
+            {/* Wave 2 to 3 (curves up) */}
+            <path
+              d="M 430 40 Q 500 5 570 40"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeDasharray="8 8"
+              strokeLinecap="round"
+            />
+            {/* Wave 3 to 4 (curves down) */}
+            <path
+              d="M 680 40 Q 750 75 820 40"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeDasharray="8 8"
+              strokeLinecap="round"
+            />
+          </>
+        ) : (
+          <>
+            {/* Wave 1 to 2 (curves down) */}
+            <path
+              d="M 225 40 Q 332 75 440 40"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeDasharray="8 8"
+              strokeLinecap="round"
+            />
+            {/* Wave 2 to 3 (curves up) */}
+            <path
+              d="M 560 40 Q 668 5 775 40"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeDasharray="8 8"
+              strokeLinecap="round"
+            />
+          </>
+        )}
+      </svg>
 
-      <ol className={cn("grid gap-8 relative z-10", colClasses, className)}>
-        {steps.map(({ title, text }, index) => {
+      <ol className={cn("relative z-10 grid gap-10 lg:gap-6", colClasses, className)}>
+        {steps.map(({ title, text, icon: CustomIcon }, index) => {
           const stepNumber = index + 1;
+          const StepIcon =
+            CustomIcon || defaultIcons[index % defaultIcons.length];
 
           const animationStyle =
             animated && !prefersReduced
-              ? { animationDelay: `${index * 120}ms` }
+              ? { animationDelay: `${index * 100}ms` }
               : undefined;
 
           return (
@@ -64,25 +115,53 @@ export function ProcessSteps({
               key={stepNumber}
               style={animationStyle}
               className={cn(
-                "flex flex-col items-start rounded-lg border border-line bg-surface p-6 shadow-xs",
+                "group flex flex-col items-center text-center",
                 animated &&
                   !prefersReduced && [
-                    isVisible ? "animate-tile-in" : "opacity-0 translate-y-3",
+                    isVisible ? "animate-tile-in" : "translate-y-2 opacity-0",
                   ],
               )}
             >
-              <span
-                aria-hidden="true"
-                className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-navy-900 font-display text-lg font-bold text-white shadow-xs shrink-0"
-              >
-                {stepNumber}
-              </span>
+              {/* Circular step frame with step number badge */}
+              <div className="relative mb-6 flex h-28 w-28 sm:h-32 sm:w-32 items-center justify-center">
+                {/* Number pill badge at top-left of circle */}
+                <span
+                  aria-hidden="true"
+                  className="absolute -top-1 -left-1 z-20 flex h-7 w-7 items-center justify-center rounded-full border border-line bg-white text-xs font-bold text-navy-900 shadow-xs"
+                >
+                  {stepNumber}
+                </span>
 
-              <HeadingTag className="mb-2 font-display text-lg font-semibold text-navy-900 md:text-xl">
+                {/* Outer circular frame (elevated disc or dashed ring) */}
+                <div
+                  className={cn(
+                    "flex h-full w-full items-center justify-center rounded-full transition-all duration-300",
+                    index === 0
+                      ? "border-2 border-azure-400 bg-white shadow-raised ring-8 ring-azure-50/70"
+                      : "border-2 border-dashed border-ink-300 bg-white/90 hover:scale-105 hover:border-azure-400 hover:shadow-card",
+                  )}
+                >
+                  {/* Inner icon background */}
+                  <span
+                    className={cn(
+                      "flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full transition-colors",
+                      index === 0
+                        ? "bg-azure-50 text-azure-700"
+                        : "bg-ink-100/70 text-ink-600 group-hover:bg-azure-50 group-hover:text-azure-700",
+                    )}
+                  >
+                    <StepIcon className="h-7 w-7 sm:h-8 sm:w-8" aria-hidden="true" />
+                  </span>
+                </div>
+              </div>
+
+              {/* Step Title */}
+              <HeadingTag className="font-display text-lg font-bold text-navy-900 md:text-xl mb-2.5">
                 {title}
               </HeadingTag>
 
-              <p className="text-sm leading-relaxed text-fg-muted md:text-base">
+              {/* Step Description */}
+              <p className="max-w-[280px] text-sm leading-relaxed text-fg-muted md:text-base">
                 {text}
               </p>
             </li>

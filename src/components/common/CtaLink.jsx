@@ -32,7 +32,7 @@ function resolveIntent(intent, t) {
  * @param {"configure"|"demo"|"contact"} [props.intent]
  * @param {string} [props.to] - Override destination
  * @param {string} [props.label] - Override label (children take precedence)
- * @param {"primary"|"secondary"|"outline"|"ghost"|"onDark"} [props.variant="primary"]
+ * @param {"primary"|"secondary"|"outline"|"ghost"|"onDark"|"white"|"azure"} [props.variant="primary"]
  * @param {"md"|"lg"} [props.size="md"]
  * @param {string} [props.className]
  * @param {string} [props.location] - Tracking location (e.g. "header", "mobile-menu", "sticky", "footer")

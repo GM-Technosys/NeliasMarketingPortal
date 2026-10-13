@@ -47,6 +47,7 @@ export function HeaderCtas({
       ) : (
         <CtaLink
           intent="demo"
+          variant={onDark ? "onDark" : location === "header" ? "secondary" : "primary"}
           size={size}
           location={location}
           className={stacked ? "w-full" : undefined}

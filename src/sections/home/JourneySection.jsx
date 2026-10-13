@@ -14,19 +14,21 @@ export function JourneySection() {
   return (
     <Section
       id="journey"
-      tone="default"
+      tone="tint"
       spacing="lg"
       aria-labelledby="journey-heading"
     >
       <Container>
         <Reveal>
           <SectionHeading
+            as="h2"
             id="journey-heading"
+            align="center"
             title={t("home:journey.title")}
           />
         </Reveal>
 
-        <Reveal delay={120}>
+        <Reveal delay={90}>
           <ProcessSteps
             steps={safeSteps}
             columns={4}

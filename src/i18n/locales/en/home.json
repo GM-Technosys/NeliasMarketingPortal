@@ -1,10 +1,13 @@
 {
   "hero": {
+    "eyebrow": "NELIAS | Business Management Platform",
     "title": "Your business is unique. Your management platform should be too.",
-    "subtitle": "Customers, sales, inventory, finances and operations — manage your business in an environment shaped around your industry."
+    "subtitle": "NELIAS brings your essential business functions together in a management environment shaped around how your company works."
   },
-  "composition": {
-    "address": "yourcompany.nelias.app"
+  "composition": { "address": "yourcompany.nelias.app" },
+  "problem": {
+    "title": "Too many tools. Not enough visibility.",
+    "body": "Sales in one tool. Inventory in another. Accounting somewhere else. Projects, teams and customer requests scattered across disconnected systems. As businesses grow, disconnected information can slow decisions and multiply manual work."
   },
   "scenarios": {
     "title": "Does this sound familiar?",
@@ -13,30 +16,42 @@
     "items": {
       "scattered": {
         "title": "My information is scattered",
-        "impact": "Sales in one tool. Inventory in another. Accounting somewhere else. Projects, teams and customer requests scattered across disconnected systems.",
+        "impact": "Disconnected systems",
         "benefit": "A unified platform approach for core management workflows."
       },
       "visibility": {
         "title": "I lack visibility",
-        "impact": "Too many tools. Not enough visibility.",
+        "impact": "Limited operational visibility",
         "benefit": "Shared data foundations and reporting capabilities."
       },
       "time": {
         "title": "My teams waste time",
-        "impact": "As businesses grow, disconnected information can slow decisions and multiply manual work.",
+        "impact": "Manual work across departments",
         "benefit": "Connected workflows and progressively introduced automation."
       }
     }
   },
+  "approach": {
+    "title": "Start with your business, not a software catalogue.",
+    "body": "Tell NELIAS about your industry, company size, activities and priorities. NELIAS recommends the capabilities and configuration that fit your operations, with room to evolve as your business grows.",
+    "pillars": {
+      "understand": { "title": "Understand", "text": "Capture the business profile and operational needs." },
+      "compose": { "title": "Compose", "text": "Recommend a relevant management environment using sector rules." },
+      "evolve": { "title": "Evolve", "text": "Add users, capabilities and integrations as needs change." }
+    }
+  },
   "capabilities": {
     "title": "Everything your business needs, in one place",
+    "lead": "Customers, sales, inventory, finances and operations - manage your business in an environment shaped around your industry.",
     "openLabel": "See use case",
+    "viewingLabel": "Viewing",
+    "workflowsLabel": "Key capabilities and workflows",
     "modalLink": "Explore the Right Configuration",
     "items": {
       "customers": {
         "title": "Customers",
         "points": [
-          "Contacts",
+          "Organize contacts",
           "Opportunities",
           "Pipelines",
           "Customer interactions"
@@ -45,48 +60,54 @@
       "sales": {
         "title": "Sales",
         "points": [
-          "Contacts",
-          "Opportunities",
-          "Pipelines",
-          "Customer interactions"
+          "Quotations & proposals",
+          "Orders & sales cycles",
+          "Sales pipeline tracking",
+          "Customer account history"
         ]
       },
       "purchasing": {
         "title": "Purchasing",
         "points": [
-          "Suppliers",
+          "Manage suppliers",
           "Purchasing cycles",
-          "Inventory",
-          "Warehouse operations"
+          "Purchase orders & approvals",
+          "Supplier invoice matching"
         ]
       },
       "inventory": {
         "title": "Inventory",
         "points": [
-          "Suppliers",
-          "Purchasing cycles",
-          "Inventory",
-          "Warehouse operations"
+          "Stock & warehouse tracking",
+          "Real-time stock levels",
+          "Multi-location inventory",
+          "Item reorder workflows"
         ]
       },
       "finance": {
         "title": "Finance",
         "points": [
           "Financial transactions",
-          "Financial operations"
+          "General ledger & journals",
+          "Clearer financial operations",
+          "Operational cash visibility"
         ]
       },
       "projects": {
         "title": "Projects",
         "points": [
-          "Project planning & execution",
-          "Work monitoring"
+          "Plan & schedule projects",
+          "Timesheets & task tracking",
+          "Monitor project-based work",
+          "Milestones & deliverables"
         ]
       }
     }
   },
   "industries": {
-    "title": "Choose your industry",
+    "title": "Different industries. One adaptable platform.",
+    "body": "From distribution and professional services to manufacturing, healthcare, hospitality and financial services, NELIAS combines a shared foundation and industry-aware configurations.",
+    "selectorLabel": "Choose your industry",
     "suggestedLabel": "Suggested capabilities",
     "viewIndustry": "View {{name}}",
     "cta": "Explore Industries"
@@ -94,22 +115,10 @@
   "journey": {
     "title": "How it works",
     "steps": [
-      {
-        "title": "Tell us about your business",
-        "text": "Select your industry, activities, size, users, legal entities and operational requirements."
-      },
-      {
-        "title": "Review your recommendation",
-        "text": "See the suggested plan, included capabilities, optional add-ons and integrations."
-      },
-      {
-        "title": "Choose your plan",
-        "text": "Review a transparent estimate based on plan, capacity and selected options."
-      },
-      {
-        "title": "Run your business",
-        "text": "Access your dedicated NELIAS environment, complete guided onboarding and evolve over time."
-      }
+      { "title": "Tell us about your business", "text": "Select your industry, activities, size, users, legal entities and operational requirements." },
+      { "title": "Review your recommendation", "text": "See the suggested plan, included capabilities, optional add-ons and integrations." },
+      { "title": "Choose your plan", "text": "Review a transparent estimate based on plan, capacity and selected options." },
+      { "title": "Run your business", "text": "Access your dedicated NELIAS environment, complete guided onboarding and evolve over time." }
     ]
   },
   "preview": {
@@ -117,7 +126,7 @@
     "alt": "Illustrative preview of a NELIAS workspace on desktop and mobile"
   },
   "final": {
-    "title": "A better way to manage starts here.",
+    "title": "Build the right environment for your next stage of growth.",
     "body": "Explore how NELIAS fits your business and find the right configuration for your team."
   }
 }

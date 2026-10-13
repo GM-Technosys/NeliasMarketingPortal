@@ -1,6 +1,6 @@
 /**
  * Analytics event constants.
- * The analytics provider is a later decision — for now, track() is a no-op
+ * The analytics provider is a later decision - for now, track() is a no-op
  * that logs to console.debug in development only.
  */
 export const EVENTS = Object.freeze({

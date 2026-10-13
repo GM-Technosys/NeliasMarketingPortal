@@ -14,41 +14,57 @@ import { cn } from "@/lib/cn";
  */
 export function CtaBand({
   title,
+  titleClassName,
   body,
   actions,
+  tone = "tint",
   className,
   id,
   "aria-labelledby": ariaLabelledBy,
   ...rest
 }) {
   const headingId = ariaLabelledBy || (id ? `${id}-heading` : undefined);
+  const isInverse = tone === "inverse";
 
   return (
     <Section
       id={id}
-      tone="inverse"
+      tone={tone}
       spacing="md"
       aria-labelledby={headingId}
-      className={cn("relative overflow-hidden", className)}
+      className={cn(
+        "relative overflow-hidden",
+        tone === "tint" && "border-t border-azure-200/50",
+        className,
+      )}
       {...rest}
     >
       <Container>
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-8">
             <h2
               id={headingId}
-              className="font-display text-h2 leading-tight font-semibold tracking-tight text-white"
+              className={cn(
+                "font-display text-3xl sm:text-4xl lg:text-5xl leading-tight font-bold tracking-tight",
+                isInverse ? "text-white" : "text-navy-900",
+                titleClassName,
+              )}
             >
               {title}
             </h2>
             {body && (
-              <p className="mt-4 max-w-2xl text-lead leading-relaxed text-fg-inverse-muted">
+              <p
+                className={cn(
+                  "mt-4 max-w-2xl text-lead leading-relaxed",
+                  isInverse ? "text-fg-inverse-muted" : "text-fg-muted",
+                )}
+              >
                 {body}
               </p>
             )}
           </div>
-          <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center lg:col-span-5 lg:justify-end">
-            {actions || <HeaderCtas location="cta-band" size="lg" onDark />}
+          <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center lg:col-span-4 lg:justify-end">
+            {actions || <HeaderCtas location="cta-band" size="lg" onDark={isInverse} />}
           </div>
         </div>
       </Container>

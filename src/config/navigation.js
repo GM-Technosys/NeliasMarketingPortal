@@ -43,7 +43,7 @@ export const legalNav = [
 ];
 
 /**
- * Sign In is an external link — uses loginUrl from site config.
+ * Sign In is an external link - uses loginUrl from site config.
  */
 export const signInLink = {
   key: "signIn",

@@ -15,11 +15,11 @@ npm run format      # Prettier
 
 ## Stack and conventions
 
-- **JavaScript** (ES modules + JSX). No TypeScript — no `.ts`, `.tsx`, `tsconfig.json`, `@types` packages, or `typescript` dependency.
+- **JavaScript** (ES modules + JSX). No TypeScript - no `.ts`, `.tsx`, `tsconfig.json`, `@types` packages, or `typescript` dependency.
 - **Vite 8** with `@vitejs/plugin-react` and `@tailwindcss/vite`.
 - Function components. **Named exports** for components, **default export** for pages.
 - JSDoc for props and non-obvious functions. Do NOT install `prop-types`.
-- **Tailwind CSS v4** — CSS-first config. All design tokens in `src/styles/index.css`. No `tailwind.config.js`, `postcss.config.js`, or inline styles, CSS modules.
+- **Tailwind CSS v4** - CSS-first config. All design tokens in `src/styles/index.css`. No `tailwind.config.js`, `postcss.config.js`, or inline styles, CSS modules.
 - Class merging via `cn()` from `src/lib/cn.js`.
 - **`@` alias** maps to `src/` (configured in `vite.config.js` and `jsconfig.json`).
 - All visible text through `t()` from `react-i18next`. Never hard-code text in JSX.
@@ -42,7 +42,7 @@ npm run format      # Prettier
 - **No pre-launch language:** "coming soon", "waitlist", "waiting list", "pre-launch", "prelaunch", "countdown", "launching soon", "january 2027", "stay tuned".
 - Never present an unvalidated module, connector, Sector Pack or AI feature as live.
 - Never promise certifications, uptime, data residency, payment rails or regulatory compliance.
-- NELIAS is **one platform** with sector configuration — not a separate ERP per industry.
+- NELIAS is **one platform** with sector configuration - not a separate ERP per industry.
 - Healthcare and finance copy must avoid unverified clinical or regulatory claims.
 - Product imagery is a validated screenshot or labelled "Illustrative preview".
 
@@ -79,7 +79,7 @@ npm run format      # Prettier
 2. Read any file before editing or overwriting it.
 3. No destructive commands: no `rm -rf`, `git reset --hard`, `git clean`, `npm audit fix --force`, global installs, or `sudo`.
 4. Do not commit, push, or add git remotes.
-5. No secrets — use `.env.example` for placeholders.
+5. No secrets - use `.env.example` for placeholders.
 6. Install only explicitly listed packages. If an install fails, stop and report.
 7. Never invent product copy, prices, statistics, certifications, testimonials or customer names.
 8. Commands must work on Windows PowerShell, macOS and Linux.
@@ -106,7 +106,6 @@ npm run format      # Prettier
 
 - Copy single source: capability-area copy lives in `features.json` (`areas.<key>`), industry copy in `industries.json` (`items.<slug>`). Pages reuse these; never duplicate the text.
 - `PrimaryCta` is the single main-CTA helper (configure when `features.configurator` is on, otherwise demo). Never place two buttons with the same destination side by side.
-- The Home page follows the "V3 final vision". The older Section 3 copy (three pillars, "The NELIAS approach", industries teaser) is NOT used on Home.
+- The Home page uses PDF Section 3 ('ready-to-use copy': hero, the problem, the NELIAS approach, three pillars, industries teaser, closing conversion) as its skeleton, with the V3 interactive modules (scenarios, six capability cards, industry selector, four-step journey, product preview) embedded. Where the PDF contradicts itself, Section 3 wins on the hero and the closing; V3 supplies the module titles. Conflicts are marked `TODO(Debass)`.
 - Open copy items for Debass (marked `TODO(Debass)` in code): scenario impact/benefit texts, the six capability use cases, industry selector examples and capability mapping, validated product screenshots.
 - Mocks and previews contain no text, no numbers and no invented metrics, and always carry the "Illustrative preview" label.
-

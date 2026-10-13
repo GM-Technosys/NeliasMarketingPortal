@@ -646,8 +646,8 @@ export default function UiKitPreviewPage() {
                     aria-invalid={ariaInvalid}
                     placeholder="Select currency"
                     options={[
-                      { value: "xof", label: "XOF — West African CFA Franc" },
-                      { value: "eur", label: "EUR — Euro" },
+                      { value: "xof", label: "XOF - West African CFA Franc" },
+                      { value: "eur", label: "EUR - Euro" },
                     ]}
                   />
                 )}

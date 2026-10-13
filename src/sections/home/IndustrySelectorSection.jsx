@@ -34,44 +34,50 @@ export function IndustrySelectorSection() {
       label: name,
       icon: profile?.icon,
       content: (
-        <Panel tone="default" padding="lg" className="shadow-card">
-          <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-10 items-start">
-            {/* Left summary & link */}
-            <div className="lg:col-span-7 flex flex-col items-start gap-4">
-              <div>
-                <h3 className="font-display text-h3 font-semibold text-navy-900">
-                  {name}
-                </h3>
-                {headline && (
-                  <p className="mt-2 text-lg font-semibold text-navy-900 leading-snug">
-                    {headline}
-                  </p>
-                )}
-                <p className="mt-3 text-base text-fg-muted leading-relaxed">
-                  {summary}
-                </p>
-              </div>
-
-              <div className="pt-2">
-                <TextLink to={`/industries/${slug}`}>
-                  {t("home:industries.viewIndustry", { name })}
-                </TextLink>
-              </div>
+        <Panel tone="default" padding="lg" className="shadow-card h-full flex flex-col justify-between">
+          <div>
+            <div className="flex items-center gap-3">
+              {profile?.icon && (
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-azure-50 text-azure-700">
+                  <profile.icon className="h-5 w-5" aria-hidden="true" />
+                </span>
+              )}
+              <h3 className="font-display text-2xl font-bold text-navy-900">
+                {name}
+              </h3>
             </div>
 
-            {/* Right suggested capability chips */}
-            <div className="lg:col-span-5 mt-6 border-t border-line pt-6 lg:mt-0 lg:border-t-0 lg:pt-0">
-              <p className="text-sm font-semibold text-navy-900 mb-3">
-                {t("home:industries.suggestedLabel")}
+            {headline && (
+              <p className="mt-3 text-lg font-semibold text-navy-900 leading-snug">
+                {headline}
               </p>
-              <div className="flex flex-wrap gap-2">
-                {visibleAreas.map((areaKey) => (
-                  <Badge key={areaKey} tone="neutral" size="md">
-                    {t(`features:areas.${areaKey}.name`)}
-                  </Badge>
-                ))}
+            )}
+
+            <p className="mt-3 text-base text-fg-muted leading-relaxed">
+              {summary}
+            </p>
+
+            {/* Suggested capabilities chips */}
+            {visibleAreas.length > 0 && (
+              <div className="mt-6 border-t border-line pt-6">
+                <p className="text-xs font-semibold uppercase tracking-wider text-fg-subtle mb-3">
+                  {t("home:industries.suggestedLabel")}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {visibleAreas.map((areaKey) => (
+                    <Badge key={areaKey} tone="neutral" size="md">
+                      {t(`features:areas.${areaKey}.name`)}
+                    </Badge>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
+          </div>
+
+          <div className="mt-6 border-t border-line pt-5">
+            <TextLink to={`/industries/${slug}`}>
+              {t("home:industries.viewIndustry", { name })}
+            </TextLink>
           </div>
         </Panel>
       ),
@@ -81,7 +87,7 @@ export function IndustrySelectorSection() {
   return (
     <Section
       id="industries"
-      tone="tint"
+      tone="default"
       spacing="lg"
       aria-labelledby="industries-heading"
       className="overflow-x-clip"
@@ -89,22 +95,33 @@ export function IndustrySelectorSection() {
       <Container>
         <Reveal>
           <SectionHeading
+            as="h2"
             id="industries-heading"
             title={t("home:industries.title")}
+            lead={t("home:industries.body")}
           />
         </Reveal>
 
-        <Reveal delay={120} className="w-full min-w-0 max-w-full">
-          <div className="flex w-full min-w-0 max-w-full flex-col gap-8">
+        <Reveal delay={90} className="w-full min-w-0 max-w-full">
+          <div className="flex w-full min-w-0 max-w-full flex-col">
+            <h3
+              id="industry-selector-heading"
+              className="font-display text-h3 font-semibold text-navy-900 mt-10 md:mt-12 mb-6"
+            >
+              {t("home:industries.selectorLabel")}
+            </h3>
+
             <Tabs
               variant="pill"
-              label={t("home:industries.title")}
+              orientation="vertical"
+              label={t("home:industries.selectorLabel")}
               items={tabItems}
               defaultValue={industries[0]}
+              selectOnHover={true}
               className="w-full min-w-0 max-w-full"
             />
 
-            <div className="text-center">
+            <div className="mt-8 text-center">
               <Link
                 to="/industries"
                 className={buttonStyles({ variant: "outline" })}

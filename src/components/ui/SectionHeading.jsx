@@ -11,7 +11,9 @@ const sizeMap = {
  *
  * @param {Object} props
  * @param {string} props.title
+ * @param {string} [props.titleClassName]
  * @param {string} [props.lead]
+ * @param {string} [props.leadClassName]
  * @param {string} [props.eyebrow]
  * @param {"start"|"center"} [props.align="start"]
  * @param {import("react").ElementType} [props.as="h2"]
@@ -22,7 +24,9 @@ const sizeMap = {
  */
 export function SectionHeading({
   title,
+  titleClassName,
   lead,
+  leadClassName,
   eyebrow,
   align = "start",
   as: HeadingTag = "h2",
@@ -61,6 +65,7 @@ export function SectionHeading({
           "font-display leading-tight font-semibold tracking-tight text-navy-900",
           headingSizeClass,
           isInverse && "text-white",
+          titleClassName,
         )}
       >
         {title}
@@ -71,6 +76,7 @@ export function SectionHeading({
           className={cn(
             "mt-4 max-w-[62ch] text-lead leading-relaxed text-fg-muted",
             isInverse && "text-fg-inverse-muted",
+            leadClassName,
           )}
         >
           {lead}

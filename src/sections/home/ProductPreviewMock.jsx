@@ -3,7 +3,7 @@ import { cn } from "@/lib/cn";
 // TODO(Debass): replace the mock with validated screenshots when they exist.
 /**
  * Visual abstract mockup representing the platform interface.
- * Contains purely geometric shapes and token colors — strictly no text or numbers.
+ * Contains purely geometric shapes and token colors - strictly no text or numbers.
  *
  * @param {Object} props
  * @param {"desktop"|"mobile"} [props.device="desktop"]

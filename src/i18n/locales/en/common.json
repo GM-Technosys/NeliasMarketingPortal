@@ -2,15 +2,15 @@
   "brand": {
     "name": "NELIAS",
     "descriptor": "Business Management Platform",
-    "attribution": "NELIAS — A product of Debass Technologies",
+    "attribution": "NELIAS - A product of Debass Technologies",
     "promise": "One platform. Multiple industries. Your environment, automatically configured.",
-    "footerTagline": "NELIAS — A Business Management Platform by Debass Technologies. One platform. Multiple industries. Your environment, automatically configured.",
+    "footerTagline": "NELIAS - A Business Management Platform by Debass Technologies. One platform. Multiple industries. Your environment, automatically configured.",
     "copyright": "© 2026 Debass Technologies. All rights reserved."
   },
   "header": {
     "mainNavLabel": "Main navigation",
     "menu": "Menu",
-    "homeLink": "NELIAS — Home"
+    "homeLink": "NELIAS - Home"
   },
   "nav": {
     "home": "Home",
@@ -39,6 +39,7 @@
     "talkToAdvisor": "Talk to an Advisor",
     "exploreHowItWorks": "Explore How It Works",
     "seeHowItWorks": "See How It Works",
+    "seeHowNeliasWorks": "See How NELIAS Works",
     "contactTeam": "Contact Our Team",
     "requestConversation": "Request a Conversation"
   },

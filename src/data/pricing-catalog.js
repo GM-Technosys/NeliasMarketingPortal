@@ -10,7 +10,7 @@
  */
 
 /**
- * Internal pricing catalog. Components must read prices from here only —
+ * Internal pricing catalog. Components must read prices from here only -
  * never use price literals in component code.
  *
  * NOTE: Do NOT add storage extension prices (they are provisional and must not

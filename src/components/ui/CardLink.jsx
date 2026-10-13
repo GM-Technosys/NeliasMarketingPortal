@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/cn";
 
 /**
@@ -41,7 +42,7 @@ export function CardLink({
         </span>
       )}
 
-      <HeadingTag className="font-display text-lg font-semibold text-navy-900 transition-colors group-hover:text-azure-700 md:text-xl">
+      <HeadingTag className="font-display text-lg font-semibold text-navy-900 transition-colors group-hover:text-azure-700 md:text-xl flex items-center justify-between gap-2">
         {isExternal ? (
           <a
             href={to}
@@ -56,6 +57,7 @@ export function CardLink({
             {title}
           </Link>
         )}
+        <ArrowUpRight className="h-4 w-4 shrink-0 text-link transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
       </HeadingTag>
 
       {children && (

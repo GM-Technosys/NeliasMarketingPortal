@@ -18,28 +18,28 @@ export function Footer() {
       {/* 4px top brand ribbon */}
       <div className="h-1 w-full bg-brand-ribbon" role="presentation" />
 
-      <Container className="py-12 md:py-16">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-12 lg:gap-12">
+      <Container className="py-8 md:py-10">
+        <div className="flex flex-col gap-10 sm:flex-row sm:flex-wrap lg:flex-nowrap lg:justify-between items-start">
           {/* Brand column */}
-          <div className="flex flex-col items-start lg:col-span-5">
+          <div className="flex flex-col items-start max-w-sm lg:max-w-md shrink-0">
             <Logo variant="plate" />
-            <p className="mt-4 max-w-[34rem] text-sm leading-relaxed text-fg-inverse-muted">
+            <p className="mt-3.5 text-sm leading-relaxed text-fg-inverse-muted">
               {t("brand.footerTagline")}
             </p>
           </div>
 
           {/* Explore column */}
-          <div className="lg:col-span-3">
-            <h2 className="mb-4 text-base font-semibold text-white">
+          <div className="shrink-0">
+            <h2 className="mb-3 text-base font-semibold text-white">
               {t("footer.exploreHeading")}
             </h2>
             <nav aria-label={t("footer.navLabel")}>
-              <ul className="grid grid-cols-2 gap-x-4 gap-y-1 sm:grid-cols-1">
+              <ul className="grid grid-cols-2 gap-x-8 sm:gap-x-12 gap-y-1.5">
                 {footerNav.map(({ key, to }) => (
                   <li key={key}>
                     <NavLink
                       to={to}
-                      className="inline-flex min-h-9 items-center text-sm text-fg-inverse-muted transition-colors hover:text-white hover:underline"
+                      className="inline-flex py-1 text-sm text-fg-inverse-muted transition-colors hover:text-white hover:underline"
                     >
                       {t(`nav.${key}`)}
                     </NavLink>
@@ -50,16 +50,16 @@ export function Footer() {
           </div>
 
           {/* Contact column */}
-          <div className="lg:col-span-4">
-            <h2 className="mb-4 text-base font-semibold text-white">
+          <div className="shrink-0">
+            <h2 className="mb-3 text-base font-semibold text-white">
               {t("footer.contactHeading")}
             </h2>
-            <ul className="flex flex-col gap-2">
+            <ul className="flex flex-col gap-1.5">
               {site.contact.email && (
                 <li>
                   <a
                     href={`mailto:${site.contact.email}`}
-                    className="inline-flex min-h-9 items-center gap-3 text-sm text-fg-inverse-muted transition-colors hover:text-white hover:underline"
+                    className="inline-flex py-1 items-center gap-2.5 text-sm text-fg-inverse-muted transition-colors hover:text-white hover:underline"
                   >
                     <Mail className="h-4 w-4 shrink-0 text-azure-400" aria-hidden="true" />
                     <span>{site.contact.email}</span>
@@ -70,7 +70,7 @@ export function Footer() {
                 <li>
                   <a
                     href={toTelHref(site.contact.phone)}
-                    className="inline-flex min-h-9 items-center gap-3 text-sm text-fg-inverse-muted transition-colors hover:text-white hover:underline"
+                    className="inline-flex py-1 items-center gap-2.5 text-sm text-fg-inverse-muted transition-colors hover:text-white hover:underline"
                   >
                     <Phone className="h-4 w-4 shrink-0 text-azure-400" aria-hidden="true" />
                     <span>{site.contact.phone}</span>
@@ -84,7 +84,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${t("footer.whatsapp")} ${site.contact.whatsapp}`}
-                    className="inline-flex min-h-9 items-center gap-3 text-sm text-fg-inverse-muted transition-colors hover:text-white hover:underline"
+                    className="inline-flex py-1 items-center gap-2.5 text-sm text-fg-inverse-muted transition-colors hover:text-white hover:underline"
                   >
                     <MessageSquare className="h-4 w-4 shrink-0 text-azure-400" aria-hidden="true" />
                     <span>
@@ -94,7 +94,7 @@ export function Footer() {
                 </li>
               )}
               {site.address && (
-                <li className="inline-flex min-h-9 items-center gap-3 text-sm text-fg-inverse-muted">
+                <li className="inline-flex py-1 items-center gap-2.5 text-sm text-fg-inverse-muted">
                   <MapPin className="h-4 w-4 shrink-0 text-azure-400" aria-hidden="true" />
                   <span>{site.address}</span>
                 </li>
@@ -104,18 +104,18 @@ export function Footer() {
         </div>
 
         {/* Bottom hairline & legal bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-fg-inverse-muted sm:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-4 text-xs text-fg-inverse-muted sm:flex-row">
           <p>{t("brand.copyright")}</p>
           <nav aria-label={t("footer.legalNavLabel")} className="flex items-center gap-6">
             <NavLink
               to="/privacy"
-              className="inline-flex min-h-9 items-center text-fg-inverse-muted transition-colors hover:text-white hover:underline"
+              className="inline-flex py-1 items-center text-fg-inverse-muted transition-colors hover:text-white hover:underline"
             >
               {t("nav.privacy")}
             </NavLink>
             <NavLink
               to="/terms"
-              className="inline-flex min-h-9 items-center text-fg-inverse-muted transition-colors hover:text-white hover:underline"
+              className="inline-flex py-1 items-center text-fg-inverse-muted transition-colors hover:text-white hover:underline"
             >
               {t("nav.terms")}
             </NavLink>

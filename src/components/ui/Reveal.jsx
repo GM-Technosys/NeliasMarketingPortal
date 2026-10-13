@@ -17,8 +17,8 @@ export function Reveal({ as: Component = "div", delay = 0, className, children, 
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
-    threshold: 0.15,
-    rootMargin: "0px 0px -8% 0px",
+    threshold: 0.02,
+    rootMargin: "0px 0px 50px 0px",
   });
   const prefersReduced = usePrefersReducedMotion();
 
@@ -30,8 +30,8 @@ export function Reveal({ as: Component = "div", delay = 0, className, children, 
       ref={ref}
       style={style}
       className={cn(
-        "transition-all duration-500 ease-soft",
-        isVisible ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
+        "transition-all duration-300 ease-soft",
+        isVisible ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0",
         className,
       )}
       {...rest}

@@ -34,7 +34,7 @@ const routes = [
   },
 ];
 
-// DEV-only preview routes — not reachable in production builds
+// DEV-only preview routes - not reachable in production builds
 if (import.meta.env.DEV) {
   routes[0].children.push(
     {

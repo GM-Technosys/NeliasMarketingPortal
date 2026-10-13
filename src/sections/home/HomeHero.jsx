@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
-import { PrimaryCta } from "@/components/common/PrimaryCta";
+import { CtaLink } from "@/components/common/CtaLink";
 import { buttonStyles } from "@/components/ui/button-styles";
 import { HeroComposition } from "./HeroComposition";
 import { cn } from "@/lib/cn";
 
+// TODO(Debass): Hero subheadline and secondary CTA differ between Section 3 and V3. Section 3 is used; the V3 subheadline is used as the lead of the capabilities section.
 /**
  * Main Hero section of the Home page.
  */
@@ -25,6 +26,10 @@ export function HomeHero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-12">
           {/* Text column */}
           <div className="lg:col-span-6 flex flex-col items-start text-left">
+            <p className="mb-4 text-sm font-semibold text-azure-600">
+              {t("home:hero.eyebrow")}
+            </p>
+
             <h1
               id="hero-heading"
               className="font-display text-h1 font-semibold text-navy-900 leading-tight tracking-tight max-w-[20ch]"
@@ -37,11 +42,15 @@ export function HomeHero() {
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto">
-              <PrimaryCta
+              <CtaLink
+                intent="configure"
+                to="/configure"
                 size="lg"
                 location="hero"
                 className="w-full sm:w-auto"
-              />
+              >
+                {t("cta.configure")}
+              </CtaLink>
               <Link
                 to="/how-it-works"
                 className={cn(
@@ -49,7 +58,7 @@ export function HomeHero() {
                   "w-full sm:w-auto",
                 )}
               >
-                {t("cta.seeHowItWorks")}
+                {t("cta.exploreHowItWorks")}
               </Link>
             </div>
           </div>

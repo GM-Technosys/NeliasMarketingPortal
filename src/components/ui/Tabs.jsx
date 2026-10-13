@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect, useId } from "react";
+import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/cn";
 
 /**
  * WAI-ARIA compliant accessible tabs with keyboard arrow roving activation.
+ * Supports horizontal (default) and vertical sidebar layouts.
  *
  * @param {Object} props
  * @param {Array<{ id: string, label: string, icon?: import("react").ComponentType, content: import("react").ReactNode }>} props.items
@@ -10,6 +12,8 @@ import { cn } from "@/lib/cn";
  * @param {(value: string) => void} [props.onValueChange]
  * @param {string} [props.defaultValue]
  * @param {"underline"|"pill"} [props.variant="underline"]
+ * @param {"horizontal"|"vertical"} [props.orientation="horizontal"]
+ * @param {boolean} [props.selectOnHover=false] - Activate tab on hover (desktop/web mode)
  * @param {string} [props.label] - Accessible name for the tablist
  * @param {string} [props.idPrefix]
  * @param {string} [props.className]
@@ -20,6 +24,8 @@ export function Tabs({
   onValueChange,
   defaultValue,
   variant = "underline",
+  orientation = "horizontal",
+  selectOnHover = false,
   label = "Sections",
   idPrefix: explicitPrefix,
   className,
@@ -77,11 +83,14 @@ export function Tabs({
 
   const handleKeyDown = (e, index) => {
     let nextIndex = null;
+    const isVertical = orientation === "vertical";
+    const nextKey = isVertical ? "ArrowDown" : "ArrowRight";
+    const prevKey = isVertical ? "ArrowUp" : "ArrowLeft";
 
-    if (e.key === "ArrowRight") {
+    if (e.key === nextKey) {
       e.preventDefault();
       nextIndex = (index + 1) % items.length;
-    } else if (e.key === "ArrowLeft") {
+    } else if (e.key === prevKey) {
       e.preventDefault();
       nextIndex = (index - 1 + items.length) % items.length;
     } else if (e.key === "Home") {
@@ -105,6 +114,99 @@ export function Tabs({
   const activeTabId = `${idPrefix}-tab-${activeValue}`;
   const activePanelId = `${idPrefix}-panel-${activeValue}`;
 
+  // Vertical 30% sidebar + 70% content layout
+  if (orientation === "vertical") {
+    return (
+      <div
+        className={cn(
+          "grid w-full min-w-0 max-w-full grid-cols-1 items-start gap-6 lg:grid-cols-12 lg:gap-8",
+          className,
+        )}
+      >
+        {/* Left vertical tablist column (30-35% on lg) */}
+        <div className="w-full lg:col-span-4">
+          <div
+            role="tablist"
+            aria-orientation="vertical"
+            aria-label={label}
+            className="flex flex-col gap-1.5 rounded-xl border border-line bg-surface p-2 sm:p-2.5 shadow-2xs max-h-[460px] lg:max-h-none overflow-y-auto"
+          >
+            {items.map(({ id, label: tabLabel, icon: IconComponent }, index) => {
+              const isActive = id === activeValue;
+              const tabId = `${idPrefix}-tab-${id}`;
+              const panelId = `${idPrefix}-panel-${id}`;
+
+              return (
+                <button
+                  key={id}
+                  ref={(el) => {
+                    tabRefs.current[index] = el;
+                  }}
+                  id={tabId}
+                  role="tab"
+                  type="button"
+                  aria-selected={isActive}
+                  aria-controls={panelId}
+                  tabIndex={isActive ? 0 : -1}
+                  onClick={() => selectTab(id)}
+                  onMouseEnter={() => {
+                    if (selectOnHover) selectTab(id);
+                  }}
+                  onKeyDown={(e) => handleKeyDown(e, index)}
+                  className={cn(
+                    "group flex min-h-12 w-full cursor-pointer items-center justify-between rounded-lg px-3.5 py-3 text-left text-[15px] font-semibold transition-all outline-none focus-visible:outline-2 focus-visible:outline-focus",
+                    isActive
+                      ? "bg-navy-900 text-white shadow-xs"
+                      : "text-ink-700 hover:bg-ink-100 hover:text-navy-900",
+                  )}
+                >
+                  <span className="flex items-center gap-2.5 truncate">
+                    {IconComponent && (
+                      <IconComponent
+                        className={cn(
+                          "h-4 w-4 shrink-0 transition-colors",
+                          isActive
+                            ? "text-white"
+                            : "text-ink-500 group-hover:text-azure-600",
+                        )}
+                        aria-hidden="true"
+                      />
+                    )}
+                    <span className="truncate">{tabLabel}</span>
+                  </span>
+                  <ChevronRight
+                    className={cn(
+                      "h-4 w-4 shrink-0 transition-all",
+                      isActive
+                        ? "text-white opacity-90"
+                        : "text-ink-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5",
+                    )}
+                    aria-hidden="true"
+                  />
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Right tabpanel column (65-70% on lg) */}
+        <div className="w-full lg:col-span-8">
+          {selectedItem && (
+            <div
+              role="tabpanel"
+              id={activePanelId}
+              aria-labelledby={activeTabId}
+              tabIndex={0}
+              className="w-full h-full outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+            >
+              {selectedItem.content}
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={cn("flex w-full min-w-0 max-w-full flex-col", className)}>
       {/* Scrollable Tablist */}
@@ -122,46 +224,49 @@ export function Tabs({
               : "inline-flex gap-1 rounded-md bg-ink-100 p-1",
           )}
         >
-        {items.map(({ id, label: tabLabel, icon: IconComponent }, index) => {
-          const isActive = id === activeValue;
-          const tabId = `${idPrefix}-tab-${id}`;
-          const panelId = `${idPrefix}-panel-${id}`;
+          {items.map(({ id, label: tabLabel, icon: IconComponent }, index) => {
+            const isActive = id === activeValue;
+            const tabId = `${idPrefix}-tab-${id}`;
+            const panelId = `${idPrefix}-panel-${id}`;
 
-          return (
-            <button
-              key={id}
-              ref={(el) => {
-                tabRefs.current[index] = el;
-              }}
-              id={tabId}
-              role="tab"
-              type="button"
-              aria-selected={isActive}
-              aria-controls={panelId}
-              tabIndex={isActive ? 0 : -1}
-              onClick={() => selectTab(id)}
-              onKeyDown={(e) => handleKeyDown(e, index)}
-              className={cn(
-                "inline-flex min-h-11 shrink-0 cursor-pointer snap-start items-center gap-2 px-4 text-base font-semibold whitespace-nowrap transition-colors outline-none focus-visible:outline-2 focus-visible:outline-focus",
-                variant === "underline" && [
-                  "relative py-3",
-                  isActive
-                    ? "text-navy-900 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:bg-azure-500"
-                    : "text-ink-600 hover:text-navy-900",
-                ],
-                variant === "pill" && [
-                  "rounded-md py-2",
-                  isActive
-                    ? "bg-navy-900 text-white shadow-xs"
-                    : "text-ink-700 hover:bg-ink-200/70 hover:text-navy-900",
-                ],
-              )}
-            >
-              {IconComponent && <IconComponent className="h-4 w-4 shrink-0" aria-hidden="true" />}
-              <span>{tabLabel}</span>
-            </button>
-          );
-        })}
+            return (
+              <button
+                key={id}
+                ref={(el) => {
+                  tabRefs.current[index] = el;
+                }}
+                id={tabId}
+                role="tab"
+                type="button"
+                aria-selected={isActive}
+                aria-controls={panelId}
+                tabIndex={isActive ? 0 : -1}
+                onClick={() => selectTab(id)}
+                onMouseEnter={() => {
+                  if (selectOnHover) selectTab(id);
+                }}
+                onKeyDown={(e) => handleKeyDown(e, index)}
+                className={cn(
+                  "inline-flex min-h-11 shrink-0 cursor-pointer snap-start items-center gap-2 px-4 text-base font-semibold whitespace-nowrap transition-colors outline-none focus-visible:outline-2 focus-visible:outline-focus",
+                  variant === "underline" && [
+                    "relative py-3",
+                    isActive
+                      ? "text-navy-900 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:bg-azure-500"
+                      : "text-ink-600 hover:text-navy-900",
+                  ],
+                  variant === "pill" && [
+                    "rounded-md py-2",
+                    isActive
+                      ? "bg-navy-900 text-white shadow-xs"
+                      : "text-ink-700 hover:bg-ink-200/70 hover:text-navy-900",
+                  ],
+                )}
+              >
+                {IconComponent && <IconComponent className="h-4 w-4 shrink-0" aria-hidden="true" />}
+                <span>{tabLabel}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 

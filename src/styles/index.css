@@ -67,8 +67,8 @@
   --color-focus: #0a78c8; /* azure-500 */
 
   /* Typography */
-  --font-display: "Sora Variable", "Segoe UI", system-ui, sans-serif;
-  --font-sans: "Source Sans 3 Variable", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Outfit Variable", "Segoe UI", system-ui, sans-serif;
+  --font-sans: "Outfit Variable", "Segoe UI", system-ui, sans-serif;
 
   --text-display: clamp(2.5rem, 1.6rem + 3.6vw, 4.25rem);
   --text-display--line-height: 1.05;
@@ -218,10 +218,6 @@
   }
   [data-tone="inverse"] :focus-visible {
     outline-color: var(--color-sun-300);
-  }
-  ::selection {
-    background: var(--color-sun-300);
-    color: var(--color-navy-950);
   }
   @media (prefers-reduced-motion: reduce) {
     html {

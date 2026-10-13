@@ -6,13 +6,13 @@ import { useEffect, useState } from "react";
  * @param {import("react").RefObject<HTMLElement | null>} ref
  * @param {Object} [options]
  * @param {boolean} [options.once=true]
- * @param {number} [options.threshold=0.15]
- * @param {string} [options.rootMargin="0px 0px -8% 0px"]
+ * @param {number} [options.threshold=0.02]
+ * @param {string} [options.rootMargin="0px 0px 40px 0px"]
  * @returns {boolean}
  */
 export function useInView(
   ref,
-  { once = true, threshold = 0.15, rootMargin = "0px 0px -8% 0px" } = {},
+  { once = true, threshold = 0.02, rootMargin = "0px 0px 40px 0px" } = {},
 ) {
   const [isInView, setIsInView] = useState(() => {
     if (typeof window === "undefined" || typeof IntersectionObserver === "undefined") {
