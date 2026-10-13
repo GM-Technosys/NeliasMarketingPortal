@@ -84,13 +84,13 @@ export function Accordion({
                 aria-controls={panelId}
                 onClick={() => toggle(id)}
                 onKeyDown={(e) => handleKeyDown(e, index)}
-                className="flex min-h-14 w-full cursor-pointer items-center justify-between gap-4 py-4 text-left font-display text-lg font-semibold text-navy-900 transition-colors hover:text-azure-600 focus-visible:outline-2 focus-visible:outline-focus"
+                className="flex min-h-14 w-full cursor-pointer items-center justify-between gap-4 py-4 text-left font-display text-lg font-semibold text-heading transition-colors hover:text-link focus-visible:outline-2 focus-visible:outline-focus"
               >
                 <span>{title}</span>
                 <ChevronDown
                   className={cn(
-                    "h-5 w-5 shrink-0 text-ink-500 transition-transform duration-200",
-                    isOpen && "rotate-180 text-navy-900",
+                    "h-5 w-5 shrink-0 text-fg-subtle transition-transform duration-200",
+                    isOpen && "rotate-180 text-heading",
                   )}
                   aria-hidden="true"
                 />

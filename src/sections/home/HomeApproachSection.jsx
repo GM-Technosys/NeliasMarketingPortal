@@ -42,13 +42,14 @@ export function HomeApproachSection() {
               </p>
               <div className="mt-6 w-full sm:w-auto">
                 <Link
-                  to="/how-it-works"
-                  onClick={() =>
+                  to="#"
+                  onClick={(e) => {
+                    e.preventDefault();
                     track(EVENTS.CTA_CLICK, {
                       intent: "how-it-works",
                       location: "home-approach",
-                    })
-                  }
+                    });
+                  }}
                   className={cn(
                     buttonStyles({ variant: "outline", size: "md" }),
                     "w-full sm:w-auto inline-flex items-center gap-2",

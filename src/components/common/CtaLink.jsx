@@ -11,13 +11,13 @@ import { EVENTS, track } from "@/lib/analytics";
 function resolveIntent(intent, t) {
   switch (intent) {
     case "configure":
-      return { to: "/configure", label: t("cta.configure") };
+      return { to: "#", label: t("cta.configure") };
     case "demo":
-      return { to: "/demo", label: t("cta.bookDemo") };
+      return { to: "#", label: t("cta.bookDemo") };
     case "contact":
-      return { to: "/contact", label: t("cta.contactTeam") };
+      return { to: "#", label: t("cta.contactTeam") };
     default:
-      return { to: "/", label: "" };
+      return { to: "#", label: "" };
   }
 }
 
@@ -37,7 +37,7 @@ function resolveIntent(intent, t) {
  */
 export function CtaLink({
   intent,
-  to,
+  to: _to,
   label,
   variant = "primary",
   size = "md",
@@ -48,11 +48,12 @@ export function CtaLink({
   ...rest
 }) {
   const { t } = useTranslation();
-  const resolved = intent ? resolveIntent(intent, t) : { to: to || "/", label: label || "" };
-  const destination = to || resolved.to;
+  const resolved = intent ? resolveIntent(intent, t) : { to: "#", label: label || "" };
+  const destination = "#";
   const displayLabel = children || label || resolved.label;
 
   function handleClick(e) {
+    e.preventDefault();
     track(EVENTS.CTA_CLICK, { intent, location });
     if (onClick) {
       onClick(e);

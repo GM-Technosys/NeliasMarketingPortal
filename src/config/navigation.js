@@ -1,25 +1,23 @@
-import { site } from "./site.js";
-
 /**
  * Main navigation items shown on the header nav bar.
  * Labels come from i18n keys `nav.*`.
  * @type {Array<{ key: string, to: string }>}
  */
 export const mainNav = [
-  { key: "whyNelias", to: "/why-nelias" },
-  { key: "howItWorks", to: "/how-it-works" },
-  { key: "industries", to: "/industries" },
-  { key: "features", to: "/features" },
-  { key: "pricing", to: "/pricing" },
-  { key: "resources", to: "/resources" },
-  { key: "about", to: "/about" },
+  { key: "whyNelias", to: "#" },
+  { key: "howItWorks", to: "#" },
+  { key: "industries", to: "#" },
+  { key: "features", to: "#" },
+  { key: "pricing", to: "#" },
+  { key: "resources", to: "#" },
+  { key: "about", to: "#" },
 ];
 
 /**
  * Contact navigation item.
  * @type {{ key: string, to: string }}
  */
-export const contactNav = { key: "contact", to: "/contact" };
+export const contactNav = { key: "contact", to: "#" };
 
 /**
  * Primary navigation items (mainNav + contact).
@@ -38,15 +36,15 @@ export const footerNav = [{ key: "home", to: "/" }, ...primaryNav];
  * @type {Array<{ key: string, to: string }>}
  */
 export const legalNav = [
-  { key: "privacy", to: "/privacy" },
-  { key: "terms", to: "/terms" },
+  { key: "privacy", to: "#" },
+  { key: "terms", to: "#" },
 ];
 
 /**
- * Sign In is an external link - uses loginUrl from site config.
+ * Sign In is an external link - disabled to prevent redirection.
  */
 export const signInLink = {
   key: "signIn",
-  href: site.loginUrl,
+  href: "#",
   external: true,
 };

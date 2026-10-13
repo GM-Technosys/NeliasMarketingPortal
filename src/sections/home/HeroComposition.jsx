@@ -48,7 +48,7 @@ export function HeroComposition() {
         {/* Secondary echoing azure ribbon */}
         <path
           d="M 50 110 C 150 210, 310 290, 450 330"
-          stroke="var(--color-azure-500)"
+          stroke="var(--accent)"
           strokeWidth="10"
           strokeLinecap="round"
           pathLength="1"
@@ -59,15 +59,15 @@ export function HeroComposition() {
       </svg>
 
       {/* Layer 2: White Workspace Panel */}
-      <div className="absolute top-1/2 -translate-y-1/2 right-1 sm:right-4 lg:right-2 xl:right-4 w-[92%] sm:w-[88%] lg:w-[94%] xl:w-[90%] rounded-xl border border-line bg-white shadow-raised z-10 overflow-hidden">
+      <div className="absolute top-1/2 -translate-y-1/2 right-1 sm:right-4 lg:right-2 xl:right-4 w-[92%] sm:w-[88%] lg:w-[94%] xl:w-[90%] rounded-xl border border-line bg-surface-raised shadow-raised z-10 overflow-hidden">
         {/* Workspace panel chrome */}
         <div className="flex items-center justify-between border-b border-line bg-surface-muted px-3.5 py-2 sm:px-4 sm:py-2.5">
           <div className="flex items-center gap-1.5" role="presentation">
-            <span className="h-2 w-2 rounded-full bg-ink-300/80" />
-            <span className="h-2 w-2 rounded-full bg-ink-300/80" />
-            <span className="h-2 w-2 rounded-full bg-ink-300/80" />
+            <span className="h-2 w-2 rounded-full bg-line-strong/80" />
+            <span className="h-2 w-2 rounded-full bg-line-strong/80" />
+            <span className="h-2 w-2 rounded-full bg-line-strong/80" />
           </div>
-          <div className="rounded-full border border-line bg-white px-2.5 py-0.5 text-xs text-fg-muted font-medium tracking-tight">
+          <div className="rounded-full border border-line bg-surface-raised px-2.5 py-0.5 text-xs text-fg-muted font-medium tracking-tight">
             {t("home:composition.address")}
           </div>
         </div>
@@ -78,10 +78,10 @@ export function HeroComposition() {
             <div
               key={id}
               style={{ animationDelay: `${600 + index * 70}ms` }}
-              className="animate-tile-in flex items-center gap-2 rounded-lg border border-line bg-surface p-2 sm:p-2.5 shadow-2xs min-w-0"
+              className="animate-tile-in flex items-center gap-2 rounded-lg border border-line bg-surface-raised p-2 sm:p-2.5 shadow-2xs min-w-0"
             >
               <IconBadge icon={icon} tone="azure" size="sm" className="shrink-0" />
-              <span className="font-display text-xs lg:text-[11px] xl:text-xs 2xl:text-sm font-semibold text-navy-900 leading-tight truncate">
+              <span className="font-display text-xs lg:text-[11px] xl:text-xs 2xl:text-sm font-semibold text-heading leading-tight truncate">
                 {t(`home:capabilities.items.${id}.title`)}
               </span>
             </div>

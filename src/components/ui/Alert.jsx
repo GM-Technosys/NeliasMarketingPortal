@@ -3,28 +3,28 @@ import { cn } from "@/lib/cn";
 
 const toneConfig = {
   info: {
-    classes: "bg-azure-50 border-azure-200 text-ink-800",
-    iconColor: "text-azure-600",
+    classes: "bg-surface-tint border-accent-line text-fg",
+    iconColor: "text-link",
     icon: Info,
   },
   warning: {
-    classes: "bg-warning-soft border-warning/40 text-ink-800",
+    classes: "bg-warning-soft border-warning/30 text-fg",
     iconColor: "text-warning-strong",
     icon: TriangleAlert,
   },
   danger: {
-    classes: "bg-danger-soft border-danger/40 text-ink-800",
+    classes: "bg-danger-soft border-danger/30 text-fg",
     iconColor: "text-danger-strong",
     icon: CircleAlert,
   },
   success: {
-    classes: "bg-success-soft border-success/40 text-ink-800",
+    classes: "bg-success-soft border-success/30 text-fg",
     iconColor: "text-success-strong",
     icon: CircleCheck,
   },
   note: {
-    classes: "bg-surface-muted border-line text-ink-800",
-    iconColor: "text-ink-600",
+    classes: "bg-surface-muted border-line text-fg",
+    iconColor: "text-fg-muted",
     icon: Info,
   },
 };
@@ -60,7 +60,7 @@ export function Alert({ tone = "info", title, live = "off", className, children,
         aria-hidden="true"
       />
       <div className="flex-1">
-        {title && <h4 className="mb-1 leading-snug font-semibold text-navy-900">{title}</h4>}
+        {title && <h4 className="mb-1 leading-snug font-semibold text-heading">{title}</h4>}
         <div className="text-sm leading-relaxed">{children}</div>
       </div>
     </div>

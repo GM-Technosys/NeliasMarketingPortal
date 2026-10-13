@@ -44,7 +44,7 @@ export function ProcessSteps({
     <div ref={ref} className="relative w-full">
       {/* Dashed wave connector line between step circles on desktop (lg and up) */}
       <svg
-        className="pointer-events-none absolute top-12 left-0 z-0 hidden h-20 w-full text-ink-300 lg:block"
+        className="pointer-events-none absolute top-12 left-0 z-0 hidden h-20 w-full text-line-strong lg:block"
         viewBox="0 0 1000 80"
         fill="none"
         preserveAspectRatio="none"
@@ -127,7 +127,7 @@ export function ProcessSteps({
                 {/* Number pill badge at top-left of circle */}
                 <span
                   aria-hidden="true"
-                  className="absolute -top-1 -left-1 z-20 flex h-7 w-7 items-center justify-center rounded-full border border-line bg-white text-xs font-bold text-navy-900 shadow-xs"
+                  className="absolute -top-1 -left-1 z-20 flex h-7 w-7 items-center justify-center rounded-full border border-line bg-surface-raised text-xs font-bold text-heading shadow-xs"
                 >
                   {stepNumber}
                 </span>
@@ -137,8 +137,8 @@ export function ProcessSteps({
                   className={cn(
                     "flex h-full w-full items-center justify-center rounded-full transition-all duration-300",
                     index === 0
-                      ? "border-2 border-azure-400 bg-white shadow-raised ring-8 ring-azure-50/70"
-                      : "border-2 border-dashed border-ink-300 bg-white/90 hover:scale-105 hover:border-azure-400 hover:shadow-card",
+                      ? "border-2 border-accent bg-surface-raised shadow-raised ring-8 ring-surface-tint/70"
+                      : "border-2 border-dashed border-line-strong bg-surface-raised/90 hover:scale-105 hover:border-accent hover:shadow-card",
                   )}
                 >
                   {/* Inner icon background */}
@@ -146,8 +146,8 @@ export function ProcessSteps({
                     className={cn(
                       "flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full transition-colors",
                       index === 0
-                        ? "bg-azure-50 text-azure-700"
-                        : "bg-ink-100/70 text-ink-600 group-hover:bg-azure-50 group-hover:text-azure-700",
+                        ? "bg-surface-tint text-accent-strong"
+                        : "bg-surface-sunken/70 text-fg-muted group-hover:bg-surface-tint group-hover:text-accent-strong",
                     )}
                   >
                     <StepIcon className="h-7 w-7 sm:h-8 sm:w-8" aria-hidden="true" />
@@ -156,7 +156,7 @@ export function ProcessSteps({
               </div>
 
               {/* Step Title */}
-              <HeadingTag className="font-display text-lg font-bold text-navy-900 md:text-xl mb-2.5">
+              <HeadingTag className="font-display text-lg font-bold text-heading md:text-xl mb-2.5">
                 {title}
               </HeadingTag>
 

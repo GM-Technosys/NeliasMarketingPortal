@@ -34,7 +34,7 @@ export function CtaBand({
       aria-labelledby={headingId}
       className={cn(
         "relative overflow-hidden",
-        tone === "tint" && "border-t border-azure-200/50",
+        tone === "tint" && "border-t border-accent-line/50",
         className,
       )}
       {...rest}
@@ -46,7 +46,7 @@ export function CtaBand({
               id={headingId}
               className={cn(
                 "font-display text-3xl sm:text-4xl lg:text-5xl leading-tight font-bold tracking-tight",
-                isInverse ? "text-white" : "text-navy-900",
+                isInverse ? "text-white" : "text-heading",
                 titleClassName,
               )}
             >

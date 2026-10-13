@@ -19,6 +19,7 @@ export function TextLink({
   showArrow = true,
   className,
   children,
+  onClick,
   ...rest
 }) {
   const { t } = useTranslation();
@@ -28,9 +29,18 @@ export function TextLink({
     className,
   );
 
+  const handleClick = (e) => {
+    if (to === "#") {
+      e.preventDefault();
+    }
+    if (onClick) {
+      onClick(e);
+    }
+  };
+
   if (isInternal) {
     return (
-      <Link to={to} className={linkClasses} {...rest}>
+      <Link to={to} className={linkClasses} onClick={handleClick} {...rest}>
         <span>{children}</span>
         {showArrow && (
           <ArrowUpRight
@@ -48,6 +58,7 @@ export function TextLink({
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
       className={linkClasses}
+      onClick={handleClick}
       {...rest}
     >
       <span>{children}</span>

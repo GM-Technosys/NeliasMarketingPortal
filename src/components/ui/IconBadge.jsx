@@ -1,9 +1,9 @@
 import { cn } from "@/lib/cn";
 
 const toneMap = {
-  azure: "bg-azure-100 text-azure-700",
-  navy: "bg-navy-900 text-white",
-  neutral: "bg-ink-100 text-navy-900",
+  azure: "bg-accent-soft text-accent-strong",
+  navy: "bg-selected text-selected-fg",
+  neutral: "bg-surface-sunken text-heading",
 };
 
 const sizeMap = {

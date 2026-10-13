@@ -39,7 +39,7 @@ export function Fieldset({
       aria-invalid={error ? "true" : undefined}
       {...rest}
     >
-      <legend className="mb-1 block text-[0.9375rem] font-semibold text-navy-900">
+      <legend className="mb-1 block text-[0.9375rem] font-semibold text-heading">
         {legend}
         {required && (
           <>

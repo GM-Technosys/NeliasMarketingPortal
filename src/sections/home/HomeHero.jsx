@@ -26,13 +26,13 @@ export function HomeHero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-12">
           {/* Text column */}
           <div className="lg:col-span-6 flex flex-col items-start text-left">
-            <p className="mb-4 text-sm font-semibold text-azure-600">
+            <p className="mb-4 text-sm font-semibold text-link">
               {t("home:hero.eyebrow")}
             </p>
 
             <h1
               id="hero-heading"
-              className="font-display text-h1 font-semibold text-navy-900 leading-tight tracking-tight max-w-[20ch]"
+              className="font-display text-h1 font-semibold text-heading leading-tight tracking-tight max-w-[20ch]"
             >
               {t("home:hero.title")}
             </h1>
@@ -44,7 +44,7 @@ export function HomeHero() {
             <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto">
               <CtaLink
                 intent="configure"
-                to="/configure"
+                to="#"
                 size="lg"
                 location="hero"
                 className="w-full sm:w-auto"
@@ -52,7 +52,8 @@ export function HomeHero() {
                 {t("cta.configure")}
               </CtaLink>
               <Link
-                to="/how-it-works"
+                to="#"
+                onClick={(e) => e.preventDefault()}
                 className={cn(
                   buttonStyles({ variant: "outline", size: "lg" }),
                   "w-full sm:w-auto",

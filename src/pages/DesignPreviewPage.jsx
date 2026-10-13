@@ -165,6 +165,69 @@ export default function DesignPreviewPage() {
               <Swatch key={t.name} name={t.name} hex={t.hex} />
             ))}
           </div>
+
+          <h2 className="mt-10 font-display text-h2">Semantic tokens</h2>
+          <p className="mt-2 text-fg-muted">
+            Live custom properties that adapt with the theme (light and dark).
+          </p>
+          <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            {[
+              "surface",
+              "surface-raised",
+              "surface-muted",
+              "surface-tint",
+              "surface-sunken",
+              "surface-inverse",
+              "surface-inverse-deep",
+              "fg",
+              "fg-strong",
+              "fg-muted",
+              "fg-subtle",
+              "heading",
+              "line",
+              "line-strong",
+              "field",
+              "link",
+              "accent",
+              "accent-soft",
+              "accent-line",
+              "accent-strong",
+              "focus",
+              "selected",
+              "selected-fg",
+              "secondary",
+              "secondary-hover",
+              "secondary-fg",
+              "success",
+              "success-soft",
+              "success-strong",
+              "warning",
+              "warning-soft",
+              "warning-strong",
+              "danger",
+              "danger-soft",
+              "danger-strong",
+              "highlight-soft",
+              "highlight-strong",
+              "deep-from",
+              "deep-via",
+              "deep-to",
+            ].map((token) => (
+              <div
+                key={token}
+                className="flex flex-col gap-1.5 rounded-lg border border-line p-3 shadow-2xs"
+                style={{ backgroundColor: `var(--${token})` }}
+              >
+                <span className="font-mono text-xs font-bold" style={{ color: "var(--fg)" }}>
+                  {token}
+                </span>
+                <div className="flex items-center gap-2 text-xs">
+                  <span style={{ color: "var(--fg)" }}>Aa fg</span>
+                  <span style={{ color: "var(--heading)" }}>Aa h</span>
+                </div>
+              </div>
+            ))}
+          </div>
         </Container>
       </Section>
 

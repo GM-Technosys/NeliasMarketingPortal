@@ -78,10 +78,10 @@ export function CapabilitiesSection() {
                     {points.map((point, index) => (
                       <li
                         key={index}
-                        className="flex items-center gap-2.5 text-base font-semibold text-navy-900"
+                        className="flex items-center gap-2.5 text-base font-semibold text-heading"
                       >
                         <span
-                          className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-azure-50 text-azure-600 border border-azure-200"
+                          className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-surface-tint text-link border border-accent-line"
                           aria-hidden="true"
                         >
                           <Check className="h-3 w-3 stroke-[2.5]" />
@@ -98,8 +98,11 @@ export function CapabilitiesSection() {
 
                 <div className="pt-2">
                   <TextLink
-                    to="/features"
-                    onClick={() => setActiveId(null)}
+                    to="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setActiveId(null);
+                    }}
                   >
                     {t("home:capabilities.modalLink")}
                   </TextLink>

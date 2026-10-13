@@ -9,7 +9,7 @@
 | Business Management Platform | Plateforme de gestion d’entreprise |
 | NELIAS — A product of Debass Technologies | NELIAS — Un produit de Debass Technologies |
 | NELIAS — A Business Management Platform by Debass Technologies. | NELIAS — Une plateforme de gestion d’entreprise conçue par Debass Technologies. |
-| © 2026 Debass Technologies. All rights reserved. | © 2026 Debass Technologies. Tous droits réservés. |
+| © 2026 NELIAS. All rights reserved. | © 2026 NELIAS. Tous droits réservés. |
 | Illustrative preview | Aperçu illustratif |
 | Skip to main content | Aller au contenu principal |
 | Home / Why NELIAS / How It Works / Industries / Features / Pricing / Resources / About / Contact | Accueil / Pourquoi NELIAS / Fonctionnement / Secteurs / Fonctionnalités / Tarifs / Ressources / À propos / Contact |

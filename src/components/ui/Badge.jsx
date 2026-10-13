@@ -1,12 +1,12 @@
 import { cn } from "@/lib/cn";
 
 const toneMap = {
-  neutral: "bg-ink-100 text-ink-700",
-  info: "bg-azure-100 text-azure-700",
+  neutral: "bg-surface-sunken text-fg-strong",
+  info: "bg-accent-soft text-accent-strong",
   success: "bg-success-soft text-success-strong",
   warning: "bg-warning-soft text-warning-strong",
   danger: "bg-danger-soft text-danger-strong",
-  highlight: "bg-flame-100 text-flame-700",
+  highlight: "bg-highlight-soft text-highlight-strong",
   inverse: "bg-white/10 text-white",
 };
 

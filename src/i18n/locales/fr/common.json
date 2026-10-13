@@ -5,7 +5,10 @@
     "attribution": "NELIAS — Un produit de Debass Technologies",
     "promise": "Une seule plateforme. Plusieurs secteurs. Votre environnement, configuré automatiquement.",
     "footerTagline": "NELIAS — Une plateforme de gestion d’entreprise conçue par Debass Technologies. Une seule plateforme. Plusieurs secteurs. Votre environnement, configuré automatiquement.",
-    "copyright": "© 2026 Debass Technologies. Tous droits réservés."
+    "copyright": "© 2026 NELIAS. Tous droits réservés."
+  },
+  "theme": {
+    "darkMode": "Mode sombre"
   },
   "header": {
     "mainNavLabel": "Navigation principale",

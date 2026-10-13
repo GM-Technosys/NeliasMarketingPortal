@@ -38,17 +38,17 @@ export function IndustrySelectorSection() {
           <div>
             <div className="flex items-center gap-3">
               {profile?.icon && (
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-azure-50 text-azure-700">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-surface-tint text-accent-strong">
                   <profile.icon className="h-5 w-5" aria-hidden="true" />
                 </span>
               )}
-              <h3 className="font-display text-2xl font-bold text-navy-900">
+              <h3 className="font-display text-2xl font-bold text-heading">
                 {name}
               </h3>
             </div>
 
             {headline && (
-              <p className="mt-3 text-lg font-semibold text-navy-900 leading-snug">
+              <p className="mt-3 text-lg font-semibold text-heading leading-snug">
                 {headline}
               </p>
             )}
@@ -75,7 +75,7 @@ export function IndustrySelectorSection() {
           </div>
 
           <div className="mt-6 border-t border-line pt-5">
-            <TextLink to={`/industries/${slug}`}>
+            <TextLink to="#" onClick={(e) => e.preventDefault()}>
               {t("home:industries.viewIndustry", { name })}
             </TextLink>
           </div>
@@ -106,7 +106,7 @@ export function IndustrySelectorSection() {
           <div className="flex w-full min-w-0 max-w-full flex-col">
             <h3
               id="industry-selector-heading"
-              className="font-display text-h3 font-semibold text-navy-900 mt-10 md:mt-12 mb-6"
+              className="font-display text-h3 font-semibold text-heading mt-10 md:mt-12 mb-6"
             >
               {t("home:industries.selectorLabel")}
             </h3>
@@ -123,7 +123,8 @@ export function IndustrySelectorSection() {
 
             <div className="mt-8 text-center">
               <Link
-                to="/industries"
+                to="#"
+                onClick={(e) => e.preventDefault()}
                 className={buttonStyles({ variant: "outline" })}
               >
                 {t("home:industries.cta")}

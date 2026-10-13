@@ -82,7 +82,7 @@ export function NumberStepper({
         aria-label={decLabel}
         disabled={disabled || value <= min}
         onClick={handleDecrease}
-        className="inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-sm border border-ink-500 bg-white text-navy-900 transition-colors hover:bg-ink-100 focus-visible:outline-2 focus-visible:outline-focus disabled:cursor-not-allowed disabled:border-ink-300 disabled:bg-ink-100 disabled:opacity-50"
+        className="inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-sm border border-field bg-surface-raised text-heading transition-colors hover:bg-surface-sunken focus-visible:outline-2 focus-visible:outline-focus disabled:cursor-not-allowed disabled:border-line-strong disabled:bg-surface-sunken disabled:opacity-50"
       >
         <Minus className="h-5 w-5" aria-hidden="true" />
       </button>
@@ -100,7 +100,7 @@ export function NumberStepper({
         aria-invalid={ariaInvalid}
         onChange={handleInputChange}
         onBlur={handleBlur}
-        className="h-12 w-20 rounded-sm border border-ink-500 bg-white px-2 text-center text-lg font-semibold text-fg tabular-nums focus-visible:border-azure-500 focus-visible:outline-2 focus-visible:outline-focus disabled:cursor-not-allowed disabled:bg-ink-100 disabled:text-fg-subtle"
+        className="h-12 w-20 rounded-sm border border-field bg-surface-raised px-2 text-center text-lg font-semibold text-fg tabular-nums focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-focus disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:text-fg-subtle"
       />
 
       <button
@@ -108,7 +108,7 @@ export function NumberStepper({
         aria-label={incLabel}
         disabled={disabled || value >= max}
         onClick={handleIncrease}
-        className="inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-sm border border-ink-500 bg-white text-navy-900 transition-colors hover:bg-ink-100 focus-visible:outline-2 focus-visible:outline-focus disabled:cursor-not-allowed disabled:border-ink-300 disabled:bg-ink-100 disabled:opacity-50"
+        className="inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-sm border border-field bg-surface-raised text-heading transition-colors hover:bg-surface-sunken focus-visible:outline-2 focus-visible:outline-focus disabled:cursor-not-allowed disabled:border-line-strong disabled:bg-surface-sunken disabled:opacity-50"
       >
         <Plus className="h-5 w-5" aria-hidden="true" />
       </button>

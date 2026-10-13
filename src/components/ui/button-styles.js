@@ -5,13 +5,13 @@ const baseStyles =
 
 const variantStyles = {
   primary: "bg-cta text-cta-fg hover:bg-cta-hover focus-visible:outline-cta",
-  secondary: "bg-navy-900 text-white hover:bg-navy-800 focus-visible:outline-navy-900",
+  secondary: "bg-secondary text-secondary-fg hover:bg-secondary-hover focus-visible:outline-secondary",
   outline:
-    "border border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white focus-visible:outline-navy-900",
-  ghost: "text-link hover:bg-azure-50 focus-visible:outline-link",
-  onDark: "border border-white/40 text-white hover:bg-white/10 focus-visible:outline-sun-300",
-  white: "bg-white text-navy-950 hover:bg-azure-50 shadow-sm focus-visible:outline-white",
-  azure: "bg-azure-500 text-white hover:bg-azure-600 focus-visible:outline-azure-400",
+    "border border-heading text-heading hover:bg-secondary hover:text-secondary-fg focus-visible:outline-focus",
+  ghost: "text-link hover:bg-surface-tint focus-visible:outline-link",
+  onDark: "border border-white/40 text-white hover:bg-white/10 focus-visible:outline-white",
+  white: "bg-surface-raised text-heading hover:bg-surface-tint shadow-sm focus-visible:outline-focus",
+  azure: "bg-accent text-white hover:bg-link focus-visible:outline-accent",
 };
 
 const sizeStyles = {

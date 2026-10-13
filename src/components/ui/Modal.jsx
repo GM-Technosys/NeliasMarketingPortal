@@ -83,7 +83,7 @@ export function Modal({
       aria-describedby={description ? descId : undefined}
       onClick={handleDialogClick}
       className={cn(
-        "m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] animate-modal-in overflow-y-auto rounded-xl bg-surface p-0 text-fg shadow-raised backdrop:bg-navy-950/60 open:flex open:flex-col",
+        "m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] animate-modal-in overflow-y-auto rounded-xl bg-surface-raised p-0 text-fg shadow-raised backdrop:bg-navy-950/60 open:flex open:flex-col",
         sizeMap[size] || sizeMap.md,
         className,
       )}
@@ -93,7 +93,7 @@ export function Modal({
         <div>
           <h2
             id={titleId}
-            className="font-display text-xl leading-snug font-semibold text-navy-900"
+            className="font-display text-xl leading-snug font-semibold text-heading"
           >
             {title}
           </h2>
@@ -107,7 +107,7 @@ export function Modal({
           type="button"
           onClick={onClose}
           aria-label={t("ui.close")}
-          className="inline-flex min-h-11 min-w-11 shrink-0 cursor-pointer items-center justify-center rounded-md text-ink-700 transition-colors hover:bg-ink-100 hover:text-navy-900"
+          className="inline-flex min-h-11 min-w-11 shrink-0 cursor-pointer items-center justify-center rounded-md text-fg-strong transition-colors hover:bg-surface-sunken hover:text-heading"
         >
           <X className="h-6 w-6" aria-hidden="true" />
         </button>

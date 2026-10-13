@@ -27,7 +27,7 @@ export function SegmentedControl({
 
   return (
     <fieldset
-      className={cn("m-0 inline-flex items-center rounded-md border-0 bg-ink-100 p-1", className)}
+      className={cn("m-0 inline-flex items-center rounded-md border-0 bg-surface-sunken p-1", className)}
     >
       <legend className="sr-only">{label}</legend>
 
@@ -40,7 +40,7 @@ export function SegmentedControl({
             className={cn(
               "relative inline-flex cursor-pointer items-center justify-center gap-2 rounded font-semibold transition-colors select-none",
               size === "lg" ? "min-h-12 px-5 text-base" : "min-h-11 px-4 text-sm md:text-base",
-              isSelected ? "bg-navy-900 text-white shadow-xs" : "text-ink-700 hover:text-navy-900",
+              isSelected ? "bg-selected text-selected-fg shadow-xs" : "text-fg-strong hover:text-heading",
               "has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-focus",
             )}
           >

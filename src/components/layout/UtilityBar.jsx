@@ -3,9 +3,9 @@ import { useTranslation } from "react-i18next";
 import { Mail, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { LanguageSwitcher } from "@/components/common/LanguageSwitcher";
+import { ThemeToggle } from "@/components/common/ThemeToggle";
 import { site } from "@/config/site";
 import { toTelHref } from "@/lib/contact";
-import { cn } from "@/lib/cn";
 
 /**
  * Top utility bar visible on desktop (xl and up).
@@ -42,22 +42,20 @@ export function UtilityBar() {
             )}
           </div>
 
-          {/* Right: Language switcher, Contact, Sign in */}
+          {/* Right: Theme toggle, Language switcher, Contact, Sign in */}
           <div className="flex items-center gap-5">
+            <ThemeToggle variant="onDark" size="sm" />
             <LanguageSwitcher variant="onDark" />
             <NavLink
-              to="/contact"
-              className={({ isActive }) =>
-                cn(
-                  "inline-flex min-h-9 items-center text-fg-inverse-muted transition-colors hover:text-white hover:underline",
-                  isActive && "font-semibold text-white",
-                )
-              }
+              to="#"
+              onClick={(e) => e.preventDefault()}
+              className="inline-flex min-h-9 items-center text-fg-inverse-muted transition-colors hover:text-white hover:underline"
             >
               {t("nav.contact")}
             </NavLink>
             <a
-              href={site.loginUrl}
+              href="#"
+              onClick={(e) => e.preventDefault()}
               className="inline-flex min-h-9 items-center text-fg-inverse-muted transition-colors hover:text-white hover:underline"
             >
               {t("nav.signIn")}

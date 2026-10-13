@@ -42,7 +42,7 @@ export function PageHeader({
             <h1
               id={titleId}
               className={cn(
-                "font-display text-h1 leading-tight font-bold tracking-tight text-navy-900",
+                "font-display text-h1 leading-tight font-bold tracking-tight text-heading",
                 isInverse && "text-white",
               )}
             >

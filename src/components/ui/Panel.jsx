@@ -1,9 +1,9 @@
 import { cn } from "@/lib/cn";
 
 const toneMap = {
-  default: "bg-surface border-line text-fg",
+  default: "bg-surface-raised border-line text-fg",
   muted: "bg-surface-muted border-line text-fg",
-  tint: "bg-surface-tint border-azure-200 text-fg",
+  tint: "bg-surface-tint border-accent-line text-fg",
   inverse: "bg-brand-deep border-white/10 text-fg-inverse",
 };
 

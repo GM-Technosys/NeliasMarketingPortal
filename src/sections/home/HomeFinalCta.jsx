@@ -13,10 +13,11 @@ export function HomeFinalCta() {
   const actions = (
     <>
       <Link
-        to="/demo"
-        onClick={() =>
-          track(EVENTS.CTA_CLICK, { intent: "demo", location: "home-final" })
-        }
+        to="#"
+        onClick={(e) => {
+          e.preventDefault();
+          track(EVENTS.CTA_CLICK, { intent: "demo", location: "home-final" });
+        }}
         className={buttonStyles({ variant: "primary", size: "lg" })}
       >
         {t("cta.bookDemo")}

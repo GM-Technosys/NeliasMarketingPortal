@@ -13,7 +13,7 @@ export function ScenarioSection() {
     <div>
       <h3
         id="scenarios-heading"
-        className="font-display text-h3 font-semibold text-navy-900 mb-6"
+        className="font-display text-h3 font-semibold text-heading mb-6"
       >
         {t("home:scenarios.title")}
       </h3>
@@ -57,7 +57,7 @@ export function ScenarioSection() {
                 <p className="text-sm font-semibold text-fg-muted mb-2">
                   {t("home:scenarios.impactLabel")}
                 </p>
-                <p className="font-display text-2xl font-semibold text-navy-900 leading-snug">
+                <p className="font-display text-2xl font-semibold text-heading leading-snug">
                   {t(`home:scenarios.items.${selectedScenario}.impact`)}
                 </p>
               </div>
@@ -65,11 +65,11 @@ export function ScenarioSection() {
               <hr className="border-line my-6" />
 
               {/* NELIAS benefit block */}
-              <div className="border-l-[3px] border-l-azure-500 pl-4 py-1 bg-azure-50/40 rounded-r-md">
-                <p className="text-sm font-semibold text-navy-900 mb-2">
+              <div className="border-l-[3px] border-l-accent pl-4 py-1 bg-surface-tint/40 rounded-r-md">
+                <p className="text-sm font-semibold text-heading mb-2">
                   {t("home:scenarios.benefitLabel")}
                 </p>
-                <p className="text-lg font-medium text-navy-900 leading-snug">
+                <p className="text-lg font-medium text-heading leading-snug">
                   {t(`home:scenarios.items.${selectedScenario}.benefit`)}
                 </p>
               </div>

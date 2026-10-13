@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 import { X } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
 import { LanguageSwitcher } from "@/components/common/LanguageSwitcher";
+import { ThemeToggle } from "@/components/common/ThemeToggle";
 import { HeaderCtas } from "./HeaderCtas";
 import { mainNav } from "@/config/navigation";
-import { site } from "@/config/site";
 import { EVENTS, track } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
 
@@ -84,7 +84,7 @@ export function MobileMenu({ open, onClose }) {
           type="button"
           onClick={onClose}
           aria-label={t("a11y.closeMenu")}
-          className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-md text-ink-700 transition-colors hover:bg-ink-100 hover:text-navy-900"
+          className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-md text-fg-strong transition-colors hover:bg-surface-sunken hover:text-heading"
         >
           <X className="h-6 w-6" aria-hidden="true" />
         </button>
@@ -98,16 +98,17 @@ export function MobileMenu({ open, onClose }) {
               <NavLink
                 to={to}
                 end
-                onClick={() => {
+                onClick={(e) => {
+                  if (to === "#") e.preventDefault();
                   track(EVENTS.NAV_CLICK, { key });
                   onClose();
                 }}
                 className={({ isActive }) =>
                   cn(
                     "relative flex h-14 items-center border-b border-line px-5 text-[17px] font-semibold transition-colors",
-                    isActive
-                      ? "border-l-[3px] border-l-azure-500 bg-azure-50/50 pl-[17px] text-navy-900"
-                      : "text-ink-700 hover:bg-ink-50 hover:text-azure-600",
+                    isActive && to !== "#"
+                      ? "border-l-[3px] border-l-accent bg-surface-tint/50 pl-[17px] text-heading"
+                      : "text-fg-strong hover:bg-surface-muted hover:text-link",
                   )
                 }
               >
@@ -118,29 +119,31 @@ export function MobileMenu({ open, onClose }) {
         </ul>
       </nav>
 
-      {/* Secondary utility group: Contact and Sign In */}
+      {/* Secondary utility group: Contact, Sign In, Language and Theme */}
       <div className="flex shrink-0 flex-col gap-1 border-b border-line px-5 py-3">
         <NavLink
-          to="/contact"
-          onClick={onClose}
-          className={({ isActive }) =>
-            cn(
-              "flex min-h-11 items-center rounded-md px-2 text-[15px] font-semibold transition-colors",
-              isActive ? "bg-ink-100 text-navy-900" : "text-ink-700 hover:text-azure-600",
-            )
-          }
+          to="#"
+          onClick={(e) => {
+            e.preventDefault();
+            onClose();
+          }}
+          className="flex min-h-11 items-center rounded-md px-2 text-[15px] font-semibold text-fg-strong hover:text-link transition-colors"
         >
           {t("nav.contact")}
         </NavLink>
         <a
-          href={site.loginUrl}
-          onClick={onClose}
-          className="flex min-h-11 items-center rounded-md px-2 text-[15px] font-semibold text-ink-700 transition-colors hover:text-azure-600"
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            onClose();
+          }}
+          className="flex min-h-11 items-center rounded-md px-2 text-[15px] font-semibold text-fg-strong transition-colors hover:text-link"
         >
           {t("nav.signIn")}
         </a>
-        <div className="pt-2">
+        <div className="flex items-center justify-between pt-2">
           <LanguageSwitcher variant="default" />
+          <ThemeToggle size="md" />
         </div>
       </div>
 

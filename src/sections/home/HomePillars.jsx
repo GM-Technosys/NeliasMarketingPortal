@@ -18,7 +18,7 @@ export function HomePillars() {
     <div className="relative">
       {/* 2px connector line behind icons from centre of 1st icon to centre of last icon (lg and up) */}
       <div
-        className="hidden lg:block absolute h-0.5 bg-ink-200 z-0 pointer-events-none"
+        className="hidden lg:block absolute h-0.5 bg-line z-0 pointer-events-none"
         style={{
           left: "calc((100% - 5rem) / 6)",
           right: "calc((100% - 5rem) / 6)",
@@ -41,7 +41,7 @@ export function HomePillars() {
                 className="ring-8 ring-surface relative z-10"
               />
             </div>
-            <h3 className="font-display text-h3 font-semibold text-navy-900 mb-3 text-center">
+            <h3 className="font-display text-h3 font-semibold text-heading mb-3 text-center">
               {t(`home:approach.pillars.${key}.title`)}
             </h3>
             <p className="text-base text-fg-muted leading-relaxed text-center max-w-sm">

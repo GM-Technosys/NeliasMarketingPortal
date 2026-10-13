@@ -9,8 +9,9 @@ npm run dev         # Start Vite dev server
 npm run lint        # Run oxlint
 npm run build       # Production build
 npm run check:copy  # Scan for banned pre-launch phrases
-npm run check:i18n  # Validate translation parity between en and fr
-npm run verify      # lint + build + check:copy + check:i18n
+npm run check:theme # Scan for raw palette color usage
+npm run check:contrast # Validate WCAG contrast in light & dark themes
+npm run verify      # lint + build + check:copy + check:i18n + check:theme + check:contrast
 npm run format      # Prettier
 ```
 
@@ -97,7 +98,7 @@ npm run format      # Prettier
 ## UI kit
 
 - Import primitives from `@/components/ui` (barrel) and patterns from `@/components/patterns`. Never hand-roll an accordion, tabs, modal, form field, badge, alert, table or toggle; extend the kit instead.
-- Form controls: borders stay `ink-500`; text size at least 16px; every control sits inside `Field` or `Fieldset`; errors need icon plus text; consent checkboxes are never pre-checked.
+- Form controls: borders stay `border-field`; text size at least 16px; every control sits inside `Field` or `Fieldset`; errors need icon plus text; consent checkboxes are never pre-checked.
 - Use varied surfaces: `Card` for bounded items, `Panel` for big feature areas, `RuledList` for quiet lists. Do not put every section into the same card grid.
 - `Reveal` is the only scroll-reveal mechanism (one-time, 12px max). Do not add other scroll animations.
 - Selection widgets must use `ChoiceCard`, `SegmentedControl` or `Tabs`; each follows the matching ARIA pattern.
@@ -122,4 +123,55 @@ npm run format      # Prettier
 7. `npm run check:i18n` is part of `npm run verify` and must pass. In development, missing keys are logged as `[i18n] missing key`.
 8. The French copy is an AI-drafted translation until Debass approves it (`docs/FRENCH_REVIEW.md`). Do not change English text while translating.
 9. The initial language is English (or `?lang=fr`); the choice is saved in localStorage `nelias-lang`. `VITE_FEATURE_FRENCH=false` hides the switcher.
+
+## Theming (mandatory rules)
+
+1. The site has a light and a dark theme. The theme is the `data-theme` attribute on `<html>`; `src/theme/theme.js` manages it (first visit follows the system, an explicit choice is saved in localStorage `nelias-theme`, `?theme=dark|light` forces and saves it). `ThemeToggle` lives in the utility bar, the header (below xl) and the mobile menu.
+2. Components must use ROLE classes only, never raw palette classes (`bg-white`, `text-navy-*`, `text-ink-*`, `bg-ink-*`, `bg-azure-*`, `border-ink-*`, `border-azure-*`). Mapping to use (copy the full table from the dark-mode task into this file):
+
+| Raw class | Replace with |
+|---|---|
+| `bg-white` (cards, panels, inputs, modals, frames) | `bg-surface-raised` |
+| `bg-white` (header, page-level) | `bg-surface` |
+| `bg-white/95` (and similar alpha) | `bg-surface-raised/95` |
+| `bg-ink-50` | `bg-surface-muted` |
+| `bg-azure-50` (and `hover:bg-azure-50`) | `bg-surface-tint` |
+| `bg-ink-100` | `bg-surface-sunken` |
+| `bg-ink-200` (tracks, rails, dots, thin bars) | `bg-line` |
+| `bg-azure-100` | `bg-accent-soft` |
+| `bg-azure-500` (rules, underline bars, accent fills) | `bg-accent` |
+| `bg-navy-900` + `text-white` on selected, active, checked, reached states (pill tab, segmented option, checkbox, radio indicator, step marker) | `bg-selected text-selected-fg` |
+| `bg-navy-900` + `text-white` on the secondary button and the Toggletip bubble | `bg-secondary text-secondary-fg`; `hover:bg-navy-800` becomes `hover:bg-secondary-hover` |
+| `bg-flame-100` + `text-flame-700` (highlight badge) | `bg-highlight-soft text-highlight-strong` |
+| `text-navy-900`, `text-navy-800` | `text-heading` |
+| `text-ink-900`, `text-ink-800` | `text-fg` |
+| `text-ink-700` | `text-fg-strong` |
+| `text-ink-600` | `text-fg-muted` |
+| `text-ink-500`, `text-ink-400`, `text-ink-300` | `text-fg-subtle` |
+| `text-azure-600` (links, info text) | `text-link` (icons: `text-accent`) |
+| `text-azure-700` | `text-accent-strong` |
+| `text-azure-500` | `text-accent` |
+| `border-ink-200`, `divide-ink-200` | `border-line`, `divide-line` |
+| `border-ink-300` | `border-line-strong` |
+| `border-ink-500`, `hover:border-navy-900` (form fields, indicators) | `border-field`, `hover:border-heading` |
+| `border-azure-200` | `border-accent-line` |
+| `border-azure-500`, `ring-azure-500` | `border-accent`, `ring-accent` |
+| `border-navy-900 text-navy-900` (outline button) | `border-heading text-heading hover:bg-secondary hover:text-secondary-fg` |
+| ghost button `hover:bg-azure-50` | `hover:bg-surface-tint` |
+| SVG `fill`/`stroke`/inline-style colours: `var(--color-ink-100)` | `var(--surface-sunken)` |
+| `var(--color-ink-200)` | `var(--line)` |
+| `var(--color-ink-300)` | `var(--line-strong)` |
+| `var(--color-azure-50)` | `var(--surface-tint)` |
+| `var(--color-azure-100)` | `var(--accent-soft)` |
+| `var(--color-azure-500)` | `var(--accent)` |
+| `var(--color-navy-900)` | `var(--selected)` |
+| `white`, `#fff`, `#ffffff` fills | `var(--surface-raised)` |
+
+3. If a task prompt names raw palette classes (`bg-white`, `text-navy-900`, `bg-ink-100`, `bg-azure-50`, `border-ink-500` and so on), translate them with the mapping above instead of using them.
+4. Fixed in both themes (allowed as-is): the orange primary button (`bg-cta text-cta-fg`), the logo ribbon (`bg-brand-ribbon`, flame to sun gradients), dark bands and footer (`bg-brand-deep` with `text-white` and `text-fg-inverse*`), `text-white`/`bg-white/NN`/`border-white/NN` on those inverse surfaces, `backdrop:` scrims, and the white logo chip and plate.
+5. Do NOT use `dark:` utilities (the only exception is the logo chip) and never hard-code colour literals in components or SVGs. Illustrations use role variables (`var(--surface-raised)`, `var(--line)`, `var(--accent)`, `var(--accent-soft)`, `var(--selected)`) and the brand ribbon colours.
+6. Every new component and page must be checked in both themes: backgrounds, text, borders, hover, focus, selected, disabled, error states, illustrations. `npm run check:theme` and `npm run check:contrast` are part of `npm run verify`.
+7. Moved role tokens exist as plain variables (`var(--surface)`, `var(--fg)`, `var(--line)`…), not as `var(--color-surface)`.
+8. Orange is for actions and the ribbon only; the dark palette follows the same rule.
+
 

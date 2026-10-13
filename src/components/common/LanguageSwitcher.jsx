@@ -90,8 +90,8 @@ export function LanguageSwitcher({
         isOpen && "border-white/30 bg-white/15 shadow-xs",
       )
     : cn(
-        "border-line bg-surface text-navy-900 hover:bg-ink-50 hover:border-ink-300",
-        isOpen && "border-azure-500 bg-azure-50/50 shadow-xs ring-1 ring-azure-500",
+        "border-line bg-surface text-heading hover:bg-surface-tint hover:border-line-strong",
+        isOpen && "border-accent bg-surface-tint shadow-xs ring-1 ring-accent",
       );
 
   const placementClasses =
@@ -123,7 +123,7 @@ export function LanguageSwitcher({
         <Globe
           className={cn(
             "h-3.5 w-3.5 shrink-0 transition-colors",
-            isDark ? "text-azure-400" : "text-azure-600",
+            isDark ? "text-white" : "text-link",
           )}
           aria-hidden="true"
         />
@@ -131,7 +131,7 @@ export function LanguageSwitcher({
         <ChevronDown
           className={cn(
             "h-3 w-3 shrink-0 transition-transform duration-200 ease-soft",
-            isDark ? "text-fg-inverse-muted" : "text-ink-500",
+            isDark ? "text-fg-inverse-muted" : "text-fg-subtle",
             isOpen && "rotate-180",
           )}
           aria-hidden="true"
@@ -149,8 +149,8 @@ export function LanguageSwitcher({
             placementClasses,
             alignClasses,
             isDark
-              ? "border-white/15 bg-navy-900/98 text-white"
-              : "border-line bg-white/98 text-navy-900",
+              ? "border-white/15 bg-surface-inverse text-white"
+              : "border-line bg-surface-raised/98 text-heading",
           )}
         >
           <div className="flex flex-col gap-1.5">
@@ -162,18 +162,18 @@ export function LanguageSwitcher({
                     isSelected && "border-white/15 bg-white/12 text-white font-semibold shadow-2xs",
                   )
                 : cn(
-                    "border border-transparent text-ink-700 hover:text-navy-900 hover:bg-ink-50",
-                    isSelected && "border-azure-200/80 bg-azure-50 text-navy-950 font-semibold shadow-2xs",
+                    "border border-transparent text-fg-strong hover:text-heading hover:bg-surface-tint",
+                    isSelected && "border-accent-line bg-surface-tint text-heading font-semibold shadow-2xs",
                   );
 
               const badgeClasses = isDark
                 ? cn(
                     "bg-white/10 text-fg-inverse-muted",
-                    isSelected && "bg-azure-500/25 text-azure-300 border border-azure-400/30",
+                    isSelected && "bg-white/20 text-white border border-white/20",
                   )
                 : cn(
-                    "bg-ink-100 text-ink-600",
-                    isSelected && "bg-azure-100 text-azure-700 border border-azure-200",
+                    "bg-surface-sunken text-fg-muted",
+                    isSelected && "bg-accent-soft text-accent-strong border border-accent-line",
                   );
 
               return (
@@ -206,7 +206,7 @@ export function LanguageSwitcher({
                     <Check
                       className={cn(
                         "h-3.5 w-3.5 shrink-0 stroke-[2.5] ml-2",
-                        isDark ? "text-azure-400" : "text-azure-600",
+                        isDark ? "text-white" : "text-link",
                       )}
                       aria-hidden="true"
                     />

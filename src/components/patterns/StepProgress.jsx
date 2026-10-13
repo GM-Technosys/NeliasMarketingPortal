@@ -25,17 +25,17 @@ export function StepProgress({ steps = [], current = 0, onStepClick, className }
       <div className="flex flex-col gap-2 md:hidden">
         <div className="flex items-center justify-between text-xs font-semibold text-fg-muted">
           <span>{t("ui.stepOf", { current: currentStepNum, total })}</span>
-          <span className="font-bold text-navy-900">{steps[current]?.label}</span>
+          <span className="font-bold text-heading">{steps[current]?.label}</span>
         </div>
         <div
-          className="h-1 w-full overflow-hidden rounded-full bg-ink-200"
+          className="h-1 w-full overflow-hidden rounded-full bg-line"
           role="progressbar"
           aria-valuenow={currentStepNum}
           aria-valuemin={1}
           aria-valuemax={total}
         >
           <div
-            className="h-full rounded-full bg-navy-900 transition-all duration-300"
+            className="h-full rounded-full bg-selected transition-all duration-300"
             style={{ width: `${(currentStepNum / total) * 100}%` }}
           />
         </div>
@@ -66,9 +66,9 @@ export function StepProgress({ steps = [], current = 0, onStepClick, className }
                 <span
                   className={cn(
                     "flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold transition-colors",
-                    isCompleted && "bg-navy-900 text-white shadow-xs",
-                    isCurrent && "border-2 border-navy-900 bg-white text-navy-900 shadow-xs",
-                    !isCompleted && !isCurrent && "border-2 border-ink-300 bg-white text-ink-400",
+                    isCompleted && "bg-selected text-selected-fg shadow-xs",
+                    isCurrent && "border-2 border-selected bg-surface-raised text-heading shadow-xs",
+                    !isCompleted && !isCurrent && "border-2 border-line-strong bg-surface-raised text-fg-subtle",
                   )}
                 >
                   {isCompleted ? (
@@ -85,9 +85,9 @@ export function StepProgress({ steps = [], current = 0, onStepClick, className }
                 <span
                   className={cn(
                     "text-sm whitespace-nowrap",
-                    isCompleted && "font-semibold text-navy-900",
+                    isCompleted && "font-semibold text-heading",
                     isCurrent &&
-                      "font-bold text-navy-900 underline decoration-azure-500 decoration-2 underline-offset-4",
+                      "font-bold text-heading underline decoration-accent decoration-2 underline-offset-4",
                     !isCompleted && !isCurrent && "font-medium text-fg-muted",
                   )}
                 >
@@ -100,7 +100,7 @@ export function StepProgress({ steps = [], current = 0, onStepClick, className }
                 <div
                   className={cn(
                     "ml-2 h-0.5 flex-1 transition-colors",
-                    index < current ? "bg-navy-900" : "bg-ink-200",
+                    index < current ? "bg-selected" : "bg-line",
                   )}
                   role="presentation"
                 />

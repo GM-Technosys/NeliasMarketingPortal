@@ -14,12 +14,17 @@ import { cn } from "@/lib/cn";
 export function Logo({ variant = "default", onNavigate, className }) {
   const { t } = useTranslation();
 
+  // In dark mode the default Logo variant sits on a small white chip because the logo PNG is opaque white.
+  // The chip goes away when a white or transparent logo is supplied.
   const link = (
     <Link
       to="/"
       aria-label={t("header.homeLink")}
       onClick={onNavigate}
-      className={cn("inline-flex shrink-0 items-center", className)}
+      className={cn(
+        "inline-flex shrink-0 items-center dark:rounded-md dark:bg-white dark:px-2 dark:py-1",
+        className,
+      )}
     >
       <img
         src={logoImg}

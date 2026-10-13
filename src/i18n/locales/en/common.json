@@ -5,7 +5,10 @@
     "attribution": "NELIAS - A product of Debass Technologies",
     "promise": "One platform. Multiple industries. Your environment, automatically configured.",
     "footerTagline": "NELIAS - A Business Management Platform by Debass Technologies. One platform. Multiple industries. Your environment, automatically configured.",
-    "copyright": "© 2026 Debass Technologies. All rights reserved."
+    "copyright": "© 2026 NELIAS. All rights reserved."
+  },
+  "theme": {
+    "darkMode": "Dark mode"
   },
   "header": {
     "mainNavLabel": "Main navigation",

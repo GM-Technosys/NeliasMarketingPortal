@@ -41,12 +41,12 @@ export function RuledItem({
       {...rest}
     >
       {IconComponent && (
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-azure-50 text-azure-700">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-surface-tint text-accent-strong">
           <IconComponent className="h-5 w-5" aria-hidden="true" />
         </span>
       )}
       <div className="flex-1">
-        <HeadingTag className="mb-1 font-display text-lg font-semibold text-navy-900">
+        <HeadingTag className="mb-1 font-display text-lg font-semibold text-heading">
           {title}
         </HeadingTag>
         <div className="text-sm leading-relaxed text-fg-muted md:text-base">{children}</div>

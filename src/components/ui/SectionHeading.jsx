@@ -54,7 +54,7 @@ export function SectionHeading({
       {...rest}
     >
       {eyebrow && (
-        <p className={cn("mb-2 text-sm font-semibold text-azure-600", isInverse && "text-sun-300")}>
+        <p className={cn("mb-2 text-sm font-semibold text-link", isInverse && "text-white")}>
           {eyebrow}
         </p>
       )}
@@ -62,7 +62,7 @@ export function SectionHeading({
       <HeadingTag
         id={id}
         className={cn(
-          "font-display leading-tight font-semibold tracking-tight text-navy-900",
+          "font-display leading-tight font-semibold tracking-tight text-heading",
           headingSizeClass,
           isInverse && "text-white",
           titleClassName,

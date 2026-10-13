@@ -50,7 +50,7 @@ export function Toggletip({ label, align = "start", className, children }) {
         aria-label={accessibleLabel}
         aria-expanded={isOpen}
         onClick={() => setIsOpen((prev) => !prev)}
-        className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full text-ink-500 transition-colors hover:text-navy-900 focus-visible:outline-2 focus-visible:outline-focus"
+        className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full text-fg-subtle transition-colors hover:text-heading focus-visible:outline-2 focus-visible:outline-focus"
       >
         <Info className="h-5 w-5" aria-hidden="true" />
       </button>
@@ -64,7 +64,7 @@ export function Toggletip({ label, align = "start", className, children }) {
       {isOpen && (
         <div
           className={cn(
-            "absolute top-full z-50 mt-1.5 rounded-md bg-navy-900 p-3 text-sm leading-relaxed text-white shadow-raised",
+            "absolute top-full z-50 mt-1.5 rounded-md bg-secondary p-3 text-sm leading-relaxed text-secondary-fg shadow-raised",
             "w-max max-w-[min(20rem,calc(100vw-2rem))]",
             align === "end" ? "right-0" : "left-0",
           )}

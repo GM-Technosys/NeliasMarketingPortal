@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Menu } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/common/Logo";
+import { ThemeToggle } from "@/components/common/ThemeToggle";
 import { DesktopNav } from "./DesktopNav";
 import { HeaderCtas } from "./HeaderCtas";
 import { MobileMenu } from "./MobileMenu";
@@ -21,7 +22,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 bg-white transition-shadow duration-200",
+        "sticky top-0 z-40 bg-surface transition-shadow duration-200",
         isScrolled && "border-b border-line shadow-card",
       )}
     >
@@ -30,8 +31,13 @@ export function Header() {
 
         <DesktopNav />
 
-        {/* Right cluster: CTAs and Mobile Menu Button */}
-        <div className="flex items-center gap-3">
+        {/* Right cluster: CTAs, ThemeToggle and Mobile Menu Button */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Theme toggle visible below xl */}
+          <div className="xl:hidden">
+            <ThemeToggle size="md" />
+          </div>
+
           {/* Desktop (xl+): show dual CTAs when configurator enabled */}
           <div className="hidden xl:block">
             <HeaderCtas location="header" size="md" showSecondary={true} />
@@ -50,7 +56,7 @@ export function Header() {
             aria-controls="mobile-menu"
             aria-label={t("a11y.openMenu")}
             onClick={() => setMobileMenuOpen(true)}
-            className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-md text-ink-700 transition-colors hover:bg-ink-100 hover:text-navy-900 xl:hidden"
+            className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-md text-fg-strong transition-colors hover:bg-surface-sunken hover:text-heading xl:hidden"
           >
             <Menu className="h-6 w-6" aria-hidden="true" />
           </button>

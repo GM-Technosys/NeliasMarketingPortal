@@ -25,10 +25,10 @@ export function ResponsiveTable({
       aria-label={label}
       className={cn(
         "relative overflow-x-auto rounded-lg border border-line focus-visible:outline-2 focus-visible:outline-focus",
-        "[&_thead_th]:bg-surface-muted [&_thead_th]:px-4 [&_thead_th]:py-3 [&_thead_th]:text-sm [&_thead_th]:font-semibold [&_thead_th]:text-navy-900",
+        "[&_thead_th]:bg-surface-muted [&_thead_th]:px-4 [&_thead_th]:py-3 [&_thead_th]:text-sm [&_thead_th]:font-semibold [&_thead_th]:text-heading",
         "[&_tbody_td]:border-t [&_tbody_td]:border-line [&_tbody_td]:px-4 [&_tbody_td]:py-3",
         "[&_tbody_td]:border-t [&_tbody_th]:border-line [&_tbody_th]:px-4 [&_tbody_th]:py-3",
-        "[&_tbody_th[scope=row]]:sticky [&_tbody_th[scope=row]]:left-0 [&_tbody_th[scope=row]]:bg-white [&_tbody_th[scope=row]]:font-semibold",
+        "[&_tbody_th[scope=row]]:sticky [&_tbody_th[scope=row]]:left-0 [&_tbody_th[scope=row]]:bg-surface-raised [&_tbody_th[scope=row]]:font-semibold",
         className,
       )}
       {...rest}
@@ -36,7 +36,7 @@ export function ResponsiveTable({
       <table className="w-full min-w-[40rem] border-collapse text-left text-sm md:text-base">
         {caption && (
           <caption
-            className={cn("p-3 text-left font-semibold text-navy-900", captionHidden && "sr-only")}
+            className={cn("p-3 text-left font-semibold text-heading", captionHidden && "sr-only")}
           >
             {caption}
           </caption>

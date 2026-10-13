@@ -3,7 +3,7 @@ import { cn } from "@/lib/cn";
 const toneMap = {
   default: "bg-surface border-line text-fg",
   muted: "bg-surface-muted border-line text-fg",
-  tint: "bg-surface-tint border-azure-200 text-fg",
+  tint: "bg-surface-tint border-accent-line text-fg",
   inverse: "bg-brand-deep border-white/10 text-fg-inverse",
 };
 
@@ -70,7 +70,7 @@ export function CardTitle({ as: Component = "h3", className, children, ...rest }
   return (
     <Component
       className={cn(
-        "font-display text-lg leading-snug font-semibold tracking-tight text-navy-900 group-data-[tone=inverse]:text-white md:text-xl",
+        "font-display text-lg leading-snug font-semibold tracking-tight text-heading group-data-[tone=inverse]:text-white md:text-xl",
         className,
       )}
       {...rest}

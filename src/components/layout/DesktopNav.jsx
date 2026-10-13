@@ -17,13 +17,16 @@ export function DesktopNav() {
           key={key}
           to={to}
           end
-          onClick={() => track(EVENTS.NAV_CLICK, { key })}
+          onClick={(e) => {
+            if (to === "#") e.preventDefault();
+            track(EVENTS.NAV_CLICK, { key });
+          }}
           className={({ isActive }) =>
             cn(
               "relative px-2 py-2 text-[0.9375rem] font-semibold whitespace-nowrap transition-colors 2xl:px-2.5",
-              isActive
-                ? "text-navy-900 after:absolute after:right-2 after:bottom-0 after:left-2 after:h-0.5 after:bg-azure-500"
-                : "text-ink-700 hover:text-azure-600",
+              isActive && to !== "#"
+                ? "text-heading after:absolute after:right-2 after:bottom-0 after:left-2 after:h-0.5 after:bg-accent"
+                : "text-fg-strong hover:text-link",
             )
           }
         >

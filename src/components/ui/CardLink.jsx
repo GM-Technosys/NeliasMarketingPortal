@@ -26,34 +26,45 @@ export function CardLink({
   const HeadingTag = `h${headingLevel}`;
   const isExternal = typeof to === "string" && !to.startsWith("/");
 
+  const handleClick = (e) => {
+    if (to === "#") {
+      e.preventDefault();
+    }
+  };
+
   return (
     <div
       className={cn(
-        "group relative flex flex-col rounded-lg border border-line bg-surface p-6 transition-colors",
-        "hover:border-azure-500",
+        "group relative flex flex-col rounded-lg border border-line bg-surface-raised p-6 transition-colors",
+        "hover:border-accent",
         "has-[a:focus-visible]:outline-3 has-[a:focus-visible]:outline-offset-3 has-[a:focus-visible]:outline-focus",
         className,
       )}
       {...rest}
     >
       {IconComponent && (
-        <span className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-md bg-azure-50 text-azure-700">
+        <span className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-md bg-surface-tint text-accent-strong">
           <IconComponent className="h-5 w-5" aria-hidden="true" />
         </span>
       )}
 
-      <HeadingTag className="font-display text-lg font-semibold text-navy-900 transition-colors group-hover:text-azure-700 md:text-xl flex items-center justify-between gap-2">
+      <HeadingTag className="font-display text-lg font-semibold text-heading transition-colors group-hover:text-accent-strong md:text-xl flex items-center justify-between gap-2">
         {isExternal ? (
           <a
             href={to}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={handleClick}
             className="outline-none group-hover:underline after:absolute after:inset-0"
           >
             {title}
           </a>
         ) : (
-          <Link to={to} className="outline-none group-hover:underline after:absolute after:inset-0">
+          <Link
+            to={to}
+            onClick={handleClick}
+            className="outline-none group-hover:underline after:absolute after:inset-0"
+          >
             {title}
           </Link>
         )}

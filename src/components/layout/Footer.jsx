@@ -39,6 +39,9 @@ export function Footer() {
                   <li key={key}>
                     <NavLink
                       to={to}
+                      onClick={(e) => {
+                        if (to === "#") e.preventDefault();
+                      }}
                       className="inline-flex py-1 text-sm text-fg-inverse-muted transition-colors hover:text-white hover:underline"
                     >
                       {t(`nav.${key}`)}
@@ -61,7 +64,7 @@ export function Footer() {
                     href={`mailto:${site.contact.email}`}
                     className="inline-flex py-1 items-center gap-2.5 text-sm text-fg-inverse-muted transition-colors hover:text-white hover:underline"
                   >
-                    <Mail className="h-4 w-4 shrink-0 text-azure-400" aria-hidden="true" />
+                    <Mail className="h-4 w-4 shrink-0 text-white/70" aria-hidden="true" />
                     <span>{site.contact.email}</span>
                   </a>
                 </li>
@@ -72,7 +75,7 @@ export function Footer() {
                     href={toTelHref(site.contact.phone)}
                     className="inline-flex py-1 items-center gap-2.5 text-sm text-fg-inverse-muted transition-colors hover:text-white hover:underline"
                   >
-                    <Phone className="h-4 w-4 shrink-0 text-azure-400" aria-hidden="true" />
+                    <Phone className="h-4 w-4 shrink-0 text-white/70" aria-hidden="true" />
                     <span>{site.contact.phone}</span>
                   </a>
                 </li>
@@ -86,7 +89,7 @@ export function Footer() {
                     aria-label={`${t("footer.whatsapp")} ${site.contact.whatsapp}`}
                     className="inline-flex py-1 items-center gap-2.5 text-sm text-fg-inverse-muted transition-colors hover:text-white hover:underline"
                   >
-                    <MessageSquare className="h-4 w-4 shrink-0 text-azure-400" aria-hidden="true" />
+                    <MessageSquare className="h-4 w-4 shrink-0 text-white/70" aria-hidden="true" />
                     <span>
                       {t("footer.whatsapp")}: {site.contact.whatsapp}
                     </span>
@@ -95,7 +98,7 @@ export function Footer() {
               )}
               {site.address && (
                 <li className="inline-flex py-1 items-center gap-2.5 text-sm text-fg-inverse-muted">
-                  <MapPin className="h-4 w-4 shrink-0 text-azure-400" aria-hidden="true" />
+                  <MapPin className="h-4 w-4 shrink-0 text-white/70" aria-hidden="true" />
                   <span>{site.address}</span>
                 </li>
               )}
@@ -108,13 +111,15 @@ export function Footer() {
           <p>{t("brand.copyright")}</p>
           <nav aria-label={t("footer.legalNavLabel")} className="flex items-center gap-6">
             <NavLink
-              to="/privacy"
+              to="#"
+              onClick={(e) => e.preventDefault()}
               className="inline-flex py-1 items-center text-fg-inverse-muted transition-colors hover:text-white hover:underline"
             >
               {t("nav.privacy")}
             </NavLink>
             <NavLink
-              to="/terms"
+              to="#"
+              onClick={(e) => e.preventDefault()}
               className="inline-flex py-1 items-center text-fg-inverse-muted transition-colors hover:text-white hover:underline"
             >
               {t("nav.terms")}

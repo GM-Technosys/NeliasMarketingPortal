@@ -159,8 +159,8 @@ export function Tabs({
                   className={cn(
                     "group flex min-h-12 w-full cursor-pointer items-center justify-between rounded-lg px-3.5 py-3 text-left text-[15px] font-semibold transition-all outline-none focus-visible:outline-2 focus-visible:outline-focus",
                     isActive
-                      ? "bg-navy-900 text-white shadow-xs"
-                      : "text-ink-700 hover:bg-ink-100 hover:text-navy-900",
+                      ? "bg-selected text-selected-fg shadow-xs"
+                      : "text-fg-strong hover:bg-surface-sunken hover:text-heading",
                   )}
                 >
                   <span className="flex items-center gap-2.5 truncate">
@@ -169,8 +169,8 @@ export function Tabs({
                         className={cn(
                           "h-4 w-4 shrink-0 transition-colors",
                           isActive
-                            ? "text-white"
-                            : "text-ink-500 group-hover:text-azure-600",
+                            ? "text-selected-fg"
+                            : "text-fg-subtle group-hover:text-link",
                         )}
                         aria-hidden="true"
                       />
@@ -181,8 +181,8 @@ export function Tabs({
                     className={cn(
                       "h-4 w-4 shrink-0 transition-all",
                       isActive
-                        ? "text-white opacity-90"
-                        : "text-ink-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5",
+                        ? "text-selected-fg opacity-90"
+                        : "text-fg-subtle opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5",
                     )}
                     aria-hidden="true"
                   />
@@ -224,7 +224,7 @@ export function Tabs({
             "flex snap-x items-center min-w-max",
             variant === "underline"
               ? "w-full gap-2 border-b border-line"
-              : "inline-flex gap-1 rounded-md bg-ink-100 p-1",
+              : "inline-flex gap-1 rounded-md bg-surface-sunken p-1",
           )}
         >
           {items.map(({ id, label: tabLabel, icon: IconComponent }, index) => {
@@ -254,14 +254,14 @@ export function Tabs({
                   variant === "underline" && [
                     "relative py-3",
                     isActive
-                      ? "text-navy-900 after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:bg-azure-500"
-                      : "text-ink-600 hover:text-navy-900",
+                      ? "text-heading after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:bg-accent"
+                      : "text-fg-muted hover:text-heading",
                   ],
                   variant === "pill" && [
                     "rounded-md py-2",
                     isActive
-                      ? "bg-navy-900 text-white shadow-xs"
-                      : "text-ink-700 hover:bg-ink-200/70 hover:text-navy-900",
+                      ? "bg-selected text-selected-fg shadow-xs"
+                      : "text-fg-strong hover:bg-line/70 hover:text-heading",
                   ],
                 )}
               >

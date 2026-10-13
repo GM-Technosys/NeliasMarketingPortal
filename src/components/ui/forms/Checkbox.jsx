@@ -30,21 +30,21 @@ export const Checkbox = forwardRef(function Checkbox(
           />
           <span
             className={cn(
-              "flex h-6 w-6 items-center justify-center rounded-sm border-2 border-ink-500 bg-white transition-colors",
+              "flex h-6 w-6 items-center justify-center rounded-sm border-2 border-field bg-surface-raised transition-colors",
               "peer-focus-visible:outline-3 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-focus",
-              "peer-checked:border-navy-900 peer-checked:bg-navy-900 peer-checked:[&>svg]:opacity-100",
-              "peer-disabled:border-ink-300 peer-disabled:bg-ink-100",
+              "peer-checked:border-selected peer-checked:bg-selected peer-checked:[&>svg]:opacity-100",
+              "peer-disabled:border-line-strong peer-disabled:bg-surface-sunken",
             )}
           >
             <Check
-              className="h-4 w-4 stroke-[3] text-white opacity-0 transition-opacity"
+              className="h-4 w-4 stroke-[3] text-selected-fg opacity-0 transition-opacity"
               aria-hidden="true"
             />
           </span>
         </span>
 
         <span className="flex flex-col pt-0.5">
-          <span className="text-[1rem] leading-snug font-medium text-ink-900">{label}</span>
+          <span className="text-[1rem] leading-snug font-medium text-fg">{label}</span>
           {hint && <span className="mt-0.5 text-sm text-fg-muted">{hint}</span>}
         </span>
       </label>
