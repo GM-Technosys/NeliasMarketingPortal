@@ -2,9 +2,9 @@
   "brand": {
     "name": "NELIAS",
     "descriptor": "Plateforme de gestion d’entreprise",
-    "attribution": "NELIAS — Un produit de Debass Technologies",
+    "attribution": "NELIAS - Un produit de Debass Technologies",
     "promise": "Une seule plateforme. Plusieurs secteurs. Votre environnement, configuré automatiquement.",
-    "footerTagline": "NELIAS — Une plateforme de gestion d’entreprise conçue par Debass Technologies. Une seule plateforme. Plusieurs secteurs. Votre environnement, configuré automatiquement.",
+    "footerTagline": "NELIAS - Une plateforme de gestion d’entreprise conçue par Debass Technologies. Une seule plateforme. Plusieurs secteurs. Votre environnement, configuré automatiquement.",
     "copyright": "© 2026 NELIAS. Tous droits réservés."
   },
   "theme": {
@@ -13,7 +13,7 @@
   "header": {
     "mainNavLabel": "Navigation principale",
     "menu": "Menu",
-    "homeLink": "NELIAS — Accueil"
+    "homeLink": "NELIAS - Accueil"
   },
   "nav": {
     "home": "Accueil",
@@ -44,7 +44,8 @@
     "seeHowItWorks": "Voir comment ça marche",
     "seeHowNeliasWorks": "Voir comment fonctionne NELIAS",
     "contactTeam": "Contacter notre équipe",
-    "requestConversation": "Demander un échange"
+    "requestConversation": "Demander un échange",
+    "contactNeliasTeam": "Contacter l’équipe NELIAS"
   },
   "a11y": {
     "skipToContent": "Aller au contenu principal",

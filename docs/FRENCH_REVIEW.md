@@ -6,7 +6,8 @@ All French copy is an AI-drafted translation pending review by Debass or a nativ
 
 | Namespace | Number of Keys | Status | Reviewer | Date |
 |---|---|---|---|---|
-| `common` | 62 | Draft | Pending (Debass) | 2026-10-13 |
+| `about` | 28 | Draft | Pending (Debass) | 2026-10-14 |
+| `common` | 64 | Draft | Pending (Debass) | 2026-10-13 |
 | `features` | 24 | Draft | Pending (Debass) | 2026-10-13 |
 | `home` | 64 | Draft | Pending (Debass) | 2026-10-13 |
 | `industries` | 22 | Draft | Pending (Debass) | 2026-10-13 |

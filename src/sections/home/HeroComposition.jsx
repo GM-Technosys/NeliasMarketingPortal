@@ -72,7 +72,7 @@ export function HeroComposition() {
           </div>
         </div>
 
-        {/* 6 Capability Tiles Grid */}
+        {/* 6 Capability Tiles Grid*/}
         <div className="p-2.5 sm:p-3.5 lg:p-3 xl:p-4 grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5 lg:gap-2 xl:gap-2.5 bg-surface">
           {capabilityCards.map(({ id, icon }, index) => (
             <div

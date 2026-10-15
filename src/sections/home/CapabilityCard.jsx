@@ -5,7 +5,7 @@ import { IconBadge } from "@/components/ui/IconBadge";
 import { cn } from "@/lib/cn";
 
 /**
- * Interactive capability card button triggering modal use-case dialog.
+ * Interactive capability card button modal use-case dialog.
  * Note: Uses <span> for title instead of <h3> to maintain valid HTML within <button>.
  */
 export const CapabilityCard = forwardRef(function CapabilityCard(
@@ -26,7 +26,7 @@ export const CapabilityCard = forwardRef(function CapabilityCard(
         "focus-visible:outline-2 focus-visible:outline-focus",
         className,
       )}
-    >
+    > 
       <div className="flex items-start justify-between gap-3">
         <IconBadge icon={icon} tone="azure" size="md" />
         <span className="inline-flex items-center gap-1 text-xs font-semibold text-link group-hover:text-accent-strong transition-colors">
@@ -34,7 +34,7 @@ export const CapabilityCard = forwardRef(function CapabilityCard(
           <Plus className="h-3.5 w-3.5" aria-hidden="true" />
         </span>
       </div>
-
+      
       <div className="mt-4">
         <span className="font-display text-xl font-semibold text-heading group-hover:text-accent-strong transition-colors leading-snug">
           {t(`home:capabilities.items.${id}.title`)}

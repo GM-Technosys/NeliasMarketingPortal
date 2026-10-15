@@ -8,6 +8,7 @@ const toneMap = {
 };
 
 const spacingMap = {
+  sm: "py-8 md:py-12 lg:py-14",
   md: "py-14 md:py-20",
   lg: "py-16 md:py-24 lg:py-28",
 };
@@ -16,7 +17,7 @@ const spacingMap = {
  * Page section with tone and spacing presets.
  * @param {Object} props
  * @param {"default"|"muted"|"tint"|"inverse"} [props.tone="default"]
- * @param {"md"|"lg"} [props.spacing="md"]
+ * @param {"sm"|"md"|"lg"} [props.spacing="md"]
  * @param {string} [props.id]
  * @param {string} [props.className]
  * @param {import("react").ReactNode} props.children

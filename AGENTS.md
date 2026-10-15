@@ -174,4 +174,12 @@ npm run format      # Prettier
 7. Moved role tokens exist as plain variables (`var(--surface)`, `var(--fg)`, `var(--line)`…), not as `var(--color-surface)`.
 8. Orange is for actions and the ribbon only; the dark palette follows the same rule.
 
+## About Page Guidelines
+
+- About page copy lives in `about.json` (en and fr) and follows `NELIAS_About_Us_For_Rahul_EN.docx`; it replaces PDF Section 9. The closing button text comes from the PDF (Section 9).
+- Heading structure: one `<h1>`, four `<h2>`; pull statements and the signature are paragraphs.
+- Design signature of the page: the short ribbon accent above the title and the ribbon arc in `VisionRipple` (the only animation) are the page's bold devices; `FoundationIllustration` and `VisionRipple` are shape-only (no text, numbers, map or flag).
+- Open copy items for Debass (marked `TODO(Debass)`): replacement of the PDF text, the signature wording, the "leading platform" claim, French review.
+
+
 

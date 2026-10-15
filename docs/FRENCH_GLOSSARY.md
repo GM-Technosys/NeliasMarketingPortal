@@ -1,4 +1,4 @@
-# NELIAS Marketing Portal — French Glossary and Style Guide
+# NELIAS Marketing Portal - French Glossary and Style Guide
 
 ## 1. Fixed phrases (use EXACTLY)
 
@@ -7,8 +7,8 @@
 | One platform. Multiple industries. Your environment, automatically configured. | Une seule plateforme. Plusieurs secteurs. Votre environnement, configuré automatiquement. |
 | Your business is unique. Your management platform should be too. | Votre entreprise est unique. Votre plateforme de gestion devrait l’être aussi. |
 | Business Management Platform | Plateforme de gestion d’entreprise |
-| NELIAS — A product of Debass Technologies | NELIAS — Un produit de Debass Technologies |
-| NELIAS — A Business Management Platform by Debass Technologies. | NELIAS — Une plateforme de gestion d’entreprise conçue par Debass Technologies. |
+| NELIAS - A product of Debass Technologies | NELIAS - Un produit de Debass Technologies |
+| NELIAS - A Business Management Platform by Debass Technologies. | NELIAS - Une plateforme de gestion d’entreprise conçue par Debass Technologies. |
 | © 2026 NELIAS. All rights reserved. | © 2026 NELIAS. Tous droits réservés. |
 | Illustrative preview | Aperçu illustratif |
 | Skip to main content | Aller au contenu principal |

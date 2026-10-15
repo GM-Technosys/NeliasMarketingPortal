@@ -11,6 +11,7 @@ import { cn } from "@/lib/cn";
  * @param {import("react").ReactNode} [props.actions]
  * @param {import("react").ReactNode} [props.media]
  * @param {"tint"|"default"|"inverse"} [props.tone="tint"]
+ * @param {"sm"|"md"|"lg"} [props.spacing="lg"]
  * @param {boolean} [props.accent=false]
  * @param {string} [props.titleId]
  * @param {string} [props.className]
@@ -21,6 +22,7 @@ export function PageHeader({
   actions,
   media,
   tone = "tint",
+  spacing = "lg",
   accent = false,
   titleId,
   className,
@@ -28,7 +30,7 @@ export function PageHeader({
   const isInverse = tone === "inverse";
 
   return (
-    <Section tone={tone} spacing="lg" className={cn("overflow-hidden", className)}>
+    <Section tone={tone} spacing={spacing} className={cn("overflow-hidden", className)}>
       <Container>
         <div
           className={cn(media ? "lg:grid lg:grid-cols-12 lg:items-center lg:gap-12" : "max-w-3xl")}

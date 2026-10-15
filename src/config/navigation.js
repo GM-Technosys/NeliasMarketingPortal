@@ -10,7 +10,7 @@ export const mainNav = [
   { key: "features", to: "#" },
   { key: "pricing", to: "#" },
   { key: "resources", to: "#" },
-  { key: "about", to: "#" },
+  { key: "about", to: "/about" },
 ];
 
 /**

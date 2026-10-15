@@ -16,6 +16,8 @@ const routes = [
     element: <RootLayout />,
     children: [
       { index: true, ...page(() => import("@/pages/HomePage")) },
+      { path: "about", ...page(() => import("@/pages/AboutPage")) },
+      { path: "about-us", ...page(() => import("@/pages/AboutPage")) },
       { path: "*", element: <Navigate to="/" replace /> },
     ],
   },
