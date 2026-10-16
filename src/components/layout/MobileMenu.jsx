@@ -7,6 +7,7 @@ import { LanguageSwitcher } from "@/components/common/LanguageSwitcher";
 import { ThemeToggle } from "@/components/common/ThemeToggle";
 import { HeaderCtas } from "./HeaderCtas";
 import { mainNav } from "@/config/navigation";
+import { site } from "@/config/site";
 import { EVENTS, track } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
 
@@ -122,9 +123,9 @@ export function MobileMenu({ open, onClose }) {
       {/* Secondary utility group: Contact, Sign In, Language and Theme */}
       <div className="flex shrink-0 flex-col gap-1 border-b border-line px-5 py-3">
         <NavLink
-          to="#"
-          onClick={(e) => {
-            e.preventDefault();
+          to="/contact"
+          onClick={() => {
+            track(EVENTS.NAV_CLICK, { key: "contact" });
             onClose();
           }}
           className="flex min-h-11 items-center rounded-md px-2 text-[15px] font-semibold text-fg-strong hover:text-link transition-colors"
@@ -132,9 +133,11 @@ export function MobileMenu({ open, onClose }) {
           {t("nav.contact")}
         </NavLink>
         <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
+          href={site.loginUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => {
+            track(EVENTS.NAV_CLICK, { key: "signIn" });
             onClose();
           }}
           className="flex min-h-11 items-center rounded-md px-2 text-[15px] font-semibold text-fg-strong transition-colors hover:text-link"

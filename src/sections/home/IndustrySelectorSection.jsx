@@ -75,7 +75,7 @@ export function IndustrySelectorSection() {
           </div>
 
           <div className="mt-6 border-t border-line pt-5">
-            <TextLink to="#" onClick={(e) => e.preventDefault()}>
+            <TextLink to={`/industries/${slug}`}>
               {t("home:industries.viewIndustry", { name })}
             </TextLink>
           </div>
@@ -123,8 +123,7 @@ export function IndustrySelectorSection() {
 
             <div className="mt-8 text-center">
               <Link
-                to="#"
-                onClick={(e) => e.preventDefault()}
+                to="/industries"
                 className={buttonStyles({ variant: "outline" })}
               >
                 {t("home:industries.cta")}

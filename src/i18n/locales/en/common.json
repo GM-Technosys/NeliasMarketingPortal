@@ -27,7 +27,10 @@
     "contact": "Contact",
     "signIn": "Sign In",
     "privacy": "Privacy Policy",
-    "terms": "Terms of Use"
+    "terms": "Terms of Use",
+    "termsOfSale": "Terms of Sale and Subscription",
+    "dpa": "Data Processing Agreement (DPA)",
+    "sla": "Service Level Agreement (SLA)"
   },
   "footer": {
     "navLabel": "Footer navigation",
@@ -39,13 +42,19 @@
   "cta": {
     "configure": "Configure My NELIAS",
     "bookDemo": "Book a Demo",
+    "exploreNelias": "Explore NELIAS",
     "talkToAdvisor": "Talk to an Advisor",
     "exploreHowItWorks": "Explore How It Works",
     "seeHowItWorks": "See How It Works",
     "seeHowNeliasWorks": "See How NELIAS Works",
     "contactTeam": "Contact Our Team",
     "requestConversation": "Request a Conversation",
-    "contactNeliasTeam": "Contact the NELIAS Team"
+    "contactNeliasTeam": "Contact the NELIAS Team",
+    "discoverHowItWorks": "Discover How It Works",
+    "findConfiguration": "Find the NELIAS configuration for your industry",
+    "seeMyConfiguration": "See My Configuration",
+    "exploreConfiguration": "Explore the Right Configuration",
+    "talkToExpert": "Talk to an Expert"
   },
   "a11y": {
     "skipToContent": "Skip to main content",

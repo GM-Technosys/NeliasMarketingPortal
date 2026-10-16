@@ -13,9 +13,8 @@ export function HomeFinalCta() {
   const actions = (
     <>
       <Link
-        to="#"
-        onClick={(e) => {
-          e.preventDefault();
+        to="/demo"
+        onClick={() => {
           track(EVENTS.CTA_CLICK, { intent: "demo", location: "home-final" });
         }}
         className={buttonStyles({ variant: "primary", size: "lg" })}

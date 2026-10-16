@@ -1,0 +1,111 @@
+{
+  "hero": {
+    "title": "Des formules claires. Des fonctionnalités flexibles. De la marge pour grandir.",
+    "lead": "Choisissez une formule de plateforme adaptée à votre capacité et à votre niveau de service. Ajoutez des fonctionnalités sectorielles, des utilisateurs et des intégrations selon vos besoins."
+  },
+  "page": {
+    "plansTitle": "Formules",
+    "billingLabel": "Période de facturation",
+    "monthly": "Mensuel",
+    "annual": "Annuel",
+    "annualNote": "Les abonnements annuels START, BUSINESS et PROFESSIONAL correspondent à 12 mois de service pour le prix de 10 mois.",
+    "announce": "Affichage des prix {{period}}",
+    "periodMonthly": "mensuels",
+    "periodAnnual": "annuels",
+    "perMonth": "/ mois",
+    "perYear": "/ an",
+    "exclTax": "hors taxes",
+    "customQuote": "Sur devis",
+    "priceOnRequest": "Tarifs sur demande",
+    "recommended": "Recommandée",
+    "usersLabel": "Utilisateurs",
+    "entitiesLabel": "Entités juridiques",
+    "storageLabel": "Stockage",
+    "storageValue": "{{value}} Go",
+    "includedLabel": "Inclus",
+    "compareTitle": "Comparer les formules",
+    "optionalTitle": "Frais optionnels",
+    "optionalLead": "Ajoutez des fonctionnalités sectorielles, des utilisateurs et des intégrations selon vos besoins.",
+    "devPricingTitle": "Détails tarifaires extensibles pour développeurs",
+    "itemCol": "Élément",
+    "ruleCol": "Tarif de référence V2 / règle",
+    "expandDetails": "Afficher les détails développeur",
+    "collapseDetails": "Masquer les détails développeur",
+    "faqTitle": "Questions fréquentes",
+    "nextStep": "Prochaine étape"
+  },
+  "plans": {
+    "start": {
+      "name": "START",
+      "tagline": "Une base pratique pour les petites équipes.",
+      "included": ["Profil sectoriel", "Flux de travail et support standard"],
+      "cta": "Configurer START"
+    },
+    "business": {
+      "name": "BUSINESS",
+      "tagline": "Plus de marge pour les activités en croissance.",
+      "included": ["Flux de travail avancés", "Support Standard+", "Un pack sectoriel standard commercialement disponible"],
+      "cta": "Configurer BUSINESS"
+    },
+    "professional": {
+      "name": "PROFESSIONAL",
+      "tagline": "Une capacité plus large et des fonctionnalités avancées.",
+      "included": ["API avancée", "Portail client", "BI avancée", "Un pack sectoriel standard commercialement disponible"],
+      "cta": "Configurer PROFESSIONAL"
+    },
+    "enterprise": {
+      "name": "ENTERPRISE",
+      "tagline": "Conçue pour les organisations complexes.",
+      "included": ["Capacité sur mesure", "Hébergement", "Engagements de service", "Intégrations"],
+      "cta": "Parler à un expert",
+      "users": "Sur mesure",
+      "entities": "Multi-entités",
+      "storage": "Dimensionné selon vos besoins"
+    }
+  },
+  "compare": {
+    "caption": "Comparaison des formules",
+    "plan": "Formule",
+    "monthlyCol": "Mensuel (hors taxes)",
+    "annualCol": "Annuel (hors taxes)"
+  },
+  "optional": {
+    "groups": {
+      "capacity": "Utilisateurs et entités juridiques",
+      "sectorPacks": "Packs sectoriels",
+      "addOns": "Modules complémentaires",
+      "connectors": "Connecteurs"
+    },
+    "items": {
+      "user-1": "Utilisateur supplémentaire",
+      "users-5": "+5 utilisateurs",
+      "users-10": "+10 utilisateurs",
+      "legal-entity": "Entité juridique supplémentaire",
+      "standard-pack": "Pack sectoriel standard",
+      "industry-plus": "Pack avancé / Industry+",
+      "advanced-workflow": "Flux de travail avancés",
+      "advanced-bi": "BI et analyses avancées",
+      "marketing-automation": "Automatisation marketing",
+      "customer-portal-plus": "Portail client+",
+      "field-service-plus": "Service terrain+",
+      "assets-maintenance-plus": "Actifs et maintenance+",
+      "data-api-plus": "Data & API Plus",
+      "nelias-ai": "NELIAS AI",
+      "audit-compliance": "Audit et conformité avancés",
+      "connector-standard": "Connecteur standard",
+      "connector-business": "Connecteur Business",
+      "connector-premium": "Connecteur Premium",
+      "connector-custom": "Connecteur sur mesure"
+    },
+    "price": {
+      "fixed": "{{amount}} / mois",
+      "from": "À partir de {{amount}} / mois",
+      "fromPlusUsage": "À partir de {{amount}} / mois + usage",
+      "range": "{{min}}–{{max}} / mois",
+      "includedOr": "Inclus ou {{amount}} / mois",
+      "unlessIncluded": "{{amount}} / mois sauf si inclus et commercialement disponible",
+      "quote": "Sur devis"
+    }
+  },
+  "disclaimer": "Prix indiqués en FCFA, hors taxes applicables. La disponibilité, les fonctionnalités incluses, les services optionnels et les frais de tiers sont sous réserve de confirmation. Certaines configurations nécessitent un devis personnalisé."
+}

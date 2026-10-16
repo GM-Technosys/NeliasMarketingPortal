@@ -1,0 +1,111 @@
+{
+  "hero": {
+    "title": "Clear plans. Flexible capabilities. Room to grow.",
+    "lead": "Choose a platform plan for your capacity and service level. Add sector capabilities, users and integrations where needed."
+  },
+  "page": {
+    "plansTitle": "Plans",
+    "billingLabel": "Billing period",
+    "monthly": "Monthly",
+    "annual": "Annual",
+    "annualNote": "Annual subscriptions for START, BUSINESS and PROFESSIONAL correspond to 12 months of service for the price of 10 months.",
+    "announce": "Showing {{period}} prices",
+    "periodMonthly": "monthly",
+    "periodAnnual": "annual",
+    "perMonth": "/ month",
+    "perYear": "/ year",
+    "exclTax": "excl. tax",
+    "customQuote": "Custom quote",
+    "priceOnRequest": "Pricing on request",
+    "recommended": "Recommended",
+    "usersLabel": "Users",
+    "entitiesLabel": "Legal entities",
+    "storageLabel": "Storage",
+    "storageValue": "{{value}} GB",
+    "includedLabel": "Included",
+    "compareTitle": "Compare plans",
+    "optionalTitle": "Optional charges",
+    "optionalLead": "Add sector capabilities, users and integrations where needed.",
+    "devPricingTitle": "Expandable pricing details for developers",
+    "itemCol": "Item",
+    "ruleCol": "Internal V2 price / rule",
+    "expandDetails": "Expand developer pricing",
+    "collapseDetails": "Collapse developer pricing",
+    "faqTitle": "Frequently asked questions",
+    "nextStep": "Next step"
+  },
+  "plans": {
+    "start": {
+      "name": "START",
+      "tagline": "A practical foundation for smaller teams.",
+      "included": ["Sector Profile", "Standard workflows and support"],
+      "cta": "Configure START"
+    },
+    "business": {
+      "name": "BUSINESS",
+      "tagline": "More room for growing operations.",
+      "included": ["Advanced workflows", "Standard+ support", "One commercially available Standard Sector Pack"],
+      "cta": "Configure BUSINESS"
+    },
+    "professional": {
+      "name": "PROFESSIONAL",
+      "tagline": "Broader capacity and advanced capabilities.",
+      "included": ["Advanced API", "Customer portal", "Advanced BI", "One commercially available Standard Sector Pack"],
+      "cta": "Configure PROFESSIONAL"
+    },
+    "enterprise": {
+      "name": "ENTERPRISE",
+      "tagline": "Designed for complex organizations.",
+      "included": ["Custom capacity", "Hosting", "Service commitments", "Integrations"],
+      "cta": "Talk to an Expert",
+      "users": "Tailored",
+      "entities": "Multi-entity",
+      "storage": "Sized to needs"
+    }
+  },
+  "compare": {
+    "caption": "Plan comparison",
+    "plan": "Plan",
+    "monthlyCol": "Monthly (excl. tax)",
+    "annualCol": "Annual (excl. tax)"
+  },
+  "optional": {
+    "groups": {
+      "capacity": "Users and legal entities",
+      "sectorPacks": "Sector Packs",
+      "addOns": "Add-ons",
+      "connectors": "Connectors"
+    },
+    "items": {
+      "user-1": "Additional user",
+      "users-5": "+5 users",
+      "users-10": "+10 users",
+      "legal-entity": "Additional legal entity",
+      "standard-pack": "Standard Sector Pack",
+      "industry-plus": "Advanced / Industry+ Pack",
+      "advanced-workflow": "Advanced Workflow",
+      "advanced-bi": "Advanced BI & Analytics",
+      "marketing-automation": "Marketing Automation",
+      "customer-portal-plus": "Customer Portal+",
+      "field-service-plus": "Field Service+",
+      "assets-maintenance-plus": "Assets & Maintenance+",
+      "data-api-plus": "Data & API Plus",
+      "nelias-ai": "NELIAS AI",
+      "audit-compliance": "Advanced Audit / Compliance",
+      "connector-standard": "Standard Connector",
+      "connector-business": "Business Connector",
+      "connector-premium": "Premium Connector",
+      "connector-custom": "Custom Connector"
+    },
+    "price": {
+      "fixed": "{{amount}} / month",
+      "from": "From {{amount}} / month",
+      "fromPlusUsage": "From {{amount}} / month + usage",
+      "range": "{{min}}–{{max}} / month",
+      "includedOr": "Included or {{amount}} / month",
+      "unlessIncluded": "{{amount}} / month unless included and commercially ready",
+      "quote": "Quote"
+    }
+  },
+  "disclaimer": "Prices shown in FCFA, excluding applicable taxes. Availability, included features, optional services and third-party charges are subject to confirmation. Some configurations require a custom quote."
+}

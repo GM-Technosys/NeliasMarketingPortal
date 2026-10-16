@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { buttonStyles } from "@/components/ui/button-styles";
 import { cn } from "@/lib/cn";
 import { EVENTS, track } from "@/lib/analytics";
+import { features } from "@/config/features";
 
 /**
  * Intent-to-destination mapping.
@@ -11,13 +12,16 @@ import { EVENTS, track } from "@/lib/analytics";
 function resolveIntent(intent, t) {
   switch (intent) {
     case "configure":
-      return { to: "#", label: t("cta.configure") };
+      return {
+        to: features.configurator ? "/configure" : "/demo",
+        label: features.configurator ? t("cta.configure") : t("cta.bookDemo"),
+      };
     case "demo":
-      return { to: "#", label: t("cta.bookDemo") };
+      return { to: "/demo", label: t("cta.bookDemo") };
     case "contact":
-      return { to: "#", label: t("cta.contactTeam") };
+      return { to: "/contact", label: t("cta.contactTeam") };
     default:
-      return { to: "#", label: "" };
+      return { to: "/demo", label: "" };
   }
 }
 
@@ -48,12 +52,14 @@ export function CtaLink({
   ...rest
 }) {
   const { t } = useTranslation();
-  const resolved = intent ? resolveIntent(intent, t) : { to: "#", label: label || "" };
-  const destination = "#";
+  const resolved = intent ? resolveIntent(intent, t) : { to: "/demo", label: label || "" };
+  const destination = _to || resolved.to;
   const displayLabel = children || label || resolved.label;
 
   function handleClick(e) {
-    e.preventDefault();
+    if (destination === "#") {
+      e.preventDefault();
+    }
     track(EVENTS.CTA_CLICK, { intent, location });
     if (onClick) {
       onClick(e);

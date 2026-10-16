@@ -1,18 +1,33 @@
 import { useTranslation } from "react-i18next";
-import { Section } from "@/components/ui/Section";
-import { Container } from "@/components/ui/Container";
-import { Seo } from "@/components/common/Seo";
+import { Seo } from "@/components/common/Seo.jsx";
+import { PageHeader } from "@/components/patterns/PageHeader.jsx";
+import { ContactLayout } from "@/sections/contact/ContactLayout.jsx";
 
+// TODO(Debass): the PDF gives no Demo page copy; the approved label "Book a Demo" is the title and the approved Section 10 body is the lead. The page is an explicitly labelled demo REQUEST (no live scheduling tool is specified; demo scheduling needs Debass approval).
+
+/**
+ * Demo request page with hero header and 2-column demo/lead form layout.
+ *
+ * @returns {import("react").JSX.Element}
+ */
 export default function DemoPage() {
   const { t } = useTranslation();
 
   return (
-    <Section>
-      <Container>
-        <Seo pageKey="fallback" />
-        <h1 className="font-display text-h1">{t("cta.bookDemo")}</h1>
-        <p className="mt-4 text-fg-muted">{t("devPlaceholder")}</p>
-      </Container>
-    </Section>
+    <>
+      <Seo
+        title={t("contact:seo.demoTitle")}
+        description={t("contact:seo.description")}
+      />
+
+      <PageHeader
+        title={t("contact:demo.title")}
+        lead={t("contact:hero.lead")}
+        tone="tint"
+        accent={true}
+      />
+
+      <ContactLayout type="demo" />
+    </>
   );
 }

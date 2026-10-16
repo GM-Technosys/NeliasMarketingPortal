@@ -1,0 +1,44 @@
+{
+  "items": {
+    "whatIsNelias": {
+      "q": "What is NELIAS?",
+      "a": "NELIAS is a Business Management Platform designed to bring business management capabilities together and configure them around an organization’s profile."
+    },
+    "isErp": {
+      "q": "Is NELIAS an ERP?",
+      "a": "NELIAS includes ERP-type capabilities, but its positioning is broader: a platform approach built around business profiles, sector-aware configuration and connected workflows."
+    },
+    "sectorEngine": {
+      "q": "What is the Sector Engine?",
+      "a": "The Sector Engine is the rules-based component designed to recommend a relevant configuration from your business profile and needs."
+    },
+    "addLater": {
+      "q": "Can I add capabilities later?",
+      "a": "The platform helps to support evolving plans, capacities and optional capabilities, subject to catalogue availability."
+    },
+    "multipleOffices": {
+      "q": "Do I pay more for multiple offices?",
+      "a": "Physical location alone is not a pricing factor. Additional operational capabilities, legal entities or services may affect the price."
+    },
+    "hosting": {
+      "q": "Where will my data be hosted?",
+      "a": "Hosting options depend on the subscription and technical requirements. NELIAS is being planned with African hosting options, including Côte d’Ivoire, subject to contractual confirmation."
+    },
+    "connect": {
+      "q": "Can I connect NELIAS to other tools?",
+      "a": "Approved connectors and APIs are planned, with availability and fees varying by integration."
+    },
+    "getStarted": {
+      "q": "How do I get started with NELIAS?",
+      "a": "Select “Configure My NELIAS” to describe your business, review a recommended configuration, and proceed through the currently available options."
+    },
+    "tryNelias": {
+      "q": "Can I try NELIAS?",
+      "a": "demo access and trial offers depend on currently available services. Contact the team to register your interest."
+    },
+    "moreThanOneCompany": {
+      "q": "Can I use NELIAS for more than one company?",
+      "a": "Multi-entity capabilities depend on the plan and any additional legal-entity subscriptions."
+    }
+  }
+}

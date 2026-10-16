@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Mail, Phone, MessageSquare, MapPin } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/common/Logo";
-import { footerNav } from "@/config/navigation";
+import { footerNav, legalNav } from "@/config/navigation";
 import { site } from "@/config/site";
 import { toTelHref, toWhatsAppHref } from "@/lib/contact";
 
@@ -110,20 +110,15 @@ export function Footer() {
         <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-4 text-xs text-fg-inverse-muted sm:flex-row">
           <p>{t("brand.copyright")}</p>
           <nav aria-label={t("footer.legalNavLabel")} className="flex items-center gap-6">
-            <NavLink
-              to="#"
-              onClick={(e) => e.preventDefault()}
-              className="inline-flex py-1 items-center text-fg-inverse-muted transition-colors hover:text-white hover:underline"
-            >
-              {t("nav.privacy")}
-            </NavLink>
-            <NavLink
-              to="#"
-              onClick={(e) => e.preventDefault()}
-              className="inline-flex py-1 items-center text-fg-inverse-muted transition-colors hover:text-white hover:underline"
-            >
-              {t("nav.terms")}
-            </NavLink>
+            {legalNav.map(({ key, to }) => (
+              <NavLink
+                key={key}
+                to={to}
+                className="inline-flex py-1 items-center text-fg-inverse-muted transition-colors hover:text-white hover:underline"
+              >
+                {t(`nav.${key}`)}
+              </NavLink>
+            ))}
           </nav>
         </div>
       </Container>

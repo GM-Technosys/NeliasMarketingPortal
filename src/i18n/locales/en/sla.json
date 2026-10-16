@@ -1,0 +1,125 @@
+{
+  "meta": {
+    "title": "Service Level Agreement (SLA)",
+    "version": "NELIAS BMP | Version 1.1 - Portal publication | 13 October 2026",
+    "publisher": "Publisher: Debass Technologies SARL • https://nelias.app",
+    "notice": "This English version is provided for convenience. In the event of any discrepancy, the French version prevails."
+  },
+  "seo": {
+    "title": "Service Level Agreement (SLA) | NELIAS BMP",
+    "description": "Service Level Agreement (SLA) of NELIAS BMP, version 1.1, portal publication, 13 October 2026."
+  },
+  "page": {
+    "contents": "Contents",
+    "languageLink": "Read this document in French"
+  },
+  "articles": [
+    {
+      "title": "1. Purpose",
+      "blocks": [
+        { "p": "This SLA defines the standard service level applicable to production subscriptions to NELIAS BMP. Special conditions displayed and accepted at the time of the order or quote may provide a higher level." }
+      ]
+    },
+    {
+      "title": "2. Scope",
+      "blocks": [
+        { "p": "The SLA covers access to the production platform and application support. Unless otherwise stated, it does not cover: the customer's Internet access, its equipment and local configurations, independent third-party services, specific developments and pilot environments." }
+      ]
+    },
+    {
+      "title": "3. Service levels by plan",
+      "blocks": [
+        { "table": {
+          "head": ["Plan", "Service level", "Application"],
+          "rows": [
+            ["START", "Standard", "Commitments of this SLA"],
+            ["BUSINESS", "Standard+", "Commitments of the Standard level; tickets handled ahead of those of the Standard level"],
+            ["PROFESSIONAL", "Priority", "Commitments of the Standard level; tickets handled ahead of those of the Standard and Standard+ levels"],
+            ["ENTERPRISE", "SLA", "Level defined in the quote or special conditions accepted"]
+          ]
+        } },
+        { "p": "The time limits in article 7 are maximum times for first handling; the Standard+ and Priority levels determine the order in which tickets are handled, without reducing these times, unless otherwise stated in the order." }
+      ]
+    },
+    {
+      "title": "4. Hosting and continuity",
+      "blocks": [
+        { "p": "Main hosting is provided with Hodi in Grand-Bassam (Côte d'Ivoire); a disaster recovery plan (DRP) is organised in Johannesburg (South Africa). CRMPUNCH provides technical support." },
+        { "p": "This architecture guarantees neither an instantaneous failover nor the absence of any data loss." }
+      ]
+    },
+    {
+      "title": "5. Availability",
+      "blocks": [
+        { "p": "Standard objective: 99.5% monthly availability of the production environment, equivalent to at most about 3 hours 36 minutes of unavailability in a 30-day month." },
+        { "p": "The rate is calculated over the minutes of the calendar month: (minutes in the month − minutes of unavailability) ÷ minutes in the month, excluding exclusions. Unavailability means the general inability to use the essential functions, observed by monitoring or confirmed by Debass." }
+      ]
+    },
+    {
+      "title": "6. Exclusions",
+      "blocks": [
+        { "p": "The following are not counted as unavailability: announced maintenance, force majeure, failure of the customer's network or equipment, customer configuration errors, interruption caused by an independent third party and urgent security measures reasonably necessary." },
+        { "p": "These exclusions do not cover a failure directly attributable to Debass." }
+      ]
+    },
+    {
+      "title": "7. Support and first response times",
+      "blocks": [
+        { "p": "Standard support is provided Monday to Friday, from 8 a.m. to 6 p.m. (Abidjan time), excluding Ivorian public holidays, through the channels indicated in the customer area. These hours are the “business hours”. A request received outside these hours is handled on the next business day. 24/7 on-call cover exists only where expressly stated in the order." },
+        { "table": {
+          "head": ["Priority", "Definition", "First response"],
+          "rows": [
+            ["P1 - critical", "Service globally inaccessible", "4 business hours"],
+            ["P2 - high", "Essential function blocked", "8 business hours"],
+            ["P3 - medium", "Degradation with a workaround", "2 business days"],
+            ["P4 - low", "Question or minor anomaly", "3 business days"]
+          ]
+        } },
+        { "p": "These times aim at first handling; they do not guarantee resolution within the same time." }
+      ]
+    },
+    {
+      "title": "8. Maintenance",
+      "blocks": [
+        { "p": "Maintenance likely to significantly affect the service is in principle announced 48 hours in advance. Urgent security work may take place without notice; the customer is informed as soon as possible." }
+      ]
+    },
+    {
+      "title": "9. Backups and recovery",
+      "blocks": [
+        { "p": "Debass organises backups and a recovery arrangement suited to the service. The standard SLA guarantees neither a recovery time (RTO) nor a maximum amount of data loss (RPO). Specific objectives may be defined in a particular offer and accepted electronically." }
+      ]
+    },
+    {
+      "title": "10. Incident tracking",
+      "blocks": [
+        { "p": "The customer opens a ticket from the portal, describes the incident and provides the useful information without disclosing secrets (passwords, access keys). Debass qualifies the priority, coordinates the partners and communicates the relevant information according to severity." }
+      ]
+    },
+    {
+      "title": "11. Compensation",
+      "blocks": [
+        { "p": "The standard SLA does not provide for automatic service credits. The customer's mandatory rights and the remedies provided in the Terms of Sale remain applicable. Specific credits may be agreed in an ENTERPRISE offer." }
+      ]
+    },
+    {
+      "title": "12. Customer responsibilities",
+      "blocks": [
+        { "p": "The customer protects its devices and credentials, keeps its contact details up to date, cooperates in diagnosis and carries out the additional exports useful for its own obligations." }
+      ]
+    },
+    {
+      "title": "13. Acceptance and changes",
+      "blocks": [
+        { "p": "Acceptance takes place exclusively on the NELIAS portal, by a person authorised to bind the company, through an explicit action: unticked boxes and a confirmation button. In the standard journey, no printed document or handwritten signature is required. NELIAS keeps, within the limits of the law, the evidence needed: account identity, company, date and time, versions and fingerprint of the accepted documents, order summary and technical data of the confirmation. Where an advanced electronic signature is legally required, it is built into the digital journey." },
+        { "p": "Any substantial change to the applicable service levels is subject to notice and, where necessary, a new acceptance." }
+      ]
+    },
+    {
+      "title": "14. Governing law",
+      "blocks": [
+        { "p": "This SLA supplements the Terms of Sale and is governed by Ivorian law, subject to applicable mandatory rules." }
+      ]
+    }
+  ]
+}

@@ -1,42 +1,71 @@
 {
+  "landing": {
+    "title": "Built for different ways of doing business.",
+    "lead": "NELIAS is designed with a common platform foundation and sector-aware configurations - not a separate software product for each industry.",
+    "viewIndustry": "View {{name}}"
+  },
+  "closing": {
+    "title": "Sector-aware configuration",
+    "subtitle": "Modular capabilities configured around your business activities and workflows."
+  },
+  "detail": {
+    "breadcrumb": "Breadcrumb",
+    "challengesTitle": "Common challenges and outcomes",
+    "challengeLabel": "Common challenge",
+    "outcomeLabel": "Outcome",
+    "capabilitiesTitle": "Suggested capabilities",
+    "walkthroughTitle": "Practical walkthrough",
+    "faqTitle": "Frequently asked questions",
+    "allIndustries": "All industries",
+    "nextStep": "Next step",
+    "seoTitle": "{{name}} | NELIAS BMP"
+  },
   "items": {
     "retail-distribution": {
       "name": "Retail & Distribution",
       "summary": "Coordinate sales, purchasing, stock and multi-location operations.",
-      "headline": "Stay on top of sales, purchasing and inventory."
+      "headline": "Stay on top of sales, purchasing and inventory.",
+      "walkthrough": ["Supplier order", "Stock", "Customer sale"]
     },
     "professional-services": {
       "name": "Professional Services & Accounting",
       "summary": "Bring client relationships, projects, timesheets, billing and reporting into a more connected workflow.",
-      "headline": "Keep clients, projects and invoicing connected."
+      "headline": "Keep clients, projects and invoicing connected.",
+      "walkthrough": ["Client relationships", "Projects", "Timesheets", "Billing", "Reporting"]
     },
     "manufacturing": {
       "name": "Manufacturing",
       "summary": "Connect procurement, inventory, production planning and quality processes.",
-      "headline": "Connect purchasing, production and operational tracking."
+      "headline": "Connect purchasing, production and operational tracking.",
+      "walkthrough": ["Procurement", "Inventory", "Production planning", "Quality processes"]
     },
     "healthcare": {
       "name": "Healthcare",
       "summary": "Support administrative operations, procurement, stock and service workflows, subject to sector-specific requirements.",
-      "headline": "Organize activities and resources in one structured environment."
+      "headline": "Organize activities and resources in one structured environment.",
+      "walkthrough": ["Administrative operations", "Procurement", "Stock", "Service workflows"]
     },
     "hospitality": {
       "name": "Hospitality",
       "summary": "Bring purchasing, finance, workforce and operational management closer together.",
-      "headline": "Coordinate teams, purchasing and day-to-day operations."
+      "headline": "Coordinate teams, purchasing and day-to-day operations.",
+      "walkthrough": ["Purchasing", "Finance", "Workforce", "Operational management"]
     },
     "education-training": {
       "name": "Education & Training",
-      "summary": "Support administration, billing, projects and institutional operations."
+      "summary": "Support administration, billing, projects and institutional operations.",
+      "walkthrough": ["Administration", "Billing", "Projects", "Institutional operations"]
     },
     "insurance-financial-services": {
       "name": "Insurance & Financial Services",
       "summary": "Explore structured customer, service and operational workflows, subject to regulatory and integration validation.",
-      "headline": "Improve visibility across customers, cases and operations."
+      "headline": "Improve visibility across customers, cases and operations.",
+      "walkthrough": ["Customer workflows", "Service workflows", "Operational workflows"]
     },
     "energy-field-services": {
       "name": "Energy & Field Services",
-      "summary": "Coordinate assets, maintenance, projects and field activities."
+      "summary": "Coordinate assets, maintenance, projects and field activities.",
+      "walkthrough": ["Assets", "Maintenance", "Projects", "Field activities"]
     }
   }
 }

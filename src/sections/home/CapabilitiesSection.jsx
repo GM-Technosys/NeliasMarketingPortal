@@ -98,9 +98,8 @@ export function CapabilitiesSection() {
 
                 <div className="pt-2">
                   <TextLink
-                    to="#"
-                    onClick={(e) => {
-                      e.preventDefault();
+                    to="/features"
+                    onClick={() => {
                       setActiveId(null);
                     }}
                   >

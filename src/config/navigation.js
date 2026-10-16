@@ -1,15 +1,17 @@
+import { site } from "@/config/site";
+
 /**
  * Main navigation items shown on the header nav bar.
  * Labels come from i18n keys `nav.*`.
  * @type {Array<{ key: string, to: string }>}
  */
 export const mainNav = [
-  { key: "whyNelias", to: "#" },
-  { key: "howItWorks", to: "#" },
-  { key: "industries", to: "#" },
-  { key: "features", to: "#" },
-  { key: "pricing", to: "#" },
-  { key: "resources", to: "#" },
+  { key: "whyNelias", to: "/why-nelias" },
+  { key: "howItWorks", to: "/how-it-works" },
+  { key: "industries", to: "/industries" },
+  { key: "features", to: "/features" },
+  { key: "pricing", to: "/pricing" },
+  { key: "resources", to: "/resources" },
   { key: "about", to: "/about" },
 ];
 
@@ -17,7 +19,7 @@ export const mainNav = [
  * Contact navigation item.
  * @type {{ key: string, to: string }}
  */
-export const contactNav = { key: "contact", to: "#" };
+export const contactNav = { key: "contact", to: "/contact" };
 
 /**
  * Primary navigation items (mainNav + contact).
@@ -36,15 +38,18 @@ export const footerNav = [{ key: "home", to: "/" }, ...primaryNav];
  * @type {Array<{ key: string, to: string }>}
  */
 export const legalNav = [
-  { key: "privacy", to: "#" },
-  { key: "terms", to: "#" },
+  { key: "privacy", to: "/privacy" },
+  { key: "terms", to: "/terms" },
+  { key: "termsOfSale", to: "/terms-of-sale" },
+  { key: "dpa", to: "/dpa" },
+  { key: "sla", to: "/sla" },
 ];
 
 /**
- * Sign In is an external link - disabled to prevent redirection.
+ * Sign In is an external link.
  */
 export const signInLink = {
   key: "signIn",
-  href: "#",
+  href: site.loginUrl,
   external: true,
 };

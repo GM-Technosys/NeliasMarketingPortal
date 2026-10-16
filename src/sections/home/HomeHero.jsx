@@ -43,8 +43,9 @@ export function HomeHero() {
 
             <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto">
               <CtaLink
+                to="/configure"
                 intent="configure"
-                to="#"
+                variant="secondary"
                 size="lg"
                 location="hero"
                 className="w-full sm:w-auto"
@@ -52,8 +53,7 @@ export function HomeHero() {
                 {t("cta.configure")}
               </CtaLink>
               <Link
-                to="#"
-                onClick={(e) => e.preventDefault()}
+                to="/how-it-works"
                 className={cn(
                   buttonStyles({ variant: "outline", size: "lg" }),
                   "w-full sm:w-auto",

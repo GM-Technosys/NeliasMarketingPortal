@@ -38,14 +38,9 @@ export function Header() {
             <ThemeToggle size="md" />
           </div>
 
-          {/* Desktop (xl+): show dual CTAs when configurator enabled */}
-          <div className="hidden xl:block">
-            <HeaderCtas location="header" size="md" showSecondary={true} />
-          </div>
-
-          {/* Tablet (md to xl): show primary CTA only */}
-          <div className="hidden md:block xl:hidden">
-            <HeaderCtas location="header" size="md" showSecondary={false} />
+          {/* Header CTA: Book a Demo (md+) */}
+          <div className="hidden md:block">
+            <HeaderCtas location="header" size="md" />
           </div>
 
           {/* Hamburger button visible below xl */}

@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect, useId } from "react";
+import { useState, useRef, useEffect, useId, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 import { cn } from "@/lib/cn";
 
 /**
@@ -44,6 +44,42 @@ export function Tabs({
   const tabRefs = useRef([]);
   const scrollContainerRef = useRef(null);
   const isInitialMount = useRef(true);
+
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const updateScrollButtons = useCallback(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    setCanScrollLeft(scrollLeft > 4);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 4);
+  }, []);
+
+  useEffect(() => {
+    if (orientation === "vertical") return;
+
+    const el = scrollContainerRef.current;
+    if (!el) return;
+
+    updateScrollButtons();
+
+    el.addEventListener("scroll", updateScrollButtons, { passive: true });
+    window.addEventListener("resize", updateScrollButtons);
+
+    return () => {
+      el.removeEventListener("scroll", updateScrollButtons);
+      window.removeEventListener("resize", updateScrollButtons);
+    };
+  }, [orientation, updateScrollButtons, items]);
+
+  const scrollLeftBy = () => {
+    scrollContainerRef.current?.scrollBy({ left: -240, behavior: "smooth" });
+  };
+
+  const scrollRightBy = () => {
+    scrollContainerRef.current?.scrollBy({ left: 240, behavior: "smooth" });
+  };
 
   const selectTab = (id) => {
     if (!isControlled) {
@@ -212,65 +248,89 @@ export function Tabs({
 
   return (
     <div className={cn("flex w-full min-w-0 max-w-full flex-col", className)}>
-      {/* Scrollable Tablist */}
-      <div
-        ref={scrollContainerRef}
-        className="w-full min-w-0 max-w-full overflow-x-auto scrollbar-none py-1"
-      >
-        <div
-          role="tablist"
-          aria-label={resolvedLabel}
-          className={cn(
-            "flex snap-x items-center min-w-max",
-            variant === "underline"
-              ? "w-full gap-2 border-b border-line"
-              : "inline-flex gap-1 rounded-md bg-surface-sunken p-1",
-          )}
-        >
-          {items.map(({ id, label: tabLabel, icon: IconComponent }, index) => {
-            const isActive = id === activeValue;
-            const tabId = `${idPrefix}-tab-${id}`;
-            const panelId = `${idPrefix}-panel-${id}`;
+      {/* Scrollable Tablist with Left/Right Arrows */}
+      <div className="relative flex items-center w-full min-w-0 max-w-full">
+        {canScrollLeft && (
+          <button
+            type="button"
+            onClick={scrollLeftBy}
+            aria-label={t("ui.previous", { defaultValue: "Previous tabs" })}
+            className="absolute left-0 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-line bg-surface-raised text-fg-strong shadow-card hover:bg-surface-muted hover:text-heading transition-all cursor-pointer -translate-x-1 sm:-translate-x-3"
+          >
+            <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+          </button>
+        )}
 
-            return (
-              <button
-                key={id}
-                ref={(el) => {
-                  tabRefs.current[index] = el;
-                }}
-                id={tabId}
-                role="tab"
-                type="button"
-                aria-selected={isActive}
-                aria-controls={panelId}
-                tabIndex={isActive ? 0 : -1}
-                onClick={() => selectTab(id)}
-                onMouseEnter={() => {
-                  if (selectOnHover) selectTab(id);
-                }}
-                onKeyDown={(e) => handleKeyDown(e, index)}
-                className={cn(
-                  "inline-flex min-h-11 shrink-0 cursor-pointer snap-start items-center gap-2 px-4 text-base font-semibold whitespace-nowrap transition-colors outline-none focus-visible:outline-2 focus-visible:outline-focus",
-                  variant === "underline" && [
-                    "relative py-3",
-                    isActive
-                      ? "text-heading after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:bg-accent"
-                      : "text-fg-muted hover:text-heading",
-                  ],
-                  variant === "pill" && [
-                    "rounded-md py-2",
-                    isActive
-                      ? "bg-selected text-selected-fg shadow-xs"
-                      : "text-fg-strong hover:bg-line/70 hover:text-heading",
-                  ],
-                )}
-              >
-                {IconComponent && <IconComponent className="h-4 w-4 shrink-0" aria-hidden="true" />}
-                <span>{tabLabel}</span>
-              </button>
-            );
-          })}
+        <div
+          ref={scrollContainerRef}
+          className="w-full min-w-0 max-w-full overflow-x-auto scrollbar-none py-1.5 px-0.5"
+        >
+          <div
+            role="tablist"
+            aria-label={resolvedLabel}
+            className={cn(
+              "flex snap-x items-center min-w-max",
+              variant === "underline"
+                ? "w-full gap-2 border-b border-line"
+                : "inline-flex gap-1.5 rounded-lg bg-surface-sunken/80 border border-line/60 p-1.5",
+            )}
+          >
+            {items.map(({ id, label: tabLabel, icon: IconComponent }, index) => {
+              const isActive = id === activeValue;
+              const tabId = `${idPrefix}-tab-${id}`;
+              const panelId = `${idPrefix}-panel-${id}`;
+
+              return (
+                <button
+                  key={id}
+                  ref={(el) => {
+                    tabRefs.current[index] = el;
+                  }}
+                  id={tabId}
+                  role="tab"
+                  type="button"
+                  aria-selected={isActive}
+                  aria-controls={panelId}
+                  tabIndex={isActive ? 0 : -1}
+                  onClick={() => selectTab(id)}
+                  onMouseEnter={() => {
+                    if (selectOnHover) selectTab(id);
+                  }}
+                  onKeyDown={(e) => handleKeyDown(e, index)}
+                  className={cn(
+                    "inline-flex min-h-11 shrink-0 cursor-pointer snap-start items-center gap-2 px-4 text-base font-semibold whitespace-nowrap transition-all outline-none focus-visible:outline-2 focus-visible:outline-focus",
+                    variant === "underline" && [
+                      "relative py-3",
+                      isActive
+                        ? "text-heading after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:bg-accent"
+                        : "text-fg-muted hover:text-heading",
+                    ],
+                    variant === "pill" && [
+                      "rounded-md py-2 border",
+                      isActive
+                        ? "bg-selected text-selected-fg border-selected shadow-xs"
+                        : "bg-surface-raised border-line/80 text-fg-strong shadow-2xs hover:bg-line hover:border-line-strong hover:text-heading",
+                    ],
+                  )}
+                >
+                  {IconComponent && <IconComponent className="h-4 w-4 shrink-0" aria-hidden="true" />}
+                  <span>{tabLabel}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
+
+        {canScrollRight && (
+          <button
+            type="button"
+            onClick={scrollRightBy}
+            aria-label={t("ui.next", { defaultValue: "Next tabs" })}
+            className="absolute right-0 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-line bg-surface-raised text-fg-strong shadow-card hover:bg-surface-muted hover:text-heading transition-all cursor-pointer translate-x-1 sm:translate-x-3"
+          >
+            <ChevronRight className="h-4 w-4" aria-hidden="true" />
+          </button>
+        )}
       </div>
 
       {/* Selected Tabpanel */}

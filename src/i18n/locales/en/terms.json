@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "title": "Terms of Use",
+    "version": "NELIAS BMP | Version 1.1 - Portal publication | 13 October 2026",
+    "publisher": "Publisher: Debass Technologies SARL • https://nelias.app",
+    "notice": "This English version is provided for convenience. In the event of any discrepancy, the French version prevails."
+  },
+  "seo": {
+    "title": "Terms of Use | NELIAS BMP",
+    "description": "Terms of Use of NELIAS BMP, version 1.1, portal publication, 13 October 2026."
+  },
+  "page": {
+    "contents": "Contents",
+    "languageLink": "Read this document in French"
+  },
+  "articles": [
+    {
+      "title": "1. Purpose and applicable documents",
+      "blocks": [
+        { "p": "These terms govern access to and use of the https://nelias.app website, the configurator, the portal, accounts and the services of NELIAS BMP (“NELIAS”)." },
+        { "p": "Subscriptions are also governed by the Terms of Sale and Subscription (“Terms of Sale”), the Data Processing Agreement (“DPA”) and the Service Level Agreement (“SLA”), which together with the accepted order form the “Contract” defined in the Terms of Sale." }
+      ]
+    },
+    {
+      "title": "2. Publisher and hosting",
+      "blocks": [
+        { "p": "The website and the platform are published by Debass Technologies SARL, a limited liability company with a share capital of FCFA 5,000,000, registered in the Trade and Personal Property Credit Register (RCCM) under number CI-ABJ-3-2024-M-16771, taxpayer account number (NCC) 2401322M, with its registered office in Cocody, Abidjan (Côte d'Ivoire), represented by its legal representative, Jules TIEMOKO. Publication director: Jules TIEMOKO." },
+        { "p": "Email: info@debasstechnologies.com - Telephone: +225 05 64 05 90 60 - Platform: https://nelias.app." },
+        { "p": "Production is hosted with Hodi in Grand-Bassam (Côte d'Ivoire). Details are given in article 10." }
+      ]
+    },
+    {
+      "title": "3. Intended users",
+      "blocks": [
+        { "p": "NELIAS is intended exclusively for companies and professionals; it is not intended for consumers." },
+        { "p": "Anyone acting on behalf of a company declares that they have the authority to bind it. They provide accurate information and keep it up to date." }
+      ]
+    },
+    {
+      "title": "4. Account and security",
+      "blocks": [
+        { "p": "The customer protects its credentials, appoints its administrators, manages its users' permissions and reports any suspicious activity without delay to contact@nelias.app." },
+        { "p": "Debass remains responsible for any failure attributable to it." }
+      ]
+    },
+    {
+      "title": "5. Configurator, simulations and orders",
+      "blocks": [
+        { "p": "Simulations and recommendations produced by the configurator are indicative. A contact or demonstration request is not an order." },
+        { "p": "Only the final summary, validated by the customer on the portal under the conditions of article 13, binds the parties." }
+      ]
+    },
+    {
+      "title": "6. Prohibited uses",
+      "blocks": [
+        { "p": "It is prohibited to:" },
+        { "ul": [
+          "compromise the security or proper operation of the service;",
+          "circumvent the limits of the subscribed plan;",
+          "access another customer's data;",
+          "distribute malicious software;",
+          "use NELIAS for unlawful purposes."
+        ] },
+        { "p": "Debass may block, in a proportionate manner, uses that endanger the service or other customers." }
+      ]
+    },
+    {
+      "title": "7. Customer data",
+      "blocks": [
+        { "p": "The customer remains the owner of its business data. It is responsible for its lawfulness, accuracy and use." },
+        { "p": "Sensitive data or data subject to sector-specific rules require appropriate safeguards before being imported. The DPA sets out the roles and responsibilities for the processing of personal data." }
+      ]
+    },
+    {
+      "title": "8. Intellectual property",
+      "blocks": [
+        { "p": "NELIAS, its trademark, interfaces, creations and documentation belong to Debass or their respective owners." },
+        { "p": "The subscription grants a personal, non-exclusive and non-transferable right of use for the duration of the Contract. It does not transfer any ownership rights in the software." }
+      ]
+    },
+    {
+      "title": "9. Changes, maintenance and availability",
+      "blocks": [
+        { "p": "Debass may develop NELIAS, maintain it and intervene for security reasons. Commitments on availability and support are solely those of the applicable SLA." }
+      ]
+    },
+    {
+      "title": "10. Hosting and technical partners",
+      "blocks": [
+        { "p": "Production is hosted with Hodi in Grand-Bassam (Côte d'Ivoire), with a disaster recovery site in Johannesburg (South Africa). Production and recovery storage therefore remains in Africa." },
+        { "p": "CRMPUNCH acts as a technical partner (development, integration, maintenance and support). Remote technical access is distinct from hosting and may be subject to specific rules; the DPA and the Privacy Policy set out the conditions." }
+      ]
+    },
+    {
+      "title": "11. Suspension",
+      "blocks": [
+        { "p": "Debass may suspend access in the event of non-payment, unlawful use, a security risk or a serious breach, after informing the customer where possible. Termination conditions and the return of data are set out in the Terms of Sale." }
+      ]
+    },
+    {
+      "title": "12. Liability",
+      "blocks": [
+        { "p": "NELIAS is a management tool. It does not constitute legal, tax, medical or accounting advice. The customer verifies its decisions and its data." },
+        { "p": "Debass's liability is limited under the conditions set out in the Terms of Sale, without excluding obligations from which the law does not permit derogation." }
+      ]
+    },
+    {
+      "title": "13. Electronic acceptance",
+      "blocks": [
+        { "p": "Acceptance takes place exclusively on the NELIAS portal, by a person authorised to bind the company, through an explicit action: unticked boxes and a confirmation button. In the standard journey, no printed document or handwritten signature is required. NELIAS keeps, within the limits of the law, the evidence needed: account identity, company, date and time, versions and fingerprint of the accepted documents, order summary and technical data of the confirmation. Where an advanced electronic signature is legally required, it is built into the digital journey." }
+      ]
+    },
+    {
+      "title": "14. Changes to these terms",
+      "blocks": [
+        { "p": "New versions are published on the portal. Substantial changes that affect the parties' rights are notified to the customer; a new acceptance is requested where required." }
+      ]
+    },
+    {
+      "title": "15. Governing law and contact",
+      "blocks": [
+        { "p": "These terms are governed by Ivorian law, subject to applicable mandatory provisions. In the event of a dispute, the parties first seek an amicable solution." },
+        { "p": "Contact: info@debasstechnologies.com." }
+      ]
+    }
+  ]
+}

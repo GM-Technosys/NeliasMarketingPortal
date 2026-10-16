@@ -10,6 +10,7 @@ export function useFormat() {
   const lng = i18n.resolvedLanguage || i18n.language || "en";
 
   return {
+    lng,
     language: lng,
     formatNumber: (value, options) => formatNumber(value, lng, options),
     formatFcfa: (value) => formatFcfa(value, lng),

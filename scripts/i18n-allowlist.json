@@ -29,6 +29,20 @@
     "FR",
     "Menu",
     "Contact",
-    "Finance"
+    "Finance",
+    "Hodi",
+    "CRMPUNCH",
+    "Description",
+    "Standard",
+    "Standard+",
+    "SLA",
+    "Application"
+  ],
+  "enOnly": [
+    "terms.meta.notice",
+    "cgv.meta.notice",
+    "dpa.meta.notice",
+    "privacy.meta.notice",
+    "sla.meta.notice"
   ]
 }

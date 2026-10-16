@@ -52,11 +52,16 @@ function compareObjects(
 ) {
   const enKeys = Object.keys(enObj);
   const frKeys = Object.keys(frObj || {});
+  const enOnly = allowlist.enOnly || [];
 
   // Extra keys in French
   for (const k of frKeys) {
+    const fullKey = path ? `${ns}.${path}.${k}` : `${ns}.${k}`;
+    if (enOnly.includes(fullKey)) {
+      errors.push(`[Key must not exist in French (enOnly)] ${fullKey}`);
+      continue;
+    }
     if (!(k in enObj)) {
-      const fullKey = path ? `${ns}.${path}.${k}` : `${ns}.${k}`;
       errors.push(`[Extra key in French] ${fullKey}`);
     }
   }
@@ -64,6 +69,17 @@ function compareObjects(
   for (const k of enKeys) {
     const currentPath = path ? `${path}.${k}` : k;
     const fullKey = `${ns}.${currentPath}`;
+
+    if (enOnly.includes(fullKey)) {
+      if (stats.foundEnOnly) {
+        stats.foundEnOnly.add(fullKey);
+      }
+      stats.keyCount++;
+      if (k in (frObj || {})) {
+        errors.push(`[Key must not exist in French (enOnly)] ${fullKey}`);
+      }
+      continue;
+    }
 
     if (!(k in (frObj || {}))) {
       errors.push(`[Missing key in French] ${fullKey}`);
@@ -251,6 +267,7 @@ async function main() {
   const errors = [];
   const warnings = [];
   const perNamespaceSummary = [];
+  const foundEnOnly = new Set();
 
   // Check for namespace files present in fr but not en
   for (const frFile of frFiles) {
@@ -286,7 +303,7 @@ async function main() {
       continue;
     }
 
-    const nsStats = { keyCount: 0 };
+    const nsStats = { keyCount: 0, foundEnOnly };
     const nsErrorsBefore = errors.length;
 
     compareObjects(
@@ -306,6 +323,12 @@ async function main() {
       keys: nsStats.keyCount,
       errors: nsErrorCount,
     });
+  }
+
+  for (const k of allowlist.enOnly || []) {
+    if (!foundEnOnly.has(k)) {
+      errors.push(`[enOnly key not found in English] ${k}`);
+    }
   }
 
   console.log("=== i18n Translation Check ===");

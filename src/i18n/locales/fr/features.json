@@ -1,4 +1,18 @@
 {
+  "hero": {
+    "title": "Les fonctionnalités dont votre entreprise a besoin, dans un environnement conçu autour de vous.",
+    "lead": "Voici les domaines fonctionnels de la plateforme. Les modules exacts, les fonctions incluses et la disponibilité des versions dépendent de la formule choisie et du catalogue approuvé."
+  },
+  "page": {
+    "listLabel": "Domaines fonctionnels",
+    "filterLabel": "Filtrer par secteur",
+    "filterAll": "Tous les secteurs",
+    "showing": "{{shown}} domaines fonctionnels affichés sur {{total}}",
+    "viewIndustry": "Voir {{name}}",
+    "empty": "Aucun domaine fonctionnel à afficher.",
+    "nextStep": "Prochaine étape"
+  },
+  "disclaimer": "NELIAS AI, les analyses avancées, les connecteurs et les fonctions propres à certains secteurs peuvent être optionnels, facturés à l’usage ou prévus pour une version ultérieure.",
   "areas": {
     "finance-accounting": {
       "name": "Finance et comptabilité",

@@ -1,4 +1,18 @@
 {
+  "hero": {
+    "title": "The business capabilities you need, in an environment designed around you.",
+    "lead": "The following are platform capability areas. Exact modules, included functions and release availability depend on the selected plan and approved catalogue."
+  },
+  "page": {
+    "listLabel": "Capability areas",
+    "filterLabel": "Filter by industry",
+    "filterAll": "All industries",
+    "showing": "Showing {{shown}} of {{total}} capability areas",
+    "viewIndustry": "View {{name}}",
+    "empty": "No capability areas to display.",
+    "nextStep": "Next step"
+  },
+  "disclaimer": "NELIAS AI, advanced analytics, connectors and sector-specific functions may be optional, usage-based, or scheduled for a later release.",
   "areas": {
     "finance-accounting": {
       "name": "Finance & Accounting",

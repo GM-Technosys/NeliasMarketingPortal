@@ -8,6 +8,7 @@ import { cn } from "@/lib/cn";
  * @param {Object} props
  * @param {string} props.title
  * @param {string} [props.lead]
+ * @param {import("react").ReactNode} [props.breadcrumbs]
  * @param {import("react").ReactNode} [props.actions]
  * @param {import("react").ReactNode} [props.media]
  * @param {"tint"|"default"|"inverse"} [props.tone="tint"]
@@ -19,6 +20,7 @@ import { cn } from "@/lib/cn";
 export function PageHeader({
   title,
   lead,
+  breadcrumbs,
   actions,
   media,
   tone = "tint",
@@ -26,6 +28,8 @@ export function PageHeader({
   accent = false,
   titleId,
   className,
+  titleClassName,
+  leadClassName,
 }) {
   const isInverse = tone === "inverse";
 
@@ -37,6 +41,8 @@ export function PageHeader({
         >
           {/* Text column */}
           <div className={cn(media && "lg:col-span-7")}>
+            {breadcrumbs && <div className="mb-6">{breadcrumbs}</div>}
+
             {accent && (
               <div className="mb-6 h-1 w-12 rounded-full bg-brand-ribbon" role="presentation" />
             )}
@@ -46,6 +52,7 @@ export function PageHeader({
               className={cn(
                 "font-display text-h1 leading-tight font-bold tracking-tight text-heading",
                 isInverse && "text-white",
+                titleClassName,
               )}
             >
               {title}
@@ -56,6 +63,7 @@ export function PageHeader({
                 className={cn(
                   "mt-6 text-lead leading-relaxed text-fg-muted",
                   isInverse && "text-fg-inverse-muted",
+                  leadClassName,
                 )}
               >
                 {lead}

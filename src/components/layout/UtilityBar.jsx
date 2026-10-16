@@ -47,15 +47,15 @@ export function UtilityBar() {
             <ThemeToggle variant="onDark" size="sm" />
             <LanguageSwitcher variant="onDark" />
             <NavLink
-              to="#"
-              onClick={(e) => e.preventDefault()}
+              to="/contact"
               className="inline-flex min-h-9 items-center text-fg-inverse-muted transition-colors hover:text-white hover:underline"
             >
               {t("nav.contact")}
             </NavLink>
             <a
-              href="#"
-              onClick={(e) => e.preventDefault()}
+              href={site.loginUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex min-h-9 items-center text-fg-inverse-muted transition-colors hover:text-white hover:underline"
             >
               {t("nav.signIn")}

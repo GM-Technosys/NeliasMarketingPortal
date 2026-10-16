@@ -1,0 +1,40 @@
+{
+  "seo": {
+    "title": "Resources | NELIAS BMP",
+    "description": "A practical guide to different ways of organizing business software."
+  },
+  "page": { "nextStep": "Next step" },
+  "search": {
+    "label": "Search resources",
+    "clear": "Clear search",
+    "results": "Results: {{count}}",
+    "empty": "No results match your search."
+  },
+  "articles": {
+    "title": "Articles",
+    "readArticle": "Read article",
+    "items": {
+      "crm-erp-bmp-bos": {
+        "title": "CRM, ERP, BMP and BOS: What’s the Difference?",
+        "summary": "A practical guide to different ways of organizing business software."
+      },
+      "adapt-to-your-business": {
+        "title": "Why Your Software Should Adapt to Your Business",
+        "summary": "How business-first configuration changes the buying experience."
+      },
+      "sector-engine-selection": {
+        "title": "How a Sector Engine Can Simplify Software Selection",
+        "summary": "An accessible explanation of business profiles, rules and recommendations."
+      },
+      "digital-management-africa": {
+        "title": "Digital Management for Growing African Businesses",
+        "summary": "A thoughtful view of connected operations, local needs and long-term scalability."
+      },
+      "tools-to-one-environment": {
+        "title": "From Multiple Tools to One Management Environment",
+        "summary": "A problem-to-solution guide without overstating current product capabilities."
+      }
+    }
+  },
+  "faq": { "title": "Frequently asked questions" }
+}

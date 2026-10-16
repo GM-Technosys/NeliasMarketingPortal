@@ -42,9 +42,8 @@ export function HomeApproachSection() {
               </p>
               <div className="mt-6 w-full sm:w-auto">
                 <Link
-                  to="#"
-                  onClick={(e) => {
-                    e.preventDefault();
+                  to="/how-it-works"
+                  onClick={() => {
                     track(EVENTS.CTA_CLICK, {
                       intent: "how-it-works",
                       location: "home-approach",

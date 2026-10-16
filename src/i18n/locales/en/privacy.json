@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "Privacy Policy",
+    "version": "NELIAS BMP | Version 1.1 - Portal publication | 13 October 2026",
+    "publisher": "Publisher: Debass Technologies SARL • https://nelias.app",
+    "notice": "This English version is provided for convenience. In the event of any discrepancy, the French version prevails."
+  },
+  "seo": {
+    "title": "Privacy Policy | NELIAS BMP",
+    "description": "Privacy Policy of NELIAS BMP, version 1.1, portal publication, 13 October 2026."
+  },
+  "page": {
+    "contents": "Contents",
+    "languageLink": "Read this document in French"
+  },
+  "articles": [
+    {
+      "title": "1. Who are we?",
+      "blocks": [
+        { "p": "The data controller is Debass Technologies SARL, a limited liability company with a share capital of FCFA 5,000,000, registered in the Trade and Personal Property Credit Register (RCCM) under number CI-ABJ-3-2024-M-16771, taxpayer account number (NCC) 2401322M, with its registered office in Cocody, Abidjan (Côte d'Ivoire), represented by its legal representative, Jules TIEMOKO. Email: info@debasstechnologies.com - Telephone: +225 05 64 05 90 60 - Platform: https://nelias.app." },
+        { "p": "Debass is responsible for the data it uses for its business contacts, its portal, its accounts and its invoicing. For the business data that a customer places in NELIAS, the customer in principle determines the purposes and Debass acts as processor (see the DPA and article 9)." }
+      ]
+    },
+    {
+      "title": "2. Data collected",
+      "blocks": [
+        { "p": "Depending on your use: identity, company, job title, contact details, sector, configurator answers, requests, account, subscription, invoices, support tickets, technical logs and consent choices." },
+        { "p": "Payments may be processed by a specialised provider." }
+      ]
+    },
+    {
+      "title": "3. Purposes, legal bases and retention periods",
+      "blocks": [
+        { "table": {
+          "head": ["Purpose", "Basis", "Data", "Retention period"],
+          "rows": [
+            ["Respond to requests, configure an offer", "Pre-contractual measures; legitimate interest", "Identity, company, contact details, configurator answers", "Unconverted contacts: up to 3 years after the last active exchange"],
+            ["Manage pilot programme applications", "Pre-contractual measures", "Identity, company, application information", "Rejected applications: 12 months after selection"],
+            ["Open an account, provide the service, provide support", "Performance of the contract", "Account, subscription, support tickets", "Term of the contract, then according to the return procedure and legal obligations"],
+            ["Invoice and meet accounting obligations", "Performance of the contract; legal obligation", "Invoices, billing data", "Legal periods applicable to accounting documents"],
+            ["Secure the portal and handle incidents", "Legitimate interest; legal obligation", "Technical logs", "Up to 12 months in principle"],
+            ["Back up data", "Legitimate interest; performance of the contract", "Backup copies", "Operational cycle normally limited to 30 days"],
+            ["Optional marketing communications", "Consent or other applicable legal condition", "Contact details, consent choices", "Until consent is withdrawn, within a limit of 3 years after the last active exchange"]
+          ]
+        } },
+        { "p": "Mandatory data are indicated in the forms. These periods may be extended where a legal obligation or a dispute justifies it." }
+      ]
+    },
+    {
+      "title": "4. Recipients",
+      "blocks": [
+        { "p": "Authorised persons at Debass and necessary service providers access the data within the limits of their duties: Hodi (hosting and recovery), CRMPUNCH (support and development) and, where actually activated, payment, communication or management providers." },
+        { "p": "Debass does not sell personal data." }
+      ]
+    },
+    {
+      "title": "5. Where is the data hosted?",
+      "blocks": [
+        { "p": "The NELIAS environment is hosted with Hodi in Grand-Bassam (Côte d'Ivoire) and has a recovery site in Johannesburg (South Africa). The production and recovery copies provided for by this architecture remain in Africa." },
+        { "p": "Authorised technical access from another country is distinct from hosting; it is limited to the needs of the service and complies with the applicable formalities." }
+      ]
+    },
+    {
+      "title": "6. Security",
+      "blocks": [
+        { "p": "Debass applies access controls, communication protection measures, backup procedures and incident handling proportionate to the risks and to the services actually activated. No system is entirely free of risk." }
+      ]
+    },
+    {
+      "title": "7. Your rights",
+      "blocks": [
+        { "p": "You may request, under the conditions provided by Ivorian law no. 2013-450, access to your data, its rectification or deletion, and exercise your right to object, as well as the other applicable rights." },
+        { "p": "Send your request to contact@nelias.app. Proof of identity may be requested. You may also contact the Telecommunications/ICT Regulatory Authority of Côte d'Ivoire (ARTCI)." }
+      ]
+    },
+    {
+      "title": "8. Marketing and cookies",
+      "blocks": [
+        { "p": "Optional marketing messages and non-essential cookies are subject to separate choices where the law requires. Refusing these optional uses does not block access to the necessary services. You may withdraw your consent at any time through the mechanisms provided." }
+      ]
+    },
+    {
+      "title": "9. Out of scope: your customers' and employees' data",
+      "blocks": [
+        { "p": "When you use NELIAS to manage third-party data (customers, suppliers, employees), you decide which data is uploaded and who can access it. The rules applicable to this processing are set out in the DPA. To exercise your rights over such data, first contact the customer company concerned." }
+      ]
+    },
+    {
+      "title": "10. Changes to this policy and contact",
+      "blocks": [
+        { "p": "The version in force is published at https://nelias.app. Significant changes are communicated in an appropriate manner." },
+        { "p": "For any question: contact@nelias.app or info@debasstechnologies.com." }
+      ]
+    }
+  ]
+}
