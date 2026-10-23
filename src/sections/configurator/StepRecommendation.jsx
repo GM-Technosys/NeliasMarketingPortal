@@ -5,12 +5,13 @@ import { Check } from "lucide-react";
 import { Alert } from "@/components/ui/Alert";
 import { Panel } from "@/components/ui/Panel";
 import { Badge } from "@/components/ui/Badge";
-import { AvailabilityBadge } from "@/components/ui/AvailabilityBadge";
 import { buttonStyles } from "@/components/ui/button-styles";
 import { areaIcons } from "@/data/industry-content";
-import { capabilityStates, AVAILABILITY } from "@/data/feature-states";
 import { describeRule } from "@/sections/pricing/price-format";
 import { features } from "@/config/features";
+import { ModuleMeter } from "./ModuleSelector";
+
+// TODO(Debass): "functions" (approved microcopy) and "standard modules" (client wording) mean the same thing here; confirm the customer-facing term.
 
 /**
  * Step 3: Here is your recommended setup (Recommendation).
@@ -18,15 +19,31 @@ import { features } from "@/config/features";
  * @param {Object} props
  * @param {Object} props.data - Configurator state
  * @param {Object} props.rec - Recommendation result { planId, needsReview }
+ * @param {string} props.effectivePlan - Current plan id
  * @param {Object} props.plansById - Map of plans by id
  * @param {Array} props.options - Useful options { area, addOnId, included }
  * @param {Object} props.catalog - Pricing catalog
+ * @param {string[]} props.effectiveModules - List of selected module ids
+ * @param {string[]} props.recommendedModules - List of recommended module ids
+ * @param {Array<{ id: string, kind: "included" | "additional" }>} props.labels
+ * @param {{ selected: number, included: number|null, extra: number, remaining: number, unlimited: boolean }} props.info
  */
-export function StepRecommendation({ data, rec, plansById, options, catalog }) {
+export function StepRecommendation({
+  data,
+  rec,
+  effectivePlan,
+  plansById,
+  options,
+  catalog,
+  effectiveModules = [],
+  recommendedModules = [],
+  labels = [],
+  info,
+}) {
   const { t, i18n } = useTranslation();
   const lng = i18n.language?.startsWith("fr") ? "fr" : "en";
 
-  const planId = rec.planId || "start";
+  const planId = effectivePlan || rec.planId || "start";
   const planObj = plansById[planId] || plansById.start;
   const planName = t(`pricing:plans.${planId}.name`);
 
@@ -41,10 +58,22 @@ export function StepRecommendation({ data, rec, plansById, options, catalog }) {
     return t(`industries:items.${data.industry}.name`);
   }, [data.industry, t]);
 
-  const functionNames = useMemo(() => {
-    const list = data.functions || [];
-    return list.map((key) => t(`features:areas.${key}.name`));
-  }, [data.functions, t]);
+  const labelsMap = useMemo(() => {
+    const map = new Map();
+    for (const item of labels) {
+      map.set(item.id, item.kind);
+    }
+    return map;
+  }, [labels]);
+
+  const isMatch = useMemo(() => {
+    if (effectiveModules.length !== recommendedModules.length) return false;
+    return effectiveModules.every((id) => recommendedModules.includes(id));
+  }, [effectiveModules, recommendedModules]);
+
+  const includedDisplay = info?.unlimited
+    ? t("pricing:plans.enterprise.modules")
+    : info?.included;
 
   return (
     <div>
@@ -137,10 +166,12 @@ export function StepRecommendation({ data, rec, plansById, options, catalog }) {
                   })}
                 </li>
               )}
-              {functionNames.length > 0 && (
+              {Boolean(info) && (
                 <li>
-                  {t("configurator:recommendation.functionsLine", {
-                    list: functionNames.join(", "),
+                  {t("configurator:recommendation.modulesLine", {
+                    selected: info.selected,
+                    plan: planName,
+                    included: includedDisplay,
                   })}
                 </li>
               )}
@@ -149,16 +180,19 @@ export function StepRecommendation({ data, rec, plansById, options, catalog }) {
         </Panel>
       </div>
 
-      {/* Included capabilities */}
-      {data.functions && data.functions.length > 0 && (
-        <div className="mt-10">
-          <h3 className="font-display text-h3 text-heading">
-            {t("configurator:recommendation.includedTitle")}
-          </h3>
-          <div className="mt-4 divide-y divide-line rounded-lg border border-line bg-surface-raised">
-            {data.functions.map((key) => {
+      {/* Meter & Selected Standard Modules */}
+      <div className="mt-10 space-y-6">
+        <h3 className="font-display text-h3 text-heading">
+          {t("configurator:modules.selectionTitle")}
+        </h3>
+
+        {info && <ModuleMeter info={info} planName={planName} />}
+
+        {effectiveModules.length > 0 ? (
+          <div className="divide-y divide-line rounded-lg border border-line bg-surface-raised">
+            {effectiveModules.map((key) => {
               const IconComp = areaIcons[key];
-              const st = capabilityStates[key];
+              const kind = labelsMap.get(key);
               return (
                 <div
                   key={key}
@@ -174,9 +208,59 @@ export function StepRecommendation({ data, rec, plansById, options, catalog }) {
                       {t(`features:areas.${key}.name`)}
                     </span>
                   </div>
-                  {st && st !== AVAILABILITY.AVAILABLE && (
-                    <AvailabilityBadge state={st} size="sm" />
+                  {kind && (
+                    <Badge
+                      tone={kind === "additional" ? "highlight" : "neutral"}
+                      size="sm"
+                    >
+                      {kind === "additional"
+                        ? t("configurator:modules.additional")
+                        : t("configurator:modules.included")}
+                    </Badge>
                   )}
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <p className="text-sm text-fg-muted">{t("configurator:summary.none")}</p>
+        )}
+      </div>
+
+      {/* Recommended Standard Modules */}
+      {recommendedModules.length > 0 && (
+        <div className="mt-10">
+          <h3 className="font-display text-h3 text-heading">
+            {t("configurator:modules.recommendedTitle")}
+          </h3>
+
+          <p className="mt-2 text-sm text-fg-muted">
+            {isMatch
+              ? t("configurator:modules.matches")
+              : t("configurator:modules.changed")}
+          </p>
+
+          <div className="mt-4 divide-y divide-line rounded-lg border border-line bg-surface-raised">
+            {recommendedModules.map((key) => {
+              const IconComp = areaIcons[key];
+              return (
+                <div
+                  key={key}
+                  className="flex items-center justify-between p-3.5 text-sm"
+                >
+                  <div className="flex items-center gap-3">
+                    {IconComp && (
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-surface-sunken text-heading">
+                        <IconComp className="h-4 w-4" aria-hidden="true" />
+                      </span>
+                    )}
+                    <span className="font-semibold text-fg">
+                      {t(`features:areas.${key}.name`)}
+                    </span>
+                  </div>
+                  <Badge tone="info" size="sm">
+                    {t("pricing:page.recommended")}
+                  </Badge>
                 </div>
               );
             })}

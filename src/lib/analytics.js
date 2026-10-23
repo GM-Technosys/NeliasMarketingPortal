@@ -19,6 +19,7 @@ export const EVENTS = Object.freeze({
   SEARCH: "search",
   CONFIGURATOR_SAVE: "configurator_save",
   CONFIGURATOR_SHARE: "configurator_share",
+  MODULES_CHANGE: "modules_change",
 });
 
 /**

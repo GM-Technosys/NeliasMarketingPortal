@@ -16,12 +16,11 @@ import {
   STORAGE_OPTIONS,
   LIMITS,
 } from "@/lib/configurator/constants";
-import {
-  planIncludesAddOns,
-  planIncludesStandardPack,
-} from "@/lib/configurator/plan-rules";
+import { planIncludesAddOns } from "@/lib/configurator/plan-rules";
+import { ModuleSelector } from "./ModuleSelector";
 
 // TODO(Debass): the V3 notes ask to "adjust users, entities, add-ons, connectors and storage"; storage is informational because storage extension prices are not approved.
+// TODO(Debass): "functions" (approved microcopy) and "standard modules" (client wording) mean the same thing here; confirm the customer-facing term.
 
 /**
  * Step 4: Make it yours (Customize).
@@ -33,6 +32,13 @@ import {
  * @param {Object} props.plansById - Map of plans
  * @param {Object} props.catalog - Pricing catalog
  * @param {Array} props.options - Useful options
+ * @param {string[]} [props.visibleModules]
+ * @param {string[]} [props.effectiveModules]
+ * @param {string[]} [props.recommendedModules]
+ * @param {Array<{ id: string, kind: "included" | "additional" }>} [props.labels]
+ * @param {{ selected: number, included: number|null, extra: number, remaining: number, unlimited: boolean }} [props.info]
+ * @param {(id: string) => void} [props.toggleModule]
+ * @param {() => void} [props.resetModules]
  * @param {(name: string, id: string) => void} props.toggleIn - Toggle item callback
  * @param {(partial: Object) => void} props.patch - State patch callback
  */
@@ -43,6 +49,13 @@ export function StepCustomize({
   plansById,
   catalog,
   options,
+  visibleModules = [],
+  effectiveModules = [],
+  recommendedModules = [],
+  labels = [],
+  info,
+  toggleModule,
+  resetModules,
   toggleIn,
   patch,
 }) {
@@ -147,7 +160,23 @@ export function StepCustomize({
           )}
         </div>
 
-        {/* 2. Capacity Group */}
+        {/* 2. Standard Modules Group */}
+        <div>
+          <ModuleSelector
+            visibleModules={visibleModules}
+            effectiveModules={effectiveModules}
+            recommendedModules={recommendedModules}
+            labels={labels}
+            info={info}
+            planName={planName}
+            modulesTouched={data.modulesTouched}
+            industry={data.industry}
+            toggleModule={toggleModule}
+            resetModules={resetModules}
+          />
+        </div>
+
+        {/* 3. Capacity Group */}
         <div>
           <h3 className="font-display text-h3 text-heading">
             {t("configurator:customize.capacityTitle")}
@@ -195,7 +224,7 @@ export function StepCustomize({
           </div>
         </div>
 
-        {/* 3. Storage Group */}
+        {/* 4. Storage Group */}
         <div>
           <h3 className="font-display text-h3 text-heading">
             {t("configurator:customize.storageTitle")}
@@ -235,56 +264,6 @@ export function StepCustomize({
               </Alert>
             </div>
           )}
-        </div>
-
-        {/* 4. Sector Packs Group */}
-        <div>
-          <h3 className="font-display text-h3 text-heading">
-            {t("pricing:optional.groups.sectorPacks")}
-          </h3>
-
-          <div className="mt-4 divide-y divide-line rounded-lg border border-line bg-surface-raised p-4 space-y-3">
-            {catalog.optionalCharges.sectorPacks.map((pack) => {
-              const isIncluded =
-                pack.id === "standard-pack" &&
-                planIncludesStandardPack[effectivePlan];
-              const isChecked = isIncluded || data.sectorPacks.includes(pack.id);
-              const priceText =
-                features.pricingPublic && !isIncluded
-                  ? describeRule(pack.rule, t, lng)
-                  : "";
-
-              return (
-                <div
-                  key={pack.id}
-                  className="flex flex-wrap items-center justify-between gap-2 pt-3 first:pt-0"
-                >
-                  <Checkbox
-                    id={`pack-${pack.id}`}
-                    label={t(`pricing:optional.items.${pack.id}`)}
-                    checked={isChecked}
-                    disabled={isIncluded}
-                    onChange={() => toggleIn("sectorPacks", pack.id)}
-                  />
-                  <div className="flex items-center gap-2">
-                    {isIncluded ? (
-                      <Badge tone="success" size="sm">
-                        {t("configurator:recommendation.includedInPlan", {
-                          plan: planName,
-                        })}
-                      </Badge>
-                    ) : (
-                      priceText && (
-                        <span className="text-sm font-medium text-fg-muted">
-                          {priceText}
-                        </span>
-                      )
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
         </div>
 
         {/* 5. Add-ons Group */}

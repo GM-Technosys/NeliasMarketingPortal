@@ -66,6 +66,27 @@
       "name": "Énergie et interventions sur site",
       "summary": "Coordonnez vos actifs, la maintenance, les projets et les interventions sur le terrain.",
       "walkthrough": ["Actifs", "Maintenance", "Projets", "Activités de terrain"]
+    },
+    "real-estate": {
+      "name": "Immobilier",
+      "summary": "Organisez la relation client, les ventes, les projets, la finance et le reporting pour les activités immobilières.",
+      "walkthrough": ["Relation client", "Ventes", "Projets", "Finance", "Reporting"]
+    },
+    "pharmacies": {
+      "name": "Pharmacies",
+      "summary": "Soutenez les achats, les stocks, les flux de point de vente et les flux financiers des pharmacies, sous réserve des exigences propres au secteur.",
+      "walkthrough": ["Achats", "Stock", "Point de vente", "Finance"]
+    },
+    "construction-btp": {
+      "name": "Construction / BTP",
+      "summary": "Reliez les achats, les stocks, les projets, les feuilles de temps et le suivi financier des activités de construction.",
+      "walkthrough": ["Achats", "Stock", "Projets", "Feuilles de temps", "Suivi financier"]
+    },
+    "it-technology-services": {
+      "name": "Informatique et services technologiques",
+      "summary": "Réunissez la relation client, les projets, les feuilles de temps, le support client et le reporting dans un flux de travail connecté.",
+      "walkthrough": ["Relation client", "Projets", "Feuilles de temps", "Support client", "Reporting"]
     }
   }
 }
+

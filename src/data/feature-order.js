@@ -1,4 +1,4 @@
-import { capabilityStates, AVAILABILITY } from "@/data/feature-states";
+import { capabilityStates, AVAILABILITY } from "./feature-states.js";
 
 // PDF order of the twelve capability areas (Section 7).
 export const featureAreaOrder = [

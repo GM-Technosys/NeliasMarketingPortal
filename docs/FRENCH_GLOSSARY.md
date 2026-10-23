@@ -32,7 +32,7 @@
 | English | French |
 |---|---|
 | Sector Engine | Sector Engine (kept: product name) |
-| Sector Pack | pack sectoriel |
+| Sector Pack: not used in V1; Industry+ packs are V2 | - |
 | plan (pricing) | formule |
 | subscription | abonnement |
 | capacity | capacité |

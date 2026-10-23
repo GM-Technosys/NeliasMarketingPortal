@@ -13,7 +13,12 @@ import {
   GraduationCap,
   ShieldCheck,
   Zap,
+  Building2,
+  Pill,
+  HardHat,
+  Laptop,
 } from "lucide-react";
+import { industryAreas } from "./industry-areas.js";
 
 export const scenarioKeys = ["scattered", "visibility", "time"];
 
@@ -26,47 +31,29 @@ export const capabilityCards = [
   { id: "projects", icon: FolderKanban, area: "projects-timesheets" },
 ];
 
-// TODO(Debass): capability suggestions are derived only from words in each approved industry summary. Confirm.
-export const industryProfiles = {
-  "retail-distribution": {
-    icon: Store,
-    areas: ["crm-sales", "purchasing-inventory"],
-  },
-  "professional-services": {
-    icon: Briefcase,
-    areas: [
-      "crm-sales",
-      "projects-timesheets",
-      "finance-accounting",
-      "reporting-analytics",
-    ],
-  },
-  "manufacturing": {
-    icon: Factory,
-    areas: ["purchasing-inventory", "manufacturing-quality"],
-  },
-  "healthcare": {
-    icon: Stethoscope,
-    areas: ["purchasing-inventory", "customer-support-portal"],
-  },
-  "hospitality": {
-    icon: BedDouble,
-    areas: ["purchasing-inventory", "finance-accounting", "human-resources"],
-  },
-  "education-training": {
-    icon: GraduationCap,
-    areas: ["finance-accounting", "projects-timesheets"],
-  },
-  "insurance-financial-services": {
-    icon: ShieldCheck,
-    areas: [
-      "crm-sales",
-      "customer-support-portal",
-      "workflows-automation",
-    ],
-  },
-  "energy-field-services": {
-    icon: Zap,
-    areas: ["assets-maintenance", "projects-timesheets"],
-  },
+const industryIcons = {
+  "retail-distribution": Store,
+  "professional-services": Briefcase,
+  "manufacturing": Factory,
+  "healthcare": Stethoscope,
+  "hospitality": BedDouble,
+  "education-training": GraduationCap,
+  "insurance-financial-services": ShieldCheck,
+  "energy-field-services": Zap,
+  "real-estate": Building2,
+  "pharmacies": Pill,
+  "construction-btp": HardHat,
+  "it-technology-services": Laptop,
 };
+
+// TODO(Debass): capability suggestions are derived only from words in each approved industry summary. Confirm.
+export const industryProfiles = Object.fromEntries(
+  Object.entries(industryAreas).map(([slug, areas]) => [
+    slug,
+    {
+      icon: industryIcons[slug],
+      areas,
+    },
+  ]),
+);
+

@@ -1,5 +1,4 @@
-// Derived ONLY from the approved plan text (Section 8): BUSINESS includes advanced workflows; PROFESSIONAL includes advanced API, customer portal and advanced BI;
-// BUSINESS and PROFESSIONAL include one Standard Sector Pack.
+// Derived ONLY from the approved plan text (Section 8): BUSINESS includes advanced workflows; PROFESSIONAL includes advanced API, customer portal and advanced BI.
 // TODO(Debass): the Sector Engine rules and the function-to-add-on mapping are not provided; this mapping uses exact name matches only. Confirm.
 export const areaAddOn = {
   "workflows-automation": "advanced-workflow",
@@ -14,13 +13,6 @@ export const planIncludesAddOns = {
   business: ["advanced-workflow"],
   professional: ["advanced-workflow", "advanced-bi", "customer-portal-plus", "data-api-plus"],
   enterprise: [],
-};
-
-export const planIncludesStandardPack = {
-  start: false,
-  business: true,
-  professional: true,
-  enterprise: false,
 };
 
 /**

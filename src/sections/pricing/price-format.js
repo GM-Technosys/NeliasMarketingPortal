@@ -4,7 +4,7 @@ import { formatNumber, formatFcfa } from "@/lib/format";
  * Returns the localized description string for a price rule.
  *
  * @param {Object} rule
- * @param {string} rule.kind - One of "fixed"|"from"|"fromPlusUsage"|"range"|"includedOr"|"unlessIncluded"|"quote"
+ * @param {string} rule.kind - One of "fixed"|"from"|"fromPlusUsage"|"range"|"includedOr"|"quote"
  * @param {number} [rule.amount]
  * @param {number} [rule.min]
  * @param {number} [rule.max]
@@ -35,10 +35,6 @@ export function describeRule(rule, t, lng = "en") {
       });
     case "includedOr":
       return t("pricing:optional.price.includedOr", {
-        amount: formatFcfa(rule.amount, lng),
-      });
-    case "unlessIncluded":
-      return t("pricing:optional.price.unlessIncluded", {
         amount: formatFcfa(rule.amount, lng),
       });
     case "quote":

@@ -5,23 +5,30 @@ import { industries } from "@/data/industries.js";
 import { featureAreaOrder } from "@/data/feature-order.js";
 import { capabilityStates, AVAILABILITY } from "@/data/feature-states.js";
 import { countryCodes } from "@/data/countries.js";
-import { industryProfiles } from "@/data/home-content.js";
+import { industryAreas } from "@/data/industry-areas.js";
 import { track, EVENTS } from "@/lib/analytics.js";
 import { STEPS, DRAFT_KEY, PLAN_IDS, BILLING } from "@/lib/configurator/constants.js";
 import { defaultState, sanitizeState, decodeState } from "@/lib/configurator/model.js";
 import { toPlansById } from "@/lib/configurator/plan-rules.js";
 import { recommendPlan, usefulOptions } from "@/lib/configurator/recommend.js";
 import { estimate } from "@/lib/configurator/estimate.js";
+import {
+  visibleModuleIds,
+  quotaOf,
+  recommendModules,
+  moduleInfo,
+  labelModules,
+} from "@/lib/configurator/modules.js";
 
 const plansById = toPlansById(plans);
 const catalog = { plansById, optionalCharges };
 
 const validScope = {
   industries,
+  modules: featureAreaOrder.filter((key) => capabilityStates[key] !== AVAILABILITY.HIDDEN),
   areas: featureAreaOrder.filter((key) => capabilityStates[key] !== AVAILABILITY.HIDDEN),
   countries: countryCodes,
   addOns: optionalCharges.addOns.map((a) => a.id),
-  sectorPacks: optionalCharges.sectorPacks.map((p) => p.id),
   connectors: optionalCharges.connectors.map((c) => c.id),
 };
 
@@ -50,6 +57,13 @@ function getInitialState(searchParams) {
   }
   if (billingParam && BILLING.includes(billingParam.toLowerCase())) {
     def.billing = billingParam.toLowerCase();
+  }
+  const industryParam = searchParams.get("industry");
+  if (industryParam) {
+    const trimmed = industryParam.trim().toLowerCase();
+    if (industries.includes(trimmed) || trimmed === "other") {
+      def.industry = trimmed;
+    }
   }
 
   return {
@@ -83,14 +97,13 @@ function reducer(state, action) {
     }
     case "SET_INDUSTRY": {
       const { slug } = action;
-      const currentFunctions = state.data.functions || [];
-      let nextFunctions = currentFunctions;
-
-      if (currentFunctions.length === 0 && slug && industryProfiles[slug]) {
-        const profileAreas = industryProfiles[slug].areas || [];
-        nextFunctions = profileAreas.filter(
-          (area) => capabilityStates[area] !== AVAILABILITY.HIDDEN,
-        );
+      let nextModules = state.data.modules;
+      if (state.data.modulesTouched) {
+        // Changing the industry never wipes a touched selection; modules that are no longer compatible are removed.
+        const validIds = visibleModuleIds(slug);
+        nextModules = state.data.modules.filter((id) => validIds.includes(id));
+      } else {
+        nextModules = [];
       }
 
       return {
@@ -98,7 +111,7 @@ function reducer(state, action) {
         data: {
           ...state.data,
           industry: slug,
-          functions: nextFunctions,
+          modules: nextModules,
         },
         error: null,
         saved: false,
@@ -149,10 +162,90 @@ export function useConfigurator() {
   // Derived values
   const rec = useMemo(() => recommendPlan(state.data, plansById), [state.data]);
   const effectivePlan = state.data.plan || rec.planId;
-  const options = useMemo(() => usefulOptions(state.data, effectivePlan), [state.data, effectivePlan]);
-  const est = useMemo(() => estimate(state.data, effectivePlan, catalog), [state.data, effectivePlan]);
+  const planQuota = useMemo(() => quotaOf(effectivePlan, plansById), [effectivePlan]);
+
+  // Standard modules derivation
+  const visibleModules = useMemo(
+    () => visibleModuleIds(state.data.industry),
+    [state.data.industry],
+  );
+
+  const recommendedModules = useMemo(
+    () => recommendModules(state.data.industry, planQuota, industryAreas, visibleModules),
+    [state.data.industry, planQuota, visibleModules],
+  );
+
+  const effectiveModules = useMemo(() => {
+    if (state.data.modulesTouched) {
+      return state.data.modules.filter((id) => visibleModules.includes(id));
+    }
+    return recommendedModules;
+  }, [state.data.modulesTouched, state.data.modules, visibleModules, recommendedModules]);
+
+  const info = useMemo(
+    () => moduleInfo(effectiveModules, effectivePlan, plansById),
+    [effectiveModules, effectivePlan],
+  );
+
+  const labels = useMemo(
+    () => labelModules(effectiveModules, info.included),
+    [effectiveModules, info.included],
+  );
+
+  // State with effectiveModules passed to options and estimate
+  const calcState = useMemo(
+    () => ({
+      ...state.data,
+      effectiveModules,
+      modules: effectiveModules,
+    }),
+    [state.data, effectiveModules],
+  );
+
+  const options = useMemo(() => usefulOptions(calcState, effectivePlan), [calcState, effectivePlan]);
+  const est = useMemo(() => estimate(calcState, effectivePlan, catalog), [calcState, effectivePlan]);
 
   // Actions
+  const toggleModule = useCallback(
+    (id) => {
+      const isCurrentlySelected = effectiveModules.includes(id);
+      const nextModules = isCurrentlySelected
+        ? effectiveModules.filter((x) => x !== id)
+        : [...effectiveModules, id];
+
+      dispatch({
+        type: "PATCH_DATA",
+        payload: {
+          modules: nextModules,
+          modulesTouched: true,
+        },
+      });
+
+      const nextInfo = moduleInfo(nextModules, effectivePlan, plansById);
+      track(EVENTS.MODULES_CHANGE, {
+        selected: nextInfo.selected,
+        included: nextInfo.included,
+      });
+    },
+    [effectiveModules, effectivePlan],
+  );
+
+  const resetModules = useCallback(() => {
+    dispatch({
+      type: "PATCH_DATA",
+      payload: {
+        modules: [],
+        modulesTouched: false,
+      },
+    });
+
+    const nextInfo = moduleInfo(recommendedModules, effectivePlan, plansById);
+    track(EVENTS.MODULES_CHANGE, {
+      selected: nextInfo.selected,
+      included: nextInfo.included,
+    });
+  }, [recommendedModules, effectivePlan]);
+
   const start = useCallback(() => {
     track(EVENTS.CONFIGURATOR_START);
     track(EVENTS.CONFIGURATOR_STEP, { step: 0 });
@@ -272,8 +365,16 @@ export function useConfigurator() {
     catalog,
     rec,
     effectivePlan,
+    planQuota,
     options,
     est,
+    effectiveModules,
+    recommendedModules,
+    visibleModules,
+    info,
+    labels,
+    toggleModule,
+    resetModules,
     start,
     resume,
     startAgain,

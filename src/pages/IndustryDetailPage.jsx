@@ -50,6 +50,7 @@ export default function IndustryDetailPage() {
       <WalkthroughChain slug={slug} />
       <IndustryFaq slug={slug} />
       <IndustryClosing
+        slug={slug}
         labelKey="cta.seeMyConfiguration"
         showAll={true}
         location="industry-final"

@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Info } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
@@ -74,6 +75,12 @@ export function PlansSection({ billing, onBillingChange, showPrices }) {
               </li>
             ))}
           </ul>
+
+          {/* TODO(Debass): derived from the client's module-swap rule; approve the wording. */}
+          <p className="mt-6 flex max-w-3xl items-start gap-2.5 text-fg-muted">
+            <Info className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
+            <span>{t("pricing:page.modulesNote")}</span>
+          </p>
         </Reveal>
       </Container>
     </Section>

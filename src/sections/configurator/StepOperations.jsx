@@ -1,60 +1,76 @@
-import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { Field } from "@/components/ui/forms/Field";
 import { Fieldset } from "@/components/ui/forms/Fieldset";
-import { Checkbox } from "@/components/ui/forms/Checkbox";
 import { NumberStepper } from "@/components/ui/forms/NumberStepper";
-import { featureAreaOrder } from "@/data/feature-order";
-import { capabilityStates, AVAILABILITY } from "@/data/feature-states";
 import { LIMITS } from "@/lib/configurator/constants";
+import { ModuleSelector } from "./ModuleSelector";
 
 // TODO(Debass): the V3 notes mention "teams and priorities" without approved wording; they are not built.
+// TODO(Debass): "functions" (approved microcopy) and "standard modules" (client wording) mean the same thing here; confirm the customer-facing term.
 
 /**
  * Step 2: How do you work? (Operations).
  *
  * @param {Object} props
  * @param {Object} props.data - Configurator state
- * @param {(name: string, id: string) => void} props.toggleIn - Toggle array item callback
+ * @param {Object} props.plansById - Plans map
+ * @param {string} props.effectivePlan - Current plan id
+ * @param {string[]} props.visibleModules - List of visible module ids
+ * @param {string[]} props.effectiveModules - List of selected module ids
+ * @param {string[]} props.recommendedModules - List of recommended module ids
+ * @param {Array<{ id: string, kind: "included" | "additional" }>} props.labels
+ * @param {{ selected: number, included: number|null, extra: number, remaining: number, unlimited: boolean }} props.info
+ * @param {(id: string) => void} props.toggleModule
+ * @param {() => void} props.resetModules
  * @param {(partial: Object) => void} props.patch - State patch callback
  */
-export function StepOperations({ data, toggleIn, patch }) {
+export function StepOperations({
+  data,
+  plansById,
+  effectivePlan,
+  visibleModules,
+  effectiveModules,
+  recommendedModules,
+  labels,
+  info,
+  toggleModule,
+  resetModules,
+  patch,
+}) {
   const { t } = useTranslation();
 
-  const visibleAreas = useMemo(
-    () =>
-      featureAreaOrder.filter(
-        (key) => capabilityStates[key] !== AVAILABILITY.HIDDEN,
-      ),
-    [],
-  );
+  const planName = t(`pricing:plans.${effectivePlan || "start"}.name`);
 
-  const selectedFunctions = data.functions || [];
+  const quotaInfoText = t("configurator:operations.quotaInfo", {
+    start: plansById?.start?.includedModules ?? 4,
+    business: plansById?.business?.includedModules ?? 6,
+    professional: plansById?.professional?.includedModules ?? 8,
+  });
 
   return (
     <div>
       <h2 className="font-display text-h2 text-heading" tabIndex={-1}>
         {t("configurator:steps.operations")}
       </h2>
+      <p className="mt-2 text-lead text-fg-muted">
+        {t("configurator:operations.operateHelper")}{" "}
+        <span className="font-medium text-fg">{quotaInfoText}</span>
+      </p>
 
       <div className="mt-8 space-y-10">
-        {/* Group A: Capabilities */}
-        <Fieldset
-          legend={t("configurator:operations.operateTitle")}
-          hint={t("configurator:operations.operateHelper")}
-        >
-          <div className="grid gap-3 sm:grid-cols-2">
-            {visibleAreas.map((areaKey) => (
-              <Checkbox
-                key={areaKey}
-                id={`func-${areaKey}`}
-                label={t(`features:areas.${areaKey}.name`)}
-                checked={selectedFunctions.includes(areaKey)}
-                onChange={() => toggleIn("functions", areaKey)}
-              />
-            ))}
-          </div>
-        </Fieldset>
+        {/* Group A: Standard Modules */}
+        <ModuleSelector
+          visibleModules={visibleModules}
+          effectiveModules={effectiveModules}
+          recommendedModules={recommendedModules}
+          labels={labels}
+          info={info}
+          planName={planName}
+          modulesTouched={data.modulesTouched}
+          industry={data.industry}
+          toggleModule={toggleModule}
+          resetModules={resetModules}
+        />
 
         {/* Group B: Size & Capacity */}
         <Fieldset

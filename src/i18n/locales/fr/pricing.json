@@ -18,6 +18,8 @@
     "customQuote": "Sur devis",
     "priceOnRequest": "Tarifs sur demande",
     "recommended": "Recommandée",
+    "modulesLabel": "Modules standard",
+    "modulesNote": "Chaque formule inclut un nombre de modules standard. Le Sector Engine recommande les plus pertinents pour votre secteur, et vous pouvez remplacer n’importe lequel d’entre eux par un autre module standard compatible, sans frais supplémentaires, dans la limite des modules inclus dans votre formule.",
     "usersLabel": "Utilisateurs",
     "entitiesLabel": "Entités juridiques",
     "storageLabel": "Stockage",
@@ -38,19 +40,19 @@
     "start": {
       "name": "START",
       "tagline": "Une base pratique pour les petites équipes.",
-      "included": ["Profil sectoriel", "Flux de travail et support standard"],
+      "included": ["Sector Engine", "Flux de travail et support standard"],
       "cta": "Configurer START"
     },
     "business": {
       "name": "BUSINESS",
       "tagline": "Plus de marge pour les activités en croissance.",
-      "included": ["Flux de travail avancés", "Support Standard+", "Un pack sectoriel standard commercialement disponible"],
+      "included": ["Sector Engine", "Flux de travail avancés", "Support Standard+"],
       "cta": "Configurer BUSINESS"
     },
     "professional": {
       "name": "PROFESSIONAL",
       "tagline": "Une capacité plus large et des fonctionnalités avancées.",
-      "included": ["API avancée", "Portail client", "BI avancée", "Un pack sectoriel standard commercialement disponible"],
+      "included": ["Sector Engine", "API avancée", "Portail client", "BI avancée"],
       "cta": "Configurer PROFESSIONAL"
     },
     "enterprise": {
@@ -58,6 +60,7 @@
       "tagline": "Conçue pour les organisations complexes.",
       "included": ["Capacité sur mesure", "Hébergement", "Engagements de service", "Intégrations"],
       "cta": "Parler à un expert",
+      "modules": "Sur mesure",
       "users": "Sur mesure",
       "entities": "Multi-entités",
       "storage": "Dimensionné selon vos besoins"
@@ -71,18 +74,17 @@
   },
   "optional": {
     "groups": {
+      "modules": "Modules standard",
       "capacity": "Utilisateurs et entités juridiques",
-      "sectorPacks": "Packs sectoriels",
       "addOns": "Modules complémentaires",
       "connectors": "Connecteurs"
     },
     "items": {
+      "additional-module": "Module standard supplémentaire",
       "user-1": "Utilisateur supplémentaire",
       "users-5": "+5 utilisateurs",
       "users-10": "+10 utilisateurs",
       "legal-entity": "Entité juridique supplémentaire",
-      "standard-pack": "Pack sectoriel standard",
-      "industry-plus": "Pack avancé / Industry+",
       "advanced-workflow": "Flux de travail avancés",
       "advanced-bi": "BI et analyses avancées",
       "marketing-automation": "Automatisation marketing",
@@ -103,7 +105,6 @@
       "fromPlusUsage": "À partir de {{amount}} / mois + usage",
       "range": "{{min}}–{{max}} / mois",
       "includedOr": "Inclus ou {{amount}} / mois",
-      "unlessIncluded": "{{amount}} / mois sauf si inclus et commercialement disponible",
       "quote": "Sur devis"
     }
   },

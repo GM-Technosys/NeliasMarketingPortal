@@ -89,7 +89,8 @@
     "externalLink": "(s’ouvre dans un nouvel onglet)",
     "select": {
       "placeholder": "Sélectionner une option"
-    }
+    },
+    "details": "Détails"
   },
   "notFound": {
     "title": "Page introuvable",

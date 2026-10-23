@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Seo } from "@/components/common/Seo";
 import { PageHeader } from "@/components/patterns/PageHeader";
 import { pricingCatalog } from "@/data/pricing-catalog";
+import { features } from "@/config/features";
 import { track, EVENTS } from "@/lib/analytics";
 import { PlansSection } from "@/sections/pricing/PlansSection";
 import { CompareSection } from "@/sections/pricing/CompareSection";
@@ -21,7 +22,7 @@ import { PricingClosing } from "@/sections/pricing/PricingClosing";
  */
 export default function PricingPage() {
   const { t } = useTranslation();
-  const showPrices = true;
+  const showPrices = features.pricingPublic;
   const [billing, setBilling] = useState("monthly");
   const hasWarnedRef = useRef(false);
 
@@ -74,7 +75,7 @@ export default function PricingPage() {
 
       <CompareSection showPrices={showPrices} />
 
-      <OptionalChargesSection />
+      {showPrices && <OptionalChargesSection />}
 
       <PricingFaq tone={faqTone} />
 

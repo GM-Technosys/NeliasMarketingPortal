@@ -128,6 +128,21 @@ export function PlanCard({ plan, billing = "monthly", showPrices = false }) {
       >
         <div className="flex justify-between py-3">
           <dt className={isEnterprise ? "text-fg-inverse-muted" : "text-fg-muted"}>
+            {t("pricing:page.modulesLabel")}
+          </dt>
+          <dd
+            className={cn(
+              "font-semibold",
+              isEnterprise ? "text-white" : "text-heading",
+            )}
+          >
+            {isEnterprise
+              ? t("pricing:plans.enterprise.modules")
+              : formatNumber(plan.includedModules, lng)}
+          </dd>
+        </div>
+        <div className="flex justify-between py-3">
+          <dt className={isEnterprise ? "text-fg-inverse-muted" : "text-fg-muted"}>
             {t("pricing:page.usersLabel")}
           </dt>
           <dd

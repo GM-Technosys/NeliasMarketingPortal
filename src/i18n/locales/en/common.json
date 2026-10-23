@@ -87,7 +87,8 @@
     "decrease": "Decrease",
     "loading": "Loading",
     "externalLink": "(opens in a new tab)",
-    "select": { "placeholder": "Select an option" }
+    "select": { "placeholder": "Select an option" },
+    "details": "Details"
   },
   "notFound": {
     "title": "Page not found",

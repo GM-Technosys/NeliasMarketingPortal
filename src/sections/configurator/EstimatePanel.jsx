@@ -79,6 +79,7 @@ export function EstimatePanel({
     effectivePlan,
     est.totalMonthly,
     est.monthlyOptions,
+    est.extraModules,
     est.plan?.annual,
     est.isLowerBound,
     lng,
@@ -176,6 +177,8 @@ export function EstimatePanel({
               </dd>
             </div>
 
+// TODO(Debass): annual billing of additional modules is assumed monthly; the V3 notes do not say.
+
             {/* Line items for extra capacity and options */}
             {est.lines.map((line) => {
               let label = "";
@@ -185,6 +188,10 @@ export function EstimatePanel({
                 });
               } else if (line.group === "entities") {
                 label = t("configurator:customize.extraEntitiesCount", {
+                  count: line.count,
+                });
+              } else if (line.group === "modules") {
+                label = t("configurator:customize.extraModulesCount", {
                   count: line.count,
                 });
               } else {

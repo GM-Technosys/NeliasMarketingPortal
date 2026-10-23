@@ -34,7 +34,7 @@ const routes = [
       { path: "sla", ...page(() => import("@/pages/SlaPage")) },
       { path: "resources", ...page(() => import("@/pages/ResourcesPage")) },
       { path: "configure", ...page(() => import("@/pages/ConfigurePage")) },
-      { path: "*", element: <Navigate to="/" replace /> },
+      { path: "*", ...page(() => import("@/pages/NotFoundPage")) },
     ],
   },
 ];

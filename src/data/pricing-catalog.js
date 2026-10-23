@@ -9,18 +9,21 @@
  * @property {number|null} users - Included user seats, null = tailored
  * @property {number|null} legalEntities - Included legal entities, null = tailored
  * @property {number|null} storageGb - Included storage in GB, null = tailored
+ * @property {number|null} includedModules - Included standard modules, null = tailored
  * @property {boolean} [featured] - Whether this plan is visually highlighted
  */
 
 // Storage extension prices are provisional (Hodi grid not approved) and must NOT be added here. Keep approvedForPublic false until Debass approves; amounts reach the screen only when features.pricingPublic is true.
+// TODO(Debass): which capability areas are "standard modules" and how extra modules are billed on annual plans are to be confirmed (monthly is assumed, like other options).
 
 /**
  * Internal pricing catalog. Components must read prices from here only -
  * never use price literals in component code.
  */
 export const pricingCatalog = Object.freeze({
-  catalogVersion: "internal-v2",
-  approvedForPublic: true,
+  // v3: standard-module quota and additional-module price added; Standard Sector Pack removed; Industry+ moved to V2 data
+  catalogVersion: "internal-v3",
+  approvedForPublic: false,
   currency: "FCFA",
   taxBasis: "excluding tax",
   annualBilledMonths: 10,
@@ -37,6 +40,7 @@ export const pricingCatalog = Object.freeze({
       users: 5,
       legalEntities: 1,
       storageGb: 10,
+      includedModules: 4,
     },
     {
       id: "business",
@@ -49,6 +53,7 @@ export const pricingCatalog = Object.freeze({
       users: 15,
       legalEntities: 1,
       storageGb: 25,
+      includedModules: 6,
     },
     {
       id: "professional",
@@ -60,6 +65,7 @@ export const pricingCatalog = Object.freeze({
       users: 40,
       legalEntities: 2,
       storageGb: 50,
+      includedModules: 8,
     },
     {
       id: "enterprise",
@@ -71,6 +77,7 @@ export const pricingCatalog = Object.freeze({
       users: null,
       legalEntities: null,
       storageGb: null,
+      includedModules: null,
     },
   ],
 });
@@ -82,15 +89,14 @@ export const plans = pricingCatalog.plans;
  * All amounts in FCFA, excluding tax, per month.
  */
 export const optionalCharges = {
+  modules: [
+    { id: "additional-module", rule: { kind: "fixed", amount: 15000 } },
+  ],
   capacity: [
     { id: "user-1", rule: { kind: "fixed", amount: 5000 } },
     { id: "users-5", rule: { kind: "fixed", amount: 20000 } },
     { id: "users-10", rule: { kind: "fixed", amount: 35000 } },
     { id: "legal-entity", rule: { kind: "fixed", amount: 25000 } },
-  ],
-  sectorPacks: [
-    { id: "standard-pack", rule: { kind: "unlessIncluded", amount: 25000 } },
-    { id: "industry-plus", rule: { kind: "from", amount: 50000 } },
   ],
   addOns: [
     { id: "advanced-workflow", rule: { kind: "fixed", amount: 20000 } },
@@ -110,3 +116,6 @@ export const optionalCharges = {
     { id: "connector-custom", rule: { kind: "quote" } },
   ],
 };
+
+export const additionalModuleRule = optionalCharges.modules[0].rule;
+

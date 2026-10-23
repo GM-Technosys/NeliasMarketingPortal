@@ -36,6 +36,13 @@ export function ConfiguratorApp() {
     effectivePlan,
     options,
     est,
+    effectiveModules,
+    recommendedModules,
+    visibleModules,
+    info,
+    labels,
+    toggleModule,
+    resetModules,
     start,
     resume,
     startAgain,
@@ -140,18 +147,18 @@ export function ConfiguratorApp() {
                       effectivePlan={effectivePlan}
                       plansById={plansById}
                       catalog={catalog}
+                      info={info}
                     />
-                    {(step === "customize" || step === "summary") &&
-                      Boolean(effectivePlan) && (
-                        <EstimatePanel
-                          data={data}
-                          effectivePlan={effectivePlan}
-                          plansById={plansById}
-                          est={est}
-                          patch={patch}
-                          isAside
-                        />
-                      )}
+                    {step !== "profile" && Boolean(effectivePlan) && (
+                      <EstimatePanel
+                        data={data}
+                        effectivePlan={effectivePlan}
+                        plansById={plansById}
+                        est={est}
+                        patch={patch}
+                        isAside
+                      />
+                    )}
                   </div>
                 </details>
               </div>
@@ -175,7 +182,15 @@ export function ConfiguratorApp() {
                   {step === "operations" && (
                     <StepOperations
                       data={data}
-                      toggleIn={toggleIn}
+                      plansById={plansById}
+                      effectivePlan={effectivePlan}
+                      visibleModules={visibleModules}
+                      effectiveModules={effectiveModules}
+                      recommendedModules={recommendedModules}
+                      labels={labels}
+                      info={info}
+                      toggleModule={toggleModule}
+                      resetModules={resetModules}
                       patch={patch}
                     />
                   )}
@@ -184,9 +199,14 @@ export function ConfiguratorApp() {
                     <StepRecommendation
                       data={data}
                       rec={rec}
+                      effectivePlan={effectivePlan}
                       plansById={plansById}
                       options={options}
                       catalog={catalog}
+                      effectiveModules={effectiveModules}
+                      recommendedModules={recommendedModules}
+                      labels={labels}
+                      info={info}
                     />
                   )}
 
@@ -198,6 +218,13 @@ export function ConfiguratorApp() {
                       plansById={plansById}
                       catalog={catalog}
                       options={options}
+                      visibleModules={visibleModules}
+                      effectiveModules={effectiveModules}
+                      recommendedModules={recommendedModules}
+                      labels={labels}
+                      info={info}
+                      toggleModule={toggleModule}
+                      resetModules={resetModules}
                       toggleIn={toggleIn}
                       patch={patch}
                     />
@@ -213,6 +240,8 @@ export function ConfiguratorApp() {
                       plansById={plansById}
                       est={est}
                       catalog={catalog}
+                      effectiveModules={effectiveModules}
+                      info={info}
                       goTo={goTo}
                       save={save}
                       patch={patch}
@@ -229,19 +258,19 @@ export function ConfiguratorApp() {
                     effectivePlan={effectivePlan}
                     plansById={plansById}
                     catalog={catalog}
+                    info={info}
                   />
 
-                  {(step === "customize" || step === "summary") &&
-                    Boolean(effectivePlan) && (
-                      <EstimatePanel
-                        data={data}
-                        effectivePlan={effectivePlan}
-                        plansById={plansById}
-                        est={est}
-                        patch={patch}
-                        isAside
-                      />
-                    )}
+                  {step !== "profile" && Boolean(effectivePlan) && (
+                    <EstimatePanel
+                      data={data}
+                      effectivePlan={effectivePlan}
+                      plansById={plansById}
+                      est={est}
+                      patch={patch}
+                      isAside
+                    />
+                  )}
                 </aside>
               </div>
             </div>

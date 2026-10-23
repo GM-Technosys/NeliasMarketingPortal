@@ -10,8 +10,9 @@ npm run lint        # Run oxlint
 npm run build       # Production build
 npm run check:copy  # Scan for banned pre-launch phrases
 npm run check:theme # Scan for raw palette color usage
-npm run check:contrast # Validate WCAG contrast in light & dark themes
-npm run verify      # lint + build + check:copy + check:i18n + check:theme + check:contrast
+npm run check:industries # Validate industry sectors, areas, and translations
+npm run check:docs       # Validate UI/UX documentation parity
+npm run verify      # lint + build + check:copy + check:i18n + check:theme + check:contrast + check:legal + check:config + check:industries + check:docs
 npm run format      # Prettier
 ```
 
@@ -42,7 +43,7 @@ npm run format      # Prettier
 
 - Use the **exact approved copy** given in each step prompt.
 - **No pre-launch language:** "coming soon", "waitlist", "waiting list", "pre-launch", "prelaunch", "countdown", "launching soon", "january 2027", "stay tuned".
-- Never present an unvalidated module, connector, Sector Pack or AI feature as live.
+- Never present an unvalidated module, connector, or AI feature as live.
 - Never promise certifications, uptime, data residency, payment rails or regulatory compliance.
 - NELIAS is **one platform** with sector configuration - not a separate ERP per industry.
 - Healthcare and finance copy must avoid unverified clinical or regulatory claims.
@@ -199,12 +200,15 @@ npm run format      # Prettier
 
 ## Industries Page Guidelines
 
+- The portal has twelve sectors; all sector lists are data-driven (`src/data/industries.js`, `src/data/industry-areas.js`, `src/i18n/locales/*/industries.json`). Adding a future sector is a data-only change: add a slug to `industries.js`, an areas array to `industry-areas.js`, an icon to `home-content.js`, and en/fr copy to `industries.json`, then run `npm run check:industries`.
+- Area order in `industry-areas.js` represents the Sector Engine relevance order.
+- The four newest sectors (Real Estate, Pharmacies, Construction / BTP, IT & Technology Services) use existing standard modules only and their copy must NOT mention specialised functions (rent collection, lease agreements, batch or expiry tracking, progress billing, retention, subcontractors, SLAs, insurance policies and similar: they belong to future Industry+ packs).
 - Industry copy lives in `industries.json` (names, summaries, headlines, walkthrough nodes, labels) in both languages. Home also reads `items.<slug>.name/summary/headline`. Missing approved text is flagged with `TODO(Debass)`. To add sector-specific challenges and outcomes later, add `pairs: [{ challenge, outcome }]` (three entries) to `items.<slug>` in BOTH languages; the template picks them up with no code change.
 - `faq.json` (en and fr) holds all ten approved FAQ answers; later steps (Pricing and others) reuse it. The English `tryNelias` answer starts with a lowercase "demo" exactly as in the PDF; fix it only when Debass approves.
 - Capability status badges on industry pages come from `feature-states.js` (placeholder `demo-only` until confirmed); `hidden` areas are excluded everywhere.
-- Healthcare and insurance pages show the approved summaries (with their "subject to…" caveats) in full and carry no other regulatory or clinical statements.
+- Healthcare, pharmacies and insurance pages show the approved summaries (with their "subject to…" caveats) in full and carry no other regulatory or clinical statements.
 - CTA rule on industry pages: `IndustryCta` shows the approved "configuration" label only when `features.configurator` is on; otherwise it shows "Talk to an Advisor" linking to `/demo`.
-- Open copy items for Debass (marked `TODO(Debass)`): sector-specific challenges and outcomes, walkthroughs, headlines for Education & Training and Energy & Field Services, which FAQ answers belong on industry pages, SEO copy for industry pages, the French terminology ("Hôtellerie", "Industrie manufacturière"), French review.
+- Open copy items for Debass (marked `TODO(Debass)`): confirmation of sector names and order, sector-specific challenges and outcomes, walkthroughs, headlines for sectors without benefit-led headlines, which FAQ answers belong on industry pages, SEO copy for industry pages, the French terminology ("Hôtellerie", "Industrie manufacturière"), French review.
 
 ## Features Page Guidelines
 
@@ -218,12 +222,13 @@ npm run format      # Prettier
 
 ## Pricing Page Guidelines
 
-- Pricing copy lives in `pricing.json` (en and fr). ALL amounts and capacities come from `src/data/pricing-catalog.js` (plans and `optionalCharges`) through `formatFcfa`/`formatNumber`; never type a price, user count or storage value in a component or an i18n file. Storage extension prices are provisional and must never be added anywhere.
-- Display gate: amounts, the Monthly/Annual toggle, the "12 months for the price of 10" sentence, the optional-charges section and the price disclaimer render ONLY when `features.pricingPublic` is true; otherwise the page shows capacity and inclusions with "Pricing on request". The catalog's `approvedForPublic` stays false until Debass approves; in development a console warning appears when the gate is open and the catalog is not approved.
+- Pricing copy lives in `pricing.json` (en and fr). ALL amounts, capacities and module counts come from `src/data/pricing-catalog.js` (plans and `optionalCharges`) through `formatFcfa`/`formatNumber`; never type a price, user count, storage value or module quota in a component or an i18n file. Standard modules per plan (START 4, BUSINESS 6, PROFESSIONAL 8, ENTERPRISE tailored) are drawn from the catalog. Each additional standard module costs FCFA 15,000/month. The Sector Engine is included in every plan at no charge; there is NO separate or paid Sector Pack. Industry+ packs (FCFA 50,000/month) are V2 ONLY (data in `src/data/industry-packs.js`, feature flag `industryPlus` / `VITE_FEATURE_INDUSTRY_PLUS`, status gate, no V1 UI). Storage extension prices are provisional and must never be added anywhere.
+- Catalog version is `internal-v3`. Optional charges now list 18 items across four groups: modules (additional standard module), capacity, add-ons, connectors.
+- Display gate: amounts, the Monthly/Annual toggle, the "12 months for the price of 10" sentence, the optional-charges section and the price disclaimer render ONLY when `features.pricingPublic` is true; otherwise the page shows capacity, included modules and inclusions with "Pricing on request". The catalog's `approvedForPublic` stays false until Debass approves; in development a console warning appears when the gate is open and the catalog is not approved.
 - The internal note "Prices below are internal commercial V2 reference figures…" is never displayed.
 - CTA rules: plan buttons say "Configure <PLAN>" (linking to `/configure?plan=<id>`, plus `billing` when prices are public) only when `features.configurator` is on, otherwise "Talk to an Advisor" (to `/demo`); the Enterprise button is always "Talk to an Expert" (to `/contact`). Only the featured (BUSINESS) card uses the orange primary button. The later Configurator step reads the `plan` and `billing` query parameters.
 - Heading structure of `/pricing`: one `<h1>`, a visually hidden `<h2>` "Plans" with one `<h3>` per plan, then `<h2>` sections (compare, optional charges when shown, FAQ).
-- Open copy items for Debass (marked `TODO(Debass)`): wording for the hidden-price state, the "Included" lists, whether "unless included and commercially ready" is customer-facing, the Enterprise button destination, the labels "Compare plans" and "Optional charges", commercial readiness of every add-on, connector and NELIAS AI, FAQ selection, French review.
+- Open copy items for Debass (marked `TODO(Debass)`): wording for the hidden-price state, the "Included" lists ("Sector Engine" wording), modules note under the plan cards, standard modules on annual plans and which capability areas are standard modules, the Enterprise button destination, the labels "Compare plans" and "Optional charges", commercial readiness of every add-on, connector and NELIAS AI, FAQ selection, French review.
 
 ## Contact and Demo Page Guidelines
 
@@ -270,12 +275,26 @@ npm run format      # Prettier
 ## Configurator Page Guidelines
 
 - The configurator (`/configure`, only when `features.configurator` is true) has a start screen and five steps; copy lives in `configurator.json` (en and fr) and reuses names and labels from `pricing.json`, `industries.json`, `features.json` and `contact.json`.
+- Standard modules are chosen (the twelve capability areas, not free functions); quota per plan comes from `pricing-catalog.js` (START 4, BUSINESS 6, PROFESSIONAL 8, ENTERPRISE tailored/unlimited). Extra modules beyond quota are charged at the catalog price (FCFA 15,000/month).
+- The Sector Engine recommends modules as a derived suggestion capped at the plan quota and is never mandatory. Replacement of compatible standard modules within quota is free by design (price depends strictly on the count of extra modules).
+- Status badges: "Recommended" (when matching recommendation), "Included" (within quota), and "Additional" (beyond quota). Unchecked modules show no status badge.
+- Module list and sector compatibility come from `src/data/modules.js` and `src/data/industry-areas.js`; adding future sectors or specialised modules is done there with no restructuring. Industry+ packs are V2 only and absent from V1.
+- Plan recommendation remains capacity-first (users, legal entities, storage); selecting extra modules does not force plan upgrade (extra modules are billed).
+- The estimate panel is displayed in the aside starting from step 2 (operations) onwards so dynamic pricing changes are visible immediately.
 - Logic is pure and testable in `src/lib/configurator/` (relative imports only): capacity-first recommendation, minimum-cost extension pricing, estimate with lower-bound flags. `npm run check:config` (part of `verify`) tests it against the catalog. Never hard-code amounts: they come from `pricing-catalog.js`.
 - Pricing gate: amounts appear only when `features.pricingPublic` is true; annual billing shows the plan (per year) and the options (per month) separately and never sums them; storage extension prices never exist.
 - No checkout, workspace address, account, payment or activation exists; never add a control that implies them. A checkout control is rendered only when `features.checkout` is true AND that journey exists (extension point in `StepSummary`).
-- Privacy: the configuration contains no personal data; save writes a draft to `localStorage` key `nelias-config-draft`; share encodes the selections in the `c` URL parameter (validated with `sanitizeState` before use); analytics receive only step numbers, plan ids and billing ids.
-- The demo link carries `industry` and `needs` query parameters, read by `useLeadForm`.
-- Open items for Debass (marked `TODO(Debass)`): the Sector Engine rules and thresholds, the function-to-add-on mapping, annual pricing for options, treatment of storage beyond the plan, approval of all amounts, "teams and priorities", SEO copy, the checkout and account journey, use of the legal sentence on the summary, French review.
+- Privacy: the configuration contains no personal data; save writes a draft to `localStorage` key `nelias-config-draft`; share encodes the selections in the `c` URL parameter (validated with `sanitizeState` before use); analytics receive only step numbers, plan ids, billing ids and module counts (`selected`, `included`).
+- The demo link carries `industry` and `needs` query parameters (carrying `effectiveModules`), read by `useLeadForm`.
+- Open items for Debass (marked `TODO(Debass)`): the Sector Engine rules and matrix, annual pricing for additional modules, confirmation of which capability areas are standard modules and any sector compatibility restrictions, customer-facing term ("standard modules" vs "functions"), treatment of storage beyond the plan, approval of all amounts, "teams and priorities", SEO copy, the checkout and account journey, use of the legal sentence on the summary, French review.
+
+## UI/UX Specification Guidelines
+
+- The `docs/ui-ux/` document set is the formal UI/UX specification for the NELIAS marketing portal.
+- Any new page, route, or component MUST update the matching document in the same change (`npm run check:docs` enforces that all routes in `router.jsx`, component filenames in `src/components/ui` and `src/components/patterns`, and page specs in `docs/ui-ux/04-page-specs/` are documented).
+- The audit report (`docs/ui-ux/05-audit-report.md`) records every refinement and finding across viewports, themes, and languages.
+- Strict constraint: no redesign or modification of brand colors, typography, logo treatments, or approved copy without prior Debass approval.
+
 
 
 

@@ -1,4 +1,4 @@
-import { planIncludesAddOns, planIncludesStandardPack } from "./plan-rules.js";
+import { planIncludesAddOns } from "./plan-rules.js";
 
 // TODO(Debass): the PDF gives no annual price for options; options are always shown per month and never added to the annual plan price. The extension bundle choice (minimum cost to cover the need) and the lower-bound convention are assumptions.
 
@@ -112,42 +112,31 @@ export function estimate(state, planId, catalog) {
     });
   }
 
-  // 3. Sector packs
-  const selectedPacks = Array.isArray(state?.sectorPacks) ? state.sectorPacks : [];
-  const packCatalog = optionalCharges.sectorPacks || [];
+  // 3. Extra modules
+  const selectedModules = Array.isArray(state?.effectiveModules)
+    ? state.effectiveModules
+    : Array.isArray(state?.modules)
+      ? state.modules
+      : Array.isArray(state?.functions)
+        ? state.functions
+        : [];
+  const includedModules = planData?.includedModules ?? (isEnterprise ? selectedModules.length : 0);
+  const extraModules = isEnterprise ? 0 : Math.max(0, selectedModules.length - includedModules);
 
-  for (const packId of selectedPacks) {
-    const item = packCatalog.find((p) => p.id === packId);
-    if (packId === "standard-pack") {
-      const isIncluded = planIncludesStandardPack[planId] ?? false;
-      if (isIncluded) {
-        lines.push({
-          id: packId,
-          group: "pack",
-          amount: 0,
-          included: true,
-        });
-      } else {
-        const amount = item?.rule?.amount ?? 0;
-        lines.push({
-          id: packId,
-          group: "pack",
-          rule: item?.rule,
-          amount,
-          included: false,
-        });
-      }
-    } else if (packId === "industry-plus") {
-      isLowerBound = true;
-      const amount = item?.rule?.amount ?? 0;
-      lines.push({
-        id: packId,
-        group: "pack",
-        rule: item?.rule,
-        amount,
-        included: false,
-      });
-    }
+  if (extraModules > 0 && !isEnterprise) {
+    const moduleList = optionalCharges.modules || [];
+    const modItem = moduleList.find((m) => m.id === "additional-module");
+    const rule = modItem?.rule;
+    const additionalModuleAmount = rule?.amount ?? 15000;
+    const amount = extraModules * additionalModuleAmount;
+    lines.push({
+      id: "additional-module",
+      group: "modules",
+      count: extraModules,
+      rule,
+      amount,
+      included: false,
+    });
   }
 
   // 4. Add-ons
@@ -245,5 +234,6 @@ export function estimate(state, planId, catalog) {
     hasQuote,
     extraUsers,
     extraEntities,
+    extraModules,
   };
 }

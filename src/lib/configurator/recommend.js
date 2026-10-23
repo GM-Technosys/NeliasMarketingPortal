@@ -50,7 +50,13 @@ export function recommendPlan(state, plansById) {
  * @returns {Array<{ area: string, addOnId: string, included: boolean }>}
  */
 export function usefulOptions(state, planId) {
-  const functions = Array.isArray(state?.functions) ? state.functions : [];
+  const functions = Array.isArray(state?.effectiveModules)
+    ? state.effectiveModules
+    : Array.isArray(state?.modules)
+      ? state.modules
+      : Array.isArray(state?.functions)
+        ? state.functions
+        : [];
   const includedList = planIncludesAddOns[planId] || [];
 
   const seen = new Set();

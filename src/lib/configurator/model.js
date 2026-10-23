@@ -9,13 +9,13 @@ export function defaultState() {
     activity: "",
     country: "",
     companySize: "",
-    functions: [],
+    modules: [],
+    modulesTouched: false,
     users: 5,
     entities: 1,
     storage: 10,
     plan: "",
     addOns: [],
-    sectorPacks: [],
     connectors: [],
     billing: "monthly",
   };
@@ -42,10 +42,10 @@ function clampNumber(val, min, max, fallback) {
  * @param {any} raw
  * @param {Object} valid
  * @param {string[]} [valid.industries]
+ * @param {string[]} [valid.modules]
  * @param {string[]} [valid.areas]
  * @param {string[]} [valid.countries]
  * @param {string[]} [valid.addOns]
- * @param {string[]} [valid.sectorPacks]
  * @param {string[]} [valid.connectors]
  * @returns {ReturnType<typeof defaultState>}
  */
@@ -54,10 +54,13 @@ export function sanitizeState(raw, valid = {}) {
   if (!raw || typeof raw !== "object") return d;
 
   const validIndustries = Array.isArray(valid.industries) ? valid.industries : [];
-  const validAreas = Array.isArray(valid.areas) ? valid.areas : [];
+  const validModules = Array.isArray(valid.modules)
+    ? valid.modules
+    : Array.isArray(valid.areas)
+      ? valid.areas
+      : [];
   const validCountries = Array.isArray(valid.countries) ? valid.countries : [];
   const validAddOns = Array.isArray(valid.addOns) ? valid.addOns : [];
-  const validSectorPacks = Array.isArray(valid.sectorPacks) ? valid.sectorPacks : [];
   const validConnectors = Array.isArray(valid.connectors) ? valid.connectors : [];
 
   // Industry: must be in valid list or "other"
@@ -93,7 +96,7 @@ export function sanitizeState(raw, valid = {}) {
     }
   }
 
-  // Functions (areas)
+  // Modules / legacy functions
   const sanitizeList = (list, allowed) => {
     if (!Array.isArray(list)) return [];
     const seen = new Set();
@@ -110,9 +113,26 @@ export function sanitizeState(raw, valid = {}) {
     return result;
   };
 
-  const functions = sanitizeList(raw.functions, validAreas);
+  let modulesTouched = false;
+  let rawModules = null;
+
+  if (typeof raw.modulesTouched === "boolean") {
+    modulesTouched = raw.modulesTouched;
+    rawModules = raw.modules;
+  } else if (Array.isArray(raw.modules)) {
+    modulesTouched = true;
+    rawModules = raw.modules;
+  } else if (Array.isArray(raw.functions)) {
+    // Legacy support for functions
+    modulesTouched = true;
+    rawModules = raw.functions;
+  }
+
+  const modules = modulesTouched
+    ? sanitizeList(rawModules, validModules).slice(0, 12)
+    : [];
+
   const addOns = sanitizeList(raw.addOns, validAddOns);
-  const sectorPacks = sanitizeList(raw.sectorPacks, validSectorPacks);
   const connectors = sanitizeList(raw.connectors, validConnectors);
 
   // Numbers clamped
@@ -149,13 +169,13 @@ export function sanitizeState(raw, valid = {}) {
     activity,
     country,
     companySize,
-    functions,
+    modules,
+    modulesTouched,
     users,
     entities,
     storage,
     plan,
     addOns,
-    sectorPacks,
     connectors,
     billing,
   };

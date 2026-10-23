@@ -66,6 +66,27 @@
       "name": "Energy & Field Services",
       "summary": "Coordinate assets, maintenance, projects and field activities.",
       "walkthrough": ["Assets", "Maintenance", "Projects", "Field activities"]
+    },
+    "real-estate": {
+      "name": "Real Estate",
+      "summary": "Organize client relationships, sales, projects, finance and reporting for real estate activities.",
+      "walkthrough": ["Client relationships", "Sales", "Projects", "Finance", "Reporting"]
+    },
+    "pharmacies": {
+      "name": "Pharmacies",
+      "summary": "Support purchasing, stock, point-of-sale and financial workflows for pharmacy operations, subject to sector-specific requirements.",
+      "walkthrough": ["Purchasing", "Stock", "Point of sale", "Finance"]
+    },
+    "construction-btp": {
+      "name": "Construction / BTP",
+      "summary": "Connect purchasing, stock, projects, timesheets and financial tracking for construction activities.",
+      "walkthrough": ["Purchasing", "Stock", "Projects", "Timesheets", "Financial tracking"]
+    },
+    "it-technology-services": {
+      "name": "IT & Technology Services",
+      "summary": "Bring client relationships, projects, timesheets, customer support and reporting into a connected workflow.",
+      "walkthrough": ["Client relationships", "Projects", "Timesheets", "Customer support", "Reporting"]
     }
   }
 }
+

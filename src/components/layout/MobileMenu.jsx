@@ -98,7 +98,7 @@ export function MobileMenu({ open, onClose }) {
             <li key={key}>
               <NavLink
                 to={to}
-                end
+                end={to === "/"}
                 onClick={(e) => {
                   if (to === "#") e.preventDefault();
                   track(EVENTS.NAV_CLICK, { key });

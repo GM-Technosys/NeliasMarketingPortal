@@ -9,7 +9,7 @@ import { Panel } from "@/components/ui/Panel";
  * @param {Object} props.data - Configurator state
  * @param {string} props.effectivePlan - Current plan id
  * @param {Object} props.plansById - Plans map
- * @param {Object} props.catalog - Pricing catalog
+ * @param {{ selected: number, included: number|null, extra: number, remaining: number, unlimited: boolean }} [props.info]
  * @param {string} [props.className]
  */
 export function SummaryPanel({
@@ -17,6 +17,7 @@ export function SummaryPanel({
   effectivePlan,
   plansById,
   catalog,
+  info,
   className = "",
 }) {
   const { t } = useTranslation();
@@ -27,14 +28,13 @@ export function SummaryPanel({
     return t(`industries:items.${data.industry}.name`);
   }, [data.industry, t]);
 
-  const functionsLabel = useMemo(() => {
-    if (!data.functions || data.functions.length === 0) {
-      return t("configurator:panel.empty");
+  const modulesLabel = useMemo(() => {
+    if (!info) return t("configurator:panel.empty");
+    if (info.unlimited) {
+      return `${info.selected}`;
     }
-    return data.functions
-      .map((k) => t(`features:areas.${k}.name`))
-      .join(", ");
-  }, [data.functions, t]);
+    return `${info.selected} / ${info.included}`;
+  }, [info, t]);
 
   const capacityLabel = `${data.users} ${t("pricing:page.usersLabel").toLowerCase()} · ${data.entities} ${t("pricing:page.entitiesLabel").toLowerCase()}`;
 
@@ -49,9 +49,6 @@ export function SummaryPanel({
 
   const optionsLabel = useMemo(() => {
     const list = [];
-    (data.sectorPacks || []).forEach((id) =>
-      list.push(t(`pricing:optional.items.${id}`)),
-    );
     (data.addOns || []).forEach((id) =>
       list.push(t(`pricing:optional.items.${id}`)),
     );
@@ -59,7 +56,7 @@ export function SummaryPanel({
       list.push(t(`pricing:optional.items.${id}`)),
     );
     return list.length > 0 ? list.join(", ") : t("configurator:panel.empty");
-  }, [data.sectorPacks, data.addOns, data.connectors, t]);
+  }, [data.addOns, data.connectors, t]);
 
   return (
     <Panel tone="muted" padding="md" className={`space-y-4 ${className}`}>
@@ -77,9 +74,9 @@ export function SummaryPanel({
 
         <div>
           <dt className="text-xs font-semibold uppercase tracking-wider text-fg-subtle">
-            {t("configurator:panel.functions")}
+            {t("configurator:panel.modules")}
           </dt>
-          <dd className="mt-0.5 font-medium text-fg">{functionsLabel}</dd>
+          <dd className="mt-0.5 font-medium text-fg">{modulesLabel}</dd>
         </div>
 
         <div>

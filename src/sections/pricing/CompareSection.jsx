@@ -44,6 +44,7 @@ export function CompareSection({ showPrices }) {
                     <th scope="col">{t("pricing:compare.annualCol")}</th>
                   </>
                 )}
+                <th scope="col">{t("pricing:page.modulesLabel")}</th>
                 <th scope="col">{t("pricing:page.usersLabel")}</th>
                 <th scope="col">{t("pricing:page.entitiesLabel")}</th>
                 <th scope="col">{t("pricing:page.storageLabel")}</th>
@@ -87,6 +88,11 @@ export function CompareSection({ showPrices }) {
                         </td>
                       </>
                     )}
+                    <td>
+                      {isEnterprise
+                        ? t("pricing:plans.enterprise.modules")
+                        : formatNumber(plan.includedModules, lng)}
+                    </td>
                     <td>
                       {isEnterprise
                         ? t("pricing:plans.enterprise.users")

@@ -12,12 +12,13 @@ import { IndustryCta } from "./IndustryCta";
  * Uses the tinted surface matching the Home page closing CTA band.
  *
  * @param {Object} props
+ * @param {string} [props.slug] - Industry sector slug
  * @param {string} [props.labelKey] - CTA label key for configurator
  * @param {boolean} [props.showAll=false] - Whether to show the "All industries" button
  * @param {string} [props.location] - Tracking location
  * @returns {import("react").JSX.Element}
  */
-export function IndustryClosing({ labelKey = "cta.findConfiguration", showAll = false, location }) {
+export function IndustryClosing({ slug, labelKey = "cta.findConfiguration", showAll = false, location }) {
   const { t } = useTranslation();
 
   return (
@@ -34,10 +35,10 @@ export function IndustryClosing({ labelKey = "cta.findConfiguration", showAll = 
             <div className="lg:col-span-7 flex flex-col items-start gap-4">
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto">
                 <IndustryCta
+                  slug={slug}
                   labelKey={labelKey}
                   size="lg"
                   location={location}
-                  to="/configure"
                   className="w-full sm:w-auto text-center"
                 />
                 {showAll && (

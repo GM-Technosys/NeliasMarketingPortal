@@ -12,8 +12,8 @@ import { describeRule } from "./price-format";
 import { cn } from "@/lib/cn";
 
 /**
- * Expandable pricing details for developers section displaying capacity,
- * sector packs, add-ons, and connectors in an interactive structured table.
+ * Expandable pricing details section displaying modules, capacity,
+ * add-ons, and connectors in an interactive structured layout.
  *
  * @returns {import("react").JSX.Element}
  */
@@ -22,12 +22,52 @@ export function OptionalChargesSection() {
   const { lng } = useFormat();
   const [expanded, setExpanded] = useState(true);
 
-  const groups = [
+  const leftGroups = [
+    { key: "modules", items: optionalCharges.modules },
     { key: "capacity", items: optionalCharges.capacity },
-    { key: "sectorPacks", items: optionalCharges.sectorPacks },
+  ];
+
+  const rightGroups = [
     { key: "addOns", items: optionalCharges.addOns },
     { key: "connectors", items: optionalCharges.connectors },
   ];
+
+  const renderGroup = ({ key, items }) => (
+    <div key={key} className="space-y-3">
+      <h3 className="font-display text-lg font-semibold text-heading">
+        {t(`pricing:optional.groups.${key}`)}
+      </h3>
+      <ResponsiveTable
+        caption={t(`pricing:optional.groups.${key}`)}
+        captionHidden={true}
+        label={t(`pricing:optional.groups.${key}`)}
+        tableClassName="min-w-full"
+      >
+        <thead>
+          <tr>
+            <th scope="col" className="w-1/2 min-w-[9.5rem]">
+              {t("pricing:page.itemCol")}
+            </th>
+            <th scope="col" className="w-1/2 min-w-[10rem]">
+              {t("pricing:page.ruleCol")}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map(({ id, rule }) => (
+            <tr key={id}>
+              <th scope="row" className="font-medium text-fg">
+                {t(`pricing:optional.items.${id}`)}
+              </th>
+              <td className="tabular-nums font-semibold text-heading">
+                {describeRule(rule, t, lng)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </ResponsiveTable>
+    </div>
+  );
 
   return (
     <Section tone="default" spacing="md" className="py-10 md:py-14">
@@ -49,48 +89,28 @@ export function OptionalChargesSection() {
               aria-expanded={expanded}
               className="inline-flex items-center gap-2 rounded-md border border-line bg-surface-raised px-4 py-2 text-sm font-semibold text-fg-strong shadow-2xs hover:bg-surface-muted hover:text-heading cursor-pointer shrink-0 self-start sm:self-center transition-colors"
             >
-              <span>{expanded ? t("pricing:page.collapseDetails") : t("pricing:page.expandDetails")}</span>
+              <span>
+                {expanded
+                  ? t("pricing:page.collapseDetails")
+                  : t("pricing:page.expandDetails")}
+              </span>
               <ChevronDown
-                className={cn("h-4 w-4 transition-transform duration-200", expanded && "rotate-180")}
+                className={cn(
+                  "h-4 w-4 transition-transform duration-200",
+                  expanded && "rotate-180",
+                )}
                 aria-hidden="true"
               />
             </button>
           </div>
 
           {expanded && (
-            <div className="mt-6">
-              <ResponsiveTable
-                caption={t("pricing:page.devPricingTitle")}
-                captionHidden={true}
-                label={t("pricing:page.devPricingTitle")}
-                tableClassName="min-w-[24rem] sm:min-w-[32rem]"
-              >
-                <thead>
-                  <tr>
-                    <th scope="col" className="w-1/2 min-w-[9.5rem]">{t("pricing:page.itemCol")}</th>
-                    <th scope="col" className="w-1/2 min-w-[12rem]">{t("pricing:page.ruleCol")}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {groups.map(({ key, items }) =>
-                    items.map(({ id, rule }, idx) => (
-                      <tr key={id}>
-                        <th scope="row" className="font-medium text-fg">
-                          <span className="flex items-center gap-2">
-                            {idx === 0 && (
-                              <span className="sr-only">[{t(`pricing:optional.groups.${key}`)}]</span>
-                            )}
-                            {t(`pricing:optional.items.${id}`)}
-                          </span>
-                        </th>
-                        <td className="tabular-nums font-semibold text-heading">
-                          {describeRule(rule, t, lng)}
-                        </td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </ResponsiveTable>
+            <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              {/* Left column: modules then capacity */}
+              <div className="space-y-8">{leftGroups.map(renderGroup)}</div>
+
+              {/* Right column: add-ons then connectors */}
+              <div className="space-y-8">{rightGroups.map(renderGroup)}</div>
             </div>
           )}
 

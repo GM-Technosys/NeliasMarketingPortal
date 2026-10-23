@@ -16,7 +16,7 @@ export function DesktopNav() {
         <NavLink
           key={key}
           to={to}
-          end
+          end={to === "/"}
           onClick={(e) => {
             if (to === "#") e.preventDefault();
             track(EVENTS.NAV_CLICK, { key });

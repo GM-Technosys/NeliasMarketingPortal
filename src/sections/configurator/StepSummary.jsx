@@ -39,6 +39,8 @@ export function StepSummary({
   plansById,
   est,
   catalog,
+  effectiveModules = [],
+  info,
   goTo,
   save,
   patch,
@@ -60,14 +62,26 @@ export function StepSummary({
     return t(`industries:items.${data.industry}.name`);
   }, [data.industry, t]);
 
-  const functionsLabel = useMemo(() => {
-    if (!data.functions || data.functions.length === 0) {
+  const modulesNames = useMemo(() => {
+    if (!effectiveModules || effectiveModules.length === 0) {
       return t("configurator:summary.none");
     }
-    return data.functions
+    return effectiveModules
       .map((k) => t(`features:areas.${k}.name`))
       .join(", ");
-  }, [data.functions, t]);
+  }, [effectiveModules, t]);
+
+  const modulesLineText = useMemo(() => {
+    if (!info) return "";
+    const includedVal = info.unlimited
+      ? t("pricing:plans.enterprise.modules")
+      : info.included;
+    return t("configurator:summary.modulesLine", {
+      selected: info.selected,
+      included: includedVal,
+      extra: info.extra,
+    });
+  }, [info, t]);
 
   const countrySizeLabel = useMemo(() => {
     const parts = [];
@@ -78,9 +92,6 @@ export function StepSummary({
 
   const optionsLabel = useMemo(() => {
     const list = [];
-    (data.sectorPacks || []).forEach((id) =>
-      list.push(t(`pricing:optional.items.${id}`)),
-    );
     (data.addOns || []).forEach((id) =>
       list.push(t(`pricing:optional.items.${id}`)),
     );
@@ -88,7 +99,7 @@ export function StepSummary({
       list.push(t(`pricing:optional.items.${id}`)),
     );
     return list.length > 0 ? list.join(", ") : t("configurator:summary.none");
-  }, [data.sectorPacks, data.addOns, data.connectors, t]);
+  }, [data.addOns, data.connectors, t]);
 
   // Demo destination with query parameters
   const demoUrl = useMemo(() => {
@@ -96,12 +107,12 @@ export function StepSummary({
     if (data.industry && data.industry !== "other") {
       params.set("industry", data.industry);
     }
-    if (data.functions && data.functions.length > 0) {
-      params.set("needs", data.functions.join(","));
+    if (effectiveModules && effectiveModules.length > 0) {
+      params.set("needs", effectiveModules.join(","));
     }
     const query = params.toString();
     return query ? `/demo?${query}` : "/demo";
-  }, [data.industry, data.functions]);
+  }, [data.industry, effectiveModules]);
 
   const handleShare = async () => {
     track(EVENTS.CONFIGURATOR_SHARE);
@@ -152,10 +163,17 @@ export function StepSummary({
       content: <p className="font-semibold text-fg">{countrySizeLabel}</p>,
     },
     {
-      id: "functions",
-      label: t("configurator:panel.functions"),
+      id: "modules",
+      label: t("configurator:panel.modules"),
       targetStep: "operations",
-      content: <p className="font-semibold text-fg">{functionsLabel}</p>,
+      content: (
+        <div>
+          <p className="font-semibold text-fg">{modulesNames}</p>
+          {modulesLineText && (
+            <p className="mt-0.5 text-xs text-fg-muted">{modulesLineText}</p>
+          )}
+        </div>
+      ),
     },
     {
       id: "capacity",

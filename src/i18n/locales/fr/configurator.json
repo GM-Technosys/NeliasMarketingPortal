@@ -30,8 +30,24 @@
   "operations": {
     "operateTitle": "Comment fonctionne votre entreprise\u00A0?",
     "operateHelper": "Choisissez les fonctions dont vous avez besoin aujourd’hui.",
+    "quotaInfo": "Les formules incluent {{start}}, {{business}} ou {{professional}} modules standard.",
     "sizeTitle": "Dimensionnons votre environnement.",
     "sizeHelper": "Ajoutez des utilisateurs, des entités juridiques et vos besoins opérationnels."
+  },
+  "modules": {
+    "title": "Modules standard",
+    "helper": "Le Sector Engine recommande les modules standard les plus pertinents pour votre secteur. Vous pouvez remplacer n’importe lequel d’entre eux par un autre module standard compatible, sans frais supplémentaires, dans la limite des modules inclus dans votre formule.",
+    "meter": "Modules standard sélectionnés\u00A0: {{selected}} sur {{included}} inclus dans {{plan}}",
+    "extraAlert": "Modules standard supplémentaires\u00A0: {{extra}}. Chaque module standard supplémentaire est facturé par mois.",
+    "included": "Inclus",
+    "additional": "Supplémentaire",
+    "reset": "Revenir aux modules recommandés",
+    "enterpriseNote": "Les modules standard sont définis sur mesure dans les configurations ENTERPRISE.",
+    "noRecommendation": "Choisissez les modules standard dont vous avez besoin.",
+    "selectionTitle": "Vos modules standard",
+    "recommendedTitle": "Modules standard recommandés",
+    "matches": "Votre sélection correspond à la recommandation.",
+    "changed": "Vous avez modifié les modules recommandés. Vous pouvez remplacer n’importe lequel d’entre eux dans la limite des modules inclus dans votre formule."
   },
   "recommendation": {
     "helper": "D’après les informations que vous avez fournies.",
@@ -41,8 +57,7 @@
     "entitiesLine": "Entités juridiques\u00A0: vous en avez besoin de {{needed}}\u00A0; {{plan}} en inclut {{included}}.",
     "storageLine": "Stockage\u00A0: vous avez besoin de {{needed}} Go au maximum\u00A0; {{plan}} inclut {{included}} Go.",
     "industryLine": "Secteur\u00A0: {{industry}}.",
-    "functionsLine": "Fonctions sélectionnées\u00A0: {{list}}.",
-    "includedTitle": "Fonctionnalités incluses",
+    "modulesLine": "Modules standard\u00A0: vous en avez sélectionné {{selected}}\u00A0; {{plan}} en inclut {{included}}.",
     "includedInPlan": "Inclus dans {{plan}}",
     "optionsTitle": "Options utiles",
     "optionsNone": "Aucune option supplémentaire n’est suggérée pour les fonctions sélectionnées.",
@@ -68,12 +83,13 @@
     "annualOptionsNote": "Les options sont facturées par mois.",
     "extraUsersCount": "Utilisateurs supplémentaires ({{count}})",
     "extraEntitiesCount": "Entités juridiques supplémentaires ({{count}})",
+    "extraModulesCount": "Modules standard supplémentaires ({{count}})",
     "includedLabel": "Inclus"
   },
   "panel": {
     "title": "Votre configuration",
     "empty": "Pas encore renseigné",
-    "functions": "Fonctions",
+    "modules": "Modules standard",
     "capacity": "Capacité",
     "plan": "Formule",
     "storage": "Stockage",
@@ -82,6 +98,7 @@
   "summary": {
     "edit": "Modifier",
     "none": "Aucun",
+    "modulesLine": "Sélectionnés\u00A0: {{selected}}\u00A0; inclus\u00A0: {{included}}\u00A0; supplémentaires\u00A0: {{extra}}",
     "indicative": "Les simulations et les recommandations du configurateur sont indicatives.",
     "save": "Enregistrer la configuration",
     "saved": "Configuration enregistrée sur cet appareil.",

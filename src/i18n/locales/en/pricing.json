@@ -18,6 +18,8 @@
     "customQuote": "Custom quote",
     "priceOnRequest": "Pricing on request",
     "recommended": "Recommended",
+    "modulesLabel": "Standard modules",
+    "modulesNote": "Each plan includes a number of standard modules. The Sector Engine recommends the most relevant ones for your industry, and you can replace any of them with another compatible standard module at no additional charge, within your plan’s quota.",
     "usersLabel": "Users",
     "entitiesLabel": "Legal entities",
     "storageLabel": "Storage",
@@ -38,19 +40,19 @@
     "start": {
       "name": "START",
       "tagline": "A practical foundation for smaller teams.",
-      "included": ["Sector Profile", "Standard workflows and support"],
+      "included": ["Sector Engine", "Standard workflows and support"],
       "cta": "Configure START"
     },
     "business": {
       "name": "BUSINESS",
       "tagline": "More room for growing operations.",
-      "included": ["Advanced workflows", "Standard+ support", "One commercially available Standard Sector Pack"],
+      "included": ["Sector Engine", "Advanced workflows", "Standard+ support"],
       "cta": "Configure BUSINESS"
     },
     "professional": {
       "name": "PROFESSIONAL",
       "tagline": "Broader capacity and advanced capabilities.",
-      "included": ["Advanced API", "Customer portal", "Advanced BI", "One commercially available Standard Sector Pack"],
+      "included": ["Sector Engine", "Advanced API", "Customer portal", "Advanced BI"],
       "cta": "Configure PROFESSIONAL"
     },
     "enterprise": {
@@ -58,6 +60,7 @@
       "tagline": "Designed for complex organizations.",
       "included": ["Custom capacity", "Hosting", "Service commitments", "Integrations"],
       "cta": "Talk to an Expert",
+      "modules": "Tailored",
       "users": "Tailored",
       "entities": "Multi-entity",
       "storage": "Sized to needs"
@@ -71,18 +74,17 @@
   },
   "optional": {
     "groups": {
+      "modules": "Standard modules",
       "capacity": "Users and legal entities",
-      "sectorPacks": "Sector Packs",
       "addOns": "Add-ons",
       "connectors": "Connectors"
     },
     "items": {
+      "additional-module": "Additional standard module",
       "user-1": "Additional user",
       "users-5": "+5 users",
       "users-10": "+10 users",
       "legal-entity": "Additional legal entity",
-      "standard-pack": "Standard Sector Pack",
-      "industry-plus": "Advanced / Industry+ Pack",
       "advanced-workflow": "Advanced Workflow",
       "advanced-bi": "Advanced BI & Analytics",
       "marketing-automation": "Marketing Automation",
@@ -103,7 +105,6 @@
       "fromPlusUsage": "From {{amount}} / month + usage",
       "range": "{{min}}–{{max}} / month",
       "includedOr": "Included or {{amount}} / month",
-      "unlessIncluded": "{{amount}} / month unless included and commercially ready",
       "quote": "Quote"
     }
   },

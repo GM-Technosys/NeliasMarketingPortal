@@ -2,6 +2,8 @@
 export const features = Object.freeze({
   configurator: import.meta.env.VITE_FEATURE_CONFIGURATOR !== "false",
   checkout: import.meta.env.VITE_FEATURE_CHECKOUT === "true",
-  pricingPublic: import.meta.env.VITE_FEATURE_PRICING_PUBLIC !== "false",
+  pricingPublic: import.meta.env.VITE_FEATURE_PRICING_PUBLIC === "true",
   frenchEnabled: import.meta.env.VITE_FEATURE_FRENCH !== "false",
+  industryPlus: import.meta.env.VITE_FEATURE_INDUSTRY_PLUS === "true",
 });
+
