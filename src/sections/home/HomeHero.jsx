@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
-import { CtaLink } from "@/components/common/CtaLink";
 import { buttonStyles } from "@/components/ui/button-styles";
+import { SignUpLink } from "@/components/common/SignUpLink";
+import { features } from "@/config/features";
+import { EVENTS, track } from "@/lib/analytics";
 import { HeroComposition } from "./HeroComposition";
 import { cn } from "@/lib/cn";
 
-// TODO(Debass): Hero subheadline and secondary CTA differ between Section 3 and V3. Section 3 is used; the V3 subheadline is used as the lead of the capabilities section.
 /**
  * Main Hero section of the Home page.
  */
@@ -26,7 +27,7 @@ export function HomeHero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-12">
           {/* Text column */}
           <div className="lg:col-span-6 flex flex-col items-start text-left">
-            <p className="mb-4 text-sm font-semibold text-link">
+            <p className="mb-4 text-sm font-semibold text-fg-muted">
               {t("home:hero.eyebrow")}
             </p>
 
@@ -42,26 +43,34 @@ export function HomeHero() {
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto">
-              <CtaLink
-                to="/configure"
-                intent="configure"
-                variant="secondary"
+              {/* TODO(Debass): the hero primary button "Simulate my price" routes to https://login.nelias.app/ in a new tab as requested. */}
+              <SignUpLink
+                variant="primary"
                 size="lg"
                 location="hero"
-                className="w-full sm:w-auto"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto text-center"
               >
-                {t("cta.configure")}
-              </CtaLink>
+                {t("home:hero.simulatePrice")}
+              </SignUpLink>
               <Link
-                to="/how-it-works"
+                to="/contact"
+                onClick={() => track(EVENTS.CTA_CLICK, { intent: "contact", location: "hero" })}
                 className={cn(
                   buttonStyles({ variant: "outline", size: "lg" }),
-                  "w-full sm:w-auto",
+                  "w-full sm:w-auto text-center",
                 )}
               >
-                {t("cta.exploreHowItWorks")}
+                {t("common:cta.talkToExpert")}
               </Link>
             </div>
+
+            {features.pricingPublic && (
+              <p className="mt-6 max-w-[52ch] text-sm text-fg-muted">
+                {t("home:hero.reassurance")}
+              </p>
+            )}
           </div>
 
           {/* Decorative composition column */}

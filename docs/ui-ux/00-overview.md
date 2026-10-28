@@ -1,4 +1,4 @@
-# NELIAS Marketing Portal — UI/UX Specification: Overview
+# NELIAS Marketing Portal - UI/UX Specification: Overview
 
 ## 1. Purpose and Scope
 This documentation formalizes the complete UI/UX design and interaction specifications for the **NELIAS** Business Management Platform (BMP) marketing website (`nelias.app`), developed by Debass Technologies.

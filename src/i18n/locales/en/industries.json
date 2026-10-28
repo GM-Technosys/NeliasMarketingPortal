@@ -9,16 +9,16 @@
     "subtitle": "Modular capabilities configured around your business activities and workflows."
   },
   "detail": {
-    "breadcrumb": "Breadcrumb",
     "challengesTitle": "Common challenges and outcomes",
     "challengeLabel": "Common challenge",
     "outcomeLabel": "Outcome",
-    "capabilitiesTitle": "Suggested capabilities",
-    "walkthroughTitle": "Practical walkthrough",
-    "faqTitle": "Frequently asked questions",
-    "allIndustries": "All industries",
-    "nextStep": "Next step",
-    "seoTitle": "{{name}} | NELIAS BMP"
+    "walkthroughTitle": "Practical walkthrough"
+  },
+  "page": {
+    "selectorTitle": "Choose your industry",
+    "selectHint": "Select an industry to see the details.",
+    "suggestedLabel": "Suggested capabilities",
+    "close": "Close"
   },
   "items": {
     "retail-distribution": {

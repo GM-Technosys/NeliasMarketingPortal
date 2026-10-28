@@ -2,21 +2,19 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { CtaLink } from "@/components/common/CtaLink";
 import { useScrolled } from "@/hooks/useScrolled";
-import { features } from "@/config/features";
 import { cn } from "@/lib/cn";
 
 /**
  * Sticky bottom CTA bar for mobile screens (below md).
  * Shown after scrolling 480px, automatically hides when the footer is in view
- * or when the user is on /demo, /contact, or /configure.
+ * or when the user is on /demo or /contact.
  */
 export function StickyMobileCta() {
   const { pathname } = useLocation();
   const isScrolled = useScrolled(480);
   const [footerIntersecting, setFooterIntersecting] = useState(false);
 
-  const isExcludedRoute =
-    pathname === "/demo" || pathname === "/contact" || pathname === "/configure";
+  const isExcludedRoute = pathname === "/demo" || pathname === "/contact";
 
   useEffect(() => {
     const footer = document.getElementById("site-footer");
@@ -49,7 +47,7 @@ export function StickyMobileCta() {
       )}
     >
       <CtaLink
-        intent={features.configurator ? "configure" : "demo"}
+        intent="demo"
         size="lg"
         location="sticky"
         className="w-full"

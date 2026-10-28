@@ -3,14 +3,6 @@
     "title": "NELIAS | Business Management Platform",
     "description": "Discover NELIAS, a Business Management Platform designed to adapt to your business and industry."
   },
-  "whyNelias": {
-    "title": "Why NELIAS | Business-First Management",
-    "description": "See why NELIAS starts with your business needs, not a fixed list of software modules."
-  },
-  "howItWorks": {
-    "title": "How NELIAS Works | Sector Engine",
-    "description": "Explore the planned NELIAS journey from business profile to tailored environment."
-  },
   "industries": {
     "title": "Industries | NELIAS BMP",
     "description": "Explore sector-aware management configurations for different business activities."
@@ -34,10 +26,6 @@
   "notFound": {
     "title": "Page not found | NELIAS",
     "description": "The page you are looking for does not exist."
-  },
-  "configure": {
-    "title": "Configure My NELIAS | Tailored BMP",
-    "description": "Configure your NELIAS platform according to your industry and business needs."
   },
   "fallback": {
     "title": "NELIAS",

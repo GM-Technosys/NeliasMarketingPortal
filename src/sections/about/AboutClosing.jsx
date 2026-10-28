@@ -20,12 +20,12 @@ export function AboutClosing() {
     >
       <Container>
         <Reveal>
-          <div className="max-w-4xl">
-            <p className="font-display text-h2 font-semibold text-heading leading-tight">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+            <p className="max-w-2xl font-display text-h2 font-semibold text-heading leading-tight">
               {t("about:closing.signature")}
             </p>
 
-            <div className="mt-8">
+            <div className="shrink-0">
               <Link
                 to="/contact"
                 onClick={() =>

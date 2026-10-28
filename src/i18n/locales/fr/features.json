@@ -62,5 +62,8 @@
       "name": "Connecteurs et API",
       "description": "Connectez votre plateforme aux systèmes et services tiers compatibles."
     }
+  },
+  "extras": {
+    "exploreIndustries": "Explorer les secteurs"
   }
 }

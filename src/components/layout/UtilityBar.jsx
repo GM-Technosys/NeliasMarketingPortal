@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Mail, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
@@ -42,16 +41,18 @@ export function UtilityBar() {
             )}
           </div>
 
-          {/* Right: Theme toggle, Language switcher, Contact, Sign in */}
+          {/* Right: Theme toggle, Language switcher, Sign up, Sign in */}
           <div className="flex items-center gap-5">
             <ThemeToggle variant="onDark" size="sm" />
             <LanguageSwitcher variant="onDark" />
-            <NavLink
-              to="/contact"
+            <a
+              href={site.signUpUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex min-h-9 items-center text-fg-inverse-muted transition-colors hover:text-white hover:underline"
             >
-              {t("nav.contact")}
-            </NavLink>
+              {t("nav.signUp")}
+            </a>
             <a
               href={site.loginUrl}
               target="_blank"

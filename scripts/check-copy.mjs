@@ -37,6 +37,16 @@ const BANNED = [
 
 const EXTENSIONS = new Set([".js", ".jsx", ".json", ".css"]);
 
+// Approved exceptions from the 26 October 2026 marketing document (Industry+ Packs coming soon)
+const ALLOWED_SUBSTRINGS = [
+  "industry+ pack (coming soon)",
+  "industry+ packs - coming soon",
+  "industry+ pack (bientôt disponible)",
+  "industry+ packs - bientôt disponibles",
+  "industry+ packs are coming soon",
+  "shown as coming soon",
+];
+
 /**
  * Recursively collect files with matching extensions from a directory.
  * @param {string} dir
@@ -79,6 +89,9 @@ async function main() {
 
     for (let i = 0; i < lines.length; i++) {
       const lineLower = lines[i].toLowerCase();
+      if (ALLOWED_SUBSTRINGS.some((s) => lineLower.includes(s))) {
+        continue;
+      }
       for (const phrase of BANNED) {
         if (lineLower.includes(phrase)) {
           // Show relative path from project root

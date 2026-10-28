@@ -4,6 +4,7 @@ export const site = Object.freeze({
   legalName: "Debass Technologies",
   url: import.meta.env.VITE_SITE_URL || "https://nelias.app",
   loginUrl: import.meta.env.VITE_LOGIN_URL || "https://login.nelias.app",
+  signUpUrl: "https://login.nelias.app/",
   contact: {
     email: import.meta.env.VITE_CONTACT_EMAIL || "contact@nelias.app",
     phone: import.meta.env.VITE_CONTACT_PHONE || "+225 05 64 05 90 60",

@@ -1,4 +1,4 @@
-# NELIAS Marketing Portal — UI/UX Specification: Sitemap & Navigation
+# NELIAS Marketing Portal - UI/UX Specification: Sitemap & Navigation
 
 ## 1. Complete Sitemap
 
@@ -7,24 +7,25 @@ All routes declared in [`src/app/router.jsx`](file:///d:/Projects/NELIAS/nelias-
 | Route Path | Page Component | Purpose | Feature Gating |
 |---|---|---|---|
 | `/` | `HomePage` | Core marketing landing, platform vision, 3 pillars, sector selector, closing | None |
-| `/why-nelias` | `WhyNeliasPage` | Core challenges & NELIAS operational solutions | None |
-| `/how-it-works` | `HowItWorksPage` | 6-step deployment journey and tangible business example | None |
+| `/why-nelias` | Redirect to `/` | Removed page (redirected) | None |
+| `/how-it-works` | Redirect to `/` | Removed page (redirected) | None |
 | `/industries` | `IndustriesPage` | 12 industry sectors hub with search and category filtering | None |
 | `/industries/:slug` | `IndustryDetailPage` | Sector-specific deep dive, capabilities, walkthrough, and FAQ | None |
 | `/features` | `FeaturesPage` | 12 standard platform capability areas with industry filtering | None |
 | `/pricing` | `PricingPage` | Plan tiers, comparison table, and optional charges | `features.pricingPublic` gates amounts |
 | `/about` | `AboutPage` | Debass Technologies company profile, mission, leadership signature | None |
 | `/about-us` | `AboutPage` | Legacy URL alias redirecting to `/about` | None |
+| `/faq` | `FaqPage` | Centralized frequently asked questions by topic | `features.pricingPublic` gates pricing questions |
 | `/contact` | `ContactPage` | General inquiry lead form with direct communication channels | None |
 | `/demo` | `DemoPage` | Product demonstration request form with advisor scheduling | None |
 | `/terms` | `TermsPage` | General Terms of Use (official verbatim text) | None |
-| `/terms-of-sale` | `TermsOfSalePage` | Terms of Sale & Subscription / CGV (official verbatim text) | None |
-| `/cgv` | `TermsOfSalePage` | Francophone alias for Terms of Sale / CGV | None |
+| `/terms-of-sale` | Redirect to `/terms` | Removed page (redirected) | None |
+| `/cgv` | Redirect to `/terms` | Francophone alias for Terms of Sale / CGV (redirected) | None |
 | `/dpa` | `DpaPage` | Data Processing Agreement (official verbatim text) | None |
 | `/privacy` | `PrivacyPage` | Privacy Policy & Data Protection (official verbatim text) | None |
 | `/sla` | `SlaPage` | Service Level Agreement (official verbatim text) | None |
-| `/resources` | `ResourcesPage` | Educational knowledge base, FAQ repository, and articles | None |
-| `/configure` | `ConfigurePage` | Interactive 5-step NELIAS solution configurator & price estimator | `features.configurator` (routes to demo if off) |
+| `/resources` | Redirect to `/` | Removed page (redirected) | None |
+| `/configure` | Redirect to `/pricing` | Removed page (redirected) | None |
 | `*` | `NotFoundPage` | 404 error page with navigation escape routes (Home and Demo CTA) | None |
 
 *Note: Dev-only routes `/__design` and `/__ui` exist exclusively in development environments.*
@@ -52,7 +53,7 @@ All routes declared in [`src/app/router.jsx`](file:///d:/Projects/NELIAS/nelias-
   - Active State Rule: `end={to === "/"}` ensures `/industries` remains active when viewing any `/industries/:slug` nested sub-page. Active link renders a bottom accent bar (`after:bg-accent after:h-0.5`).
 - **Right Cluster:**
   - Theme toggle (visible below `xl`).
-  - Header CTA: Primary action ("Book a Demo" or "Configure My NELIAS").
+  - Header CTA: Primary action ("Request a Demo").
   - Mobile hamburger menu button (visible below `xl`).
 
 ### 2.3 Mobile Navigation Drawer (`src/components/layout/MobileMenu.jsx`)
@@ -62,7 +63,7 @@ All routes declared in [`src/app/router.jsx`](file:///d:/Projects/NELIAS/nelias-
 
 ### 2.4 Sticky Mobile CTA (`src/components/layout/StickyMobileCta.jsx`)
 - **Placement:** Fixed bottom bar for viewport widths `< 768px`.
-- **Visibility:** Automatically hidden on pages with primary forms (`/contact`, `/demo`, `/configure`) to prevent UI occlusion.
+- **Visibility:** Automatically hidden on pages with primary forms (`/contact`, `/demo`) to prevent UI occlusion.
 - **Content:** Single primary button executing the main action (`CtaLink`).
 
 ### 2.5 Site Footer (`src/components/layout/Footer.jsx`)
@@ -71,7 +72,7 @@ All routes declared in [`src/app/router.jsx`](file:///d:/Projects/NELIAS/nelias-
   1. Brand presentation with logo plate, tagline, and registered address.
   2. Platform navigation links (`mainNav`).
   3. Industry sector shortcuts.
-  4. Legal & Regulatory links (`legalNav`: Privacy, Terms, CGV, DPA, SLA).
+  4. Legal & Regulatory links (`legalNav`: Privacy, Terms, DPA, SLA).
 
 ---
 
@@ -83,11 +84,7 @@ The portal supports several standardized query parameters across routes:
 |---|---|---|---|
 | `lang` | `en`, `fr` | All routes | Forces the active interface language and persists preference to `localStorage`. |
 | `theme` | `light`, `dark` | All routes | Forces the color theme (`data-theme`) and persists to `localStorage`. |
-| `industry` | Valid slug from `industries.js` | `/features`, `/configure`, `/demo` | Pre-selects sector filter on Features, sector in Configurator Step 1, or sector dropdown in Demo form. Invalid values are silently discarded. |
-| `plan` | `start`, `business`, `professional`, `enterprise` | `/configure` | Direct-selects a specific plan tier in the Configurator. |
-| `billing` | `monthly`, `annual` | `/configure` | Sets initial billing cadence in the Configurator. |
-| `c` | URL-safe Base64 state string | `/configure` | Decodes and restores a shared configuration draft, skipping to the Summary step. |
-| `q` | Plain text query | `/resources`, `/industries` | Pre-populates the search filter input. |
+| `industry` | Valid slug from `industries.js` | `/features`, `/demo` | Pre-selects sector filter on Features, or sector dropdown in Demo form. Invalid values are silently discarded. |
 | `needs` | Comma-separated module IDs | `/demo`, `/contact` | Pre-checks corresponding capability checkboxes in the lead form. |
 
 ---

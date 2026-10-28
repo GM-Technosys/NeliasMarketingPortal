@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { Info } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
@@ -7,31 +6,35 @@ import { SegmentedControl } from "@/components/ui/SegmentedControl";
 import { plans } from "@/data/pricing-catalog";
 import { PlanCard } from "./PlanCard";
 
-// TODO(Debass): annual billing equals 10 paid months for 12 months of service "subject to final Debass validation" (V3 note); the approved sentence from Section 8 is displayed.
-
 /**
- * Plans section rendering the billing toggle (when prices public),
- * annual discount note, and the grid of 4 plan cards.
+ * Plans section rendering the 4 plan cards with billing toggle (when prices public)
+ * and the annual discount note.
  *
  * @param {Object} props
  * @param {"monthly"|"annual"} props.billing
  * @param {(billing: "monthly"|"annual") => void} props.onBillingChange
  * @param {boolean} props.showPrices
+ * @param {"default"|"muted"} [props.tone="default"]
  * @returns {import("react").JSX.Element}
  */
-export function PlansSection({ billing, onBillingChange, showPrices }) {
+export function PlansSection({
+  billing,
+  onBillingChange,
+  showPrices,
+  tone = "default",
+}) {
   const { t } = useTranslation();
 
   return (
-    <Section tone="default" spacing="md" className="py-10 md:py-14">
+    <Section tone={tone} spacing="md" className="py-10 md:py-14">
       <Container>
         <Reveal>
-          {/* Visually hidden section heading for document outline */}
+          {/* Accessible section heading */}
           <h2 className="sr-only">{t("pricing:page.plansTitle")}</h2>
 
           {/* Billing toggle: only shown when pricing is public */}
           {showPrices && (
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+            <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center">
               <SegmentedControl
                 name="billing"
                 size="lg"
@@ -43,10 +46,6 @@ export function PlansSection({ billing, onBillingChange, showPrices }) {
                   { value: "annual", label: t("pricing:page.annual") },
                 ]}
               />
-
-              <p className="text-sm text-fg-muted sm:max-w-md">
-                {t("pricing:page.annualNote")}
-              </p>
 
               {/* Polite live region announcing billing period change */}
               <p role="status" aria-live="polite" className="sr-only">
@@ -63,7 +62,7 @@ export function PlansSection({ billing, onBillingChange, showPrices }) {
           {/* Plan cards grid */}
           <ul
             aria-label={t("pricing:page.plansTitle")}
-            className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4"
+            className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 items-stretch"
           >
             {plans.map((plan) => (
               <li key={plan.id} className="flex">
@@ -75,12 +74,6 @@ export function PlansSection({ billing, onBillingChange, showPrices }) {
               </li>
             ))}
           </ul>
-
-          {/* TODO(Debass): derived from the client's module-swap rule; approve the wording. */}
-          <p className="mt-6 flex max-w-3xl items-start gap-2.5 text-fg-muted">
-            <Info className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
-            <span>{t("pricing:page.modulesNote")}</span>
-          </p>
         </Reveal>
       </Container>
     </Section>

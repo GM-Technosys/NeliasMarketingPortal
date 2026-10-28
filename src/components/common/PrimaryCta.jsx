@@ -1,9 +1,8 @@
 import { CtaLink } from "./CtaLink";
-import { features } from "@/config/features";
 
 /**
  * Primary CTA helper component for marketing pages.
- * Resolves to "configure" if configurator is enabled, otherwise "demo" (Book a Demo).
+ * Resolves to the demo CTA ("Request a Demo").
  *
  * @param {Object} props
  * @param {string} [props.location]
@@ -17,12 +16,11 @@ export function PrimaryCta({
   onDark = false,
   className,
 }) {
-  const intent = features.configurator ? "configure" : "demo";
   const variant = onDark ? "onDark" : "primary";
 
   return (
     <CtaLink
-      intent={intent}
+      intent="demo"
       variant={variant}
       size={size}
       location={location}

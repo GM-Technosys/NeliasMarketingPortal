@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Seo } from "@/components/common/Seo";
 import { PageHeader } from "@/components/patterns/PageHeader";
 import { StorySection } from "@/sections/about/StorySection";
+import { WhySection } from "@/sections/home/WhySection";
 import { AnswerSection } from "@/sections/about/AnswerSection";
 import { MissionSection } from "@/sections/about/MissionSection";
 import { VisionSection } from "@/sections/about/VisionSection";
@@ -22,7 +23,8 @@ export default function AboutPage() {
         accent={true}
       />
       <StorySection />
-      <AnswerSection />
+      <WhySection tone="muted" headingId="about-why-heading" />
+      <AnswerSection tone="default" />
       <MissionSection />
       <VisionSection />
       <AboutClosing />

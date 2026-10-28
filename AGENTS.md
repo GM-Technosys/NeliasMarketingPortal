@@ -51,8 +51,6 @@ npm run format      # Prettier
 
 ## Gating rules
 
-- `features.configurator`: controls whether "Configure My NELIAS" is shown. Otherwise use `CtaLink`, which falls back to the demo/advisor CTA.
-- `features.checkout`: controls any payment path.
 - `features.pricingPublic`: controls whether prices are displayed. When `false`, show plan structure without amounts and route to a conversation.
 - Prices come only from `src/data/pricing-catalog.js`, never from component code.
 - Never simulate a payment or an activation.
@@ -92,7 +90,7 @@ npm run format      # Prettier
 - Header, footer and the sticky mobile CTA live in `RootLayout`. Pages render only their own content inside `<main>`; never add a second header or footer.
 - The header is sticky (64px mobile, 72px from md). Anchor targets rely on `scroll-padding-top: 5.5rem`.
 - The logo PNG is opaque with a white background: use it only on white surfaces, or inside the white plate (`Logo variant="plate"`) on dark ones.
-- CTA rule: when `features.configurator` is false, show a single "Book a Demo" CTA, never two buttons to the same destination. Use `HeaderCtas` or `CtaLink`; do not hand-roll CTAs.
+- CTA rule: Show a single "Request a Demo" CTA, never two buttons to the same destination. Use `HeaderCtas` or `CtaLink`; do not hand-roll CTAs.
 - The language switcher is visible by default (hidden only when `VITE_FEATURE_FRENCH=false`).
 - Navigation data lives in `src/config/navigation.js` only.
 
@@ -182,21 +180,6 @@ npm run format      # Prettier
 - Design signature of the page: the short ribbon accent above the title and the ribbon arc in `VisionRipple` (the only animation) are the page's bold devices; `FoundationIllustration` and `VisionRipple` are shape-only (no text, numbers, map or flag).
 - Open copy items for Debass (marked `TODO(Debass)`): replacement of the PDF text, the signature wording, the "leading platform" claim, French review.
 
-## Why NELIAS Page Guidelines
-
-- Why NELIAS copy lives in `why.json` (en and fr) and follows PDF Section 4 only (hero, intro, challenges and benefits, differentiator, closing button). "The NELIAS approach" and the "Three pillars" belong to the Home page; do not add them here.
-- The five challenge/response pairs also appear (as the scenario panel) in `home.json`, in both languages. If one file changes, update the other so the wording stays identical.
-- Open copy items for Debass (marked `TODO(Debass)`): whether "Challenges and benefits" is a visible headline; the grammar of the English differentiator sentence (kept exactly as approved); French review.
-- The ribbon bridge in `WhyIllustration` is this page's only bold device. Do not add other gradients or orange accents on this page.
-- Challenge/response rows are deliberately not cards; keep this "ruled list with an accent rule on the response" pattern for similar comparisons.
-
-## How It Works Page Guidelines
-
-- How It Works copy lives in `how.json` (en and fr) and follows PDF Section 5 exactly (six steps, example, closing button). The page has no invented headline for the closing band.
-- Home's four-step journey and this page's six steps share some sentences; keep the French identical for identical English.
-- The ribbon spine (flame to sun gradient) in `JourneyTimeline` is this page's one bold device; the step illustrations (`StepVisual`) are shape-only: no text, no numbers, no orange, role colours only.
-- Timeline rule: text and illustrations are always visible; only the marker fill and the spine segments animate, once, and everything is filled immediately under reduced motion.
-- Open copy items for Debass (marked `TODO(Debass)`): 4-step (Home) vs 6-step (this page) wording; self-service wording in steps 4 and 5; French review.
 
 ## Industries Page Guidelines
 
@@ -248,10 +231,7 @@ npm run format      # Prettier
 - Legal pages have no animation, no `Reveal` and no marketing elements. Emails, URLs and phone numbers are auto-linked by `Linkified` without changing their characters.
 - `npm run check:legal` (part of `npm run verify`) guards article counts, numbering and EN/FR structure parity.
 - Open items for Debass (marked `TODO(Debass)`): the SEO text of legal pages (derived from the document header); alignment between the Terms (definitive hosting statements: Hodi in Grand-Bassam, disaster recovery in Johannesburg, storage remains in Africa) and the marketing FAQ answer on hosting ("being planned… subject to contractual confirmation"); the two contact addresses (`info@debasstechnologies.com` in the Terms, `contact@nelias.app` elsewhere); the Terms of Sale (CGV), DPA, SLA and Privacy Policy referenced by the Terms (shown as plain text until those documents and pages exist); legal review before publication.
-- Terms of Sale and Subscription (CGV) is published through `LegalPage` with the namespace `cgv` (`en/cgv.json`, `fr/cgv.json`), 19 articles, same schema as `terms`. Its page file renders `<LegalPage ns="cgv" />`.
-- The legal text of the CGV is OFFICIAL and verbatim (same rules as the Terms of Use): never edit, translate, correct or re-punctuate it; never AI-translate it; changes only come from a new official document version supplied by Debass. The French version prevails; the English page shows the notice from the document (`meta.notice`, English only, registered as `enOnly` in the i18n allowlist).
-- `scripts/check-legal.mjs` keeps two maps: `expected` (article counts: `terms` 15, `cgv` 19) and `lists` (article number → list items: `terms` article 6 has 5, `cgv` article 19 has 5). When adding a legal document, register it in both maps.
-- Open items for Debass (marked `TODO(Debass)`): SEO text of the CGV page (derived from the document header); links from the CGV to the Terms of Use (and the Terms page to the CGV) now that both pages exist, plus DPA and SLA shown as plain text until their pages exist; alignment of plan names, "ten monthly payments for twelve months", "30 days' notice" and the quote-only hosting modes with the pricing page, configurator and FAQ; legal review before publication.
+- The Terms of Sale legal text (`cgv.json`, en and fr) is kept as official text but is not rendered anywhere. Do not delete or edit it without a decision from Debass. // TODO(Debass): decide whether the Terms of Sale text is deleted or reused later.
 - The Data Processing Agreement (DPA) is published through `LegalPage` with the namespace `dpa` (`en/dpa.json`, `fr/dpa.json`), 15 articles, same schema as `terms` and `cgv`. Its page file renders `<LegalPage ns="dpa" />`.
 - New block type: `{ "table": { "head": [..], "rows": [[..], ..] } }`, rendered by `LegalArticle` as a real table (column headers, first column as row headers, scrollable wrapper with keyboard focus, no caption). Used for the DPA annexes 1 and 2 (articles 12 and 13).
 - The legal text of the DPA is OFFICIAL and verbatim (same rules as the other legal documents): never edit, translate, correct or re-punctuate it; never AI-translate it; changes only come from a new official document version supplied by Debass. The French version prevails; the English page shows the notice from the document (`meta.notice`, English only, registered as `enOnly` in the i18n allowlist).
@@ -267,26 +247,6 @@ npm run format      # Prettier
 - The legal text of the SLA is OFFICIAL and verbatim (same rules as the other legal documents), including the minus sign (U+2212), the division sign and the em dashes: never edit, translate, correct or re-punctuate it; never AI-translate it; changes only come from a new official document version supplied by Debass. The French version prevails; the English page shows the notice from the document (`meta.notice`, English only, registered as `enOnly` in the i18n allowlist).
 - `scripts/check-legal.mjs` maps now are: `expected` (`terms` 15, `cgv` 19, `dpa` 15, `privacy` 10, `sla` 14), `lists` (`terms` 6 → 5, `cgv` 19 → 5, `dpa` 14 → 5, `privacy` and `sla` none) and `tables` (`dpa` 12 → 2×5, 13 → 2×2; `privacy` 3 → 4×7; `sla` 3 → 3×4, 7 → 3×4).
 - Open items for Debass (marked `TODO(Debass)`): SEO text of the SLA page (derived from the document header); links between the SLA and the Terms of Sale, and links to the SLA from the other legal pages; alignment of the service levels (Standard, Standard+, Priority, 99.5%) with the pricing page, plan comparison and FAQ; alignment of the hosting and recovery statements with the other legal documents; French typographic spacing for "99,5 %" and "8 h"; legal review before publication.
-- Resources copy lives in `resources.json` (en and fr); the FAQ answers come from `faq.json` (all ten, in PDF order). The page title is the navigation label; the PDF has no hero text for Resources.
-- Articles are data-driven (`src/data/resources.js`). All five are state `coming-later` (labelled with the approved status badge) because no article text exists. To publish an article: add its text page, set `state` to `available` and add `path`; the card becomes a link automatically. Article pages, industry filters, related content and testimonials are not built (no source content).
-- Search filters articles and FAQ together, ignores accents and case, keeps `?q=` in the URL and never sends the search words to analytics (only counts).
-- Open items for Debass (marked `TODO(Debass)`): hero and SEO copy, article texts (and dates, authors, industry tags), whether the FAQ belongs on this page, hosting answer alignment with the Terms of Use, French review.
-
-## Configurator Page Guidelines
-
-- The configurator (`/configure`, only when `features.configurator` is true) has a start screen and five steps; copy lives in `configurator.json` (en and fr) and reuses names and labels from `pricing.json`, `industries.json`, `features.json` and `contact.json`.
-- Standard modules are chosen (the twelve capability areas, not free functions); quota per plan comes from `pricing-catalog.js` (START 4, BUSINESS 6, PROFESSIONAL 8, ENTERPRISE tailored/unlimited). Extra modules beyond quota are charged at the catalog price (FCFA 15,000/month).
-- The Sector Engine recommends modules as a derived suggestion capped at the plan quota and is never mandatory. Replacement of compatible standard modules within quota is free by design (price depends strictly on the count of extra modules).
-- Status badges: "Recommended" (when matching recommendation), "Included" (within quota), and "Additional" (beyond quota). Unchecked modules show no status badge.
-- Module list and sector compatibility come from `src/data/modules.js` and `src/data/industry-areas.js`; adding future sectors or specialised modules is done there with no restructuring. Industry+ packs are V2 only and absent from V1.
-- Plan recommendation remains capacity-first (users, legal entities, storage); selecting extra modules does not force plan upgrade (extra modules are billed).
-- The estimate panel is displayed in the aside starting from step 2 (operations) onwards so dynamic pricing changes are visible immediately.
-- Logic is pure and testable in `src/lib/configurator/` (relative imports only): capacity-first recommendation, minimum-cost extension pricing, estimate with lower-bound flags. `npm run check:config` (part of `verify`) tests it against the catalog. Never hard-code amounts: they come from `pricing-catalog.js`.
-- Pricing gate: amounts appear only when `features.pricingPublic` is true; annual billing shows the plan (per year) and the options (per month) separately and never sums them; storage extension prices never exist.
-- No checkout, workspace address, account, payment or activation exists; never add a control that implies them. A checkout control is rendered only when `features.checkout` is true AND that journey exists (extension point in `StepSummary`).
-- Privacy: the configuration contains no personal data; save writes a draft to `localStorage` key `nelias-config-draft`; share encodes the selections in the `c` URL parameter (validated with `sanitizeState` before use); analytics receive only step numbers, plan ids, billing ids and module counts (`selected`, `included`).
-- The demo link carries `industry` and `needs` query parameters (carrying `effectiveModules`), read by `useLeadForm`.
-- Open items for Debass (marked `TODO(Debass)`): the Sector Engine rules and matrix, annual pricing for additional modules, confirmation of which capability areas are standard modules and any sector compatibility restrictions, customer-facing term ("standard modules" vs "functions"), treatment of storage beyond the plan, approval of all amounts, "teams and priorities", SEO copy, the checkout and account journey, use of the legal sentence on the summary, French review.
 
 ## UI/UX Specification Guidelines
 
@@ -294,6 +254,46 @@ npm run format      # Prettier
 - Any new page, route, or component MUST update the matching document in the same change (`npm run check:docs` enforces that all routes in `router.jsx`, component filenames in `src/components/ui` and `src/components/patterns`, and page specs in `docs/ui-ux/04-page-specs/` are documented).
 - The audit report (`docs/ui-ux/05-audit-report.md`) records every refinement and finding across viewports, themes, and languages.
 - Strict constraint: no redesign or modification of brand colors, typography, logo treatments, or approved copy without prior Debass approval.
+
+## Restructure (October 2026)
+
+- Site map after the restructure (October 2026). Menu: About Us, Industries, Features, Pricing, plus the Request a Demo button (`cta.bookDemo`, `/demo`), the only call-to-action in the header. Removed pages: Why NELIAS, How It Works, Resources, Terms of Sale and Subscription, Configure My NELIAS; their old addresses redirect (table in the router).
+- The Terms of Sale legal text (`cgv.json`, en and fr) is kept as official text but is not rendered anywhere. Do not delete or edit it without a decision from Debass.
+- There is no configurator, no `features.configurator` flag and no `features.checkout` flag. The primary CTA is always the demo button.
+- Later steps rebuild one page at a time (Home, FAQ, Sign Up, Pricing, Features, Industries, footer). Until then, remaining pages may contain temporary links marked `TODO(Debass)`.
+
+## Home Page (October 2026)
+
+- Home page (October 2026) has seven sections: hero, modules, pricing, security, Why NELIAS, About NELIAS, final CTA; copy in `home.json` (en and fr) from "NELIAS BMP Website Content - Home Page (EN)" of 26 October 2026. The document's problem, platform, configurator, hosting, Industry+ packs and FAQ parts are intentionally not on Home (the FAQ gets its own page).
+- Pricing gate on Home: every amount and every claim of public prices appears only when `features.pricingPublic` is true. Amounts come from `pricing-catalog.js` and `src/data/home-pricing.js`; `npm run check:home` (part of `verify`) checks them against the document figures and scans Home sources for amount literals.
+- "Sign Up" is an external link to `site.signUpUrl` (`https://login.nelias.app/`) through `SignUpLink`; the site has no sign-up form, account or checkout. Reuse `SignUpLink` wherever a Sign Up button is required.
+- `DataTable` (patterns) is the shared accessible table; reuse it for plan, module and comparison tables.
+- Open items for Debass (marked `TODO(Debass)`): alignment of the Pricing page and catalog with the 19 October 2026 update (modules per plan, base sector configuration included); hosting wording versus the legal documents; confirmation of the audit-log, SSO and "Local payment" claims; hero and final button choices; sign-up address; French review.
+
+## FAQ Page Guidelines
+
+- The FAQ page (`/faq`) is the single place for frequently asked questions; no other page carries an FAQ section. Questions live in `faq.json` (en and fr) as `items.<key>.q/.a`; the page groups them through `src/data/faq-content.js` (pricing, modules, hosting, migration, general). To add a question: add its key in both languages and in a group.
+- FAQ items that mention amounts (`moreModules`, `currency`) appear only when `features.pricingPublic` is true; amounts come from `home-pricing.js` through the formatter.
+- The legacy `faq.json` items `hosting`, `multipleOffices`, `getStarted` and `tryNelias` are kept in the file but not rendered (replaced or outdated).
+## Pricing Page Guidelines (October 2026)
+
+- The Pricing page (October 2026) has: header, plan cards with billing toggle (every plan button is a `SignUpLink` to `https://login.nelias.app/`), comparison table, extensions (prices public only, monthly only), add-ons and connectors (existing catalog list), sector configurations and Industry+ packs (coming soon), Enterprise block. It has no FAQ and no configure section (FAQ is on `/faq`).
+- Plan facts and labels reuse `home:pricing.*` keys; do not duplicate them in `pricing.json`. Amounts come from `pricing-catalog.js` and `home-pricing.js`; `npm run check:home` verifies them and scans Pricing sources for amount literals. Storage extension prices never exist. Extensions never show an annual price.
+- The catalog still holds `standard-pack` and `industry-plus` as options; the page does not show them (base sector configuration is included; Industry+ is coming soon). Update the catalog in the pricing update.
+## Features Page Guidelines (October 2026)
+
+- The Features page (October 2026) has: header, Modules (reused Home component, 14 modules in three families), the existing capability areas with availability badges, Security and data isolation (reused Home component), Sector configurations and Industry+ packs (coming soon, no price unless prices are public) and a closing band with Request a Demo and Sign Up. There are no separate Modules or Sectors pages and no FAQ section.
+- `ModulesSection` and `SecuritySection` live in `src/sections/home/` and accept a `tone` prop; their copy is in `home.json`. Do not duplicate their text on other pages.
+- Open items for Debass (marked `TODO(Debass)`): per-module descriptions (the document has none, so modules are shown as names grouped by family next to the existing capability areas), pack pages, SSO and audit-log confirmation, French review.
+
+## Industries Page Guidelines (October 2026)
+
+- The Industries page (October 2026) shows the eight industries as cards; clicking one opens its detail inline under its grid row (one at a time, hash `#<slug>`, focus moves to the detail). There are NO per-industry pages: `/industries/<slug>` redirects to `/industries#<slug>`. The page then has "Sector configurations and Industry+ Packs" (reused `FeaturesSectors`), "Why NELIAS" (reused `WhySection`) and a closing band with Request a Demo and Sign Up. No FAQ, no configuration button.
+- To change an industry's content, edit `industries.json`, `home-content.js` (`industryProfiles`) and the other existing industry data; the inline detail reads them. Links to an industry use `/industries#<slug>`.
+- Open items for Debass (marked `TODO(Debass)`): per-industry copy beyond the existing summaries and headlines; pack pages; redirect confirmation; French review.
+
+
+
 
 
 

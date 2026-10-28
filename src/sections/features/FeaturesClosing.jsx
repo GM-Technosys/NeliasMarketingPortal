@@ -1,32 +1,49 @@
 import { useTranslation } from "react-i18next";
-import { Section } from "@/components/ui/Section";
-import { Container } from "@/components/ui/Container";
+import { Link } from "react-router-dom";
+import { CtaBand } from "@/components/patterns/CtaBand";
+import { SignUpLink } from "@/components/common/SignUpLink";
 import { Reveal } from "@/components/ui/Reveal";
-import { FeaturesCta } from "./FeaturesCta";
-
-// TODO(Debass): the PDF gives no closing headline for the Features page; the strip holds the approved button only.
+import { buttonStyles } from "@/components/ui/button-styles";
+import { EVENTS, track } from "@/lib/analytics";
 
 /**
  * Closing conversion band for Features page.
- * Uses the tinted surface matching the Home page closing CTA band.
  *
  * @returns {import("react").JSX.Element}
  */
 export function FeaturesClosing() {
   const { t } = useTranslation();
 
+  const actions = (
+    <>
+      <Link
+        to="/demo"
+        onClick={() => {
+          track(EVENTS.CTA_CLICK, { intent: "demo", location: "features-final" });
+        }}
+        className={buttonStyles({ variant: "primary", size: "lg" })}
+      >
+        {t("common:cta.bookDemo")}
+      </Link>
+      <SignUpLink
+        variant="onDark"
+        size="lg"
+        location="features-final"
+      >
+        {t("common:cta.signUp")}
+      </SignUpLink>
+    </>
+  );
+
   return (
-    <Section
-      tone="tint"
-      spacing="md"
-      className="border-t border-accent-line/50"
-      aria-label={t("features:page.nextStep")}
-    >
-      <Container className="flex justify-center text-center">
-        <Reveal>
-          <FeaturesCta size="lg" location="features-final" />
-        </Reveal>
-      </Container>
-    </Section>
+    <Reveal>
+      <CtaBand
+        id="features-final-cta"
+        tone="inverse"
+        title={t("home:final.title")}
+        body={t("home:final.body")}
+        actions={actions}
+      />
+    </Reveal>
   );
 }

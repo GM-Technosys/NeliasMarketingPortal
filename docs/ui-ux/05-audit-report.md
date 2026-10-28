@@ -1,4 +1,4 @@
-# NELIAS Marketing Portal — UI/UX Specification: Audit Report
+# NELIAS Marketing Portal - UI/UX Specification: Audit Report
 
 ## 1. Executive Summary
 A comprehensive cross-route, cross-theme, cross-language, and multi-breakpoint UI/UX audit was conducted covering all declared routes in the marketing portal. The audit evaluated visual consistency, navigation flow, end-to-end user journeys, error/empty states, content hierarchy, terminology, and accessibility standards.

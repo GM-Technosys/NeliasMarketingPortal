@@ -1,4 +1,4 @@
-# NELIAS Marketing Portal — UI/UX Specification: Design System
+# NELIAS Marketing Portal - UI/UX Specification: Design System
 
 ## 1. Design Tokens
 
@@ -212,6 +212,7 @@ Line Length Constraint: Max `65ch` - `70ch` for continuous prose to maintain hig
 3. **`ProcessSteps.jsx`**: Numbered sequence display for linear guides (e.g. How It Works).
 4. **`PreviewFrame.jsx`**: Device mock frame for product screenshots with mandatory "Illustrative preview" badge.
 5. **`StepProgress.jsx`**: Linear wizard step indicator with completed, active, and upcoming step states for the Configurator.
+6. **`DataTable.jsx`**: Shared accessible data table with keyboard focusable scroll container, row headers, and column highlights.
 
 ---
 

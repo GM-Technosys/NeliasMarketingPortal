@@ -11,23 +11,22 @@ import { useFormat } from "@/hooks/useFormat";
 import { describeRule } from "./price-format";
 import { cn } from "@/lib/cn";
 
+// TODO(Debass): the catalog still holds standard-pack and industry-plus as options; the document says the base sector configuration is included in all plans and Industry+ packs are coming soon. Update the catalog in the pricing update.
+
 /**
- * Expandable pricing details section displaying modules, capacity,
- * add-ons, and connectors in an interactive structured layout.
+ * Expandable pricing details section displaying add-ons and connectors
+ * in an interactive structured layout.
  *
+ * @param {Object} props
+ * @param {"default"|"muted"} [props.tone="muted"]
  * @returns {import("react").JSX.Element}
  */
-export function OptionalChargesSection() {
+export function OptionalChargesSection({ tone = "muted" }) {
   const { t } = useTranslation();
   const { lng } = useFormat();
   const [expanded, setExpanded] = useState(true);
 
-  const leftGroups = [
-    { key: "modules", items: optionalCharges.modules },
-    { key: "capacity", items: optionalCharges.capacity },
-  ];
-
-  const rightGroups = [
+  const groups = [
     { key: "addOns", items: optionalCharges.addOns },
     { key: "connectors", items: optionalCharges.connectors },
   ];
@@ -70,7 +69,7 @@ export function OptionalChargesSection() {
   );
 
   return (
-    <Section tone="default" spacing="md" className="py-10 md:py-14">
+    <Section tone={tone} spacing="md" className="py-10 md:py-14">
       <Container>
         <Reveal>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-6 border-b border-line">
@@ -106,11 +105,7 @@ export function OptionalChargesSection() {
 
           {expanded && (
             <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-              {/* Left column: modules then capacity */}
-              <div className="space-y-8">{leftGroups.map(renderGroup)}</div>
-
-              {/* Right column: add-ons then connectors */}
-              <div className="space-y-8">{rightGroups.map(renderGroup)}</div>
+              {groups.map(renderGroup)}
             </div>
           )}
 

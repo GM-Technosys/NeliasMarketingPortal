@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 import { cn } from "@/lib/cn";
 
 /**
- * Selectable card for choice selection in configurator and multi-choice forms.
+ * Selectable card for choice selection in forms and interactive selectors.
  *
  * @param {Object} props
  * @param {"radio"|"checkbox"} [props.type="radio"]

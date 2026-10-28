@@ -32,8 +32,9 @@ export default function NotFoundPage() {
             >
               {t("nav.home")}
             </Link>
+            {/* TODO(Debass): temporary target after the restructure; the page is rewritten in a later step. */}
             <CtaLink
-              intent="configure"
+              intent="demo"
               variant="outline"
               size="lg"
               className="w-full sm:w-auto text-center"

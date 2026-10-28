@@ -17,18 +17,16 @@
   },
   "nav": {
     "home": "Accueil",
-    "whyNelias": "Pourquoi NELIAS",
-    "howItWorks": "Fonctionnement",
+    "about": "À propos",
     "industries": "Secteurs",
     "features": "Fonctionnalités",
     "pricing": "Tarifs",
-    "resources": "Ressources",
-    "about": "À propos",
     "contact": "Contact",
+    "signUp": "S’inscrire",
     "signIn": "Se connecter",
     "privacy": "Politique de confidentialité",
     "terms": "Conditions générales d’utilisation",
-    "termsOfSale": "Conditions générales de vente et d’abonnement",
+    "faq": "FAQ",
     "dpa": "Accord de traitement des données personnelles (DPA)",
     "sla": "Accord de niveau de service (SLA)"
   },
@@ -40,21 +38,15 @@
     "whatsapp": "WhatsApp"
   },
   "cta": {
-    "configure": "Configurer mon NELIAS",
-    "bookDemo": "Réserver une démo",
+    "bookDemo": "Demander une démo",
     "exploreNelias": "Explorer NELIAS",
-    "talkToAdvisor": "Parler à un conseiller",
     "exploreHowItWorks": "Explorer le fonctionnement",
-    "seeHowItWorks": "Voir comment ça marche",
     "seeHowNeliasWorks": "Voir comment fonctionne NELIAS",
     "contactTeam": "Contacter notre équipe",
     "requestConversation": "Demander un échange",
     "contactNeliasTeam": "Contacter l’équipe NELIAS",
-    "discoverHowItWorks": "Découvrir comment ça marche",
-    "findConfiguration": "Trouver la configuration NELIAS adaptée à votre secteur",
-    "seeMyConfiguration": "Voir ma configuration",
-    "exploreConfiguration": "Découvrir la bonne configuration",
-    "talkToExpert": "Parler à un expert"
+    "talkToExpert": "Parler à un expert",
+    "signUp": "S’inscrire"
   },
   "a11y": {
     "skipToContent": "Aller au contenu principal",

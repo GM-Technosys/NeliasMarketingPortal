@@ -62,5 +62,8 @@
       "name": "Connectors & APIs",
       "description": "Integrate with approved third-party systems and services."
     }
+  },
+  "extras": {
+    "exploreIndustries": "Explore Industries"
   }
 }

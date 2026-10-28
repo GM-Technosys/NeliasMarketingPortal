@@ -322,7 +322,8 @@ export default function UiKitPreviewPage() {
 
           {/* CardLink sample */}
           <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2">
-            <CardLink to="/why-nelias" title="Clickable Internal CardLink" icon={Layers}>
+            {/* TODO(Debass): temporary target after the restructure; the page is rewritten in a later step. */}
+            <CardLink to="/about" title="Clickable Internal CardLink" icon={Layers}>
               Hovering shifts border to azure-500 and underlines the title without transform lift.
             </CardLink>
 
@@ -1070,7 +1071,7 @@ export default function UiKitPreviewPage() {
               <Button variant="onDark">OnDark Action</Button>
               <Badge tone="inverse">Inverse Badge</Badge>
               <Badge tone="highlight">Highlight</Badge>
-              <TextLink to="/why-nelias" className="text-white hover:text-sun-300">
+              <TextLink to="/about" className="text-white hover:text-sun-300">
                 Inverse Text Link
               </TextLink>
             </div>

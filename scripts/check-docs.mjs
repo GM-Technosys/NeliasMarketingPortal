@@ -107,6 +107,7 @@ if (!fs.existsSync(pageSpecsDir)) {
     "/pricing": "pricing.md",
     "/about": "about.md",
     "/about-us": "about.md",
+    "/faq": "faq.md",
     "/contact": "contact.md",
     "/demo": "demo.md",
     "/terms": "terms.md",

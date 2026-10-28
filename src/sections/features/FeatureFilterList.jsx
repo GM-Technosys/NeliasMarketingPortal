@@ -5,7 +5,6 @@ import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { Tabs } from "@/components/ui/Tabs";
-import { Alert } from "@/components/ui/Alert";
 import { industries } from "@/data/industries";
 import { industryProfiles } from "@/data/home-content";
 import { track, EVENTS } from "@/lib/analytics";
@@ -63,12 +62,6 @@ export function FeatureFilterList() {
             label={t("features:page.filterLabel")}
             items={tabItems}
           />
-
-          {/* Disclaimer */}
-          {/* TODO(Debass): the PDF text reads "usagebased" (hyphen lost at a line break); "usage-based" is used. */}
-          <div className="mt-12 max-w-3xl">
-            <Alert tone="note">{t("features:disclaimer")}</Alert>
-          </div>
         </Reveal>
       </Container>
     </Section>

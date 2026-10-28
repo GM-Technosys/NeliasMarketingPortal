@@ -17,18 +17,16 @@
   },
   "nav": {
     "home": "Home",
-    "whyNelias": "Why NELIAS",
-    "howItWorks": "How It Works",
+    "about": "About Us",
     "industries": "Industries",
     "features": "Features",
     "pricing": "Pricing",
-    "resources": "Resources",
-    "about": "About",
     "contact": "Contact",
+    "signUp": "Sign Up",
     "signIn": "Sign In",
     "privacy": "Privacy Policy",
     "terms": "Terms of Use",
-    "termsOfSale": "Terms of Sale and Subscription",
+    "faq": "FAQ",
     "dpa": "Data Processing Agreement (DPA)",
     "sla": "Service Level Agreement (SLA)"
   },
@@ -40,21 +38,15 @@
     "whatsapp": "WhatsApp"
   },
   "cta": {
-    "configure": "Configure My NELIAS",
-    "bookDemo": "Book a Demo",
+    "bookDemo": "Request a Demo",
     "exploreNelias": "Explore NELIAS",
-    "talkToAdvisor": "Talk to an Advisor",
     "exploreHowItWorks": "Explore How It Works",
-    "seeHowItWorks": "See How It Works",
     "seeHowNeliasWorks": "See How NELIAS Works",
     "contactTeam": "Contact Our Team",
     "requestConversation": "Request a Conversation",
     "contactNeliasTeam": "Contact the NELIAS Team",
-    "discoverHowItWorks": "Discover How It Works",
-    "findConfiguration": "Find the NELIAS configuration for your industry",
-    "seeMyConfiguration": "See My Configuration",
-    "exploreConfiguration": "Explore the Right Configuration",
-    "talkToExpert": "Talk to an Expert"
+    "talkToExpert": "Talk to an Expert",
+    "signUp": "Sign Up"
   },
   "a11y": {
     "skipToContent": "Skip to main content",

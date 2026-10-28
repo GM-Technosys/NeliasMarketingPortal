@@ -282,9 +282,9 @@ export function LeadForm({ type = "contact", className, short = false }) {
         </Button>
 
         {type === "contact" && (
-          // TODO(Debass): the PDF names the secondary button "Explore NELIAS" without a destination; /how-it-works is used.
+          // TODO(Debass): temporary target after the restructure; the page is rewritten in a later step.
           <Link
-            to="/how-it-works"
+            to="/features"
             className={cn(
               buttonStyles({ variant: "outline", size: "lg" }),
               "w-full text-center sm:w-auto"

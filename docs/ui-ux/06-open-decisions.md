@@ -1,4 +1,4 @@
-# NELIAS Marketing Portal — UI/UX Specification: Open Decisions & Debass Backlog
+# NELIAS Marketing Portal - UI/UX Specification: Open Decisions & Debass Backlog
 
 ## 1. Overview
 This register catalogs all items marked `TODO(Debass)` across the codebase, grouped by functional domain and page, alongside terminology alignments that require client governance before final commercial release.

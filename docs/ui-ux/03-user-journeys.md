@@ -1,4 +1,4 @@
-# NELIAS Marketing Portal — UI/UX Specification: User Journeys
+# NELIAS Marketing Portal - UI/UX Specification: User Journeys
 
 ## 1. Journey 1: Sector Discovery Journey
 *From broad exploration to sector-specific operational alignment and conversion.*

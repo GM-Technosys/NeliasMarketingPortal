@@ -7,14 +7,14 @@ import { PullStatement } from "./PullStatement";
 import { FoundationIllustration } from "./FoundationIllustration";
 
 // TODO(Debass): French is an AI-drafted translation pending native review ("scalable" is rendered "évolutive").
-export function AnswerSection() {
+export function AnswerSection({ tone = "default" }) {
   const { t } = useTranslation();
   const triadItems = t("about:answer.triad", { returnObjects: true }) || [];
 
   return (
     <Section
       id="answer"
-      tone="muted"
+      tone={tone}
       spacing="lg"
       aria-labelledby="answer-heading"
     >

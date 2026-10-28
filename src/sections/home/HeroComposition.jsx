@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { IconBadge } from "@/components/ui/IconBadge";
-import { capabilityCards } from "@/data/home-content";
+import { heroTiles } from "@/data/home-content";
 
 /**
  * Decorative animated hero workspace composition.
@@ -74,7 +74,7 @@ export function HeroComposition() {
 
         {/* 6 Capability Tiles Grid*/}
         <div className="p-2.5 sm:p-3.5 lg:p-3 xl:p-4 grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5 lg:gap-2 xl:gap-2.5 bg-surface">
-          {capabilityCards.map(({ id, icon }, index) => (
+          {heroTiles.map(({ id, icon }, index) => (
             <div
               key={id}
               style={{ animationDelay: `${600 + index * 70}ms` }}
@@ -82,7 +82,7 @@ export function HeroComposition() {
             >
               <IconBadge icon={icon} tone="azure" size="sm" className="shrink-0" />
               <span className="font-display text-xs lg:text-[11px] xl:text-xs 2xl:text-sm font-semibold text-heading leading-tight truncate">
-                {t(`home:capabilities.items.${id}.title`)}
+                {t(`home:heroTiles.${id}`)}
               </span>
             </div>
           ))}

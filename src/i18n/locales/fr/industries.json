@@ -9,16 +9,16 @@
     "subtitle": "Des fonctionnalités modulaires configurées selon vos activités et vos processus."
   },
   "detail": {
-    "breadcrumb": "Fil d’Ariane",
     "challengesTitle": "Défis courants et résultats",
     "challengeLabel": "Défi courant",
     "outcomeLabel": "Résultat",
-    "capabilitiesTitle": "Fonctionnalités suggérées",
-    "walkthroughTitle": "Parcours pratique",
-    "faqTitle": "Questions fréquentes",
-    "allIndustries": "Tous les secteurs",
-    "nextStep": "Prochaine étape",
-    "seoTitle": "{{name}} | NELIAS BMP"
+    "walkthroughTitle": "Parcours pratique"
+  },
+  "page": {
+    "selectorTitle": "Choisissez votre secteur",
+    "selectHint": "Sélectionnez un secteur pour afficher les détails.",
+    "suggestedLabel": "Fonctionnalités suggérées",
+    "close": "Fermer"
   },
   "items": {
     "retail-distribution": {

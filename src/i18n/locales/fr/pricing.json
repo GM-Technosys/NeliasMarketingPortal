@@ -1,7 +1,10 @@
 {
   "hero": {
-    "title": "Des formules claires. Des fonctionnalités flexibles. De la marge pour grandir.",
-    "lead": "Choisissez une formule de plateforme adaptée à votre capacité et à votre niveau de service. Ajoutez des fonctionnalités sectorielles, des utilisateurs et des intégrations selon vos besoins."
+    "title": "Quatre formules, la bonne capacité",
+    "lead": "Aucun prix n’est calculé par bureau, boutique ou entrepôt\u00A0: la localisation de vos équipes n’est pas un critère de tarification."
+  },
+  "overview": {
+    "signUpFor": "S’inscrire à {{plan}}"
   },
   "page": {
     "plansTitle": "Formules",
@@ -32,9 +35,7 @@
     "itemCol": "Élément",
     "ruleCol": "Tarif de référence V2 / règle",
     "expandDetails": "Afficher les détails développeur",
-    "collapseDetails": "Masquer les détails développeur",
-    "faqTitle": "Questions fréquentes",
-    "nextStep": "Prochaine étape"
+    "collapseDetails": "Masquer les détails développeur"
   },
   "plans": {
     "start": {
@@ -67,10 +68,111 @@
     }
   },
   "compare": {
+    "title": "Comparer les offres",
     "caption": "Comparaison des formules",
     "plan": "Formule",
     "monthlyCol": "Mensuel (hors taxes)",
     "annualCol": "Annuel (hors taxes)"
+  },
+  "grow": {
+    "title": "Faites évoluer votre abonnement",
+    "head": {
+      "extension": "Extension",
+      "monthly": "Prix mensuel hors taxes"
+    },
+    "items": {
+      "module": {
+        "label": "Module standard supplémentaire",
+        "value": "{{amount}} par module"
+      },
+      "user": {
+        "label": "Utilisateur supplémentaire",
+        "value": "{{amount}}"
+      },
+      "users5": {
+        "label": "Pack de 5 utilisateurs",
+        "value": "{{amount}}"
+      },
+      "users10": {
+        "label": "Pack de 10 utilisateurs",
+        "value": "{{amount}}"
+      },
+      "entity": {
+        "label": "Entité juridique supplémentaire",
+        "value": "{{amount}}"
+      },
+      "pack": {
+        "label": "Industry+ Pack (bientôt disponible)",
+        "value": "{{amount}} par pack"
+      },
+      "storage": {
+        "label": "Stockage supplémentaire",
+        "value": "Calculé selon la grille de notre partenaire d’hébergement"
+      },
+      "addons": {
+        "label": "Options complémentaires et connecteurs",
+        "value": "Selon le catalogue"
+      }
+    },
+    "example": "Exemple\u00A0: START avec 5 modules coûte {{base}} + {{extra}} = {{total}} hors taxes par mois. Pour n utilisateurs supplémentaires, le calcul retient la combinaison la moins chère d’utilisateurs à l’unité et de packs. Si BUSINESS avec extensions coûte plus cher que PROFESSIONAL, nous vous le signalons."
+  },
+  "sectors": {
+    "title": "Configurations sectorielles incluses",
+    "body": "La configuration sectorielle de base est incluse dans toutes les offres, sans supplément.",
+    "badge": "Sector Engine",
+    "supportedSectors": "Préconfiguré pour 12 secteurs d’activité",
+    "highlights": {
+      "tailored": {
+        "title": "Adapté à votre activité",
+        "text": "Vocabulaire, formulaires et processus par défaut alignés sur votre métier dès le premier jour."
+      },
+      "zeroFee": {
+        "title": "Sans coût supplémentaire",
+        "text": "Chaque formule inclut sa configuration sectorielle complète, sans aucune licence additionnelle."
+      },
+      "flexible": {
+        "title": "Modules interchangeables",
+        "text": "Remplacez tout module recommandé par un autre module standard dans la limite de votre formule."
+      }
+    }
+  },
+  "packs": {
+    "title": "Industry+ Packs - bientôt disponibles",
+    "intro": "Cinq packs métier approfondis sont prévus. Ils ne sont pas encore disponibles.",
+    "price": "Chacun sera proposé à {{amount}} hors taxes par mois, en complément de l’abonnement.",
+    "head": {
+      "pack": "Pack",
+      "sector": "Secteur",
+      "functions": "Fonctions envisagées"
+    },
+    "items": {
+      "immo": {
+        "name": "NELIAS Immo+",
+        "sector": "Immobilier",
+        "functions": "Gestion locative avancée\u00A0: baux, loyers, échéances, quittances, suivi du patrimoine"
+      },
+      "courtage": {
+        "name": "NELIAS Courtage+",
+        "sector": "Courtage en assurance",
+        "functions": "Polices et contrats, commissions, renouvellements, échanges avec les assureurs"
+      },
+      "pharma": {
+        "name": "NELIAS Pharma+",
+        "sector": "Pharmacie",
+        "functions": "Traçabilité des lots et des dates de péremption, sous réserve de validation réglementaire"
+      },
+      "chantier": {
+        "name": "NELIAS Chantier+",
+        "sector": "BTP",
+        "functions": "Suivi de chantier, situations de travaux, retenues de garantie, sous-traitance"
+      },
+      "services": {
+        "name": "NELIAS Services+",
+        "sector": "Informatique et services",
+        "functions": "Contrats de service, SLA, interventions, automatisations"
+      }
+    },
+    "notify": "Être prévenu dès leur disponibilité"
   },
   "optional": {
     "groups": {

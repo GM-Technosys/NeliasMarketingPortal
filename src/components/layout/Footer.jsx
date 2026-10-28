@@ -109,7 +109,7 @@ export function Footer() {
         {/* Bottom hairline & legal bar */}
         <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-4 text-xs text-fg-inverse-muted sm:flex-row">
           <p>{t("brand.copyright")}</p>
-          <nav aria-label={t("footer.legalNavLabel")} className="flex items-center gap-6">
+          <nav aria-label={t("footer.legalNavLabel")} className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {legalNav.map(({ key, to }) => (
               <NavLink
                 key={key}

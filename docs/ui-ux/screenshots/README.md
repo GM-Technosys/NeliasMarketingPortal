@@ -1,4 +1,4 @@
-# NELIAS Marketing Portal — UI/UX Specification: Visual Verification Matrix
+# NELIAS Marketing Portal - UI/UX Specification: Visual Verification Matrix
 
 ## 1. Overview
 This directory serves as the repository for visual verification captures and multi-breakpoint visual regression artifacts.

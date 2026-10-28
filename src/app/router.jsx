@@ -1,5 +1,6 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter, Navigate, useParams } from "react-router-dom";
 import RootLayout from "./RootLayout";
+import { industries } from "@/data/industries";
 
 /**
  * Lazy-load helper: wraps a dynamic import so createBrowserRouter
@@ -10,30 +11,44 @@ const page = (load) => ({
   lazy: async () => ({ Component: (await load()).default }),
 });
 
+// TODO(Debass): old industry addresses redirect to the inline detail; confirm.
+function IndustryRedirect() {
+  const { slug } = useParams();
+  const target =
+    slug && industries.includes(slug) ? `/industries#${slug}` : "/industries";
+  return <Navigate to={target} replace />;
+}
+
+// TODO(Debass): redirect targets are proposals; confirm.
+const removedRoutes = [
+  { path: "why-nelias", element: <Navigate to="/" replace /> },
+  { path: "how-it-works", element: <Navigate to="/" replace /> },
+  { path: "resources", element: <Navigate to="/" replace /> },
+  { path: "terms-of-sale", element: <Navigate to="/terms" replace /> },
+  { path: "cgv", element: <Navigate to="/terms" replace /> },
+  { path: "configure", element: <Navigate to="/pricing" replace /> },
+];
+
 /** @type {import("react-router-dom").RouteObject[]} */
 const routes = [
   {
     element: <RootLayout />,
     children: [
       { index: true, ...page(() => import("@/pages/HomePage")) },
-      { path: "why-nelias", ...page(() => import("@/pages/WhyNeliasPage")) },
-      { path: "how-it-works", ...page(() => import("@/pages/HowItWorksPage")) },
       { path: "industries", ...page(() => import("@/pages/IndustriesPage")) },
-      { path: "industries/:slug", ...page(() => import("@/pages/IndustryDetailPage")) },
+      { path: "industries/:slug", element: <IndustryRedirect /> },
       { path: "features", ...page(() => import("@/pages/FeaturesPage")) },
       { path: "pricing", ...page(() => import("@/pages/PricingPage")) },
       { path: "about", ...page(() => import("@/pages/AboutPage")) },
       { path: "about-us", ...page(() => import("@/pages/AboutPage")) },
+      { path: "faq", ...page(() => import("@/pages/FaqPage")) },
       { path: "contact", ...page(() => import("@/pages/ContactPage")) },
       { path: "demo", ...page(() => import("@/pages/DemoPage")) },
       { path: "terms", ...page(() => import("@/pages/TermsPage")) },
-      { path: "terms-of-sale", ...page(() => import("@/pages/TermsOfSalePage")) },
-      { path: "cgv", ...page(() => import("@/pages/TermsOfSalePage")) },
       { path: "dpa", ...page(() => import("@/pages/DpaPage")) },
       { path: "privacy", ...page(() => import("@/pages/PrivacyPage")) },
       { path: "sla", ...page(() => import("@/pages/SlaPage")) },
-      { path: "resources", ...page(() => import("@/pages/ResourcesPage")) },
-      { path: "configure", ...page(() => import("@/pages/ConfigurePage")) },
+      ...removedRoutes,
       { path: "*", ...page(() => import("@/pages/NotFoundPage")) },
     ],
   },

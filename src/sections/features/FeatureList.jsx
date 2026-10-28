@@ -47,7 +47,7 @@ export function FeatureList({ filter = "all" }) {
           {t("features:page.showing", { shown, total })}
         </p>
         {filter !== "all" && (
-          <TextLink to={`/industries/${filter}`}>
+          <TextLink to={`/industries#${filter}`}>
             {t("features:page.viewIndustry", { name: industryName })}
           </TextLink>
         )}

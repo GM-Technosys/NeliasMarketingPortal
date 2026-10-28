@@ -120,18 +120,20 @@ export function MobileMenu({ open, onClose }) {
         </ul>
       </nav>
 
-      {/* Secondary utility group: Contact, Sign In, Language and Theme */}
+      {/* Secondary utility group: Sign Up, Sign In, Language and Theme */}
       <div className="flex shrink-0 flex-col gap-1 border-b border-line px-5 py-3">
-        <NavLink
-          to="/contact"
+        <a
+          href={site.signUpUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           onClick={() => {
-            track(EVENTS.NAV_CLICK, { key: "contact" });
+            track(EVENTS.NAV_CLICK, { key: "signUp" });
             onClose();
           }}
-          className="flex min-h-11 items-center rounded-md px-2 text-[15px] font-semibold text-fg-strong hover:text-link transition-colors"
+          className="flex min-h-11 items-center rounded-md px-2 text-[15px] font-semibold text-fg-strong transition-colors hover:text-link"
         >
-          {t("nav.contact")}
-        </NavLink>
+          {t("nav.signUp")}
+        </a>
         <a
           href={site.loginUrl}
           target="_blank"

@@ -6,13 +6,10 @@ import { site } from "@/config/site";
  * @type {Array<{ key: string, to: string }>}
  */
 export const mainNav = [
-  { key: "whyNelias", to: "/why-nelias" },
-  { key: "howItWorks", to: "/how-it-works" },
+  { key: "about", to: "/about" },
   { key: "industries", to: "/industries" },
   { key: "features", to: "/features" },
   { key: "pricing", to: "/pricing" },
-  { key: "resources", to: "/resources" },
-  { key: "about", to: "/about" },
 ];
 
 /**
@@ -28,10 +25,17 @@ export const contactNav = { key: "contact", to: "/contact" };
 export const primaryNav = [...mainNav, contactNav];
 
 /**
- * Footer navigation items (Home + primaryNav).
+ * Footer navigation items (Home + Industries, Features, Pricing, Contact).
+ * Note: About Us is deliberately excluded from the footer in this step.
  * @type {Array<{ key: string, to: string }>}
  */
-export const footerNav = [{ key: "home", to: "/" }, ...primaryNav];
+export const footerNav = [
+  { key: "home", to: "/" },
+  { key: "industries", to: "/industries" },
+  { key: "features", to: "/features" },
+  { key: "pricing", to: "/pricing" },
+  contactNav,
+];
 
 /**
  * Footer legal links.
@@ -40,14 +44,20 @@ export const footerNav = [{ key: "home", to: "/" }, ...primaryNav];
 export const legalNav = [
   { key: "privacy", to: "/privacy" },
   { key: "terms", to: "/terms" },
-  { key: "termsOfSale", to: "/terms-of-sale" },
+  { key: "faq", to: "/faq" },
   { key: "dpa", to: "/dpa" },
   { key: "sla", to: "/sla" },
 ];
 
 /**
- * Sign In is an external link.
+ * Sign In and Sign Up are external links.
  */
+export const signUpLink = {
+  key: "signUp",
+  href: site.signUpUrl,
+  external: true,
+};
+
 export const signInLink = {
   key: "signIn",
   href: site.loginUrl,

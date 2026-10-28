@@ -1,18 +1,13 @@
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Check } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
-import { buttonStyles } from "@/components/ui/button-styles";
+import { SignUpLink } from "@/components/common/SignUpLink";
 import { useFormat } from "@/hooks/useFormat";
+import { MODULES_INCLUDED } from "@/data/home-pricing";
 import { track, EVENTS } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
 
-// TODO(Debass): the PDF gives no destination for "Talk to an Expert"; /contact is used.
-// TODO(Debass): no approved wording exists for the hidden-price state; "Pricing on request" is a functional placeholder.
-// TODO(Debass): the inclusions split the approved plan sentences into list items (the word "included" is carried by the "Included" label).
-
 /**
- * Plan card component displaying details, pricing, specs, inclusions, and CTA.
+ * Plan card component displaying plan identity, pricing block, structured facts list, and external Sign Up link.
  *
  * @param {Object} props
  * @param {import("@/data/pricing-catalog").Plan} props.plan
@@ -26,218 +21,139 @@ export function PlanCard({ plan, billing = "monthly", showPrices = false }) {
 
   const isEnterprise = plan.id === "enterprise";
   const isFeatured = Boolean(plan.featured);
-
-  // CTA button variant, label, and destination
-  let ctaLabel;
-  let ctaDestination;
-  let ctaVariant;
-
-  if (isEnterprise) {
-    ctaLabel = t("pricing:plans.enterprise.cta");
-    ctaDestination = "/contact";
-    ctaVariant = "onDark";
-  } else {
-    ctaVariant = isFeatured ? "primary" : "outline";
-    ctaLabel = t(`pricing:plans.${plan.id}.cta`);
-    ctaDestination = `/configure?plan=${plan.id}&billing=${billing}`;
-  }
+  const planName = t(`home:pricing.table.plans.${plan.id}`);
 
   const handleCtaClick = () => {
     track(EVENTS.PLAN_SELECT, { plan: plan.id, billing });
   };
 
-  const includedItems = t(`pricing:plans.${plan.id}.included`, {
-    returnObjects: true,
-  });
-
   const priceAmount = billing === "annual" ? plan.annual : plan.monthly;
 
   return (
     <div
-      data-tone={isEnterprise ? "inverse" : undefined}
       className={cn(
-        "flex w-full flex-col rounded-lg p-6 transition-colors",
-        isEnterprise
-          ? "bg-brand-deep text-fg-inverse"
-          : cn(
-              "border border-line bg-surface-raised",
-              isFeatured && "border-accent ring-1 ring-accent",
-            ),
+        "relative flex w-full flex-col justify-between rounded-lg border bg-surface-raised p-6 shadow-2xs transition-colors",
+        isFeatured ? "border-accent ring-1 ring-accent" : "border-line",
       )}
     >
-      {/* Recommended badge header */}
-      {isFeatured && (
-        <div className="mb-4">
-          <Badge className="bg-selected text-selected-fg">
-            {t("pricing:page.recommended")}
-          </Badge>
-        </div>
-      )}
-
-      {/* Plan Name & Tagline */}
-      <h3
-        className={cn(
-          "font-display text-h3 font-bold",
-          isEnterprise ? "text-white" : "text-heading",
-        )}
-      >
-        {t(`pricing:plans.${plan.id}.name`)}
-      </h3>
-      <p
-        className={cn(
-          "mt-2 text-sm md:text-base",
-          isEnterprise ? "text-fg-inverse-muted" : "text-fg-muted",
-        )}
-      >
-        {t(`pricing:plans.${plan.id}.tagline`)}
-      </p>
-
-      {/* Price block */}
-      <div className="mt-6 min-h-[5.5rem] flex flex-col justify-end">
-        {isEnterprise ? (
-          <p className="font-display text-3xl font-semibold text-white">
-            {t("pricing:page.customQuote")}
-          </p>
-        ) : showPrices ? (
-          <div>
-            <p className="font-display text-3xl font-semibold text-heading">
-              {formatFcfa(priceAmount, lng)}
-            </p>
-            <p className="mt-1 text-sm text-fg-muted">
-              {billing === "annual"
-                ? t("pricing:page.perYear")
-                : t("pricing:page.perMonth")}{" "}
-              · {t("pricing:page.exclTax")}
-            </p>
+      <div>
+        {/* Recommended badge on featured card */}
+        {isFeatured && (
+          <div className="mb-4">
+            <Badge className="bg-selected text-selected-fg">
+              {t("pricing:page.recommended")}
+            </Badge>
           </div>
-        ) : (
-          <p className="font-display text-2xl font-semibold text-heading">
-            {t("pricing:page.priceOnRequest")}
-          </p>
         )}
-      </div>
 
-      {/* Specs dl */}
-      <dl
-        className={cn(
-          "mt-6 divide-y border-y text-sm",
-          isEnterprise
-            ? "divide-white/15 border-white/15"
-            : "divide-line border-line",
-        )}
-      >
-        <div className="flex justify-between py-3">
-          <dt className={isEnterprise ? "text-fg-inverse-muted" : "text-fg-muted"}>
-            {t("pricing:page.modulesLabel")}
-          </dt>
-          <dd
-            className={cn(
-              "font-semibold",
-              isEnterprise ? "text-white" : "text-heading",
-            )}
-          >
-            {isEnterprise
-              ? t("pricing:plans.enterprise.modules")
-              : formatNumber(plan.includedModules, lng)}
-          </dd>
-        </div>
-        <div className="flex justify-between py-3">
-          <dt className={isEnterprise ? "text-fg-inverse-muted" : "text-fg-muted"}>
-            {t("pricing:page.usersLabel")}
-          </dt>
-          <dd
-            className={cn(
-              "font-semibold",
-              isEnterprise ? "text-white" : "text-heading",
-            )}
-          >
-            {isEnterprise
-              ? t("pricing:plans.enterprise.users")
-              : formatNumber(plan.users, lng)}
-          </dd>
-        </div>
-        <div className="flex justify-between py-3">
-          <dt className={isEnterprise ? "text-fg-inverse-muted" : "text-fg-muted"}>
-            {t("pricing:page.entitiesLabel")}
-          </dt>
-          <dd
-            className={cn(
-              "font-semibold",
-              isEnterprise ? "text-white" : "text-heading",
-            )}
-          >
-            {isEnterprise
-              ? t("pricing:plans.enterprise.entities")
-              : formatNumber(plan.legalEntities, lng)}
-          </dd>
-        </div>
-        <div className="flex justify-between py-3">
-          <dt className={isEnterprise ? "text-fg-inverse-muted" : "text-fg-muted"}>
-            {t("pricing:page.storageLabel")}
-          </dt>
-          <dd
-            className={cn(
-              "font-semibold",
-              isEnterprise ? "text-white" : "text-heading",
-            )}
-          >
-            {isEnterprise
-              ? t("pricing:plans.enterprise.storage")
-              : t("pricing:page.storageValue", {
-                  value: formatNumber(plan.storageGb, lng),
-                })}
-          </dd>
-        </div>
-      </dl>
-
-      {/* Included items */}
-      <div className="mt-6">
-        <p
-          className={cn(
-            "text-sm font-semibold",
-            isEnterprise ? "text-white" : "text-heading",
-          )}
-        >
-          {t("pricing:page.includedLabel")}
+        {/* Plan Name & Target Audience */}
+        <h3 className="font-display text-2xl font-bold text-heading">
+          {planName}
+        </h3>
+        <p className="mt-1.5 text-sm text-fg-muted min-h-[2.5rem] leading-snug">
+          {t(`home:pricing.table.for.${plan.id}`)}
         </p>
-        <ul className="mt-3 space-y-2 text-sm">
-          {Array.isArray(includedItems) &&
-            includedItems.map((item, idx) => (
-              <li key={idx} className="flex gap-3">
-                <Check
-                  className={cn(
-                    "mt-0.5 h-4 w-4 shrink-0",
-                    !isEnterprise && "text-link",
-                  )}
-                  style={
-                    isEnterprise
-                      ? { color: "var(--color-sun-300)" }
-                      : undefined
-                  }
-                  aria-hidden="true"
-                />
-                <span className={isEnterprise ? "text-fg-inverse" : "text-fg"}>
-                  {item}
-                </span>
-              </li>
-            ))}
-        </ul>
+
+        {/* Price block */}
+        <div className="mt-6 min-h-[5rem] flex flex-col justify-end border-b border-line pb-5">
+          {isEnterprise ? (
+            <div>
+              <p className="font-display text-2xl sm:text-3xl font-bold text-heading">
+                {t("home:pricing.table.onQuote")}
+              </p>
+              <p className="mt-1 text-xs text-fg-subtle">
+                {t("pricing:page.customQuote")}
+              </p>
+            </div>
+          ) : (
+            <div>
+              <p className="font-display text-2xl sm:text-3xl font-bold text-heading tabular-nums">
+                {formatFcfa(priceAmount, lng)}
+              </p>
+              <p className="mt-1 text-xs text-fg-subtle">
+                {billing === "annual"
+                  ? t("pricing:page.perYear")
+                  : t("pricing:page.perMonth")}{" "}
+                · {t("pricing:page.exclTax")}
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Facts specification list */}
+        <dl className="mt-6 divide-y divide-line border-b border-line text-sm">
+          <div className="flex justify-between py-3">
+            <dt className="text-fg-muted">
+              {t("home:pricing.table.rows.modules")}
+            </dt>
+            <dd className="font-semibold text-heading">
+              {isEnterprise
+                ? t("home:pricing.table.asNeeded")
+                : formatNumber(MODULES_INCLUDED[plan.id], lng)}
+            </dd>
+          </div>
+          <div className="flex justify-between py-3">
+            <dt className="text-fg-muted">{t("home:pricing.table.rows.users")}</dt>
+            <dd className="font-semibold text-heading">
+              {isEnterprise
+                ? t("home:pricing.table.asNeeded")
+                : formatNumber(plan.users, lng)}
+            </dd>
+          </div>
+          <div className="flex justify-between py-3">
+            <dt className="text-fg-muted">
+              {t("home:pricing.table.rows.entities")}
+            </dt>
+            <dd className="font-semibold text-heading">
+              {isEnterprise
+                ? t("home:pricing.table.multiEntity")
+                : formatNumber(plan.legalEntities, lng)}
+            </dd>
+          </div>
+          <div className="flex justify-between py-3">
+            <dt className="text-fg-muted">
+              {t("home:pricing.table.rows.storage")}
+            </dt>
+            <dd className="font-semibold text-heading">
+              {isEnterprise
+                ? t("home:pricing.table.sizedToNeed")
+                : t("pricing:page.storageValue", {
+                    value: formatNumber(plan.storageGb, lng),
+                  })}
+            </dd>
+          </div>
+          <div className="flex justify-between py-3">
+            <dt className="text-fg-muted">
+              {t("home:pricing.table.rows.engine")}
+            </dt>
+            <dd className="font-semibold text-heading">
+              {t("home:pricing.table.included")}
+            </dd>
+          </div>
+          {/* TODO(Debass): service levels (Standard, Standard+, Priority, SLA) are still to be specified in the contractual terms. */}
+          <div className="flex justify-between py-3">
+            <dt className="text-fg-muted">{t("home:pricing.table.rows.level")}</dt>
+            <dd className="font-semibold text-heading">
+              {t(`home:pricing.table.levels.${plan.id}`)}
+            </dd>
+          </div>
+        </dl>
       </div>
 
-      {/* CTA Button */}
-      <div className="mt-auto pt-8">
-        <Link
-          to={ctaDestination}
+      {/* Action CTA Button */}
+      {/* TODO(Debass): the brief asks for every plan button, ENTERPRISE included, to redirect to Sign Up; ENTERPRISE is sized on quote, so the Enterprise block below also offers Talk to an Expert. */}
+      {/* TODO(Debass): the document says the self-service purchase journey is not in production and buttons stay Request a demo / Talk to an expert / Simulate my price, never "Buy"; Sign Up is requested by the brief - confirm it matches the real state of login.nelias.app. */}
+      <div className="mt-8 pt-2">
+        <SignUpLink
+          variant={isFeatured ? "primary" : "outline"}
+          size="md"
+          location={`pricing-${plan.id}`}
+          aria-label={t("pricing:overview.signUpFor", { plan: planName })}
           onClick={handleCtaClick}
-          className={buttonStyles({
-            variant: ctaVariant,
-            size: "md",
-            className:
-              "w-full text-center leading-tight whitespace-normal py-2.5",
-          })}
+          className="w-full text-center"
         >
-          {ctaLabel}
-        </Link>
+          {t("common:cta.signUp")}
+        </SignUpLink>
       </div>
     </div>
   );

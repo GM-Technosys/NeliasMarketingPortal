@@ -3,19 +3,11 @@ import { useTranslation } from "react-i18next";
 import { buttonStyles } from "@/components/ui/button-styles";
 import { cn } from "@/lib/cn";
 import { EVENTS, track } from "@/lib/analytics";
-import { features } from "@/config/features";
-
 /**
  * Intent-to-destination mapping.
- * When configurator is off, "configure" falls back to demo with a softer label.
  */
 function resolveIntent(intent, t) {
   switch (intent) {
-    case "configure":
-      return {
-        to: features.configurator ? "/configure" : "/demo",
-        label: features.configurator ? t("cta.configure") : t("cta.bookDemo"),
-      };
     case "demo":
       return { to: "/demo", label: t("cta.bookDemo") };
     case "contact":
@@ -29,7 +21,7 @@ function resolveIntent(intent, t) {
  * CTA link styled as a button. Routes based on intent and feature flags.
  *
  * @param {Object} props
- * @param {"configure"|"demo"|"contact"} [props.intent]
+ * @param {"demo"|"contact"} [props.intent]
  * @param {string} [props.to] - Override destination 
  * @param {string} [props.label] - Override label (children take precedence)
  * @param {"primary"|"secondary"|"outline"|"ghost"|"onDark"|"white"|"azure"} [props.variant="primary"]

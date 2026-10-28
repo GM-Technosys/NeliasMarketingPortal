@@ -3,14 +3,6 @@
     "title": "NELIAS | Plateforme de gestion d’entreprise",
     "description": "Découvrez NELIAS, une plateforme de gestion d’entreprise conçue pour s’adapter à vos activités et à votre secteur."
   },
-  "whyNelias": {
-    "title": "Pourquoi NELIAS | La gestion centrée sur votre entreprise",
-    "description": "Découvrez pourquoi NELIAS part des besoins réels de votre entreprise, et non d’un catalogue rigide de logiciels."
-  },
-  "howItWorks": {
-    "title": "Comment fonctionne NELIAS | Sector Engine",
-    "description": "Découvrez le parcours proposé par NELIAS, du profil de votre entreprise à votre environnement sur mesure."
-  },
   "industries": {
     "title": "Secteurs | NELIAS BMP",
     "description": "Découvrez les configurations de gestion adaptées aux spécificités de chaque secteur d’activité."
@@ -34,10 +26,6 @@
   "notFound": {
     "title": "Page introuvable | NELIAS",
     "description": "La page que vous recherchez n’existe pas."
-  },
-  "configure": {
-    "title": "Configurer mon NELIAS | Plateforme sur mesure",
-    "description": "Configurez votre plateforme NELIAS selon votre secteur et les besoins de votre entreprise."
   },
   "fallback": {
     "title": "NELIAS",
