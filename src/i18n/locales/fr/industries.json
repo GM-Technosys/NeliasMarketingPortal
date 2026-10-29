@@ -37,7 +37,12 @@
       "name": "Industrie et fabrication",
       "summary": "Reliez les approvisionnements, les stocks, la planification de production et les démarches qualité.",
       "headline": "Connectez les achats, la production et le suivi opérationnel.",
-      "walkthrough": ["Approvisionnement", "Stocks", "Planification de la production", "Processus qualité"]
+      "walkthrough": [
+        "Approvisionnement",
+        "Stocks",
+        "Planification de la production",
+        "Processus qualité"
+      ]
     },
     "healthcare": {
       "name": "Santé",
@@ -85,8 +90,13 @@
     "it-technology-services": {
       "name": "Informatique et services technologiques",
       "summary": "Réunissez la relation client, les projets, les feuilles de temps, le support client et le reporting dans un flux de travail connecté.",
-      "walkthrough": ["Relation client", "Projets", "Feuilles de temps", "Support client", "Reporting"]
+      "walkthrough": [
+        "Relation client",
+        "Projets",
+        "Feuilles de temps",
+        "Support client",
+        "Reporting"
+      ]
     }
   }
 }
-

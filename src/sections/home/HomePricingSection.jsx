@@ -78,7 +78,10 @@ export function HomePricingSection() {
       featured: false,
       name: t("home:pricing.table.plans.professional"),
       audience: t("home:pricing.table.for.professional"),
-      price: billing === "annual" ? pricing.plans.professional.annual : pricing.plans.professional.monthly,
+      price:
+        billing === "annual"
+          ? pricing.plans.professional.annual
+          : pricing.plans.professional.monthly,
       customPrice: null,
       modules: String(MODULES_INCLUDED.professional),
       users: formatNumber(pricing.plans.professional.users),
@@ -120,16 +123,12 @@ export function HomePricingSection() {
             <div className="max-w-3xl">
               <h2
                 id="pricing-heading"
-                className="font-display text-h2 font-semibold text-heading leading-tight tracking-tight"
+                className="font-display text-h2 leading-tight font-semibold tracking-tight text-heading"
               >
                 {t("home:pricing.title")}
               </h2>
-              <p className="mt-4 text-lead text-fg-muted leading-relaxed">
-                {showPrices && (
-                  <>
-                    {t("home:pricing.introPrices")}{" "}
-                  </>
-                )}
+              <p className="mt-4 text-lead leading-relaxed text-fg-muted">
+                {showPrices && <>{t("home:pricing.introPrices")} </>}
                 {t("home:pricing.introLocation")}
               </p>
             </div>
@@ -161,7 +160,7 @@ export function HomePricingSection() {
 
         {/* 4 Plan Cards Grid */}
         <Reveal>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+          <div className="mt-10 grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {planCards.map((plan) => (
               <div
                 key={plan.id}
@@ -175,7 +174,7 @@ export function HomePricingSection() {
                 {/* Recommended Badge on featured card */}
                 {plan.featured && (
                   <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-selected text-selected-fg text-xs font-semibold px-3 py-0.5 shadow-xs">
+                    <Badge className="bg-selected px-3 py-0.5 text-xs font-semibold text-selected-fg shadow-xs">
                       {t("pricing:page.recommended")}
                     </Badge>
                   </div>
@@ -184,20 +183,18 @@ export function HomePricingSection() {
                 <div>
                   {/* Plan Name & Target Audience */}
                   <div className="border-b border-line/60 pb-5">
-                    <h3 className="font-display text-xl font-bold text-heading">
-                      {plan.name}
-                    </h3>
-                    <p className="mt-1.5 text-xs font-medium text-fg-muted leading-snug">
+                    <h3 className="font-display text-xl font-bold text-heading">{plan.name}</h3>
+                    <p className="mt-1.5 text-xs leading-snug font-medium text-fg-muted">
                       {plan.audience}
                     </p>
                   </div>
 
                   {/* Price Block */}
-                  <div className="py-5 border-b border-line/60">
+                  <div className="border-b border-line/60 py-5">
                     {showPrices ? (
                       plan.price !== null ? (
                         <div>
-                          <div className="font-display text-2xl sm:text-3xl font-bold text-heading tracking-tight">
+                          <div className="font-display text-2xl font-bold tracking-tight text-heading sm:text-3xl">
                             {formatFcfa(plan.price)}
                           </div>
                           <p className="mt-1 text-xs text-fg-subtle">
@@ -225,7 +222,7 @@ export function HomePricingSection() {
                   </div>
 
                   {/* Specification List */}
-                  <ul className="py-5 space-y-3 text-xs sm:text-sm">
+                  <ul className="space-y-3 py-5 text-xs sm:text-sm">
                     <li className="flex items-center gap-2.5 text-fg">
                       <Boxes className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
                       <span>
@@ -272,7 +269,7 @@ export function HomePricingSection() {
                 </div>
 
                 {/* Plan CTA Button */}
-                <div className="pt-4 mt-2">
+                <div className="mt-2 pt-4">
                   {plan.isExternal ? (
                     <a
                       href={plan.href}
@@ -281,7 +278,7 @@ export function HomePricingSection() {
                       onClick={() => track(EVENTS.PLAN_SELECT, { plan: plan.id, billing })}
                       className={cn(
                         buttonStyles({ variant: plan.buttonVariant, size: "md" }),
-                        "w-full text-center justify-center font-semibold",
+                        "w-full justify-center text-center font-semibold",
                       )}
                     >
                       {plan.cta}
@@ -292,7 +289,7 @@ export function HomePricingSection() {
                       onClick={() => track(EVENTS.PLAN_SELECT, { plan: plan.id, billing })}
                       className={cn(
                         buttonStyles({ variant: plan.buttonVariant, size: "md" }),
-                        "w-full text-center justify-center font-semibold",
+                        "w-full justify-center text-center font-semibold",
                       )}
                     >
                       {plan.cta}
@@ -306,7 +303,7 @@ export function HomePricingSection() {
 
         {/* Bottom CTA & Legal note */}
         <Reveal>
-          <div className="mt-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <Link
                 to="/pricing"
@@ -322,7 +319,7 @@ export function HomePricingSection() {
             </div>
 
             {showPrices && (
-              <p className="text-xs text-fg-subtle leading-relaxed max-w-xl">
+              <p className="max-w-xl text-xs leading-relaxed text-fg-subtle">
                 {t("home:pricing.legal")}
               </p>
             )}
@@ -332,4 +329,3 @@ export function HomePricingSection() {
     </Section>
   );
 }
-

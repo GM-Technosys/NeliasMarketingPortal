@@ -25,11 +25,7 @@ export function FeaturesClosing() {
       >
         {t("common:cta.bookDemo")}
       </Link>
-      <SignUpLink
-        variant="onDark"
-        size="lg"
-        location="features-final"
-      >
+      <SignUpLink variant="onDark" size="lg" location="features-final">
         {t("common:cta.signUp")}
       </SignUpLink>
     </>

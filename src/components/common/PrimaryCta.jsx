@@ -10,12 +10,7 @@ import { CtaLink } from "./CtaLink";
  * @param {boolean} [props.onDark=false]
  * @param {string} [props.className]
  */
-export function PrimaryCta({
-  location,
-  size = "md",
-  onDark = false,
-  className,
-}) {
+export function PrimaryCta({ location, size = "md", onDark = false, className }) {
   const variant = onDark ? "onDark" : "primary";
 
   return (

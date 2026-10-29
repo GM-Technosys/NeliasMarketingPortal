@@ -111,7 +111,7 @@ export function PlanComparison({ showPrices, tone = "muted" }) {
         <Reveal>
           <h2
             id="plan-compare-heading"
-            className="font-display text-2xl sm:text-3xl font-bold text-heading"
+            className="font-display text-2xl font-bold text-heading sm:text-3xl"
           >
             {t("pricing:compare.title")}
           </h2>

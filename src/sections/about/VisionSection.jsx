@@ -11,12 +11,7 @@ export function VisionSection() {
   const { t } = useTranslation();
 
   return (
-    <Section
-      id="vision"
-      tone="default"
-      spacing="lg"
-      aria-labelledby="vision-heading"
-    >
+    <Section id="vision" tone="default" spacing="lg" aria-labelledby="vision-heading">
       <Container>
         <div className="lg:grid lg:grid-cols-12 lg:items-center lg:gap-14">
           {/* Left vision text content */}
@@ -38,15 +33,9 @@ export function VisionSection() {
                 </div>
 
                 <div className="mt-8 space-y-5">
-                  <p className="text-lead text-fg-muted max-w-[62ch]">
-                    {t("about:vision.p1")}
-                  </p>
-                  <p className="text-lead text-fg-muted max-w-[62ch]">
-                    {t("about:vision.p2")}
-                  </p>
-                  <p className="text-lead text-fg-muted max-w-[62ch]">
-                    {t("about:vision.p3")}
-                  </p>
+                  <p className="max-w-[62ch] text-lead text-fg-muted">{t("about:vision.p1")}</p>
+                  <p className="max-w-[62ch] text-lead text-fg-muted">{t("about:vision.p2")}</p>
+                  <p className="max-w-[62ch] text-lead text-fg-muted">{t("about:vision.p3")}</p>
                 </div>
 
                 <div className="mt-10">
@@ -59,8 +48,8 @@ export function VisionSection() {
           </div>
 
           {/* Right vision ripple illustration */}
-          <div className="mt-12 lg:mt-0 lg:col-span-5">
-            <div className="relative aspect-square w-full max-w-md mx-auto overflow-hidden rounded-xl border border-line bg-surface-raised shadow-card">
+          <div className="mt-12 lg:col-span-5 lg:mt-0">
+            <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-xl border border-line bg-surface-raised shadow-card">
               <VisionRipple />
             </div>
           </div>

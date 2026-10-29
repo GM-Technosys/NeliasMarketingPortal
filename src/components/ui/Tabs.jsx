@@ -158,7 +158,7 @@ export function Tabs({
     return (
       <div
         className={cn(
-          "grid w-full min-w-0 max-w-full grid-cols-1 items-start gap-6 lg:grid-cols-12 lg:gap-8",
+          "grid w-full max-w-full min-w-0 grid-cols-1 items-start gap-6 lg:grid-cols-12 lg:gap-8",
           className,
         )}
       >
@@ -168,7 +168,7 @@ export function Tabs({
             role="tablist"
             aria-orientation="vertical"
             aria-label={resolvedLabel}
-            className="flex flex-col gap-1.5 rounded-xl border border-line bg-surface p-2 sm:p-2.5 shadow-2xs max-h-[460px] lg:max-h-none overflow-y-auto"
+            className="flex max-h-[460px] flex-col gap-1.5 overflow-y-auto rounded-xl border border-line bg-surface p-2 shadow-2xs sm:p-2.5 lg:max-h-none"
           >
             {items.map(({ id, label: tabLabel, icon: IconComponent }, index) => {
               const isActive = id === activeValue;
@@ -204,9 +204,7 @@ export function Tabs({
                       <IconComponent
                         className={cn(
                           "h-4 w-4 shrink-0 transition-colors",
-                          isActive
-                            ? "text-selected-fg"
-                            : "text-fg-subtle group-hover:text-link",
+                          isActive ? "text-selected-fg" : "text-fg-subtle group-hover:text-link",
                         )}
                         aria-hidden="true"
                       />
@@ -218,7 +216,7 @@ export function Tabs({
                       "h-4 w-4 shrink-0 transition-all",
                       isActive
                         ? "text-selected-fg opacity-90"
-                        : "text-fg-subtle opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5",
+                        : "text-fg-subtle opacity-0 group-hover:translate-x-0.5 group-hover:opacity-100",
                     )}
                     aria-hidden="true"
                   />
@@ -236,7 +234,7 @@ export function Tabs({
               id={activePanelId}
               aria-labelledby={activeTabId}
               tabIndex={0}
-              className="w-full h-full outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+              className="h-full w-full outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
             >
               {selectedItem.content}
             </div>
@@ -247,15 +245,15 @@ export function Tabs({
   }
 
   return (
-    <div className={cn("flex w-full min-w-0 max-w-full flex-col", className)}>
+    <div className={cn("flex w-full max-w-full min-w-0 flex-col", className)}>
       {/* Scrollable Tablist with Left/Right Arrows */}
-      <div className="relative flex items-center w-full min-w-0 max-w-full">
+      <div className="relative flex w-full max-w-full min-w-0 items-center">
         {canScrollLeft && (
           <button
             type="button"
             onClick={scrollLeftBy}
             aria-label={t("ui.previous", { defaultValue: "Previous tabs" })}
-            className="absolute left-0 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-line bg-surface-raised text-fg-strong shadow-card hover:bg-surface-muted hover:text-heading transition-all cursor-pointer -translate-x-1 sm:-translate-x-3"
+            className="absolute left-0 z-20 flex h-9 w-9 -translate-x-1 cursor-pointer items-center justify-center rounded-full border border-line bg-surface-raised text-fg-strong shadow-card transition-all hover:bg-surface-muted hover:text-heading sm:-translate-x-3"
           >
             <ChevronLeft className="h-4 w-4" aria-hidden="true" />
           </button>
@@ -263,16 +261,16 @@ export function Tabs({
 
         <div
           ref={scrollContainerRef}
-          className="w-full min-w-0 max-w-full overflow-x-auto scrollbar-none py-1.5 px-0.5"
+          className="scrollbar-none w-full max-w-full min-w-0 overflow-x-auto px-0.5 py-1.5"
         >
           <div
             role="tablist"
             aria-label={resolvedLabel}
             className={cn(
-              "flex snap-x items-center min-w-max",
+              "flex min-w-max snap-x items-center",
               variant === "underline"
                 ? "w-full gap-2 border-b border-line"
-                : "inline-flex gap-1.5 rounded-lg bg-surface-sunken/80 border border-line/60 p-1.5",
+                : "inline-flex gap-1.5 rounded-lg border border-line/60 bg-surface-sunken/80 p-1.5",
             )}
           >
             {items.map(({ id, label: tabLabel, icon: IconComponent }, index) => {
@@ -306,14 +304,16 @@ export function Tabs({
                         : "text-fg-muted hover:text-heading",
                     ],
                     variant === "pill" && [
-                      "rounded-md py-2 border",
+                      "rounded-md border py-2",
                       isActive
-                        ? "bg-selected text-selected-fg border-selected shadow-xs"
-                        : "bg-surface-raised border-line/80 text-fg-strong shadow-2xs hover:bg-line hover:border-line-strong hover:text-heading",
+                        ? "border-selected bg-selected text-selected-fg shadow-xs"
+                        : "border-line/80 bg-surface-raised text-fg-strong shadow-2xs hover:border-line-strong hover:bg-line hover:text-heading",
                     ],
                   )}
                 >
-                  {IconComponent && <IconComponent className="h-4 w-4 shrink-0" aria-hidden="true" />}
+                  {IconComponent && (
+                    <IconComponent className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  )}
                   <span>{tabLabel}</span>
                 </button>
               );
@@ -326,7 +326,7 @@ export function Tabs({
             type="button"
             onClick={scrollRightBy}
             aria-label={t("ui.next", { defaultValue: "Next tabs" })}
-            className="absolute right-0 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-line bg-surface-raised text-fg-strong shadow-card hover:bg-surface-muted hover:text-heading transition-all cursor-pointer translate-x-1 sm:translate-x-3"
+            className="absolute right-0 z-20 flex h-9 w-9 translate-x-1 cursor-pointer items-center justify-center rounded-full border border-line bg-surface-raised text-fg-strong shadow-card transition-all hover:bg-surface-muted hover:text-heading sm:translate-x-3"
           >
             <ChevronRight className="h-4 w-4" aria-hidden="true" />
           </button>

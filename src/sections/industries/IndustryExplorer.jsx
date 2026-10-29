@@ -74,20 +74,13 @@ export function IndustryExplorer({ tone = "default" }) {
 
   const handleClose = () => {
     setSelectedSlug(null);
-    window.history.replaceState(
-      null,
-      "",
-      window.location.pathname + window.location.search
-    );
+    window.history.replaceState(null, "", window.location.pathname + window.location.search);
   };
 
   const count = industries.length;
   const selectedIndex = selectedSlug ? industries.indexOf(selectedSlug) : -1;
   const row = selectedIndex !== -1 ? Math.floor(selectedIndex / cols) : -1;
-  const insertAfterIndex =
-    selectedIndex !== -1
-      ? Math.min(count - 1, (row + 1) * cols - 1)
-      : -1;
+  const insertAfterIndex = selectedIndex !== -1 ? Math.min(count - 1, (row + 1) * cols - 1) : -1;
 
   return (
     <Section
@@ -100,12 +93,12 @@ export function IndustryExplorer({ tone = "default" }) {
         <div className="max-w-3xl">
           <h2
             id="industries-selector-heading"
-            className="font-display text-h2 font-semibold text-heading leading-tight tracking-tight"
+            className="font-display text-h2 leading-tight font-semibold tracking-tight text-heading"
           >
             {t("industries:page.selectorTitle")}
           </h2>
           {!selectedSlug && (
-            <p className="mt-2 text-lead text-fg-muted leading-relaxed">
+            <p className="mt-2 text-lead leading-relaxed text-fg-muted">
               {t("industries:page.selectHint")}
             </p>
           )}
@@ -139,10 +132,7 @@ export function IndustryExplorer({ tone = "default" }) {
                 <div key={`${slug}-group`} className="contents">
                   {cardItem}
                   <li key="detail-row" className="col-span-full">
-                    <IndustryDetail
-                      slug={selectedSlug}
-                      onClose={handleClose}
-                    />
+                    <IndustryDetail slug={selectedSlug} onClose={handleClose} />
                   </li>
                 </div>
               );

@@ -21,9 +21,7 @@ export function FeatureFilterList() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const rawIndustry = searchParams.get("industry");
-  const selectedIndustry = industries.includes(rawIndustry)
-    ? rawIndustry
-    : "all";
+  const selectedIndustry = industries.includes(rawIndustry) ? rawIndustry : "all";
 
   const handleFilterChange = (value) => {
     const next = new URLSearchParams(searchParams);

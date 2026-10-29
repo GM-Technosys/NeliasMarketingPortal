@@ -16,7 +16,7 @@ export function LegalArticle({ index, article }) {
     <section
       id={articleId}
       aria-labelledby={titleId}
-      className="scroll-mt-28 border-t border-line pt-8 mt-10 first:mt-0 first:border-t-0 first:pt-0"
+      className="mt-10 scroll-mt-28 border-t border-line pt-8 first:mt-0 first:border-t-0 first:pt-0"
     >
       <h2 id={titleId} className="font-display text-h3 font-semibold text-heading">
         <Linkified text={article.title} />
@@ -27,7 +27,7 @@ export function LegalArticle({ index, article }) {
           return (
             <p
               key={bIdx}
-              className="mt-4 text-[1.0625rem] leading-7 text-fg [overflow-wrap:anywhere]"
+              className="mt-4 text-[1.0625rem] leading-7 [overflow-wrap:anywhere] text-fg"
             >
               <Linkified text={block.p} />
             </p>
@@ -38,7 +38,7 @@ export function LegalArticle({ index, article }) {
           return (
             <ul
               key={bIdx}
-              className="mt-4 list-disc space-y-2 pl-6 text-[1.0625rem] leading-7 text-fg marker:text-accent [overflow-wrap:anywhere]"
+              className="mt-4 list-disc space-y-2 pl-6 text-[1.0625rem] leading-7 [overflow-wrap:anywhere] text-fg marker:text-accent"
             >
               {block.ul.map((item, itemIdx) => (
                 <li key={itemIdx}>
@@ -87,7 +87,7 @@ export function LegalArticle({ index, article }) {
                       <th
                         scope="row"
                         className={cn(
-                          "border-t border-line align-top font-semibold text-heading [overflow-wrap:anywhere]",
+                          "border-t border-line align-top font-semibold [overflow-wrap:anywhere] text-heading",
                           isMultiCol ? "min-w-[9rem] px-3 py-3" : "w-2/5 px-4 py-3",
                         )}
                       >
@@ -97,7 +97,7 @@ export function LegalArticle({ index, article }) {
                         <td
                           key={cIdx}
                           className={cn(
-                            "border-t border-line align-top text-fg [overflow-wrap:anywhere]",
+                            "border-t border-line align-top [overflow-wrap:anywhere] text-fg",
                             isMultiCol ? "px-3 py-3" : "px-4 py-3",
                           )}
                         >

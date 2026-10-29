@@ -46,12 +46,7 @@ export function StickyMobileCta() {
         isVisible ? "translate-y-0" : "translate-y-full",
       )}
     >
-      <CtaLink
-        intent="demo"
-        size="lg"
-        location="sticky"
-        className="w-full"
-      />
+      <CtaLink intent="demo" size="lg" location="sticky" className="w-full" />
     </div>
   );
 }

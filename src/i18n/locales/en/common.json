@@ -46,7 +46,8 @@
     "requestConversation": "Request a Conversation",
     "contactNeliasTeam": "Contact the NELIAS Team",
     "talkToExpert": "Talk to an Expert",
-    "signUp": "Sign Up"
+    "signUp": "Sign Up",
+    "simulatePrice": "Simulate my price"
   },
   "a11y": {
     "skipToContent": "Skip to main content",

@@ -95,14 +95,7 @@ export function FoundationIllustration({ className = "h-auto w-full" }) {
       <rect x="418" y="272" width="22" height="28" rx="5" fill="var(--accent-soft)" />
 
       {/* Centre Hub */}
-      <rect
-        x="196"
-        y="136"
-        width="88"
-        height="88"
-        rx="20"
-        fill="var(--selected)"
-      />
+      <rect x="196" y="136" width="88" height="88" rx="20" fill="var(--selected)" />
       {/* Inner mark: three short horizontal bars */}
       <g fill="var(--selected-fg)" fillOpacity="0.9">
         <rect x="226" y="168" width="28" height="4" rx="2" />

@@ -58,13 +58,16 @@ async function collectFiles(dir) {
 
 // Patterns to check
 // 1. Raw palette classes: navy/azure/ink (any prefix except backdrop:), with or without opacity
-const RAW_PALETTE_REGEX = /(?:^|[\s"'`])((?:(?!backdrop:)[a-zA-Z0-9:-]+:)?(?:bg|text|border|ring|divide|outline|decoration|placeholder|from|via|to|fill|stroke|accent|caret|shadow)-(?:navy|azure|ink)-(?:50|100|200|300|400|500|600|700|800|900|950)(?:\/\d+)?)(?=[\s"'`:]|$)/g;
+const RAW_PALETTE_REGEX =
+  /(?:^|[\s"'`])((?:(?!backdrop:)[a-zA-Z0-9:-]+:)?(?:bg|text|border|ring|divide|outline|decoration|placeholder|from|via|to|fill|stroke|accent|caret|shadow)-(?:navy|azure|ink)-(?:50|100|200|300|400|500|600|700|800|900|950)(?:\/\d+)?)(?=[\s"'`:]|$)/g;
 
 // 2. flame/sun utilities except gradient helpers from/via/to
-const FLAME_SUN_REGEX = /(?:^|[\s"'`])((?:(?!backdrop:)[a-zA-Z0-9:-]+:)?(?:bg|text|border|ring|divide|outline|decoration|placeholder|fill|stroke|accent|caret|shadow)-(?:flame|sun)-(?:50|100|200|300|400|500|600|700|800|900|950)(?:\/\d+)?)(?=[\s"'`:]|$)/g;
+const FLAME_SUN_REGEX =
+  /(?:^|[\s"'`])((?:(?!backdrop:)[a-zA-Z0-9:-]+:)?(?:bg|text|border|ring|divide|outline|decoration|placeholder|fill|stroke|accent|caret|shadow)-(?:flame|sun)-(?:50|100|200|300|400|500|600|700|800|900|950)(?:\/\d+)?)(?=[\s"'`:]|$)/g;
 
 // 3. bg-white, border-white, bg-black, text-black WITHOUT opacity suffix
-const WHITE_BLACK_REGEX = /(?:^|[\s"'`])((?:(?!backdrop:)[a-zA-Z0-9:-]+:)?(?:bg-white|border-white|bg-black|text-black))(?![/\w-])(?=[\s"'`:]|$)/g;
+const WHITE_BLACK_REGEX =
+  /(?:^|[\s"'`])((?:(?!backdrop:)[a-zA-Z0-9:-]+:)?(?:bg-white|border-white|bg-black|text-black))(?![/\w-])(?=[\s"'`:]|$)/g;
 
 // 4. Color literals and SVG attributes
 const HEX_REGEX = /#([0-9a-fA-F]{3,8})\b/g;
@@ -72,7 +75,8 @@ const COLOR_FN_REGEX = /\b(rgb|rgba|hsl)\s*\(/g;
 const SVG_WHITE_ATTR_REGEX = /\b(fill|stroke)=["']white["']/g;
 
 // 5. var(--color-(navy|azure|ink)...) or moved roles
-const VAR_COLOR_REGEX = /var\(--color-(?:navy|azure|ink|surface|fg|line|link|focus|success|warning|danger|selected|secondary|accent|highlight|deep|elev)(?:-[a-zA-Z0-9]+)?\)/g;
+const VAR_COLOR_REGEX =
+  /var\(--color-(?:navy|azure|ink|surface|fg|line|link|focus|success|warning|danger|selected|secondary|accent|highlight|deep|elev)(?:-[a-zA-Z0-9]+)?\)/g;
 
 function isAllowlisted(relPath, token) {
   const fileConfig = allowlist.files?.[relPath];
@@ -115,7 +119,12 @@ async function main() {
       while ((match = FLAME_SUN_REGEX.exec(line)) !== null) {
         const token = match[1];
         if (!isAllowlisted(relPath, token)) {
-          errors.push({ file: relPath, line: lineNum, token, rule: "flame/sun non-gradient class" });
+          errors.push({
+            file: relPath,
+            line: lineNum,
+            token,
+            rule: "flame/sun non-gradient class",
+          });
         }
       }
 
@@ -176,7 +185,9 @@ async function main() {
     for (const err of errors) {
       console.error(`  ${err.file}:${err.line} - [${err.rule}] ${err.token}`);
     }
-    console.error("\nRun the theme migration to replace raw palette classes with semantic role tokens.\n");
+    console.error(
+      "\nRun the theme migration to replace raw palette classes with semantic role tokens.\n",
+    );
     process.exit(1);
   } else {
     console.log("check:theme OK");

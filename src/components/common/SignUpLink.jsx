@@ -46,7 +46,7 @@ export function SignUpLink({
       href={site.signUpUrl}
       onClick={handleClick}
       target={isNewTab ? "_blank" : target}
-      rel={isNewTab ? (rel || "noopener noreferrer") : rel}
+      rel={isNewTab ? rel || "noopener noreferrer" : rel}
       className={cn(buttonStyles({ variant, size }), className)}
       {...rest}
     >

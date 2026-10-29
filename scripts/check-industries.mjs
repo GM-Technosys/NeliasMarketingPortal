@@ -23,22 +23,8 @@ import { featureAreaOrder } from "../src/data/feature-order.js";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const projectRoot = join(__dirname, "..");
-const enIndustriesPath = join(
-  projectRoot,
-  "src",
-  "i18n",
-  "locales",
-  "en",
-  "industries.json",
-);
-const frIndustriesPath = join(
-  projectRoot,
-  "src",
-  "i18n",
-  "locales",
-  "fr",
-  "industries.json",
-);
+const enIndustriesPath = join(projectRoot, "src", "i18n", "locales", "en", "industries.json");
+const frIndustriesPath = join(projectRoot, "src", "i18n", "locales", "fr", "industries.json");
 
 let hasErrors = false;
 
@@ -131,14 +117,8 @@ async function main() {
     );
 
     // walkthrough
-    assert(
-      Array.isArray(enItem.walkthrough),
-      `English walkthrough for "${slug}" must be an array`,
-    );
-    assert(
-      Array.isArray(frItem.walkthrough),
-      `French walkthrough for "${slug}" must be an array`,
-    );
+    assert(Array.isArray(enItem.walkthrough), `English walkthrough for "${slug}" must be an array`);
+    assert(Array.isArray(frItem.walkthrough), `French walkthrough for "${slug}" must be an array`);
 
     if (Array.isArray(enItem.walkthrough) && Array.isArray(frItem.walkthrough)) {
       assert(
@@ -156,27 +136,21 @@ async function main() {
 
       for (let i = 0; i < enItem.walkthrough.length; i++) {
         assert(
-          typeof enItem.walkthrough[i] === "string" &&
-            enItem.walkthrough[i].trim().length > 0,
+          typeof enItem.walkthrough[i] === "string" && enItem.walkthrough[i].trim().length > 0,
           `English walkthrough node ${i} for "${slug}" must be a non-empty string`,
         );
       }
       for (let i = 0; i < frItem.walkthrough.length; i++) {
         assert(
-          typeof frItem.walkthrough[i] === "string" &&
-            frItem.walkthrough[i].trim().length > 0,
+          typeof frItem.walkthrough[i] === "string" && frItem.walkthrough[i].trim().length > 0,
           `French walkthrough node ${i} for "${slug}" must be a non-empty string`,
         );
       }
     }
 
     // headline: both present or both absent
-    const hasEnHeadline = Boolean(
-      enItem.headline && enItem.headline.trim().length > 0,
-    );
-    const hasFrHeadline = Boolean(
-      frItem.headline && frItem.headline.trim().length > 0,
-    );
+    const hasEnHeadline = Boolean(enItem.headline && enItem.headline.trim().length > 0);
+    const hasFrHeadline = Boolean(frItem.headline && frItem.headline.trim().length > 0);
     assert(
       hasEnHeadline === hasFrHeadline,
       `Headline mismatch for "${slug}": EN present=${hasEnHeadline}, FR present=${hasFrHeadline}`,

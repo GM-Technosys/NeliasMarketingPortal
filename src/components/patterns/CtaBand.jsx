@@ -45,7 +45,7 @@ export function CtaBand({
             <h2
               id={headingId}
               className={cn(
-                "font-display text-3xl sm:text-4xl lg:text-5xl leading-tight font-bold tracking-tight",
+                "font-display text-3xl leading-tight font-bold tracking-tight sm:text-4xl lg:text-5xl",
                 isInverse ? "text-white" : "text-heading",
                 titleClassName,
               )}

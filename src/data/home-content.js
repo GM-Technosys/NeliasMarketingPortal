@@ -75,14 +75,14 @@ export const whyItems = [
 const industryIcons = {
   "retail-distribution": Store,
   "professional-services": Briefcase,
-  "manufacturing": Factory,
-  "healthcare": Stethoscope,
-  "hospitality": BedDouble,
+  manufacturing: Factory,
+  healthcare: Stethoscope,
+  hospitality: BedDouble,
   "education-training": GraduationCap,
   "insurance-financial-services": ShieldCheck,
   "energy-field-services": Zap,
   "real-estate": Building2,
-  "pharmacies": Pill,
+  pharmacies: Pill,
   "construction-btp": HardHat,
   "it-technology-services": Laptop,
 };

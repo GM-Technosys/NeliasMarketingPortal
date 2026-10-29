@@ -46,7 +46,8 @@
     "requestConversation": "Demander un échange",
     "contactNeliasTeam": "Contacter l’équipe NELIAS",
     "talkToExpert": "Parler à un expert",
-    "signUp": "S’inscrire"
+    "signUp": "S’inscrire",
+    "simulatePrice": "Simuler mon prix"
   },
   "a11y": {
     "skipToContent": "Aller au contenu principal",

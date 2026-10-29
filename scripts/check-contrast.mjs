@@ -162,8 +162,7 @@ async function main() {
     for (const test of pairsToTest) {
       const fgColor = test.fgLiteral || tokens[test.fg];
       const bgColor = test.bgLiteral || tokens[test.bg];
-      const pairName =
-        test.name || `${test.fgLiteral || test.fg} on ${test.bgLiteral || test.bg}`;
+      const pairName = test.name || `${test.fgLiteral || test.fg} on ${test.bgLiteral || test.bg}`;
 
       if (!fgColor || !bgColor) {
         console.error(`  ⚠️ Missing token for ${pairName}`);

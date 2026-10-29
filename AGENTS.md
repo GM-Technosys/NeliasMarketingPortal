@@ -128,43 +128,43 @@ npm run format      # Prettier
 1. The site has a light and a dark theme. The theme is the `data-theme` attribute on `<html>`; `src/theme/theme.js` manages it (first visit follows the system, an explicit choice is saved in localStorage `nelias-theme`, `?theme=dark|light` forces and saves it). `ThemeToggle` lives in the utility bar, the header (below xl) and the mobile menu.
 2. Components must use ROLE classes only, never raw palette classes (`bg-white`, `text-navy-*`, `text-ink-*`, `bg-ink-*`, `bg-azure-*`, `border-ink-*`, `border-azure-*`). Mapping to use (copy the full table from the dark-mode task into this file):
 
-| Raw class | Replace with |
-|---|---|
-| `bg-white` (cards, panels, inputs, modals, frames) | `bg-surface-raised` |
-| `bg-white` (header, page-level) | `bg-surface` |
-| `bg-white/95` (and similar alpha) | `bg-surface-raised/95` |
-| `bg-ink-50` | `bg-surface-muted` |
-| `bg-azure-50` (and `hover:bg-azure-50`) | `bg-surface-tint` |
-| `bg-ink-100` | `bg-surface-sunken` |
-| `bg-ink-200` (tracks, rails, dots, thin bars) | `bg-line` |
-| `bg-azure-100` | `bg-accent-soft` |
-| `bg-azure-500` (rules, underline bars, accent fills) | `bg-accent` |
-| `bg-navy-900` + `text-white` on selected, active, checked, reached states (pill tab, segmented option, checkbox, radio indicator, step marker) | `bg-selected text-selected-fg` |
-| `bg-navy-900` + `text-white` on the secondary button and the Toggletip bubble | `bg-secondary text-secondary-fg`; `hover:bg-navy-800` becomes `hover:bg-secondary-hover` |
-| `bg-flame-100` + `text-flame-700` (highlight badge) | `bg-highlight-soft text-highlight-strong` |
-| `text-navy-900`, `text-navy-800` | `text-heading` |
-| `text-ink-900`, `text-ink-800` | `text-fg` |
-| `text-ink-700` | `text-fg-strong` |
-| `text-ink-600` | `text-fg-muted` |
-| `text-ink-500`, `text-ink-400`, `text-ink-300` | `text-fg-subtle` |
-| `text-azure-600` (links, info text) | `text-link` (icons: `text-accent`) |
-| `text-azure-700` | `text-accent-strong` |
-| `text-azure-500` | `text-accent` |
-| `border-ink-200`, `divide-ink-200` | `border-line`, `divide-line` |
-| `border-ink-300` | `border-line-strong` |
-| `border-ink-500`, `hover:border-navy-900` (form fields, indicators) | `border-field`, `hover:border-heading` |
-| `border-azure-200` | `border-accent-line` |
-| `border-azure-500`, `ring-azure-500` | `border-accent`, `ring-accent` |
-| `border-navy-900 text-navy-900` (outline button) | `border-heading text-heading hover:bg-secondary hover:text-secondary-fg` |
-| ghost button `hover:bg-azure-50` | `hover:bg-surface-tint` |
-| SVG `fill`/`stroke`/inline-style colours: `var(--color-ink-100)` | `var(--surface-sunken)` |
-| `var(--color-ink-200)` | `var(--line)` |
-| `var(--color-ink-300)` | `var(--line-strong)` |
-| `var(--color-azure-50)` | `var(--surface-tint)` |
-| `var(--color-azure-100)` | `var(--accent-soft)` |
-| `var(--color-azure-500)` | `var(--accent)` |
-| `var(--color-navy-900)` | `var(--selected)` |
-| `white`, `#fff`, `#ffffff` fills | `var(--surface-raised)` |
+| Raw class                                                                                                                                      | Replace with                                                                             |
+| ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `bg-white` (cards, panels, inputs, modals, frames)                                                                                             | `bg-surface-raised`                                                                      |
+| `bg-white` (header, page-level)                                                                                                                | `bg-surface`                                                                             |
+| `bg-white/95` (and similar alpha)                                                                                                              | `bg-surface-raised/95`                                                                   |
+| `bg-ink-50`                                                                                                                                    | `bg-surface-muted`                                                                       |
+| `bg-azure-50` (and `hover:bg-azure-50`)                                                                                                        | `bg-surface-tint`                                                                        |
+| `bg-ink-100`                                                                                                                                   | `bg-surface-sunken`                                                                      |
+| `bg-ink-200` (tracks, rails, dots, thin bars)                                                                                                  | `bg-line`                                                                                |
+| `bg-azure-100`                                                                                                                                 | `bg-accent-soft`                                                                         |
+| `bg-azure-500` (rules, underline bars, accent fills)                                                                                           | `bg-accent`                                                                              |
+| `bg-navy-900` + `text-white` on selected, active, checked, reached states (pill tab, segmented option, checkbox, radio indicator, step marker) | `bg-selected text-selected-fg`                                                           |
+| `bg-navy-900` + `text-white` on the secondary button and the Toggletip bubble                                                                  | `bg-secondary text-secondary-fg`; `hover:bg-navy-800` becomes `hover:bg-secondary-hover` |
+| `bg-flame-100` + `text-flame-700` (highlight badge)                                                                                            | `bg-highlight-soft text-highlight-strong`                                                |
+| `text-navy-900`, `text-navy-800`                                                                                                               | `text-heading`                                                                           |
+| `text-ink-900`, `text-ink-800`                                                                                                                 | `text-fg`                                                                                |
+| `text-ink-700`                                                                                                                                 | `text-fg-strong`                                                                         |
+| `text-ink-600`                                                                                                                                 | `text-fg-muted`                                                                          |
+| `text-ink-500`, `text-ink-400`, `text-ink-300`                                                                                                 | `text-fg-subtle`                                                                         |
+| `text-azure-600` (links, info text)                                                                                                            | `text-link` (icons: `text-accent`)                                                       |
+| `text-azure-700`                                                                                                                               | `text-accent-strong`                                                                     |
+| `text-azure-500`                                                                                                                               | `text-accent`                                                                            |
+| `border-ink-200`, `divide-ink-200`                                                                                                             | `border-line`, `divide-line`                                                             |
+| `border-ink-300`                                                                                                                               | `border-line-strong`                                                                     |
+| `border-ink-500`, `hover:border-navy-900` (form fields, indicators)                                                                            | `border-field`, `hover:border-heading`                                                   |
+| `border-azure-200`                                                                                                                             | `border-accent-line`                                                                     |
+| `border-azure-500`, `ring-azure-500`                                                                                                           | `border-accent`, `ring-accent`                                                           |
+| `border-navy-900 text-navy-900` (outline button)                                                                                               | `border-heading text-heading hover:bg-secondary hover:text-secondary-fg`                 |
+| ghost button `hover:bg-azure-50`                                                                                                               | `hover:bg-surface-tint`                                                                  |
+| SVG `fill`/`stroke`/inline-style colours: `var(--color-ink-100)`                                                                               | `var(--surface-sunken)`                                                                  |
+| `var(--color-ink-200)`                                                                                                                         | `var(--line)`                                                                            |
+| `var(--color-ink-300)`                                                                                                                         | `var(--line-strong)`                                                                     |
+| `var(--color-azure-50)`                                                                                                                        | `var(--surface-tint)`                                                                    |
+| `var(--color-azure-100)`                                                                                                                       | `var(--accent-soft)`                                                                     |
+| `var(--color-azure-500)`                                                                                                                       | `var(--accent)`                                                                          |
+| `var(--color-navy-900)`                                                                                                                        | `var(--selected)`                                                                        |
+| `white`, `#fff`, `#ffffff` fills                                                                                                               | `var(--surface-raised)`                                                                  |
 
 3. If a task prompt names raw palette classes (`bg-white`, `text-navy-900`, `bg-ink-100`, `bg-azure-50`, `border-ink-500` and so on), translate them with the mapping above instead of using them.
 4. Fixed in both themes (allowed as-is): the orange primary button (`bg-cta text-cta-fg`), the logo ribbon (`bg-brand-ribbon`, flame to sun gradients), dark bands and footer (`bg-brand-deep` with `text-white` and `text-fg-inverse*`), `text-white`/`bg-white/NN`/`border-white/NN` on those inverse surfaces, `backdrop:` scrims, and the white logo chip and plate.
@@ -179,7 +179,6 @@ npm run format      # Prettier
 - Heading structure: one `<h1>`, four `<h2>`; pull statements and the signature are paragraphs.
 - Design signature of the page: the short ribbon accent above the title and the ribbon arc in `VisionRipple` (the only animation) are the page's bold devices; `FoundationIllustration` and `VisionRipple` are shape-only (no text, numbers, map or flag).
 - Open copy items for Debass (marked `TODO(Debass)`): replacement of the PDF text, the signature wording, the "leading platform" claim, French review.
-
 
 ## Industries Page Guidelines
 
@@ -275,11 +274,13 @@ npm run format      # Prettier
 - The FAQ page (`/faq`) is the single place for frequently asked questions; no other page carries an FAQ section. Questions live in `faq.json` (en and fr) as `items.<key>.q/.a`; the page groups them through `src/data/faq-content.js` (pricing, modules, hosting, migration, general). To add a question: add its key in both languages and in a group.
 - FAQ items that mention amounts (`moreModules`, `currency`) appear only when `features.pricingPublic` is true; amounts come from `home-pricing.js` through the formatter.
 - The legacy `faq.json` items `hosting`, `multipleOffices`, `getStarted` and `tryNelias` are kept in the file but not rendered (replaced or outdated).
+
 ## Pricing Page Guidelines (October 2026)
 
 - The Pricing page (October 2026) has: header, plan cards with billing toggle (every plan button is a `SignUpLink` to `https://login.nelias.app/`), comparison table, extensions (prices public only, monthly only), add-ons and connectors (existing catalog list), sector configurations and Industry+ packs (coming soon), Enterprise block. It has no FAQ and no configure section (FAQ is on `/faq`).
 - Plan facts and labels reuse `home:pricing.*` keys; do not duplicate them in `pricing.json`. Amounts come from `pricing-catalog.js` and `home-pricing.js`; `npm run check:home` verifies them and scans Pricing sources for amount literals. Storage extension prices never exist. Extensions never show an annual price.
 - The catalog still holds `standard-pack` and `industry-plus` as options; the page does not show them (base sector configuration is included; Industry+ is coming soon). Update the catalog in the pricing update.
+
 ## Features Page Guidelines (October 2026)
 
 - The Features page (October 2026) has: header, Modules (reused Home component, 14 modules in three families), the existing capability areas with availability badges, Security and data isolation (reused Home component), Sector configurations and Industry+ packs (coming soon, no price unless prices are public) and a closing band with Request a Demo and Sign Up. There are no separate Modules or Sectors pages and no FAQ section.
@@ -291,13 +292,3 @@ npm run format      # Prettier
 - The Industries page (October 2026) shows the eight industries as cards; clicking one opens its detail inline under its grid row (one at a time, hash `#<slug>`, focus moves to the detail). There are NO per-industry pages: `/industries/<slug>` redirects to `/industries#<slug>`. The page then has "Sector configurations and Industry+ Packs" (reused `FeaturesSectors`), "Why NELIAS" (reused `WhySection`) and a closing band with Request a Demo and Sign Up. No FAQ, no configuration button.
 - To change an industry's content, edit `industries.json`, `home-content.js` (`industryProfiles`) and the other existing industry data; the inline detail reads them. Links to an industry use `/industries#<slug>`.
 - Open items for Debass (marked `TODO(Debass)`): per-industry copy beyond the existing summaries and headlines; pack pages; redirect confirmation; French review.
-
-
-
-
-
-
-
-
-
-

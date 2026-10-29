@@ -25,7 +25,7 @@ export function SecuritySection({ tone = "muted", headingId = "security-heading"
           <div className="max-w-3xl">
             <h2
               id={headingId}
-              className="font-display text-h2 font-semibold text-heading leading-tight tracking-tight"
+              className="font-display text-h2 leading-tight font-semibold tracking-tight text-heading"
             >
               {t("home:security.title")}
             </h2>
@@ -41,7 +41,7 @@ export function SecuritySection({ tone = "muted", headingId = "security-heading"
                     <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent">
                       <Check className="h-3.5 w-3.5" aria-hidden="true" />
                     </span>
-                    <span className="text-base text-fg leading-relaxed">
+                    <span className="text-base leading-relaxed text-fg">
                       {t(`home:security.items.${key}`)}
                     </span>
                   </li>

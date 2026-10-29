@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Badge } from "@/components/ui/Badge";
+import { buttonStyles } from "@/components/ui/button-styles";
 import { SignUpLink } from "@/components/common/SignUpLink";
 import { useFormat } from "@/hooks/useFormat";
 import { MODULES_INCLUDED } from "@/data/home-pricing";
@@ -40,52 +42,46 @@ export function PlanCard({ plan, billing = "monthly", showPrices = false }) {
         {/* Recommended badge on featured card */}
         {isFeatured && (
           <div className="mb-4">
-            <Badge className="bg-selected text-selected-fg">
-              {t("pricing:page.recommended")}
-            </Badge>
+            <Badge className="bg-selected text-selected-fg">{t("pricing:page.recommended")}</Badge>
           </div>
         )}
 
         {/* Plan Name & Target Audience */}
-        <h3 className="font-display text-2xl font-bold text-heading">
-          {planName}
-        </h3>
-        <p className="mt-1.5 text-sm text-fg-muted min-h-[2.5rem] leading-snug">
+        <h3 className="font-display text-2xl font-bold text-heading">{planName}</h3>
+        <p className="mt-1.5 min-h-[2.5rem] text-sm leading-snug text-fg-muted">
           {t(`home:pricing.table.for.${plan.id}`)}
         </p>
 
         {/* Price block */}
-        <div className="mt-6 min-h-[5rem] flex flex-col justify-end border-b border-line pb-5">
+        <div className="mt-6 flex min-h-[5rem] flex-col justify-end border-b border-line pb-5">
           {isEnterprise ? (
             <div>
-              <p className="font-display text-2xl sm:text-3xl font-bold text-heading">
+              <p className="font-display text-2xl font-bold text-heading sm:text-3xl">
                 {t("home:pricing.table.onQuote")}
               </p>
-              <p className="mt-1 text-xs text-fg-subtle">
-                {t("pricing:page.customQuote")}
-              </p>
+              <p className="mt-1 text-xs text-fg-subtle">{t("pricing:page.customQuote")}</p>
             </div>
-          ) : (
+          ) : showPrices ? (
             <div>
-              <p className="font-display text-2xl sm:text-3xl font-bold text-heading tabular-nums">
+              <p className="font-display text-2xl font-bold text-heading tabular-nums sm:text-3xl">
                 {formatFcfa(priceAmount, lng)}
               </p>
               <p className="mt-1 text-xs text-fg-subtle">
-                {billing === "annual"
-                  ? t("pricing:page.perYear")
-                  : t("pricing:page.perMonth")}{" "}
-                · {t("pricing:page.exclTax")}
+                {billing === "annual" ? t("pricing:page.perYear") : t("pricing:page.perMonth")} ·{" "}
+                {t("pricing:page.exclTax")}
               </p>
             </div>
+          ) : (
+            <p className="font-display text-lg font-semibold text-heading sm:text-xl">
+              {t("pricing:page.priceOnRequest")}
+            </p>
           )}
         </div>
 
         {/* Facts specification list */}
         <dl className="mt-6 divide-y divide-line border-b border-line text-sm">
           <div className="flex justify-between py-3">
-            <dt className="text-fg-muted">
-              {t("home:pricing.table.rows.modules")}
-            </dt>
+            <dt className="text-fg-muted">{t("home:pricing.table.rows.modules")}</dt>
             <dd className="font-semibold text-heading">
               {isEnterprise
                 ? t("home:pricing.table.asNeeded")
@@ -95,15 +91,11 @@ export function PlanCard({ plan, billing = "monthly", showPrices = false }) {
           <div className="flex justify-between py-3">
             <dt className="text-fg-muted">{t("home:pricing.table.rows.users")}</dt>
             <dd className="font-semibold text-heading">
-              {isEnterprise
-                ? t("home:pricing.table.asNeeded")
-                : formatNumber(plan.users, lng)}
+              {isEnterprise ? t("home:pricing.table.asNeeded") : formatNumber(plan.users, lng)}
             </dd>
           </div>
           <div className="flex justify-between py-3">
-            <dt className="text-fg-muted">
-              {t("home:pricing.table.rows.entities")}
-            </dt>
+            <dt className="text-fg-muted">{t("home:pricing.table.rows.entities")}</dt>
             <dd className="font-semibold text-heading">
               {isEnterprise
                 ? t("home:pricing.table.multiEntity")
@@ -111,9 +103,7 @@ export function PlanCard({ plan, billing = "monthly", showPrices = false }) {
             </dd>
           </div>
           <div className="flex justify-between py-3">
-            <dt className="text-fg-muted">
-              {t("home:pricing.table.rows.storage")}
-            </dt>
+            <dt className="text-fg-muted">{t("home:pricing.table.rows.storage")}</dt>
             <dd className="font-semibold text-heading">
               {isEnterprise
                 ? t("home:pricing.table.sizedToNeed")
@@ -123,12 +113,8 @@ export function PlanCard({ plan, billing = "monthly", showPrices = false }) {
             </dd>
           </div>
           <div className="flex justify-between py-3">
-            <dt className="text-fg-muted">
-              {t("home:pricing.table.rows.engine")}
-            </dt>
-            <dd className="font-semibold text-heading">
-              {t("home:pricing.table.included")}
-            </dd>
+            <dt className="text-fg-muted">{t("home:pricing.table.rows.engine")}</dt>
+            <dd className="font-semibold text-heading">{t("home:pricing.table.included")}</dd>
           </div>
           {/* TODO(Debass): service levels (Standard, Standard+, Priority, SLA) are still to be specified in the contractual terms. */}
           <div className="flex justify-between py-3">
@@ -141,19 +127,27 @@ export function PlanCard({ plan, billing = "monthly", showPrices = false }) {
       </div>
 
       {/* Action CTA Button */}
-      {/* TODO(Debass): the brief asks for every plan button, ENTERPRISE included, to redirect to Sign Up; ENTERPRISE is sized on quote, so the Enterprise block below also offers Talk to an Expert. */}
-      {/* TODO(Debass): the document says the self-service purchase journey is not in production and buttons stay Request a demo / Talk to an expert / Simulate my price, never "Buy"; Sign Up is requested by the brief - confirm it matches the real state of login.nelias.app. */}
       <div className="mt-8 pt-2">
-        <SignUpLink
-          variant={isFeatured ? "primary" : "outline"}
-          size="md"
-          location={`pricing-${plan.id}`}
-          aria-label={t("pricing:overview.signUpFor", { plan: planName })}
-          onClick={handleCtaClick}
-          className="w-full text-center"
-        >
-          {t("common:cta.signUp")}
-        </SignUpLink>
+        {isEnterprise ? (
+          <Link
+            to="/contact"
+            onClick={handleCtaClick}
+            className={cn(buttonStyles({ variant: "secondary", size: "md" }), "w-full text-center")}
+          >
+            {t("common:cta.talkToExpert")}
+          </Link>
+        ) : (
+          <SignUpLink
+            variant={isFeatured ? "primary" : "outline"}
+            size="md"
+            location={`pricing-${plan.id}`}
+            aria-label={t("pricing:overview.simulatePriceFor", { plan: planName })}
+            onClick={handleCtaClick}
+            className="w-full text-center"
+          >
+            {t("common:cta.simulatePrice")}
+          </SignUpLink>
+        )}
       </div>
     </div>
   );

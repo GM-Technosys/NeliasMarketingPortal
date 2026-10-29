@@ -11,11 +11,7 @@ import { cn } from "@/lib/cn";
  * @param {"md"|"sm"} [props.size="md"]
  * @param {string} [props.className]
  */
-export function ThemeToggle({
-  variant = "default",
-  size = "md",
-  className,
-}) {
+export function ThemeToggle({ variant = "default", size = "md", className }) {
   const { t } = useTranslation();
   const { isDark, toggleTheme } = useTheme();
 

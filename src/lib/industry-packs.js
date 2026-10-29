@@ -8,7 +8,5 @@ import { industryPacks } from "@/data/industry-packs";
  * @returns {Array<Object>}
  */
 export function getVisibleIndustryPacks() {
-  return features.industryPlus
-    ? industryPacks.filter((p) => p.status === "available")
-    : [];
+  return features.industryPlus ? industryPacks.filter((p) => p.status === "available") : [];
 }

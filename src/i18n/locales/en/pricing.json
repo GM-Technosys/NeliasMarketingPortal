@@ -4,7 +4,8 @@
     "lead": "No price is calculated per office, store or warehouse: the location of your teams is not a pricing criterion."
   },
   "overview": {
-    "signUpFor": "Sign Up for {{plan}}"
+    "signUpFor": "Sign Up for {{plan}}",
+    "simulatePriceFor": "Simulate price for {{plan}}"
   },
   "page": {
     "plansTitle": "Plans",

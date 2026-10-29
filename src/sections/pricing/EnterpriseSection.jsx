@@ -20,19 +20,14 @@ export function EnterpriseSection({ tone = "muted" }) {
       <Container>
         <Reveal>
           <Panel tone="tint" padding="lg">
-            <h2 className="font-display text-2xl sm:text-3xl font-bold text-heading">
+            <h2 className="font-display text-2xl font-bold text-heading sm:text-3xl">
               {t("home:pricing.table.plans.enterprise")}
             </h2>
-            <p className="mt-3 text-base sm:text-lg text-fg-muted max-w-3xl leading-relaxed">
+            <p className="mt-3 max-w-3xl text-base leading-relaxed text-fg-muted sm:text-lg">
               {t("home:pricing.enterprise")}
             </p>
             <div className="mt-6">
-              <CtaLink
-                to="/contact"
-                variant="primary"
-                size="md"
-                location="pricing-enterprise"
-              >
+              <CtaLink to="/contact" variant="primary" size="md" location="pricing-enterprise">
                 {t("common:cta.talkToExpert")}
               </CtaLink>
             </div>

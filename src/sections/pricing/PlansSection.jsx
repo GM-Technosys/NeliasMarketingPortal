@@ -17,12 +17,7 @@ import { PlanCard } from "./PlanCard";
  * @param {"default"|"muted"} [props.tone="default"]
  * @returns {import("react").JSX.Element}
  */
-export function PlansSection({
-  billing,
-  onBillingChange,
-  showPrices,
-  tone = "default",
-}) {
+export function PlansSection({ billing, onBillingChange, showPrices, tone = "default" }) {
   const { t } = useTranslation();
 
   return (
@@ -62,15 +57,11 @@ export function PlansSection({
           {/* Plan cards grid */}
           <ul
             aria-label={t("pricing:page.plansTitle")}
-            className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 items-stretch"
+            className="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4"
           >
             {plans.map((plan) => (
               <li key={plan.id} className="flex">
-                <PlanCard
-                  plan={plan}
-                  billing={billing}
-                  showPrices={showPrices}
-                />
+                <PlanCard plan={plan} billing={billing} showPrices={showPrices} />
               </li>
             ))}
           </ul>

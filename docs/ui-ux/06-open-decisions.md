@@ -1,6 +1,7 @@
 # NELIAS Marketing Portal - UI/UX Specification: Open Decisions & Debass Backlog
 
 ## 1. Overview
+
 This register catalogs all items marked `TODO(Debass)` across the codebase, grouped by functional domain and page, alongside terminology alignments that require client governance before final commercial release.
 
 ---
@@ -9,19 +10,20 @@ This register catalogs all items marked `TODO(Debass)` across the codebase, grou
 
 The following terms appear with minor variations across approved source documents (PDF specifications, commercial model notes, and UI microcopy). In accordance with Update D safety rules, these have been preserved without unauthorized copy changes:
 
-| Concept | Primary Terms Used | Context & Recommendation |
-|---|---|---|
-| **Core Capabilities** | "Standard Modules" / "Functions" / "Capability Areas" | Client guidance in Update C favors **"Standard modules"** ("Modules standard") for commercial and configurator contexts, while the Features page uses "Capability areas" ("Domaines de compétences"). Recommend standardizing customer-facing UI on "Standard modules". |
-| **Corporate Entities** | "Legal entities" / "Companies" / "Sociétés" | Pricing catalog uses "legal entities" (`legal-entity`), while user microcopy occasionally references "companies". Recommend standardizing on **"Legal entities"** ("Entités juridiques") for legal precision. |
-| **Subscription Tiers** | "Plan" / "Formule" / "Tier" | English uses "Plan" (START, BUSINESS, PROFESSIONAL, ENTERPRISE). French microcopy uses **"Formule"** to reflect local business software standards in Côte d'Ivoire and Francophone Africa. |
-| **Industry Configurations** | "Sector Engine" / "Sector Pack" / "Industry Configuration" | Update B removed paid "Sector Packs". The Sector Engine is included in every plan at no charge. Recommend consistently referring to the **"Sector Engine"** ("Moteur sectoriel") across all pages. |
-| **System Integrations** | "Connectors" / "API & Connectors" / "Connecteurs" | Standardized as **"Connectors"** ("Connecteurs") under optional charges. |
+| Concept                     | Primary Terms Used                                         | Context & Recommendation                                                                                                                                                                                                                                                |
+| --------------------------- | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Core Capabilities**       | "Standard Modules" / "Functions" / "Capability Areas"      | Client guidance in Update C favors **"Standard modules"** ("Modules standard") for commercial and configurator contexts, while the Features page uses "Capability areas" ("Domaines de compétences"). Recommend standardizing customer-facing UI on "Standard modules". |
+| **Corporate Entities**      | "Legal entities" / "Companies" / "Sociétés"                | Pricing catalog uses "legal entities" (`legal-entity`), while user microcopy occasionally references "companies". Recommend standardizing on **"Legal entities"** ("Entités juridiques") for legal precision.                                                           |
+| **Subscription Tiers**      | "Plan" / "Formule" / "Tier"                                | English uses "Plan" (START, BUSINESS, PROFESSIONAL, ENTERPRISE). French microcopy uses **"Formule"** to reflect local business software standards in Côte d'Ivoire and Francophone Africa.                                                                              |
+| **Industry Configurations** | "Sector Engine" / "Sector Pack" / "Industry Configuration" | Update B removed paid "Sector Packs". The Sector Engine is included in every plan at no charge. Recommend consistently referring to the **"Sector Engine"** ("Moteur sectoriel") across all pages.                                                                      |
+| **System Integrations**     | "Connectors" / "API & Connectors" / "Connecteurs"          | Standardized as **"Connectors"** ("Connecteurs") under optional charges.                                                                                                                                                                                                |
 
 ---
 
 ## 3. Exhaustive `TODO(Debass)` Log Grouped by Area
 
 ### 3.1 Global & Commercial Strategy
+
 1. **`src/data/pricing-catalog.js` (lines 1-2):**
    - Approval of internal commercial reference figures for public publication (`approvedForPublic: false`).
    - Confirmation that storage extension pricing remains unquoted until approved.
@@ -33,6 +35,7 @@ The following terms appear with minor variations across approved source document
    - Formal rules for the Sector Engine Matrix (current recommendation order is derived from relevance order in `industry-areas.js`).
 
 ### 3.2 Home Page
+
 1. **`src/sections/home/HomeHero.jsx` (line 10):**
    - Hero subheadline and secondary CTA conflict between PDF Section 3 and V3 notes. Section 3 is currently used.
 2. **`src/sections/home/HomeFinalCta.jsx` (line 9):**
@@ -45,6 +48,7 @@ The following terms appear with minor variations across approved source document
    - PDF supplies no specific business-impact metrics for the three scenarios; currently uses approved challenge/response pairs.
 
 ### 3.3 Why NELIAS & How It Works
+
 1. **`src/sections/why/ChallengesSection.jsx` (line 27):**
    - Confirmation whether "Challenges and benefits" is intended as a visible customer-facing headline.
 2. **`src/sections/why/DifferentiatorSection.jsx` (line 28):**
@@ -55,6 +59,7 @@ The following terms appear with minor variations across approved source document
    - Self-service activation wording in steps 4 and 5 prior to automated checkout availability.
 
 ### 3.4 Industries Pages
+
 1. **`src/data/industry-areas.js` (line 1):**
    - Area relevance order per sector is derived from summary words; confirm alignment with the Sector Engine Matrix.
 2. **`src/sections/industries/CapabilityList.jsx` (lines 12-13):**
@@ -67,6 +72,7 @@ The following terms appear with minor variations across approved source document
    - SEO metadata for industry pages derived from summary; confirm targeted sector keywords.
 
 ### 3.5 Features Page
+
 1. **`src/sections/features/FeaturesClosing.jsx` (line 7):**
    - PDF gives no closing headline for the Features page strip.
 2. **`src/sections/features/FeatureList.jsx` (lines 11-12):**
@@ -75,6 +81,7 @@ The following terms appear with minor variations across approved source document
    - Typo in approved source PDF ("usagebased" missing hyphen; rendered as "usage-based").
 
 ### 3.6 Pricing Page
+
 1. **`src/sections/pricing/PlansSection.jsx` (line 10):**
    - Annual billing equals 10 paid months for 12 months service marked "subject to final validation" in V3 notes.
 2. **`src/sections/pricing/PlansSection.jsx` (line 79):**
@@ -91,6 +98,7 @@ The following terms appear with minor variations across approved source document
    - Missing closing headline text in PDF Section 8.
 
 ### 3.7 Resources & About Pages
+
 1. **`src/sections/resources/ResourcesFaq.jsx` (line 4):**
    - Alignment between hosting FAQ answer ("being planned…") and definitive Terms of Use Article 10 statements.
 2. **`src/sections/resources/ResourcesClosing.jsx` (line 5):**
@@ -103,6 +111,7 @@ The following terms appear with minor variations across approved source document
    - Closing signature wording ("automatically" vs "automatically configured").
 
 ### 3.8 Contact, Demo & Configurator
+
 1. **`src/sections/contact/LeadForm.jsx` (line 243):**
    - Consent wording is a provisional placeholder requiring validation by legal counsel under Côte d'Ivoire law.
 2. **`src/sections/contact/LeadForm.jsx` (line 285):**
@@ -123,6 +132,7 @@ The following terms appear with minor variations across approved source document
    - Online checkout / self-service activation journey is omitted from V1 until backend provisioning exists.
 
 ### 3.9 Legal Documentation
+
 1. **`src/pages/TermsPage.jsx` (lines 3-6):**
    - SEO metadata derived from document headers.
    - Hosting fact alignment between Terms Article 10 and marketing FAQ.

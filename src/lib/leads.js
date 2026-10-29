@@ -15,7 +15,7 @@ export function logDevNotices() {
     hasLoggedMailtoNotice = true;
     // Intentional developer notice: explains why mailto is used instead of HTTP POST
     console.info(
-      "[NELIAS] Lead form: VITE_LEAD_ENDPOINT is not set; form submissions will open the visitor's email client."
+      "[NELIAS] Lead form: VITE_LEAD_ENDPOINT is not set; form submissions will open the visitor's email client.",
     );
   }
 
@@ -24,7 +24,7 @@ export function logDevNotices() {
     // Intentional developer notice: legal approval required before launch
     // TODO(Debass): the consent wording is a PLACEHOLDER. The PDF requires consent language supplied by legal and compliance (also under Côte d’Ivoire data-protection law) before publication.
     console.warn(
-      "[NELIAS] Lead form: Consent text is a placeholder pending formal legal and regulatory review."
+      "[NELIAS] Lead form: Consent text is a placeholder pending formal legal and regulatory review.",
     );
   }
 }
@@ -135,7 +135,9 @@ export function buildMailto(payload, t) {
     lines.push(`${t("contact:form.industry")}: ${industryLabel}`);
   }
   if (payload.companySize) {
-    const sizeLabel = t(`contact:sizes.${payload.companySize}`, { defaultValue: payload.companySize });
+    const sizeLabel = t(`contact:sizes.${payload.companySize}`, {
+      defaultValue: payload.companySize,
+    });
     lines.push(`${t("contact:form.companySize")}: ${sizeLabel}`);
   }
   if (Array.isArray(payload.businessNeeds) && payload.businessNeeds.length > 0) {

@@ -10,7 +10,10 @@ export const faqGroups = [
   { id: "hosting", items: ["hosted"] },
   { id: "migration", items: ["migrate", "legacy"] },
   // Previously approved questions of faq.json that are still valid (see 6.2).
-  { id: "general", items: ["whatIsNelias", "isErp", "sectorEngine", "addLater", "connect", "moreThanOneCompany"] },
+  {
+    id: "general",
+    items: ["whatIsNelias", "isErp", "sectorEngine", "addLater", "connect", "moreThanOneCompany"],
+  },
 ];
 
 // Items that mention amounts or public prices: rendered only when features.pricingPublic is true.

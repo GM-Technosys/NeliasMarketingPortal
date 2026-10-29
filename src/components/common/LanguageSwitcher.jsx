@@ -20,12 +20,7 @@ const LANGUAGES = [
  * @param {"top"|"bottom"} [props.placement]
  * @param {string} [props.className]
  */
-export function LanguageSwitcher({
-  variant = "default",
-  align,
-  placement,
-  className,
-}) {
+export function LanguageSwitcher({ variant = "default", align, placement, className }) {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef(null);
@@ -95,12 +90,9 @@ export function LanguageSwitcher({
       );
 
   const placementClasses =
-    resolvedPlacement === "top"
-      ? "bottom-full mb-2 origin-bottom"
-      : "top-full mt-2 origin-top";
+    resolvedPlacement === "top" ? "bottom-full mb-2 origin-bottom" : "top-full mt-2 origin-top";
 
-  const alignClasses =
-    resolvedAlign === "start" ? "left-0" : "right-0";
+  const alignClasses = resolvedAlign === "start" ? "left-0" : "right-0";
 
   return (
     <div ref={containerRef} className={cn("relative inline-block text-left", className)}>
@@ -115,7 +107,7 @@ export function LanguageSwitcher({
         onClick={() => setIsOpen((prev) => !prev)}
         onKeyDown={handleTriggerKeyDown}
         className={cn(
-          "inline-flex h-8 items-center gap-1.5 rounded-md border px-2.5 text-xs font-semibold transition-all duration-200 cursor-pointer select-none",
+          "inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-md border px-2.5 text-xs font-semibold transition-all duration-200 select-none",
           "focus-visible:outline-2 focus-visible:outline-focus",
           triggerClasses,
         )}
@@ -127,7 +119,7 @@ export function LanguageSwitcher({
           )}
           aria-hidden="true"
         />
-        <span className="uppercase tracking-wide">{t(`lang.${currentLang}Short`)}</span>
+        <span className="tracking-wide uppercase">{t(`lang.${currentLang}Short`)}</span>
         <ChevronDown
           className={cn(
             "h-3 w-3 shrink-0 transition-transform duration-200 ease-soft",
@@ -145,7 +137,7 @@ export function LanguageSwitcher({
           aria-label={t("a11y.language")}
           aria-activedescendant={`${menuId}-opt-${currentLang}`}
           className={cn(
-            "absolute z-50 w-44 rounded-xl border p-1.5 shadow-raised backdrop-blur-md animate-modal-in",
+            "absolute z-50 w-44 animate-modal-in rounded-xl border p-1.5 shadow-raised backdrop-blur-md",
             placementClasses,
             alignClasses,
             isDark
@@ -163,7 +155,8 @@ export function LanguageSwitcher({
                   )
                 : cn(
                     "border border-transparent text-fg-strong hover:text-heading hover:bg-surface-tint",
-                    isSelected && "border-accent-line bg-surface-tint text-heading font-semibold shadow-2xs",
+                    isSelected &&
+                      "border-accent-line bg-surface-tint text-heading font-semibold shadow-2xs",
                   );
 
               const badgeClasses = isDark
@@ -186,7 +179,7 @@ export function LanguageSwitcher({
                   aria-selected={isSelected}
                   onClick={() => handleSelect(lang.code)}
                   className={cn(
-                    "flex w-full min-h-9 cursor-pointer items-center justify-between rounded-lg px-2.5 py-1.5 text-xs transition-all duration-150 text-left",
+                    "flex min-h-9 w-full cursor-pointer items-center justify-between rounded-lg px-2.5 py-1.5 text-left text-xs transition-all duration-150",
                     "focus-visible:outline-2 focus-visible:outline-focus",
                     itemClasses,
                   )}
@@ -194,7 +187,7 @@ export function LanguageSwitcher({
                   <div className="flex items-center gap-2.5 truncate">
                     <span
                       className={cn(
-                        "inline-flex items-center justify-center rounded px-1.5 py-0.5 text-[10px] font-bold tracking-wider uppercase shrink-0",
+                        "inline-flex shrink-0 items-center justify-center rounded px-1.5 py-0.5 text-[10px] font-bold tracking-wider uppercase",
                         badgeClasses,
                       )}
                     >
@@ -205,7 +198,7 @@ export function LanguageSwitcher({
                   {isSelected && (
                     <Check
                       className={cn(
-                        "h-3.5 w-3.5 shrink-0 stroke-[2.5] ml-2",
+                        "ml-2 h-3.5 w-3.5 shrink-0 stroke-[2.5]",
                         isDark ? "text-white" : "text-link",
                       )}
                       aria-hidden="true"

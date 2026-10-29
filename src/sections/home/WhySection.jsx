@@ -43,7 +43,7 @@ export function WhySection({ tone = "default", headingId = "why-heading" }) {
           <div className="max-w-3xl">
             <h2
               id={headingId}
-              className="font-display text-h2 font-semibold text-heading leading-tight tracking-tight"
+              className="font-display text-h2 leading-tight font-semibold tracking-tight text-heading"
             >
               {t("home:why.title")}
             </h2>
@@ -69,7 +69,7 @@ export function WhySection({ tone = "default", headingId = "why-heading" }) {
                 <li
                   key={id}
                   className={cn(
-                    "group flex flex-col justify-between rounded-2xl border border-line bg-surface-raised p-6 md:p-7 shadow-xs transition-all duration-200 hover:border-accent hover:shadow-card",
+                    "group flex flex-col justify-between rounded-2xl border border-line bg-surface-raised p-6 shadow-xs transition-all duration-200 hover:border-accent hover:shadow-card md:p-7",
                     itemClass,
                   )}
                 >
@@ -80,10 +80,10 @@ export function WhySection({ tone = "default", headingId = "why-heading" }) {
                       size="md"
                       className="mb-5 transition-transform duration-200 group-hover:scale-105"
                     />
-                    <h3 className="font-display text-lg md:text-xl font-bold text-heading transition-colors group-hover:text-accent-strong">
+                    <h3 className="font-display text-lg font-bold text-heading transition-colors group-hover:text-accent-strong md:text-xl">
                       {t(`home:why.items.${id}.title`)}
                     </h3>
-                    <p className="mt-2.5 text-sm md:text-base text-fg-muted leading-relaxed">
+                    <p className="mt-2.5 text-sm leading-relaxed text-fg-muted md:text-base">
                       {t(`home:why.items.${id}.text`)}
                     </p>
                   </div>
@@ -96,4 +96,3 @@ export function WhySection({ tone = "default", headingId = "why-heading" }) {
     </Section>
   );
 }
-

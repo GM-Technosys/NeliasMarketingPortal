@@ -4,7 +4,8 @@
     "lead": "Aucun prix n’est calculé par bureau, boutique ou entrepôt\u00A0: la localisation de vos équipes n’est pas un critère de tarification."
   },
   "overview": {
-    "signUpFor": "S’inscrire à {{plan}}"
+    "signUpFor": "S’inscrire à {{plan}}",
+    "simulatePriceFor": "Simuler mon prix pour {{plan}}"
   },
   "page": {
     "plansTitle": "Formules",

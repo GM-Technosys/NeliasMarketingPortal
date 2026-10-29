@@ -42,7 +42,7 @@ export function LegalToc({ ns, articles = [], variant }) {
       },
       {
         rootMargin: "-96px 0px -65% 0px",
-      }
+      },
     );
 
     sections.forEach((sec) => observer.observe(sec));
@@ -87,8 +87,8 @@ export function LegalToc({ ns, articles = [], variant }) {
                       "rounded-md px-3 py-2",
                       isActive
                         ? "bg-surface-tint font-semibold text-heading"
-                        : "text-fg-muted hover:text-heading hover:bg-surface-muted",
-                    ]
+                        : "text-fg-muted hover:bg-surface-muted hover:text-heading",
+                    ],
               )}
             >
               {titleText}
@@ -103,7 +103,7 @@ export function LegalToc({ ns, articles = [], variant }) {
     return (
       <nav
         aria-label={contentsLabel}
-        className="hidden lg:block lg:sticky lg:top-28 lg:self-start lg:max-h-[calc(100dvh-8rem)] lg:overflow-y-auto"
+        className="hidden lg:sticky lg:top-28 lg:block lg:max-h-[calc(100dvh-8rem)] lg:self-start lg:overflow-y-auto"
       >
         <p className="font-display font-semibold text-heading">{contentsLabel}</p>
         {renderLinks(true)}
@@ -115,7 +115,7 @@ export function LegalToc({ ns, articles = [], variant }) {
     return (
       <details
         ref={detailsRef}
-        className="lg:hidden mb-8 rounded-lg border border-line bg-surface-muted"
+        className="mb-8 rounded-lg border border-line bg-surface-muted lg:hidden"
       >
         <summary className="min-h-11 cursor-pointer px-4 py-3 font-semibold text-heading select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus">
           {contentsLabel}
@@ -129,7 +129,7 @@ export function LegalToc({ ns, articles = [], variant }) {
     <>
       <nav
         aria-label={contentsLabel}
-        className="hidden lg:block lg:sticky lg:top-28 lg:self-start lg:max-h-[calc(100dvh-8rem)] lg:overflow-y-auto"
+        className="hidden lg:sticky lg:top-28 lg:block lg:max-h-[calc(100dvh-8rem)] lg:self-start lg:overflow-y-auto"
       >
         <p className="font-display font-semibold text-heading">{contentsLabel}</p>
         {renderLinks(true)}
@@ -137,7 +137,7 @@ export function LegalToc({ ns, articles = [], variant }) {
 
       <details
         ref={detailsRef}
-        className="lg:hidden mb-8 rounded-lg border border-line bg-surface-muted"
+        className="mb-8 rounded-lg border border-line bg-surface-muted lg:hidden"
       >
         <summary className="min-h-11 cursor-pointer px-4 py-3 font-semibold text-heading select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus">
           {contentsLabel}

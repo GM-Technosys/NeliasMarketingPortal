@@ -11,7 +11,7 @@ export function IndustriesHub() {
   return (
     <div
       aria-hidden="true"
-      className="mx-auto grid aspect-square w-full max-w-sm sm:max-w-md grid-cols-4 gap-3 select-none"
+      className="mx-auto grid aspect-square w-full max-w-sm grid-cols-4 gap-3 select-none sm:max-w-md"
     >
       {industries.map((slug, index) => {
         const Icon = industryProfiles[slug]?.icon;
@@ -20,13 +20,10 @@ export function IndustriesHub() {
           <div
             key={slug}
             style={{ animationDelay: `${index * 60}ms` }}
-            className="animate-tile-in grid aspect-square place-items-center rounded-lg border border-line bg-surface-raised text-link"
+            className="grid aspect-square animate-tile-in place-items-center rounded-lg border border-line bg-surface-raised text-link"
           >
             {Icon && (
-              <Icon
-                className="h-[22px] w-[22px] sm:h-[26px] sm:w-[26px]"
-                aria-hidden="true"
-              />
+              <Icon className="h-[22px] w-[22px] sm:h-[26px] sm:w-[26px]" aria-hidden="true" />
             )}
           </div>
         );
@@ -44,13 +41,7 @@ export function IndustriesHub() {
           className="h-[88px] w-[88px]"
         >
           <defs>
-            <linearGradient
-              id="hub-ribbon-grad"
-              x1="0%"
-              y1="100%"
-              x2="100%"
-              y2="0%"
-            >
+            <linearGradient id="hub-ribbon-grad" x1="0%" y1="100%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="var(--color-flame-500)" />
               <stop offset="45%" stopColor="var(--color-flame-400)" />
               <stop offset="100%" stopColor="var(--color-sun-300)" />

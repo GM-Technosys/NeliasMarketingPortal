@@ -390,6 +390,7 @@ def main():
 
     add_meta_item(doc, "Hero Headline (H1)", en_pricing["hero"]["title"], fr_pricing["hero"]["title"], element_type="Main Headline (H1)")
     add_meta_item(doc, "Hero Subtitle / Lead", en_pricing["hero"]["lead"], fr_pricing["hero"]["lead"], element_type="Lead Paragraph")
+    add_meta_item(doc, "Hero Action Button", en_common["cta"]["simulatePrice"], fr_common["cta"]["simulatePrice"], element_type="Primary Button (Orange)", link_url="https://login.nelias.app/ (New Tab)")
     add_meta_item(doc, "Visual Background Tone", "tint", element_type="Section Tone")
 
     add_callout(
@@ -459,9 +460,9 @@ def main():
         level_val_fr=fr_home["pricing"]["table"]["levels"]["start"],
         included_en=en_pricing["plans"]["start"]["included"],
         included_fr=fr_pricing["plans"]["start"]["included"],
-        cta_en=en_common["cta"]["signUp"],
-        cta_fr=fr_common["cta"]["signUp"],
-        cta_url="https://login.nelias.app/ (aria-label: \"Sign Up for START\" / \"S’inscrire à START\")",
+        cta_en=en_common["cta"]["simulatePrice"],
+        cta_fr=fr_common["cta"]["simulatePrice"],
+        cta_url="https://login.nelias.app/ (aria-label: \"Simulate price for START\" / \"Simuler mon prix pour START\")",
         is_featured=False
     )
 
@@ -486,9 +487,9 @@ def main():
         level_val_fr=fr_home["pricing"]["table"]["levels"]["business"],
         included_en=en_pricing["plans"]["business"]["included"],
         included_fr=fr_pricing["plans"]["business"]["included"],
-        cta_en=en_common["cta"]["signUp"],
-        cta_fr=fr_common["cta"]["signUp"],
-        cta_url="https://login.nelias.app/ (aria-label: \"Sign Up for BUSINESS\" / \"S’inscrire à BUSINESS\")",
+        cta_en=en_common["cta"]["simulatePrice"],
+        cta_fr=fr_common["cta"]["simulatePrice"],
+        cta_url="https://login.nelias.app/ (aria-label: \"Simulate price for BUSINESS\" / \"Simuler mon prix pour BUSINESS\")",
         is_featured=True
     )
 
@@ -513,9 +514,9 @@ def main():
         level_val_fr=fr_home["pricing"]["table"]["levels"]["professional"],
         included_en=en_pricing["plans"]["professional"]["included"],
         included_fr=fr_pricing["plans"]["professional"]["included"],
-        cta_en=en_common["cta"]["signUp"],
-        cta_fr=fr_common["cta"]["signUp"],
-        cta_url="https://login.nelias.app/ (aria-label: \"Sign Up for PROFESSIONAL\" / \"S’inscrire à PROFESSIONAL\")",
+        cta_en=en_common["cta"]["simulatePrice"],
+        cta_fr=fr_common["cta"]["simulatePrice"],
+        cta_url="https://login.nelias.app/ (aria-label: \"Simulate price for PROFESSIONAL\" / \"Simuler mon prix pour PROFESSIONAL\")",
         is_featured=False
     )
 
@@ -540,9 +541,9 @@ def main():
         level_val_fr=fr_home["pricing"]["table"]["levels"]["enterprise"],
         included_en=en_pricing["plans"]["enterprise"]["included"],
         included_fr=fr_pricing["plans"]["enterprise"]["included"],
-        cta_en=en_common["cta"]["signUp"],
-        cta_fr=fr_common["cta"]["signUp"],
-        cta_url="https://login.nelias.app/ (aria-label: \"Sign Up for ENTERPRISE\" / \"S’inscrire à ENTERPRISE\")",
+        cta_en=en_common["cta"]["talkToExpert"],
+        cta_fr=fr_common["cta"]["talkToExpert"],
+        cta_url="/contact",
         is_featured=False
     )
 

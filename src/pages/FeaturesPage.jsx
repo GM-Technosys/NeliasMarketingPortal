@@ -36,11 +36,9 @@ export default function FeaturesPage() {
 
       {/* 2. Modules */}
       <ModulesSection tone="muted" headingId="features-modules-heading" />
-      <div className="bg-surface-muted -mt-10 md:-mt-16 pb-12 md:pb-16">
+      <div className="-mt-10 bg-surface-muted pb-12 md:-mt-16 md:pb-16">
         <Container>
-          <TextLink to="/pricing">
-            {t("home:pricing.cta")}
-          </TextLink>
+          <TextLink to="/pricing">{t("home:pricing.cta")}</TextLink>
         </Container>
       </div>
 

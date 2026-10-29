@@ -12,16 +12,11 @@ export function AboutClosing() {
   const { t } = useTranslation();
 
   return (
-    <Section
-      id="closing"
-      tone="tint"
-      spacing="lg"
-      aria-label={t("about:closing.ariaLabel")}
-    >
+    <Section id="closing" tone="tint" spacing="lg" aria-label={t("about:closing.ariaLabel")}>
       <Container>
         <Reveal>
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-            <p className="max-w-2xl font-display text-h2 font-semibold text-heading leading-tight">
+          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+            <p className="max-w-2xl font-display text-h2 leading-tight font-semibold text-heading">
               {t("about:closing.signature")}
             </p>
 

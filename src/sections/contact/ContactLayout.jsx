@@ -29,7 +29,7 @@ export function ContactLayout({ type = "contact" }) {
           </div>
 
           {/* Right column: Contact details on Contact page, Demo expectations on Demo page */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
+          <div className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
             {isContact ? <ContactDetails type="contact" /> : <DemoExpectations />}
           </div>
         </div>

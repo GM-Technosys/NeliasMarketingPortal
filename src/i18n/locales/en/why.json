@@ -8,11 +8,26 @@
     "challengeLabel": "Common challenge",
     "responseLabel": "NELIAS response",
     "items": [
-      { "challenge": "Disconnected systems", "response": "A unified platform approach for core management workflows." },
-      { "challenge": "Generic software setup", "response": "Industry-aware configuration through the Sector Engine." },
-      { "challenge": "Manual work across departments", "response": "Connected workflows and progressively introduced automation." },
-      { "challenge": "Growth that outpaces tools", "response": "Modular expansion of capabilities and capacity." },
-      { "challenge": "Limited operational visibility", "response": "Shared data foundations and reporting capabilities." }
+      {
+        "challenge": "Disconnected systems",
+        "response": "A unified platform approach for core management workflows."
+      },
+      {
+        "challenge": "Generic software setup",
+        "response": "Industry-aware configuration through the Sector Engine."
+      },
+      {
+        "challenge": "Manual work across departments",
+        "response": "Connected workflows and progressively introduced automation."
+      },
+      {
+        "challenge": "Growth that outpaces tools",
+        "response": "Modular expansion of capabilities and capacity."
+      },
+      {
+        "challenge": "Limited operational visibility",
+        "response": "Shared data foundations and reporting capabilities."
+      }
     ]
   },
   "differentiator": {

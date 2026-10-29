@@ -23,7 +23,15 @@ export const Select = forwardRef(function Select(
     <div className="relative w-full">
       <select
         ref={ref}
-        defaultValue={value !== undefined ? undefined : (defaultValue !== undefined ? defaultValue : placeholderText ? "" : undefined)}
+        defaultValue={
+          value !== undefined
+            ? undefined
+            : defaultValue !== undefined
+              ? defaultValue
+              : placeholderText
+                ? ""
+                : undefined
+        }
         value={value}
         className={cn(fieldControlClasses, "cursor-pointer appearance-none pr-10", className)}
         {...props}

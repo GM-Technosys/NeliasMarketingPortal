@@ -40,16 +40,7 @@ function extractPlaceholders(str) {
 /**
  * Recursively compare English and French translation objects.
  */
-function compareObjects(
-  enObj,
-  frObj,
-  ns,
-  path = "",
-  allowlist,
-  errors,
-  warnings,
-  stats,
-) {
+function compareObjects(enObj, frObj, ns, path = "", allowlist, errors, warnings, stats) {
   const enKeys = Object.keys(enObj);
   const frKeys = Object.keys(frObj || {});
   const enOnly = allowlist.enOnly || [];
@@ -93,23 +84,12 @@ function compareObjects(
     const frType = Array.isArray(frVal) ? "array" : typeof frVal;
 
     if (enType !== frType) {
-      errors.push(
-        `[Type mismatch] ${fullKey}: expected ${enType}, got ${frType}`,
-      );
+      errors.push(`[Type mismatch] ${fullKey}: expected ${enType}, got ${frType}`);
       continue;
     }
 
     if (enType === "object" && enVal !== null) {
-      compareObjects(
-        enVal,
-        frVal,
-        ns,
-        currentPath,
-        allowlist,
-        errors,
-        warnings,
-        stats,
-      );
+      compareObjects(enVal, frVal, ns, currentPath, allowlist, errors, warnings, stats);
     } else if (enType === "array") {
       stats.keyCount++;
       if (enVal.length !== frVal.length) {
@@ -124,9 +104,7 @@ function compareObjects(
 
         if (typeof itemEn === "string") {
           if (typeof itemFr !== "string" || itemFr.trim() === "") {
-            errors.push(
-              `[Empty or whitespace value] ${itemKey}: French value is empty`,
-            );
+            errors.push(`[Empty or whitespace value] ${itemKey}: French value is empty`);
           } else {
             // Check placeholders
             const enPh = extractPlaceholders(itemEn);
@@ -142,9 +120,7 @@ function compareObjects(
               !allowlist.values.includes(itemFr) &&
               !allowlist.keys.includes(fullKey)
             ) {
-              warnings.push(
-                `[Untranslated value] ${itemKey}: "${itemFr}" is identical to English`,
-              );
+              warnings.push(`[Untranslated value] ${itemKey}: "${itemFr}" is identical to English`);
             }
           }
         } else if (typeof itemEn === "object" && itemEn !== null) {
@@ -163,9 +139,7 @@ function compareObjects(
     } else if (enType === "string") {
       stats.keyCount++;
       if (frVal.trim() === "") {
-        errors.push(
-          `[Empty or whitespace value] ${fullKey}: French value is empty`,
-        );
+        errors.push(`[Empty or whitespace value] ${fullKey}: French value is empty`);
       } else {
         const enPh = extractPlaceholders(enVal);
         const frPh = extractPlaceholders(frVal);
@@ -180,9 +154,7 @@ function compareObjects(
           !allowlist.values.includes(frVal) &&
           !allowlist.keys.includes(fullKey)
         ) {
-          warnings.push(
-            `[Untranslated value] ${fullKey}: "${frVal}" is identical to English`,
-          );
+          warnings.push(`[Untranslated value] ${fullKey}: "${frVal}" is identical to English`);
         }
       }
     } else {
@@ -203,22 +175,14 @@ async function scanHardcoded(dir, findings) {
       if (entry !== "node_modules") {
         await scanHardcoded(fullPath, findings);
       }
-    } else if (
-      fullPath.endsWith(".jsx") &&
-      !fullPath.includes("PreviewPage")
-    ) {
+    } else if (fullPath.endsWith(".jsx") && !fullPath.includes("PreviewPage")) {
       const content = await readFile(fullPath, "utf-8");
       const lines = content.split("\n");
-      const relPath = fullPath
-        .replace(projectRoot, "")
-        .replace(/\\/g, "/")
-        .replace(/^\//, "");
+      const relPath = fullPath.replace(projectRoot, "").replace(/\\/g, "/").replace(/^\//, "");
 
       lines.forEach((line, idx) => {
         // Attributes: aria-label, alt, placeholder, title
-        const attrMatches = line.matchAll(
-          /(aria-label|alt|placeholder|title)=["']([^"']+)["']/g,
-        );
+        const attrMatches = line.matchAll(/(aria-label|alt|placeholder|title)=["']([^"']+)["']/g);
         for (const m of attrMatches) {
           const attr = m[1];
           const val = m[2].trim();
@@ -227,9 +191,7 @@ async function scanHardcoded(dir, findings) {
             !line.includes("t(") &&
             !["NELIAS", "Debass Technologies", "FCFA"].includes(val)
           ) {
-            findings.push(
-              `${relPath}:${idx + 1} Hardcoded attribute ${attr}="${val}"`,
-            );
+            findings.push(`${relPath}:${idx + 1} Hardcoded attribute ${attr}="${val}"`);
           }
         }
 
@@ -240,9 +202,7 @@ async function scanHardcoded(dir, findings) {
           if (
             text.length > 2 &&
             !/^[\d\s\-_:;.,/\\()+=*&%#@!|?]+$/.test(text) &&
-            !["NELIAS", "Debass Technologies", "FCFA", "WhatsApp"].includes(
-              text,
-            )
+            !["NELIAS", "Debass Technologies", "FCFA", "WhatsApp"].includes(text)
           ) {
             findings.push(`${relPath}:${idx + 1} Hardcoded text "${text}"`);
           }
@@ -306,16 +266,7 @@ async function main() {
     const nsStats = { keyCount: 0, foundEnOnly };
     const nsErrorsBefore = errors.length;
 
-    compareObjects(
-      enData,
-      frData,
-      ns,
-      "",
-      allowlist,
-      errors,
-      warnings,
-      nsStats,
-    );
+    compareObjects(enData, frData, ns, "", allowlist, errors, warnings, nsStats);
 
     const nsErrorCount = errors.length - nsErrorsBefore;
     perNamespaceSummary.push({
@@ -334,9 +285,7 @@ async function main() {
   console.log("=== i18n Translation Check ===");
   console.log("Namespace Summary:");
   for (const s of perNamespaceSummary) {
-    console.log(
-      `  - ${s.namespace.padEnd(14)} : ${s.keys} keys | ${s.errors} error(s)`,
-    );
+    console.log(`  - ${s.namespace.padEnd(14)} : ${s.keys} keys | ${s.errors} error(s)`);
   }
 
   if (warnings.length > 0) {

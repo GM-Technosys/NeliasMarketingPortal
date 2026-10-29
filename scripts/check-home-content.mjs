@@ -69,7 +69,9 @@ for (const planId of ["start", "business", "professional"]) {
     if (actual[field] === expected[field]) {
       ok(`Plan ${planId.toUpperCase()} ${field} matches expected ${expected[field]}`);
     } else {
-      fail(`Plan ${planId.toUpperCase()} ${field}: expected ${expected[field]}, got ${actual[field]}`);
+      fail(
+        `Plan ${planId.toUpperCase()} ${field}: expected ${expected[field]}, got ${actual[field]}`,
+      );
     }
   }
 }
@@ -79,9 +81,13 @@ for (const planId of ["start", "business", "professional"]) {
 for (const planId of ["start", "business", "professional"]) {
   const p = homePricing.plans[planId];
   if (p.annual === p.monthly * 10) {
-    ok(`Plan ${planId.toUpperCase()} annual price (${p.annual}) equals 10 × monthly (${p.monthly})`);
+    ok(
+      `Plan ${planId.toUpperCase()} annual price (${p.annual}) equals 10 × monthly (${p.monthly})`,
+    );
   } else {
-    fail(`Plan ${planId.toUpperCase()} annual price (${p.annual}) != 10 × monthly (${p.monthly * 10})`);
+    fail(
+      `Plan ${planId.toUpperCase()} annual price (${p.annual}) != 10 × monthly (${p.monthly * 10})`,
+    );
   }
 }
 
@@ -239,31 +245,31 @@ function getKeyPaths(obj, prefix = "") {
 checkKeyParity(
   join(projectRoot, "src", "i18n", "locales", "en", "home.json"),
   join(projectRoot, "src", "i18n", "locales", "fr", "home.json"),
-  "home.json"
+  "home.json",
 );
 
 checkKeyParity(
   join(projectRoot, "src", "i18n", "locales", "en", "faq.json"),
   join(projectRoot, "src", "i18n", "locales", "fr", "faq.json"),
-  "faq.json"
+  "faq.json",
 );
 
 checkKeyParity(
   join(projectRoot, "src", "i18n", "locales", "en", "pricing.json"),
   join(projectRoot, "src", "i18n", "locales", "fr", "pricing.json"),
-  "pricing.json"
+  "pricing.json",
 );
 
 checkKeyParity(
   join(projectRoot, "src", "i18n", "locales", "en", "features.json"),
   join(projectRoot, "src", "i18n", "locales", "fr", "features.json"),
-  "features.json"
+  "features.json",
 );
 
 checkKeyParity(
   join(projectRoot, "src", "i18n", "locales", "en", "industries.json"),
   join(projectRoot, "src", "i18n", "locales", "fr", "industries.json"),
-  "industries.json"
+  "industries.json",
 );
 
 console.log("\n================================");
@@ -274,4 +280,3 @@ if (failures > 0) {
   console.log("check:home OK");
   process.exit(0);
 }
-

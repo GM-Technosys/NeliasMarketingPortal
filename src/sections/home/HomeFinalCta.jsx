@@ -21,11 +21,7 @@ export function HomeFinalCta() {
       >
         {t("common:cta.bookDemo")}
       </Link>
-      <SignUpLink
-        variant="onDark"
-        size="lg"
-        location="home-final"
-      >
+      <SignUpLink variant="onDark" size="lg" location="home-final">
         {t("common:cta.signUp")}
       </SignUpLink>
     </>

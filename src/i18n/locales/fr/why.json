@@ -8,11 +8,26 @@
     "challengeLabel": "Défi courant",
     "responseLabel": "La réponse de NELIAS",
     "items": [
-      { "challenge": "Systèmes déconnectés", "response": "Une approche unifiée pour vos processus clés de gestion." },
-      { "challenge": "Paramétrage logiciel générique", "response": "Une configuration adaptée au secteur grâce au Sector Engine." },
-      { "challenge": "Tâches manuelles entre départements", "response": "Des flux connectés et une automatisation progressive." },
-      { "challenge": "Une croissance plus rapide que les outils", "response": "Une extension modulaire des fonctionnalités et de la capacité." },
-      { "challenge": "Visibilité opérationnelle limitée", "response": "Un socle de données partagé et des outils de reporting." }
+      {
+        "challenge": "Systèmes déconnectés",
+        "response": "Une approche unifiée pour vos processus clés de gestion."
+      },
+      {
+        "challenge": "Paramétrage logiciel générique",
+        "response": "Une configuration adaptée au secteur grâce au Sector Engine."
+      },
+      {
+        "challenge": "Tâches manuelles entre départements",
+        "response": "Des flux connectés et une automatisation progressive."
+      },
+      {
+        "challenge": "Une croissance plus rapide que les outils",
+        "response": "Une extension modulaire des fonctionnalités et de la capacité."
+      },
+      {
+        "challenge": "Visibilité opérationnelle limitée",
+        "response": "Un socle de données partagé et des outils de reporting."
+      }
     ]
   },
   "differentiator": {

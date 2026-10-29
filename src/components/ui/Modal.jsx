@@ -91,10 +91,7 @@ export function Modal({
       {/* Modal header */}
       <div className="flex shrink-0 items-start justify-between gap-4 border-b border-line p-6">
         <div>
-          <h2
-            id={titleId}
-            className="font-display text-xl leading-snug font-semibold text-heading"
-          >
+          <h2 id={titleId} className="font-display text-xl leading-snug font-semibold text-heading">
             {title}
           </h2>
           {description && (

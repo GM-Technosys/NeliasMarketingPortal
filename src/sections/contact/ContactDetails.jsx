@@ -23,7 +23,7 @@ export function ContactDetails({ type = "contact", className }) {
       render: (val) => (
         <a
           href={`mailto:${val}`}
-          className="hover:underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+          className="underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
         >
           {val}
         </a>
@@ -37,7 +37,7 @@ export function ContactDetails({ type = "contact", className }) {
       render: (val) => (
         <a
           href={toTelHref(val)}
-          className="hover:underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+          className="underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
         >
           {val}
         </a>
@@ -53,7 +53,7 @@ export function ContactDetails({ type = "contact", className }) {
           href={toWhatsAppHref(val)}
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+          className="underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
         >
           {val}
         </a>
@@ -74,7 +74,7 @@ export function ContactDetails({ type = "contact", className }) {
       render: (val) => (
         <div>
           <span>{val}</span>
-          <span className="block mt-1 text-xs font-normal text-fg-muted">
+          <span className="mt-1 block text-xs font-normal text-fg-muted">
             {t("contact:hours.response")}
           </span>
         </div>
@@ -97,12 +97,12 @@ export function ContactDetails({ type = "contact", className }) {
             <IconBadge
               icon={item.icon}
               tone="azure"
-              className="h-11 w-11 min-h-11 min-w-11 shrink-0"
+              className="h-11 min-h-11 w-11 min-w-11 shrink-0"
               aria-hidden="true"
             />
             <div className="min-w-0 flex-1">
               <span className="block text-sm font-semibold text-fg-muted">{item.label}</span>
-              <div className="mt-0.5 break-words text-lg font-semibold text-heading">
+              <div className="mt-0.5 text-lg font-semibold break-words text-heading">
                 {item.render(item.value)}
               </div>
             </div>

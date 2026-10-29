@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Seo } from "@/components/common/Seo";
 import { PageHeader } from "@/components/patterns/PageHeader";
+import { SignUpLink } from "@/components/common/SignUpLink";
 import { pricingCatalog } from "@/data/pricing-catalog";
 import { features } from "@/config/features";
 import { track, EVENTS } from "@/lib/analytics";
@@ -63,6 +64,17 @@ export default function PricingPage() {
         className="py-12 md:py-16 lg:py-20"
         titleClassName="text-3xl sm:text-4xl md:text-5xl lg:text-[2.85rem] xl:text-[3.25rem] lg:leading-[1.1] max-w-[32ch]"
         leadClassName="mt-4 md:mt-5 text-base sm:text-lg lg:text-lead leading-relaxed max-w-2xl"
+        actions={
+          <SignUpLink
+            variant="primary"
+            size="lg"
+            location="pricing-hero"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t("common:cta.simulatePrice")}
+          </SignUpLink>
+        }
       />
 
       {/* 2. Plans cards with billing toggle */}
@@ -84,4 +96,3 @@ export default function PricingPage() {
     </>
   );
 }
-

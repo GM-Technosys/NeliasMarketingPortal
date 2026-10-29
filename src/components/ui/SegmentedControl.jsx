@@ -28,7 +28,7 @@ export function SegmentedControl({
   return (
     <fieldset
       className={cn(
-        "m-0 flex w-full max-w-sm sm:max-w-none sm:w-auto sm:inline-flex items-center rounded-md border-0 bg-surface-sunken p-1",
+        "m-0 flex w-full max-w-sm items-center rounded-md border-0 bg-surface-sunken p-1 sm:inline-flex sm:w-auto sm:max-w-none",
         className,
       )}
     >
@@ -41,9 +41,11 @@ export function SegmentedControl({
           <label
             key={opt.value}
             className={cn(
-              "relative flex-1 sm:flex-initial inline-flex cursor-pointer items-center justify-center gap-2 rounded font-semibold transition-colors select-none",
+              "relative inline-flex flex-1 cursor-pointer items-center justify-center gap-2 rounded font-semibold transition-colors select-none sm:flex-initial",
               size === "lg" ? "min-h-12 px-5 text-base" : "min-h-11 px-4 text-sm md:text-base",
-              isSelected ? "bg-selected text-selected-fg shadow-xs" : "text-fg-strong hover:text-heading",
+              isSelected
+                ? "bg-selected text-selected-fg shadow-xs"
+                : "text-fg-strong hover:text-heading",
               "has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-focus",
             )}
           >

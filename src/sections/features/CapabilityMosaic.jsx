@@ -27,22 +27,16 @@ export function CapabilityMosaic() {
   return (
     <div
       aria-hidden="true"
-      className="relative mx-auto aspect-[4/3] w-full max-w-sm lg:max-w-none select-none"
+      className="relative mx-auto aspect-[4/3] w-full max-w-sm select-none lg:max-w-none"
     >
       {/* Layer 1: Ribbon sweep SVG */}
       <svg
         viewBox="0 0 400 300"
         fill="none"
-        className="absolute inset-0 h-full w-full pointer-events-none"
+        className="pointer-events-none absolute inset-0 h-full w-full"
       >
         <defs>
-          <linearGradient
-            id="features-mosaic-ribbon"
-            x1="0%"
-            y1="100%"
-            x2="100%"
-            y2="0%"
-          >
+          <linearGradient id="features-mosaic-ribbon" x1="0%" y1="100%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="var(--color-flame-500)" />
             <stop offset="45%" stopColor="var(--color-flame-400)" />
             <stop offset="100%" stopColor="var(--color-sun-300)" />
@@ -68,7 +62,7 @@ export function CapabilityMosaic() {
               key={key}
               style={{ animationDelay: `${index * 50}ms` }}
               className={cn(
-                "grid place-items-center rounded-lg border aspect-square animate-tile-in",
+                "grid aspect-square animate-tile-in place-items-center rounded-lg border",
                 getTileClasses(index),
               )}
             >

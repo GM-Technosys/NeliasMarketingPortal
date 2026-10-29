@@ -85,8 +85,13 @@
     "it-technology-services": {
       "name": "IT & Technology Services",
       "summary": "Bring client relationships, projects, timesheets, customer support and reporting into a connected workflow.",
-      "walkthrough": ["Client relationships", "Projects", "Timesheets", "Customer support", "Reporting"]
+      "walkthrough": [
+        "Client relationships",
+        "Projects",
+        "Timesheets",
+        "Customer support",
+        "Reporting"
+      ]
     }
   }
 }
-

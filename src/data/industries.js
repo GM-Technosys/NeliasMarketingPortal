@@ -18,4 +18,3 @@ export const industries = Object.freeze([
   "construction-btp",
   "it-technology-services",
 ]);
-

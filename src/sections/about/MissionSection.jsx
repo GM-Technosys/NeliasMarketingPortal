@@ -8,12 +8,7 @@ export function MissionSection() {
   const { t } = useTranslation();
 
   return (
-    <Section
-      id="mission"
-      tone="inverse"
-      spacing="lg"
-      aria-labelledby="mission-heading"
-    >
+    <Section id="mission" tone="inverse" spacing="lg" aria-labelledby="mission-heading">
       <Container>
         <Reveal>
           <div>

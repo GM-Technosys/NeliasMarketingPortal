@@ -57,7 +57,7 @@ export default function FaqPage() {
         tone="tint"
         spacing="sm"
         accent={true}
-        className="py-6 sm:py-8 md:py-10 [&_.max-w-3xl]:mx-auto [&_.max-w-3xl]:text-center [&_.bg-brand-ribbon]:mx-auto"
+        className="py-6 sm:py-8 md:py-10 [&_.bg-brand-ribbon]:mx-auto [&_.max-w-3xl]:mx-auto [&_.max-w-3xl]:text-center"
       />
 
       <Section tone="default" spacing="lg">
@@ -79,7 +79,7 @@ export default function FaqPage() {
           </nav>
 
           {/* Grouped questions centered */}
-          <div className="max-w-3xl mx-auto">
+          <div className="mx-auto max-w-3xl">
             <FaqGroups groups={visibleGroups} />
           </div>
         </Container>

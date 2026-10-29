@@ -12,39 +12,23 @@ export function AnswerSection({ tone = "default" }) {
   const triadItems = t("about:answer.triad", { returnObjects: true }) || [];
 
   return (
-    <Section
-      id="answer"
-      tone={tone}
-      spacing="lg"
-      aria-labelledby="answer-heading"
-    >
+    <Section id="answer" tone={tone} spacing="lg" aria-labelledby="answer-heading">
       <Container>
         <Reveal>
           <div>
             {/* Title h2 */}
-            <SectionHeading
-              as="h2"
-              size="h2"
-              id="answer-heading"
-              title={t("about:answer.title")}
-            />
+            <SectionHeading as="h2" size="h2" id="answer-heading" title={t("about:answer.title")} />
 
             {/* Row 1: Text paragraphs + FoundationIllustration */}
             <div className="mt-8 lg:grid lg:grid-cols-12 lg:items-center lg:gap-14">
-              <div className="lg:col-span-7 space-y-5">
-                <p className="text-lead text-fg-muted max-w-[62ch]">
-                  {t("about:answer.p1")}
-                </p>
-                <p className="text-lead text-fg-muted max-w-[62ch]">
-                  {t("about:answer.p2")}
-                </p>
-                <p className="text-lead text-fg-muted max-w-[62ch]">
-                  {t("about:answer.p3")}
-                </p>
+              <div className="space-y-5 lg:col-span-7">
+                <p className="max-w-[62ch] text-lead text-fg-muted">{t("about:answer.p1")}</p>
+                <p className="max-w-[62ch] text-lead text-fg-muted">{t("about:answer.p2")}</p>
+                <p className="max-w-[62ch] text-lead text-fg-muted">{t("about:answer.p3")}</p>
               </div>
 
-              <div className="mt-10 lg:mt-0 lg:col-span-5">
-                <div className="w-full max-w-md mx-auto">
+              <div className="mt-10 lg:col-span-5 lg:mt-0">
+                <div className="mx-auto w-full max-w-md">
                   <FoundationIllustration />
                 </div>
               </div>

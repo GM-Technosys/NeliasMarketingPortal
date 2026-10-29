@@ -109,16 +109,16 @@ export function ExtensionsSection({ tone = "default" }) {
           <div className="mb-8">
             <h2
               id="extensions-heading"
-              className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-heading"
+              className="font-display text-2xl font-bold tracking-tight text-heading sm:text-3xl"
             >
               {t("pricing:grow.title")}
             </h2>
           </div>
 
-          <div className="grid gap-8 lg:grid-cols-12 items-start">
+          <div className="grid items-start gap-8 lg:grid-cols-12">
             {/* Left: Enhanced Extensions Table Card (7 cols on lg) */}
-            <div className="lg:col-span-7 rounded-2xl border border-line bg-surface-raised shadow-xs overflow-hidden">
-              <div className="flex items-center justify-between border-b border-line bg-surface-muted/50 px-5 py-3.5 text-xs font-semibold uppercase tracking-wider text-fg-muted">
+            <div className="overflow-hidden rounded-2xl border border-line bg-surface-raised shadow-xs lg:col-span-7">
+              <div className="flex items-center justify-between border-b border-line bg-surface-muted/50 px-5 py-3.5 text-xs font-semibold tracking-wider text-fg-muted uppercase">
                 <span>{t("pricing:grow.head.extension")}</span>
                 <span>{t("pricing:grow.head.monthly")}</span>
               </div>
@@ -131,19 +131,17 @@ export function ExtensionsSection({ tone = "default" }) {
                       key={item.id}
                       className="flex items-center justify-between gap-4 px-5 py-3.5 transition-colors hover:bg-surface-tint/40"
                     >
-                      <div className="flex items-center gap-3 min-w-0">
+                      <div className="flex min-w-0 items-center gap-3">
                         <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-surface-tint text-accent">
                           <Icon className="h-4 w-4" aria-hidden="true" />
                         </div>
-                        <span className="font-medium text-heading truncate">
-                          {item.label}
-                        </span>
+                        <span className="truncate font-medium text-heading">{item.label}</span>
                       </div>
                       <span
                         className={
                           item.isNumeric
-                            ? "font-semibold text-heading tabular-nums shrink-0 text-right text-xs sm:text-sm"
-                            : "text-xs text-fg-muted shrink-0 text-right max-w-[14rem]"
+                            ? "shrink-0 text-right text-xs font-semibold text-heading tabular-nums sm:text-sm"
+                            : "max-w-[14rem] shrink-0 text-right text-xs text-fg-muted"
                         }
                       >
                         {item.value}
@@ -155,20 +153,21 @@ export function ExtensionsSection({ tone = "default" }) {
             </div>
 
             {/* Right: Dynamic Calculation & Transparency Showcase (5 cols on lg) */}
-            <div className="lg:col-span-5 flex flex-col gap-5">
+            <div className="flex flex-col gap-5 lg:col-span-5">
               {/* Interactive / Visual Math Card */}
-              <div className="rounded-2xl border border-line bg-surface-raised p-6 shadow-xs relative overflow-hidden">
-                <div className="flex items-center gap-2 mb-4">
+              <div className="relative overflow-hidden rounded-2xl border border-line bg-surface-raised p-6 shadow-xs">
+                <div className="mb-4 flex items-center gap-2">
                   <div className="flex h-7 w-7 items-center justify-center rounded-md bg-accent-soft text-accent">
                     <Calculator className="h-4 w-4" aria-hidden="true" />
                   </div>
-                  <Badge className="bg-surface-tint text-accent border border-accent/20 text-xs font-semibold">
+                  <Badge className="border border-accent/20 bg-surface-tint text-xs font-semibold text-accent">
                     {t("pricing:grow.head.extension")}
                   </Badge>
                 </div>
 
                 <h3 className="font-display text-lg font-bold text-heading">
-                  {plans.start ? t("home:pricing.table.plans.start") : "START"} + 1 {t("home:pricing.table.rows.modules")}
+                  {plans.start ? t("home:pricing.table.plans.start") : "START"} + 1{" "}
+                  {t("home:pricing.table.rows.modules")}
                 </h3>
 
                 {/* Math breakdown pills */}
@@ -179,24 +178,24 @@ export function ExtensionsSection({ tone = "default" }) {
                       {formatNumber(ex.base, lng)}
                     </strong>
                   </div>
-                  <span className="text-fg-muted font-bold">+</span>
+                  <span className="font-bold text-fg-muted">+</span>
                   <div className="rounded-lg border border-accent/30 bg-surface-tint px-3 py-2 text-center">
                     <span className="block text-[11px] text-accent">+1 mod.</span>
                     <strong className="font-semibold text-accent tabular-nums">
                       {formatNumber(ex.extra, lng)}
                     </strong>
                   </div>
-                  <span className="text-fg-muted font-bold">=</span>
+                  <span className="font-bold text-fg-muted">=</span>
                   <div className="rounded-lg border-2 border-accent bg-accent/10 px-3.5 py-2 text-center">
-                    <span className="block text-[11px] text-heading font-medium">Total / mo</span>
-                    <strong className="font-bold text-accent text-sm sm:text-base tabular-nums">
+                    <span className="block text-[11px] font-medium text-heading">Total / mo</span>
+                    <strong className="text-sm font-bold text-accent tabular-nums sm:text-base">
                       {formatFcfa(ex.total, lng)}
                     </strong>
                   </div>
                 </div>
 
                 {/* Full Explanation Note */}
-                <p className="mt-5 text-xs sm:text-sm text-fg-muted leading-relaxed">
+                <p className="mt-5 text-xs leading-relaxed text-fg-muted sm:text-sm">
                   {t("pricing:grow.example", {
                     base: formatNumber(ex.base, lng),
                     extra: formatNumber(ex.extra, lng),
@@ -206,11 +205,9 @@ export function ExtensionsSection({ tone = "default" }) {
               </div>
 
               {/* Legal & Project Consultation Callout */}
-              <div className="rounded-xl border border-line/70 bg-surface-muted/40 p-4 text-xs text-fg-muted flex items-start gap-3">
-                <Info className="h-4 w-4 shrink-0 text-accent mt-0.5" aria-hidden="true" />
-                <p className="leading-relaxed">
-                  {t("home:pricing.legal")}
-                </p>
+              <div className="flex items-start gap-3 rounded-xl border border-line/70 bg-surface-muted/40 p-4 text-xs text-fg-muted">
+                <Info className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                <p className="leading-relaxed">{t("home:pricing.legal")}</p>
               </div>
             </div>
           </div>

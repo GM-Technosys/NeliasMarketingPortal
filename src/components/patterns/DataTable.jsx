@@ -38,16 +38,14 @@ export function DataTable({
               const isHighlight = highlightColumn === idx;
               // If rowHeaders is true and top-left header cell is empty, render an empty <td>
               if (rowHeaders && idx === 0 && (!col || col === "")) {
-                return (
-                  <td key={idx} className="border-b border-line px-4 py-3 align-top" />
-                );
+                return <td key={idx} className="border-b border-line px-4 py-3 align-top" />;
               }
               return (
                 <th
                   key={idx}
                   scope="col"
                   className={cn(
-                    "border-b border-line px-4 py-3 font-semibold text-heading align-top [overflow-wrap:anywhere]",
+                    "border-b border-line px-4 py-3 align-top font-semibold [overflow-wrap:anywhere] text-heading",
                     isHighlight && "bg-surface-tint",
                   )}
                 >
@@ -68,7 +66,7 @@ export function DataTable({
                       key={colIdx}
                       scope="row"
                       className={cn(
-                        "border-t border-line px-4 py-3 font-semibold text-heading align-top text-left [overflow-wrap:anywhere]",
+                        "border-t border-line px-4 py-3 text-left align-top font-semibold [overflow-wrap:anywhere] text-heading",
                         isHighlight && "bg-surface-tint",
                       )}
                     >
@@ -80,7 +78,7 @@ export function DataTable({
                   <td
                     key={colIdx}
                     className={cn(
-                      "border-t border-line px-4 py-3 align-top text-fg [overflow-wrap:anywhere]",
+                      "border-t border-line px-4 py-3 align-top [overflow-wrap:anywhere] text-fg",
                       isHighlight && "bg-surface-tint",
                     )}
                   >

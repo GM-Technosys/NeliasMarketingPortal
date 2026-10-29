@@ -77,7 +77,7 @@ export function useLeadForm(type = "contact") {
       consent: false,
       honeypot: "",
     }),
-    [initialIndustry, initialBusinessNeeds]
+    [initialIndustry, initialBusinessNeeds],
   );
 
   const [values, setValues] = useState(createInitialValues);
@@ -222,7 +222,7 @@ export function useLeadForm(type = "contact") {
         }, 0);
       }
     },
-    [status, values, validate, createInitialValues, type, i18n.language, location.pathname, t]
+    [status, values, validate, createInitialValues, type, i18n.language, location.pathname, t],
   );
 
   return {

@@ -14,8 +14,7 @@ const page = (load) => ({
 // TODO(Debass): old industry addresses redirect to the inline detail; confirm.
 function IndustryRedirect() {
   const { slug } = useParams();
-  const target =
-    slug && industries.includes(slug) ? `/industries#${slug}` : "/industries";
+  const target = slug && industries.includes(slug) ? `/industries#${slug}` : "/industries";
   return <Navigate to={target} replace />;
 }
 

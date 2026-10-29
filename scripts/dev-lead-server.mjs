@@ -41,7 +41,7 @@ const server = http.createServer((req, res) => {
       // Log non-personal telemetry only: field names, type, language
       const fieldNames = Object.keys(payload);
       console.log(
-        `[dev-lead-server] Received lead: type="${payload.type || "unknown"}", lang="${payload.language || "unknown"}", fields=[${fieldNames.join(", ")}]`
+        `[dev-lead-server] Received lead: type="${payload.type || "unknown"}", lang="${payload.language || "unknown"}", fields=[${fieldNames.join(", ")}]`,
       );
 
       const isFail = parsedUrl.searchParams.get("fail") === "1";

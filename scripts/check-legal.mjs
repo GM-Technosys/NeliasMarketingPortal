@@ -88,7 +88,7 @@ async function checkLegal() {
             fileErrors.push(`Article ${expectedNum}: title is missing or not a string`);
           } else if (!art.title.startsWith(expectedPrefix)) {
             fileErrors.push(
-              `Article ${expectedNum}: title "${art.title}" does not start with "${expectedPrefix}"`
+              `Article ${expectedNum}: title "${art.title}" does not start with "${expectedPrefix}"`,
             );
           }
 
@@ -102,12 +102,12 @@ async function checkLegal() {
                 (keys[0] !== "p" && keys[0] !== "ul" && keys[0] !== "table")
               ) {
                 fileErrors.push(
-                  `Article ${expectedNum}, block ${bIdx + 1}: block must have exactly one key ('p', 'ul' or 'table'), got [${keys.join(", ")}]`
+                  `Article ${expectedNum}, block ${bIdx + 1}: block must have exactly one key ('p', 'ul' or 'table'), got [${keys.join(", ")}]`,
                 );
               } else if (keys[0] === "p") {
                 if (typeof block.p !== "string" || block.p.trim() === "") {
                   fileErrors.push(
-                    `Article ${expectedNum}, block ${bIdx + 1}: 'p' value must be a non-empty string`
+                    `Article ${expectedNum}, block ${bIdx + 1}: 'p' value must be a non-empty string`,
                   );
                 }
               } else if (keys[0] === "ul") {
@@ -117,14 +117,14 @@ async function checkLegal() {
                   block.ul.some((item) => typeof item !== "string" || item.trim() === "")
                 ) {
                   fileErrors.push(
-                    `Article ${expectedNum}, block ${bIdx + 1}: 'ul' value must be a non-empty array of non-empty strings`
+                    `Article ${expectedNum}, block ${bIdx + 1}: 'ul' value must be a non-empty array of non-empty strings`,
                   );
                 }
               } else if (keys[0] === "table") {
                 const tbl = block.table;
                 if (!tbl || typeof tbl !== "object" || Array.isArray(tbl)) {
                   fileErrors.push(
-                    `Article ${expectedNum}, block ${bIdx + 1}: 'table' value must be an object`
+                    `Article ${expectedNum}, block ${bIdx + 1}: 'table' value must be an object`,
                   );
                 } else if (
                   !Array.isArray(tbl.head) ||
@@ -132,7 +132,7 @@ async function checkLegal() {
                   tbl.head.some((col) => typeof col !== "string" || col.trim() === "")
                 ) {
                   fileErrors.push(
-                    `Article ${expectedNum}, block ${bIdx + 1}: 'table.head' must be a non-empty array of non-empty strings`
+                    `Article ${expectedNum}, block ${bIdx + 1}: 'table.head' must be a non-empty array of non-empty strings`,
                   );
                 } else if (
                   !Array.isArray(tbl.rows) ||
@@ -141,11 +141,11 @@ async function checkLegal() {
                     (row) =>
                       !Array.isArray(row) ||
                       row.length !== tbl.head.length ||
-                      row.some((cell) => typeof cell !== "string" || cell.trim() === "")
+                      row.some((cell) => typeof cell !== "string" || cell.trim() === ""),
                   )
                 ) {
                   fileErrors.push(
-                    `Article ${expectedNum}, block ${bIdx + 1}: 'table.rows' must be a non-empty array of rows where each row has ${tbl.head.length} non-empty strings`
+                    `Article ${expectedNum}, block ${bIdx + 1}: 'table.rows' must be a non-empty array of rows where each row has ${tbl.head.length} non-empty strings`,
                   );
                 }
               }
@@ -163,11 +163,11 @@ async function checkLegal() {
             const ulBlocks = targetArticle.blocks.filter((b) => b.ul !== undefined);
             if (ulBlocks.length !== 1) {
               fileErrors.push(
-                `Article ${artNum}: expected exactly one 'ul' block, found ${ulBlocks.length}`
+                `Article ${artNum}: expected exactly one 'ul' block, found ${ulBlocks.length}`,
               );
             } else if (!Array.isArray(ulBlocks[0].ul) || ulBlocks[0].ul.length !== reqItems) {
               fileErrors.push(
-                `Article ${artNum}: expected exactly ${reqItems} items in 'ul' block, found ${ulBlocks[0].ul?.length}`
+                `Article ${artNum}: expected exactly ${reqItems} items in 'ul' block, found ${ulBlocks[0].ul?.length}`,
               );
             }
           }
@@ -183,19 +183,19 @@ async function checkLegal() {
             const tblBlocks = targetArticle.blocks.filter((b) => b.table !== undefined);
             if (tblBlocks.length !== 1) {
               fileErrors.push(
-                `Article ${artNum}: expected exactly one 'table' block, found ${tblBlocks.length}`
+                `Article ${artNum}: expected exactly one 'table' block, found ${tblBlocks.length}`,
               );
             } else {
               const tbl = tblBlocks[0].table;
               if (tbl && Array.isArray(tbl.head) && Array.isArray(tbl.rows)) {
                 if (tbl.head.length !== reqTbl.cols) {
                   fileErrors.push(
-                    `Article ${artNum}: expected ${reqTbl.cols} columns in 'table' block, found ${tbl.head.length}`
+                    `Article ${artNum}: expected ${reqTbl.cols} columns in 'table' block, found ${tbl.head.length}`,
                   );
                 }
                 if (tbl.rows.length !== reqTbl.rows) {
                   fileErrors.push(
-                    `Article ${artNum}: expected ${reqTbl.rows} rows in 'table' block, found ${tbl.rows.length}`
+                    `Article ${artNum}: expected ${reqTbl.rows} rows in 'table' block, found ${tbl.rows.length}`,
                   );
                 }
               }
@@ -228,7 +228,7 @@ async function checkLegal() {
 
         if (enSequence !== frSequence) {
           console.error(
-            `X [${ns}] Block sequence mismatch in Article ${i + 1}: EN=[${enSequence}] vs FR=[${frSequence}]`
+            `X [${ns}] Block sequence mismatch in Article ${i + 1}: EN=[${enSequence}] vs FR=[${frSequence}]`,
           );
           hasErrors = true;
         }
@@ -243,7 +243,7 @@ async function checkLegal() {
               enTbl.rows?.length !== frTbl.rows?.length
             ) {
               console.error(
-                `X [${ns}] Table shape mismatch in Article ${i + 1}, block ${bIdx + 1}: EN=[${enTbl.head?.length} cols, ${enTbl.rows?.length} rows] vs FR=[${frTbl.head?.length} cols, ${frTbl.rows?.length} rows]`
+                `X [${ns}] Table shape mismatch in Article ${i + 1}, block ${bIdx + 1}: EN=[${enTbl.head?.length} cols, ${enTbl.rows?.length} rows] vs FR=[${frTbl.head?.length} cols, ${frTbl.rows?.length} rows]`,
               );
               hasErrors = true;
             }

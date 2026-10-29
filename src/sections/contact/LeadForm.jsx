@@ -47,10 +47,7 @@ export function LeadForm({ type = "contact", className, short = false }) {
     feedbackRef,
   } = useLeadForm(type);
 
-  const countryOptions = useMemo(
-    () => buildCountryOptions(i18n.language),
-    [i18n.language]
-  );
+  const countryOptions = useMemo(() => buildCountryOptions(i18n.language), [i18n.language]);
 
   const industryOptions = useMemo(
     () => [
@@ -60,7 +57,7 @@ export function LeadForm({ type = "contact", className, short = false }) {
       })),
       { value: "other", label: t("contact:form.other") },
     ],
-    [t]
+    [t],
   );
 
   const companySizeOptions = useMemo(
@@ -71,7 +68,7 @@ export function LeadForm({ type = "contact", className, short = false }) {
       { value: "s4", label: t("contact:sizes.s4") },
       { value: "s5", label: t("contact:sizes.s5") },
     ],
-    [t]
+    [t],
   );
 
   if (status === "success" || status === "mailto") {
@@ -79,12 +76,7 @@ export function LeadForm({ type = "contact", className, short = false }) {
   }
 
   return (
-    <form
-      ref={formRef}
-      noValidate
-      onSubmit={submit}
-      className={cn("space-y-6", className)}
-    >
+    <form ref={formRef} noValidate onSubmit={submit} className={cn("space-y-6", className)}>
       {/* Error summary */}
       {Object.keys(errors).length > 0 && (
         <div ref={summaryRef} tabIndex={-1} role="alert" className="outline-none">
@@ -165,11 +157,7 @@ export function LeadForm({ type = "contact", className, short = false }) {
 
         {!short && (
           <>
-            <Field
-              id="lead-country"
-              label={t("contact:form.country")}
-              optional
-            >
+            <Field id="lead-country" label={t("contact:form.country")} optional>
               <Select
                 autoComplete="country"
                 placeholder={true}
@@ -179,11 +167,7 @@ export function LeadForm({ type = "contact", className, short = false }) {
               />
             </Field>
 
-            <Field
-              id="lead-industry"
-              label={t("contact:form.industry")}
-              optional
-            >
+            <Field id="lead-industry" label={t("contact:form.industry")} optional>
               <Select
                 placeholder={true}
                 options={industryOptions}
@@ -213,11 +197,7 @@ export function LeadForm({ type = "contact", className, short = false }) {
       {!short && <NeedsFieldset selected={values.businessNeeds} onToggle={toggleNeed} />}
 
       {/* Message textarea */}
-      <Field
-        id="lead-message"
-        label={t("contact:form.message")}
-        optional
-      >
+      <Field id="lead-message" label={t("contact:form.message")} optional>
         {(controlProps) => (
           <div>
             <Textarea
@@ -287,7 +267,7 @@ export function LeadForm({ type = "contact", className, short = false }) {
             to="/features"
             className={cn(
               buttonStyles({ variant: "outline", size: "lg" }),
-              "w-full text-center sm:w-auto"
+              "w-full text-center sm:w-auto",
             )}
           >
             {t("cta.exploreNelias")}
@@ -298,9 +278,7 @@ export function LeadForm({ type = "contact", className, short = false }) {
       {/* Error alert line */}
       {status === "error" && (
         <Alert tone="danger" live="assertive" className="mt-4">
-          <p className="mb-2">
-            {t(`contact:errors.${submitError || "submitFailed"}`)}
-          </p>
+          <p className="mb-2">{t(`contact:errors.${submitError || "submitFailed"}`)}</p>
           <TextLink to={`mailto:${site.contact.email}`} showArrow={false}>
             {t("contact:feedback.writeTo", { email: site.contact.email })}
           </TextLink>

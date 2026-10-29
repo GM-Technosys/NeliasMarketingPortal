@@ -67,8 +67,11 @@ export function StepProgress({ steps = [], current = 0, onStepClick, className }
                   className={cn(
                     "flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold transition-colors",
                     isCompleted && "bg-selected text-selected-fg shadow-xs",
-                    isCurrent && "border-2 border-selected bg-surface-raised text-heading shadow-xs",
-                    !isCompleted && !isCurrent && "border-2 border-line-strong bg-surface-raised text-fg-subtle",
+                    isCurrent &&
+                      "border-2 border-selected bg-surface-raised text-heading shadow-xs",
+                    !isCompleted &&
+                      !isCurrent &&
+                      "border-2 border-line-strong bg-surface-raised text-fg-subtle",
                   )}
                 >
                   {isCompleted ? (

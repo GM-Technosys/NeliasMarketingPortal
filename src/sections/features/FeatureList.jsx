@@ -22,13 +22,10 @@ export function FeatureList({ filter = "all" }) {
   const { t } = useTranslation();
 
   const total = visibleAreas.length;
-  const targetAreaKeys =
-    filter === "all" ? null : industryProfiles[filter]?.areas ?? [];
+  const targetAreaKeys = filter === "all" ? null : (industryProfiles[filter]?.areas ?? []);
 
   const areas =
-    filter === "all"
-      ? visibleAreas
-      : visibleAreas.filter((key) => targetAreaKeys.includes(key));
+    filter === "all" ? visibleAreas : visibleAreas.filter((key) => targetAreaKeys.includes(key));
 
   const shown = areas.length;
 
@@ -36,8 +33,7 @@ export function FeatureList({ filter = "all" }) {
     return <Alert tone="note">{t("features:page.empty")}</Alert>;
   }
 
-  const industryName =
-    filter !== "all" ? t(`industries:items.${filter}.name`) : "";
+  const industryName = filter !== "all" ? t(`industries:items.${filter}.name`) : "";
 
   return (
     <div>
@@ -69,9 +65,7 @@ export function FeatureList({ filter = "all" }) {
                 <h2 className="font-display text-h3 text-heading">
                   {t(`features:areas.${key}.name`)}
                 </h2>
-                <p className="mt-2 text-fg-muted">
-                  {t(`features:areas.${key}.description`)}
-                </p>
+                <p className="mt-2 text-fg-muted">{t(`features:areas.${key}.description`)}</p>
                 {state !== AVAILABILITY.AVAILABLE && (
                   <div className="mt-3">
                     <AvailabilityBadge state={state} />

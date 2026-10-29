@@ -21,28 +21,26 @@ export function HomeHero() {
       tone="default"
       spacing="lg"
       aria-labelledby="hero-heading"
-      className="py-14 md:py-20 lg:py-24 overflow-hidden"
+      className="overflow-hidden py-14 md:py-20 lg:py-24"
     >
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
           {/* Text column */}
-          <div className="lg:col-span-6 flex flex-col items-start text-left">
-            <p className="mb-4 text-sm font-semibold text-fg-muted">
-              {t("home:hero.eyebrow")}
-            </p>
+          <div className="flex flex-col items-start text-left lg:col-span-6">
+            <p className="mb-4 text-sm font-semibold text-fg-muted">{t("home:hero.eyebrow")}</p>
 
             <h1
               id="hero-heading"
-              className="font-display text-h1 font-semibold text-heading leading-tight tracking-tight max-w-[20ch]"
+              className="max-w-[20ch] font-display text-h1 leading-tight font-semibold tracking-tight text-heading"
             >
               {t("home:hero.title")}
             </h1>
 
-            <p className="mt-6 text-lead text-fg-muted max-w-[52ch] leading-relaxed">
+            <p className="mt-6 max-w-[52ch] text-lead leading-relaxed text-fg-muted">
               {t("home:hero.subtitle")}
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto">
+            <div className="mt-8 flex w-full flex-col items-stretch gap-3.5 sm:w-auto sm:flex-row sm:items-center">
               {/* TODO(Debass): the hero primary button "Simulate my price" routes to https://login.nelias.app/ in a new tab as requested. */}
               <SignUpLink
                 variant="primary"
@@ -50,7 +48,7 @@ export function HomeHero() {
                 location="hero"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto text-center"
+                className="w-full text-center sm:w-auto"
               >
                 {t("home:hero.simulatePrice")}
               </SignUpLink>
@@ -59,7 +57,7 @@ export function HomeHero() {
                 onClick={() => track(EVENTS.CTA_CLICK, { intent: "contact", location: "hero" })}
                 className={cn(
                   buttonStyles({ variant: "outline", size: "lg" }),
-                  "w-full sm:w-auto text-center",
+                  "w-full text-center sm:w-auto",
                 )}
               >
                 {t("common:cta.talkToExpert")}
@@ -74,7 +72,7 @@ export function HomeHero() {
           </div>
 
           {/* Decorative composition column */}
-          <div className="lg:col-span-6 w-full mt-4 lg:mt-0">
+          <div className="mt-4 w-full lg:col-span-6 lg:mt-0">
             <HeroComposition />
           </div>
         </div>

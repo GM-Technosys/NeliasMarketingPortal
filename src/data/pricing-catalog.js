@@ -89,9 +89,7 @@ export const plans = pricingCatalog.plans;
  * All amounts in FCFA, excluding tax, per month.
  */
 export const optionalCharges = {
-  modules: [
-    { id: "additional-module", rule: { kind: "fixed", amount: 15000 } },
-  ],
+  modules: [{ id: "additional-module", rule: { kind: "fixed", amount: 15000 } }],
   capacity: [
     { id: "user-1", rule: { kind: "fixed", amount: 5000 } },
     { id: "users-5", rule: { kind: "fixed", amount: 20000 } },
@@ -118,4 +116,3 @@ export const optionalCharges = {
 };
 
 export const additionalModuleRule = optionalCharges.modules[0].rule;
-

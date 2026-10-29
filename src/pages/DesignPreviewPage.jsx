@@ -170,7 +170,7 @@ export default function DesignPreviewPage() {
           <p className="mt-2 text-fg-muted">
             Live custom properties that adapt with the theme (light and dark).
           </p>
-          <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
             {[
               "surface",
               "surface-raised",

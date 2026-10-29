@@ -11,7 +11,10 @@ export function DesktopNav() {
   const { t } = useTranslation();
 
   return (
-    <nav aria-label={t("header.mainNavLabel")} className="hidden items-center gap-0.5 xl:flex 2xl:gap-1">
+    <nav
+      aria-label={t("header.mainNavLabel")}
+      className="hidden items-center gap-0.5 xl:flex 2xl:gap-1"
+    >
       {mainNav.map(({ key, to }) => (
         <NavLink
           key={key}

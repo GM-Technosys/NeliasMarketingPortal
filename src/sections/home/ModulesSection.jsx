@@ -75,11 +75,11 @@ export function ModulesSection({ tone = "tint", headingId = "modules-heading" })
           <div className="max-w-3xl">
             <h2
               id={headingId}
-              className="font-display text-h2 font-semibold text-heading leading-tight tracking-tight"
+              className="font-display text-h2 leading-tight font-semibold tracking-tight text-heading"
             >
               {t("home:modules.title")}
             </h2>
-            <p className="mt-4 text-lead text-fg-muted leading-relaxed">
+            <p className="mt-4 text-lead leading-relaxed text-fg-muted">
               {t("home:modules.intro", {
                 start: MODULES_INCLUDED.start,
                 business: MODULES_INCLUDED.business,
@@ -105,11 +105,16 @@ export function ModulesSection({ tone = "tint", headingId = "modules-heading" })
                     <div>
                       {/* Family Header */}
                       <div className="flex items-center justify-between gap-3 border-b border-line/60 pb-4">
-                        <div className="flex items-center gap-3 min-w-0">
+                        <div className="flex min-w-0 items-center gap-3">
                           {FamilyIcon && (
-                            <IconBadge icon={FamilyIcon} tone="azure" size="sm" className="shrink-0" />
+                            <IconBadge
+                              icon={FamilyIcon}
+                              tone="azure"
+                              size="sm"
+                              className="shrink-0"
+                            />
                           )}
-                          <h3 className="font-display text-lg font-semibold text-heading truncate">
+                          <h3 className="truncate font-display text-lg font-semibold text-heading">
                             {t(`home:modules.families.${family.id}`)}
                           </h3>
                         </div>
@@ -124,10 +129,10 @@ export function ModulesSection({ tone = "tint", headingId = "modules-heading" })
                           const ModuleIcon = moduleIcons[modId];
                           return (
                             <li key={modId}>
-                              <span className="inline-flex items-center gap-2 rounded-lg border border-line bg-surface px-3 py-1.5 text-xs sm:text-sm font-medium text-fg shadow-2xs transition-colors duration-150 hover:border-accent hover:bg-surface-tint hover:text-accent-strong cursor-default">
+                              <span className="inline-flex cursor-default items-center gap-2 rounded-lg border border-line bg-surface px-3 py-1.5 text-xs font-medium text-fg shadow-2xs transition-colors duration-150 hover:border-accent hover:bg-surface-tint hover:text-accent-strong sm:text-sm">
                                 {ModuleIcon && (
                                   <ModuleIcon
-                                    className="h-3.5 w-3.5 text-accent shrink-0"
+                                    className="h-3.5 w-3.5 shrink-0 text-accent"
                                     aria-hidden="true"
                                   />
                                 )}
@@ -145,11 +150,11 @@ export function ModulesSection({ tone = "tint", headingId = "modules-heading" })
 
             {/* Extra module cost callout (only when pricing is public) */}
             {features.pricingPublic && (
-              <div className="mt-8 flex items-start sm:items-center gap-3.5 rounded-lg border border-line bg-surface-raised p-4 shadow-2xs">
+              <div className="mt-8 flex items-start gap-3.5 rounded-lg border border-line bg-surface-raised p-4 shadow-2xs sm:items-center">
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-accent-soft text-accent">
                   <SlidersHorizontal className="h-4 w-4" aria-hidden="true" />
                 </span>
-                <p className="text-sm md:text-base text-fg-muted leading-relaxed">
+                <p className="text-sm leading-relaxed text-fg-muted md:text-base">
                   {t("home:modules.extraModule", {
                     amount: formatFcfa(EXTRA_MODULE_MONTHLY),
                   })}
@@ -158,21 +163,15 @@ export function ModulesSection({ tone = "tint", headingId = "modules-heading" })
             )}
 
             {/* 3 Platform Benefits (Divided Surface Panel) */}
-            <div className="mt-12 rounded-xl border border-line bg-surface-raised p-6 md:p-8 shadow-xs">
+            <div className="mt-12 rounded-xl border border-line bg-surface-raised p-6 shadow-xs md:p-8">
               <div className="grid gap-8 md:grid-cols-3 md:divide-x md:divide-line">
                 {moduleBenefits.map(({ id, icon }, idx) => (
-                  <div
-                    key={id}
-                    className={cn(
-                      "flex flex-col items-start",
-                      idx > 0 && "md:pl-8",
-                    )}
-                  >
+                  <div key={id} className={cn("flex flex-col items-start", idx > 0 && "md:pl-8")}>
                     <IconBadge icon={icon} tone="azure" size="md" className="mb-4 shadow-2xs" />
-                    <h3 className="font-display text-base md:text-lg font-semibold text-heading">
+                    <h3 className="font-display text-base font-semibold text-heading md:text-lg">
                       {t(`home:modules.benefits.${id}.title`)}
                     </h3>
-                    <p className="mt-2 text-sm md:text-base text-fg-muted leading-relaxed">
+                    <p className="mt-2 text-sm leading-relaxed text-fg-muted md:text-base">
                       {t(`home:modules.benefits.${id}.text`)}
                     </p>
                   </div>

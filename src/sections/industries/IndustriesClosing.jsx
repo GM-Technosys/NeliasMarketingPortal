@@ -25,11 +25,7 @@ export function IndustriesClosing() {
       >
         {t("common:cta.bookDemo")}
       </Link>
-      <SignUpLink
-        variant="onDark"
-        size="lg"
-        location="industries-final"
-      >
+      <SignUpLink variant="onDark" size="lg" location="industries-final">
         {t("common:cta.signUp")}
       </SignUpLink>
     </>

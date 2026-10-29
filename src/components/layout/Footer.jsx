@@ -19,9 +19,9 @@ export function Footer() {
       <div className="h-1 w-full bg-brand-ribbon" role="presentation" />
 
       <Container className="py-8 md:py-10">
-        <div className="flex flex-col gap-10 sm:flex-row sm:flex-wrap lg:flex-nowrap lg:justify-between items-start">
+        <div className="flex flex-col items-start gap-10 sm:flex-row sm:flex-wrap lg:flex-nowrap lg:justify-between">
           {/* Brand column */}
-          <div className="flex flex-col items-start max-w-sm lg:max-w-md shrink-0">
+          <div className="flex max-w-sm shrink-0 flex-col items-start lg:max-w-md">
             <Logo variant="plate" />
             <p className="mt-3.5 text-sm leading-relaxed text-fg-inverse-muted">
               {t("brand.footerTagline")}
@@ -34,7 +34,7 @@ export function Footer() {
               {t("footer.exploreHeading")}
             </h2>
             <nav aria-label={t("footer.navLabel")}>
-              <ul className="grid grid-cols-2 gap-x-8 sm:gap-x-12 gap-y-1.5">
+              <ul className="grid grid-cols-2 gap-x-8 gap-y-1.5 sm:gap-x-12">
                 {footerNav.map(({ key, to }) => (
                   <li key={key}>
                     <NavLink
@@ -62,7 +62,7 @@ export function Footer() {
                 <li>
                   <a
                     href={`mailto:${site.contact.email}`}
-                    className="inline-flex py-1 items-center gap-2.5 text-sm text-fg-inverse-muted transition-colors hover:text-white hover:underline"
+                    className="inline-flex items-center gap-2.5 py-1 text-sm text-fg-inverse-muted transition-colors hover:text-white hover:underline"
                   >
                     <Mail className="h-4 w-4 shrink-0 text-white/70" aria-hidden="true" />
                     <span>{site.contact.email}</span>
@@ -73,7 +73,7 @@ export function Footer() {
                 <li>
                   <a
                     href={toTelHref(site.contact.phone)}
-                    className="inline-flex py-1 items-center gap-2.5 text-sm text-fg-inverse-muted transition-colors hover:text-white hover:underline"
+                    className="inline-flex items-center gap-2.5 py-1 text-sm text-fg-inverse-muted transition-colors hover:text-white hover:underline"
                   >
                     <Phone className="h-4 w-4 shrink-0 text-white/70" aria-hidden="true" />
                     <span>{site.contact.phone}</span>
@@ -87,7 +87,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${t("footer.whatsapp")} ${site.contact.whatsapp}`}
-                    className="inline-flex py-1 items-center gap-2.5 text-sm text-fg-inverse-muted transition-colors hover:text-white hover:underline"
+                    className="inline-flex items-center gap-2.5 py-1 text-sm text-fg-inverse-muted transition-colors hover:text-white hover:underline"
                   >
                     <MessageSquare className="h-4 w-4 shrink-0 text-white/70" aria-hidden="true" />
                     <span>
@@ -97,7 +97,7 @@ export function Footer() {
                 </li>
               )}
               {site.address && (
-                <li className="inline-flex py-1 items-center gap-2.5 text-sm text-fg-inverse-muted">
+                <li className="inline-flex items-center gap-2.5 py-1 text-sm text-fg-inverse-muted">
                   <MapPin className="h-4 w-4 shrink-0 text-white/70" aria-hidden="true" />
                   <span>{site.address}</span>
                 </li>
@@ -109,12 +109,15 @@ export function Footer() {
         {/* Bottom hairline & legal bar */}
         <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-4 text-xs text-fg-inverse-muted sm:flex-row">
           <p>{t("brand.copyright")}</p>
-          <nav aria-label={t("footer.legalNavLabel")} className="flex flex-wrap items-center gap-x-6 gap-y-2">
+          <nav
+            aria-label={t("footer.legalNavLabel")}
+            className="flex flex-wrap items-center gap-x-6 gap-y-2"
+          >
             {legalNav.map(({ key, to }) => (
               <NavLink
                 key={key}
                 to={to}
-                className="inline-flex py-1 items-center text-fg-inverse-muted transition-colors hover:text-white hover:underline"
+                className="inline-flex items-center py-1 text-fg-inverse-muted transition-colors hover:text-white hover:underline"
               >
                 {t(`nav.${key}`)}
               </NavLink>

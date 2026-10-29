@@ -44,21 +44,21 @@ export function PacksSection({ showPrices, tone = "default" }) {
       <Container>
         <Reveal>
           {/* 1. Sector configurations included (clear, intuitive reassurance card) */}
-          <div className="rounded-2xl border border-line bg-surface-raised p-6 sm:p-8 shadow-xs">
+          <div className="rounded-2xl border border-line bg-surface-raised p-6 shadow-xs sm:p-8">
             <div className="flex items-start gap-4">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-surface-tint text-accent">
                 <CheckCircle2 className="h-6 w-6" aria-hidden="true" />
               </div>
               <div className="min-w-0">
-                <div className="flex items-center gap-2.5 flex-wrap">
-                  <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-heading">
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <h2 className="font-display text-xl font-bold tracking-tight text-heading sm:text-2xl">
                     {t("pricing:sectors.title")}
                   </h2>
-                  <Badge className="bg-surface-tint text-accent border border-accent/20 text-xs font-semibold">
+                  <Badge className="border border-accent/20 bg-surface-tint text-xs font-semibold text-accent">
                     {t("home:pricing.table.included")}
                   </Badge>
                 </div>
-                <p className="mt-2 text-sm sm:text-base text-fg-muted max-w-3xl leading-relaxed">
+                <p className="mt-2 max-w-3xl text-sm leading-relaxed text-fg-muted sm:text-base">
                   {t("pricing:sectors.body")}
                 </p>
               </div>
@@ -70,11 +70,11 @@ export function PacksSection({ showPrices, tone = "default" }) {
             <div className="mb-6">
               <h3
                 id="packs-heading"
-                className="font-display text-xl sm:text-2xl font-bold tracking-tight text-heading"
+                className="font-display text-xl font-bold tracking-tight text-heading sm:text-2xl"
               >
                 {t("pricing:packs.title")}
               </h3>
-              <p className="mt-1.5 text-sm sm:text-base text-fg-muted max-w-3xl leading-relaxed">
+              <p className="mt-1.5 max-w-3xl text-sm leading-relaxed text-fg-muted sm:text-base">
                 {t("pricing:packs.intro")}
               </p>
               {showPrices && (

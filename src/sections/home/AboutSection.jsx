@@ -28,32 +28,27 @@ export function AboutSection() {
           <div className="max-w-3xl">
             <h2
               id="about-heading"
-              className="font-display text-h2 font-semibold text-heading leading-tight tracking-tight"
+              className="font-display text-h2 leading-tight font-semibold tracking-tight text-heading"
             >
               {t("home:about.title")}
             </h2>
 
-            <p className="mt-5 text-lead font-medium text-fg leading-relaxed">
+            <p className="mt-5 text-lead leading-relaxed font-medium text-fg">
               {t("home:about.p1")}
             </p>
           </div>
 
           {/* Narrative Story Panel */}
-          <div className="mt-8 rounded-2xl border border-line bg-surface-raised p-6 md:p-8 shadow-xs">
+          <div className="mt-8 rounded-2xl border border-line bg-surface-raised p-6 shadow-xs md:p-8">
             <div className="grid gap-6 md:grid-cols-2 md:divide-x md:divide-line">
               <div className="flex flex-col justify-between">
-                <p className="text-sm md:text-base text-fg-muted leading-relaxed">
+                <p className="text-sm leading-relaxed text-fg-muted md:text-base">
                   {t("home:about.p2a")}
-                  {features.pricingPublic && (
-                    <>
-                      {" "}
-                      {t("home:about.p2b")}
-                    </>
-                  )}
+                  {features.pricingPublic && <> {t("home:about.p2b")}</>}
                 </p>
               </div>
-              <div className="md:pl-6 flex flex-col justify-between">
-                <p className="text-sm md:text-base text-fg-muted leading-relaxed">
+              <div className="flex flex-col justify-between md:pl-6">
+                <p className="text-sm leading-relaxed text-fg-muted md:text-base">
                   {t("home:about.p3")}
                 </p>
               </div>
@@ -71,7 +66,7 @@ export function AboutSection() {
                 return (
                   <div
                     key={idx}
-                    className="group flex flex-col justify-between rounded-2xl border border-line bg-surface-raised p-6 md:p-7 shadow-xs transition-all duration-200 hover:border-accent hover:shadow-card"
+                    className="group flex flex-col justify-between rounded-2xl border border-line bg-surface-raised p-6 shadow-xs transition-all duration-200 hover:border-accent hover:shadow-card md:p-7"
                   >
                     <div>
                       <IconBadge
@@ -80,13 +75,13 @@ export function AboutSection() {
                         size="md"
                         className="mb-5 transition-transform duration-200 group-hover:scale-105"
                       />
-                      <h3 className="font-display text-lg md:text-xl font-bold text-heading leading-snug transition-colors group-hover:text-accent-strong">
+                      <h3 className="font-display text-lg leading-snug font-bold text-heading transition-colors group-hover:text-accent-strong md:text-xl">
                         {tagline}
                       </h3>
                     </div>
 
                     {/* Subtle hover accent bar */}
-                    <div className="mt-6 pt-4 border-t border-line/50">
+                    <div className="mt-6 border-t border-line/50 pt-4">
                       <div className="h-1 w-10 rounded-full bg-accent/30 transition-all duration-300 group-hover:w-16 group-hover:bg-brand-ribbon" />
                     </div>
                   </div>
@@ -99,5 +94,3 @@ export function AboutSection() {
     </Section>
   );
 }
-
-

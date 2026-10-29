@@ -31,12 +31,12 @@ export function DemoExpectations({ className }) {
                 <IconBadge
                   icon={Icon}
                   tone="azure"
-                  className="h-10 w-10 min-h-10 min-w-10 shrink-0"
+                  className="h-10 min-h-10 w-10 min-w-10 shrink-0"
                   aria-hidden="true"
                 />
                 <div className="min-w-0 flex-1">
                   <h3 className="text-base font-semibold text-heading">{item.title}</h3>
-                  <p className="mt-1 text-sm text-fg-muted leading-relaxed">{item.desc}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-fg-muted">{item.desc}</p>
                 </div>
               </li>
             );
@@ -47,7 +47,7 @@ export function DemoExpectations({ className }) {
         <h3 className="text-sm font-semibold text-heading">
           {t("contact:demoSidebar.altContactTitle")}
         </h3>
-        <p className="mt-1 text-xs text-fg-muted leading-relaxed">
+        <p className="mt-1 text-xs leading-relaxed text-fg-muted">
           {t("contact:demoSidebar.altContactDesc")}
         </p>
         <div className="mt-3">

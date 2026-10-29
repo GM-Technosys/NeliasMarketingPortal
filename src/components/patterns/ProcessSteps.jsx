@@ -102,13 +102,10 @@ export function ProcessSteps({
       <ol className={cn("relative z-10 grid gap-10 lg:gap-6", colClasses, className)}>
         {steps.map(({ title, text, icon: CustomIcon }, index) => {
           const stepNumber = index + 1;
-          const StepIcon =
-            CustomIcon || defaultIcons[index % defaultIcons.length];
+          const StepIcon = CustomIcon || defaultIcons[index % defaultIcons.length];
 
           const animationStyle =
-            animated && !prefersReduced
-              ? { animationDelay: `${index * 100}ms` }
-              : undefined;
+            animated && !prefersReduced ? { animationDelay: `${index * 100}ms` } : undefined;
 
           return (
             <li
@@ -117,13 +114,11 @@ export function ProcessSteps({
               className={cn(
                 "group flex flex-col items-center text-center",
                 animated &&
-                  !prefersReduced && [
-                    isVisible ? "animate-tile-in" : "translate-y-2 opacity-0",
-                  ],
+                  !prefersReduced && [isVisible ? "animate-tile-in" : "translate-y-2 opacity-0"],
               )}
             >
               {/* Circular step frame with step number badge */}
-              <div className="relative mb-6 flex h-28 w-28 sm:h-32 sm:w-32 items-center justify-center">
+              <div className="relative mb-6 flex h-28 w-28 items-center justify-center sm:h-32 sm:w-32">
                 {/* Number pill badge at top-left of circle */}
                 <span
                   aria-hidden="true"
@@ -144,7 +139,7 @@ export function ProcessSteps({
                   {/* Inner icon background */}
                   <span
                     className={cn(
-                      "flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full transition-colors",
+                      "flex h-14 w-14 items-center justify-center rounded-full transition-colors sm:h-16 sm:w-16",
                       index === 0
                         ? "bg-surface-tint text-accent-strong"
                         : "bg-surface-sunken/70 text-fg-muted group-hover:bg-surface-tint group-hover:text-accent-strong",
@@ -156,7 +151,7 @@ export function ProcessSteps({
               </div>
 
               {/* Step Title */}
-              <HeadingTag className="font-display text-lg font-bold text-heading md:text-xl mb-2.5">
+              <HeadingTag className="mb-2.5 font-display text-lg font-bold text-heading md:text-xl">
                 {title}
               </HeadingTag>
 

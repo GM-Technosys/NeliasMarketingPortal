@@ -13,7 +13,5 @@ export function frenchSpacing(text, lng) {
   if (typeof text !== "string" || !text) return text;
   if (!lng || !lng.startsWith("fr")) return text;
 
-  return text
-    .replace(/ ([;:?!»])/g, "\u00A0$1")
-    .replace(/« /g, "«\u00A0");
+  return text.replace(/ ([;:?!»])/g, "\u00A0$1").replace(/« /g, "«\u00A0");
 }

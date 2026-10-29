@@ -9,24 +9,15 @@ import { cn } from "@/lib/cn";
  * @param {import("react").ReactNode} props.children
  * @param {string} [props.className]
  */
-export function PullStatement({
-  variant = "accent",
-  size = "md",
-  children,
-  className,
-}) {
+export function PullStatement({ variant = "accent", size = "md", children, className }) {
   const isPlain = variant === "plain";
   const sizeClass =
-    size === "custom"
-      ? ""
-      : size === "lg"
-        ? "text-h2 md:text-h1"
-        : "text-h3 md:text-h2";
+    size === "custom" ? "" : size === "lg" ? "text-h2 md:text-h1" : "text-h3 md:text-h2";
 
   return (
     <p
       className={cn(
-        "relative font-display font-semibold text-heading leading-snug",
+        "relative font-display leading-snug font-semibold text-heading",
         sizeClass,
         !isPlain && "pl-6",
         className,
@@ -36,7 +27,7 @@ export function PullStatement({
         <span
           aria-hidden="true"
           className={cn(
-            "absolute left-0 top-1 bottom-1 w-1 rounded-full",
+            "absolute top-1 bottom-1 left-0 w-1 rounded-full",
             variant === "ribbon" ? "bg-brand-ribbon" : "bg-accent",
           )}
         />

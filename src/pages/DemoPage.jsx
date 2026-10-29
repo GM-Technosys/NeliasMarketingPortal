@@ -15,10 +15,7 @@ export default function DemoPage() {
 
   return (
     <>
-      <Seo
-        title={t("contact:seo.demoTitle")}
-        description={t("contact:seo.description")}
-      />
+      <Seo title={t("contact:seo.demoTitle")} description={t("contact:seo.description")} />
 
       <PageHeader
         title={t("contact:demo.title")}

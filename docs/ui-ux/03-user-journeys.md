@@ -1,7 +1,8 @@
 # NELIAS Marketing Portal - UI/UX Specification: User Journeys
 
 ## 1. Journey 1: Sector Discovery Journey
-*From broad exploration to sector-specific operational alignment and conversion.*
+
+_From broad exploration to sector-specific operational alignment and conversion._
 
 ```mermaid
 flowchart TD
@@ -20,7 +21,8 @@ flowchart TD
 ---
 
 ## 2. Journey 2: Self-Service Buying & Configuration Journey
-*From curiosity to precise module selection, dynamic pricing, and advisor booking.*
+
+_From curiosity to precise module selection, dynamic pricing, and advisor booking._
 
 ```mermaid
 flowchart TD
@@ -43,7 +45,8 @@ flowchart TD
 ---
 
 ## 3. Journey 3: Pricing Evaluation to Configuration Journey
-*From cost evaluation to tailored configuration.*
+
+_From cost evaluation to tailored configuration._
 
 ```mermaid
 flowchart TD
@@ -60,7 +63,8 @@ flowchart TD
 ---
 
 ## 4. Journey 4: Capability & Features Filtering Journey
-*Deep capability review leading to sector alignment.*
+
+_Deep capability review leading to sector alignment._
 
 ```mermaid
 flowchart TD
@@ -74,7 +78,8 @@ flowchart TD
 ---
 
 ## 5. Journey 5: Lead Ingestion & Advisor Scheduling Journey
-*Capturing prospects with validation, privacy, and zero fake submissions.*
+
+_Capturing prospects with validation, privacy, and zero fake submissions._
 
 ```mermaid
 flowchart TD
@@ -92,10 +97,11 @@ flowchart TD
 ---
 
 ## 6. Journey 6: Sales Presentation Journey (Five-Minute Tour)
-*Field execution guide for Debass sales advisors delivering high-impact executive demonstrations.*
+
+_Field execution guide for Debass sales advisors delivering high-impact executive demonstrations._
 
 1. **Minute 1: The Vision & Brand Promise ([`HomePage`](file:///d:/Projects/NELIAS/nelias-marketing/src/pages/HomePage.jsx))**
-   - Hero headline: *"Integrated business management. Built for your scale."*
+   - Hero headline: _"Integrated business management. Built for your scale."_
    - Three Pillars: Unified Platform, Sector Intelligence, Pragmatic Adoption.
 2. **Minute 2: Operational Proof & Scenarios ([`WhyNeliasPage`](file:///d:/Projects/NELIAS/nelias-marketing/src/pages/WhyNeliasPage.jsx))**
    - Five core African business challenges & NELIAS concrete responses.
@@ -114,8 +120,8 @@ flowchart TD
    - Rendered when encountering unknown URLs (`*`) or invalid industry slugs (`/industries/invalid-slug`).
    - Clearly provides "Go to Home" primary button and "Book a Demo" / "Explore Platform" secondary button. No dead ends.
 2. **Empty Search & Filters:**
-   - Resources FAQ search: Displays *"No questions match your search."* with a quick "Clear search" action.
-   - Industries filter: Displays *"No industries match your selection."* with an instant "Reset filters" button.
+   - Resources FAQ search: Displays _"No questions match your search."_ with a quick "Clear search" action.
+   - Industries filter: Displays _"No industries match your selection."_ with an instant "Reset filters" button.
 3. **Configurator Invalid Draft Link:**
    - Corrupted or invalid `?c=` strings trigger a fallback to the clean initial configurator state without crashing.
 4. **Form Submission Failure:**

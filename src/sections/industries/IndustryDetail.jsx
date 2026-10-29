@@ -26,9 +26,7 @@ export function IndustryDetail({ slug, onClose }) {
 
   // Suggested capabilities
   const rawAreas = industryProfiles[slug]?.areas || [];
-  const visibleAreas = rawAreas.filter(
-    (key) => capabilityStates[key] !== AVAILABILITY.HIDDEN
-  );
+  const visibleAreas = rawAreas.filter((key) => capabilityStates[key] !== AVAILABILITY.HIDDEN);
 
   // Carried walkthrough nodes
   const rawWalkthrough = t(`industries:items.${slug}.walkthrough`, {
@@ -69,13 +67,9 @@ export function IndustryDetail({ slug, onClose }) {
           {name}
         </h3>
         {headline && (
-          <p className="mt-2 text-lg font-semibold text-heading leading-snug">
-            {headline}
-          </p>
+          <p className="mt-2 text-lg leading-snug font-semibold text-heading">{headline}</p>
         )}
-        <p className="mt-3 text-base text-fg-muted leading-relaxed max-w-3xl">
-          {summary}
-        </p>
+        <p className="mt-3 max-w-3xl text-base leading-relaxed text-fg-muted">{summary}</p>
       </div>
 
       {/* 2. Suggested capabilities */}
@@ -93,9 +87,7 @@ export function IndustryDetail({ slug, onClose }) {
                   className="inline-flex items-center gap-2 rounded-md border border-line bg-surface-raised px-3 py-1.5 text-sm font-medium text-fg shadow-2xs"
                 >
                   <span>{t(`features:areas.${areaKey}.name`)}</span>
-                  {state && state !== AVAILABILITY.AVAILABLE && (
-                    <AvailabilityBadge state={state} />
-                  )}
+                  {state && state !== AVAILABILITY.AVAILABLE && <AvailabilityBadge state={state} />}
                 </li>
               );
             })}
@@ -133,10 +125,7 @@ export function IndustryDetail({ slug, onClose }) {
           </h4>
           <ul className="mt-3 space-y-3">
             {pairs.map((pair, idx) => (
-              <li
-                key={idx}
-                className="rounded-lg bg-surface-raised p-4 border border-line"
-              >
+              <li key={idx} className="rounded-lg border border-line bg-surface-raised p-4">
                 <p className="font-semibold text-heading">{pair.challenge}</p>
                 <p className="mt-1 text-sm text-fg-muted">{pair.outcome}</p>
               </li>
@@ -146,7 +135,7 @@ export function IndustryDetail({ slug, onClose }) {
       )}
 
       {/* 4. Muted note */}
-      <p className="mt-8 text-sm text-fg-muted border-t border-line/60 pt-4">
+      <p className="mt-8 border-t border-line/60 pt-4 text-sm text-fg-muted">
         {t("pricing:sectors.body")}
       </p>
 
@@ -165,11 +154,7 @@ export function IndustryDetail({ slug, onClose }) {
         >
           {t("common:cta.bookDemo")}
         </Link>
-        <Button
-          variant="ghost"
-          size="md"
-          onClick={onClose}
-        >
+        <Button variant="ghost" size="md" onClick={onClose}>
           {t("industries:page.close")}
         </Button>
       </div>

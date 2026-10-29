@@ -16,7 +16,7 @@ import { cn } from "@/lib/cn";
  */
 export const IndustryCard = forwardRef(function IndustryCard(
   { name, summary, icon: Icon, isOpen, onClick, className },
-  ref
+  ref,
 ) {
   const ToggleIcon = isOpen ? Minus : Plus;
 
@@ -33,24 +33,21 @@ export const IndustryCard = forwardRef(function IndustryCard(
         isOpen
           ? "border-accent bg-surface-tint"
           : "border-line bg-surface-raised hover:border-accent-line",
-        className
+        className,
       )}
     >
       <div className="flex w-full items-start justify-between gap-3">
         {Icon ? (
-          <IconBadge
-            icon={Icon}
-            size="md"
-            tone="azure"
-            className="shrink-0"
-          />
-        ) : <div className="h-10 w-10 shrink-0" />}
+          <IconBadge icon={Icon} size="md" tone="azure" className="shrink-0" />
+        ) : (
+          <div className="h-10 w-10 shrink-0" />
+        )}
         <span
           className={cn(
             "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-colors",
             isOpen
               ? "border-accent text-accent"
-              : "border-line text-fg-subtle group-hover:border-accent-line group-hover:text-heading"
+              : "border-line text-fg-subtle group-hover:border-accent-line group-hover:text-heading",
           )}
           aria-hidden="true"
         >
@@ -59,12 +56,10 @@ export const IndustryCard = forwardRef(function IndustryCard(
       </div>
 
       <div className="mt-4">
-        <span className="block font-display text-xl font-semibold text-heading leading-snug">
+        <span className="block font-display text-xl leading-snug font-semibold text-heading">
           {name}
         </span>
-        <p className="mt-2 text-sm text-fg-muted line-clamp-3 leading-relaxed">
-          {summary}
-        </p>
+        <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-fg-muted">{summary}</p>
       </div>
     </button>
   );

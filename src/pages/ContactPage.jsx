@@ -16,10 +16,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <Seo
-        title={t("contact:seo.contactTitle")}
-        description={t("contact:seo.description")}
-      />
+      <Seo title={t("contact:seo.contactTitle")} description={t("contact:seo.description")} />
 
       <PageHeader
         title={t("contact:hero.title")}

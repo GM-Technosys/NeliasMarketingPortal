@@ -70,9 +70,7 @@ export function FaqGroups({ groups = [] }) {
           <p>{t("faq:items.packsDate.a")}</p>
           <div className="mt-3">
             {/* TODO(Debass): the answer says visitors can ask to be notified when the Industry+ packs are available; no dedicated notification list exists, so the link opens the contact page. */}
-            <TextLink to="/contact">
-              {t("common:cta.contactTeam")}
-            </TextLink>
+            <TextLink to="/contact">{t("common:cta.contactTeam")}</TextLink>
           </div>
         </>
       );
@@ -104,11 +102,11 @@ export function FaqGroups({ groups = [] }) {
             key={group.id}
             id={`group-${group.id}`}
             aria-labelledby={`group-${group.id}-title`}
-            className="scroll-mt-28 mt-12 first:mt-0"
+            className="mt-12 scroll-mt-28 first:mt-0"
           >
             <h2
               id={`group-${group.id}-title`}
-              className="font-display text-h3 text-heading text-center"
+              className="text-center font-display text-h3 text-heading"
             >
               {t(`faq:groups.${group.id}`)}
             </h2>

@@ -58,7 +58,7 @@ export function OptionalChargesSection({ tone = "muted" }) {
               <th scope="row" className="font-medium text-fg">
                 {t(`pricing:optional.items.${id}`)}
               </th>
-              <td className="tabular-nums font-semibold text-heading">
+              <td className="font-semibold text-heading tabular-nums">
                 {describeRule(rule, t, lng)}
               </td>
             </tr>
@@ -72,12 +72,12 @@ export function OptionalChargesSection({ tone = "muted" }) {
     <Section tone={tone} spacing="md" className="py-10 md:py-14">
       <Container>
         <Reveal>
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-6 border-b border-line">
+          <div className="flex flex-col gap-4 border-b border-line pb-6 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <h2 className="font-display text-2xl sm:text-3xl font-bold text-heading">
+              <h2 className="font-display text-2xl font-bold text-heading sm:text-3xl">
                 {t("pricing:page.devPricingTitle")}
               </h2>
-              <p className="mt-2 text-base text-fg-muted max-w-2xl">
+              <p className="mt-2 max-w-2xl text-base text-fg-muted">
                 {t("pricing:page.optionalLead")}
               </p>
             </div>
@@ -86,12 +86,10 @@ export function OptionalChargesSection({ tone = "muted" }) {
               type="button"
               onClick={() => setExpanded(!expanded)}
               aria-expanded={expanded}
-              className="inline-flex items-center gap-2 rounded-md border border-line bg-surface-raised px-4 py-2 text-sm font-semibold text-fg-strong shadow-2xs hover:bg-surface-muted hover:text-heading cursor-pointer shrink-0 self-start sm:self-center transition-colors"
+              className="inline-flex shrink-0 cursor-pointer items-center gap-2 self-start rounded-md border border-line bg-surface-raised px-4 py-2 text-sm font-semibold text-fg-strong shadow-2xs transition-colors hover:bg-surface-muted hover:text-heading sm:self-center"
             >
               <span>
-                {expanded
-                  ? t("pricing:page.collapseDetails")
-                  : t("pricing:page.expandDetails")}
+                {expanded ? t("pricing:page.collapseDetails") : t("pricing:page.expandDetails")}
               </span>
               <ChevronDown
                 className={cn(
@@ -104,7 +102,7 @@ export function OptionalChargesSection({ tone = "muted" }) {
           </div>
 
           {expanded && (
-            <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <div className="mt-8 grid grid-cols-1 items-start gap-8 lg:grid-cols-2">
               {groups.map(renderGroup)}
             </div>
           )}

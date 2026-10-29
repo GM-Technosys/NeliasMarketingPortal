@@ -28,7 +28,9 @@ export function LegalPage({ ns }) {
   // Notice must ONLY exist if defined in active language (no fallback to English)
   const currentLang = i18n.language || "en";
   const bundle = i18n.getResourceBundle ? i18n.getResourceBundle(currentLang, ns) : null;
-  const notice = bundle?.meta?.notice || (i18n.getResource ? i18n.getResource(currentLang, ns, "meta.notice") : null);
+  const notice =
+    bundle?.meta?.notice ||
+    (i18n.getResource ? i18n.getResource(currentLang, ns, "meta.notice") : null);
 
   const targetLang = currentLang.startsWith("fr") ? "en" : "fr";
 
@@ -76,7 +78,7 @@ export function LegalPage({ ns }) {
             </div>
 
             {/* Reading Column */}
-            <div className="lg:col-span-8 xl:col-span-7 max-w-[70ch]">
+            <div className="max-w-[70ch] lg:col-span-8 xl:col-span-7">
               {/* Publisher line */}
               {meta.publisher && (
                 <p className="text-sm text-fg-muted">
@@ -99,7 +101,7 @@ export function LegalPage({ ns }) {
                   <button
                     type="button"
                     onClick={handleLanguageToggle}
-                    className="min-h-11 inline-flex items-center text-sm font-semibold text-link underline underline-offset-4 hover:decoration-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus cursor-pointer"
+                    className="inline-flex min-h-11 cursor-pointer items-center text-sm font-semibold text-link underline underline-offset-4 hover:decoration-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
                   >
                     {frenchSpacing(page.languageLink, currentLang)}
                   </button>
