@@ -291,7 +291,7 @@ def main():
     add_meta_item(doc, "Eyebrow Category", en_home["hero"]["eyebrow"], fr_home["hero"]["eyebrow"], element_type="Small Heading / Pill")
     add_meta_item(doc, "Hero Headline (H1)", en_home["hero"]["title"], fr_home["hero"]["title"], element_type="Main Headline (H1)")
     add_meta_item(doc, "Hero Subtitle / Lead", en_home["hero"]["subtitle"], fr_home["hero"]["subtitle"], element_type="Lead Paragraph")
-    add_meta_item(doc, "Primary Action Button", en_home["hero"]["simulatePrice"], fr_home["hero"]["simulatePrice"], element_type="Primary Button (Orange)", link_url="https://login.nelias.app/ (New Tab)")
+    add_meta_item(doc, "Primary Action Button", en_home["hero"]["simulatePrice"], fr_home["hero"]["simulatePrice"], element_type="Primary Button (Orange)", link_url="/configure")
     add_meta_item(doc, "Secondary Action Button", en_common["cta"]["talkToExpert"], fr_common["cta"]["talkToExpert"], element_type="Outline Button", link_url="/contact")
     add_meta_item(doc, "Reassurance Statement", en_home["hero"]["reassurance"], fr_home["hero"]["reassurance"], element_type="Reassurance Text (Shown when pricingPublic=true)")
 
@@ -455,7 +455,7 @@ def main():
         ("Storage Included", "10 GB", "25 GB", "50 GB", "Sized to need"),
         ("Sector Engine", "Included", "Included", "Included", "Included"),
         ("Service Level", "Standard", "Standard+", "Priority", "SLA"),
-        ("Card CTA Button", "Simulate my price", "Simulate my price (Featured)", "Simulate my price", "Talk to an Expert"),
+        ("Card CTA Button", "Configure My NELIAS", "Configure My NELIAS (Featured)", "Configure My NELIAS", "Talk to an Expert"),
         ("CTA Destination", "https://login.nelias.app/", "https://login.nelias.app/", "https://login.nelias.app/", "/contact"),
     ]
     for idx, row_data in enumerate(pricing_matrix):

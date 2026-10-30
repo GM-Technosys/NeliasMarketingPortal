@@ -25,7 +25,6 @@ const removedRoutes = [
   { path: "resources", element: <Navigate to="/" replace /> },
   { path: "terms-of-sale", element: <Navigate to="/terms" replace /> },
   { path: "cgv", element: <Navigate to="/terms" replace /> },
-  { path: "configure", element: <Navigate to="/pricing" replace /> },
 ];
 
 /** @type {import("react-router-dom").RouteObject[]} */
@@ -38,6 +37,7 @@ const routes = [
       { path: "industries/:slug", element: <IndustryRedirect /> },
       { path: "features", ...page(() => import("@/pages/FeaturesPage")) },
       { path: "pricing", ...page(() => import("@/pages/PricingPage")) },
+      { path: "configure", ...page(() => import("@/pages/ConfigurePage")) },
       { path: "about", ...page(() => import("@/pages/AboutPage")) },
       { path: "about-us", ...page(() => import("@/pages/AboutPage")) },
       { path: "faq", ...page(() => import("@/pages/FaqPage")) },

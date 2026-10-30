@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { buttonStyles } from "@/components/ui/button-styles";
-import { SignUpLink } from "@/components/common/SignUpLink";
 import { features } from "@/config/features";
 import { EVENTS, track } from "@/lib/analytics";
 import { HeroComposition } from "./HeroComposition";
@@ -41,17 +40,16 @@ export function HomeHero() {
             </p>
 
             <div className="mt-8 flex w-full flex-col items-stretch gap-3.5 sm:w-auto sm:flex-row sm:items-center">
-              {/* TODO(Debass): the hero primary button "Simulate my price" routes to https://login.nelias.app/ in a new tab as requested. */}
-              <SignUpLink
-                variant="primary"
-                size="lg"
-                location="hero"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-center sm:w-auto"
+              <Link
+                to="/configure"
+                onClick={() => track(EVENTS.CTA_CLICK, { intent: "configure", location: "hero" })}
+                className={cn(
+                  buttonStyles({ variant: "primary", size: "lg" }),
+                  "w-full text-center sm:w-auto",
+                )}
               >
                 {t("home:hero.simulatePrice")}
-              </SignUpLink>
+              </Link>
               <Link
                 to="/contact"
                 onClick={() => track(EVENTS.CTA_CLICK, { intent: "contact", location: "hero" })}

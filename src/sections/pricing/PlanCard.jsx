@@ -141,11 +141,11 @@ export function PlanCard({ plan, billing = "monthly", showPrices = false }) {
             variant={isFeatured ? "primary" : "outline"}
             size="md"
             location={`pricing-${plan.id}`}
-            aria-label={t("pricing:overview.simulatePriceFor", { plan: planName })}
+            aria-label={t("pricing:overview.configureFor", { plan: planName })}
             onClick={handleCtaClick}
             className="w-full text-center"
           >
-            {t("common:cta.simulatePrice")}
+            {t("common:cta.configure")}
           </SignUpLink>
         )}
       </div>

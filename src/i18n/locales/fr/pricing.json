@@ -5,7 +5,8 @@
   },
   "overview": {
     "signUpFor": "S’inscrire à {{plan}}",
-    "simulatePriceFor": "Simuler mon prix pour {{plan}}"
+    "simulatePriceFor": "Simuler mon prix pour {{plan}}",
+    "configureFor": "Configurer {{plan}}"
   },
   "page": {
     "plansTitle": "Formules",

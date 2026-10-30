@@ -5,7 +5,8 @@
   },
   "overview": {
     "signUpFor": "Sign Up for {{plan}}",
-    "simulatePriceFor": "Simulate price for {{plan}}"
+    "simulatePriceFor": "Simulate price for {{plan}}",
+    "configureFor": "Configure {{plan}}"
   },
   "page": {
     "plansTitle": "Plans",

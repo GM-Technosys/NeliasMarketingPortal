@@ -3,4 +3,5 @@ export const features = Object.freeze({
   pricingPublic: import.meta.env.VITE_FEATURE_PRICING_PUBLIC !== "false",
   frenchEnabled: import.meta.env.VITE_FEATURE_FRENCH !== "false",
   industryPlus: import.meta.env.VITE_FEATURE_INDUSTRY_PLUS === "true",
+  configurator: import.meta.env.VITE_FEATURE_CONFIGURATOR !== "false",
 });
