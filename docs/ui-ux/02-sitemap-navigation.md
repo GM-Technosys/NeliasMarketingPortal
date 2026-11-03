@@ -18,6 +18,8 @@ All routes declared in [`src/app/router.jsx`](file:///d:/Projects/NELIAS/nelias-
 | `/faq`              | `FaqPage`              | Centralized frequently asked questions by topic                              | `features.pricingPublic` gates pricing questions |
 | `/contact`          | `ContactPage`          | General inquiry lead form with direct communication channels                 | None                                             |
 | `/demo`             | `DemoPage`             | Product demonstration request form with advisor scheduling                   | None                                             |
+| `/sign-in`          | `SignInPage`           | Sign-in page (or external redirect when features.authPages is false)          | `features.authPages`                             |
+| `/sign-up`          | `SignUpPage`           | Registration page (or external redirect when features.authPages is false)      | `features.authPages`                             |
 | `/terms`            | `TermsPage`            | General Terms of Use (official verbatim text)                                | None                                             |
 | `/terms-of-sale`    | Redirect to `/terms`   | Removed page (redirected)                                                    | None                                             |
 | `/cgv`              | Redirect to `/terms`   | Francophone alias for Terms of Sale / CGV (redirected)                       | None                                             |

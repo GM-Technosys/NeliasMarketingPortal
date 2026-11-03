@@ -1,6 +1,9 @@
 import { createBrowserRouter, Navigate, useParams } from "react-router-dom";
 import RootLayout from "./RootLayout";
 import { industries } from "@/data/industries";
+import { features } from "@/config/features";
+import { site } from "@/config/site";
+import { ExternalRedirect } from "@/components/common/ExternalRedirect";
 
 /**
  * Lazy-load helper: wraps a dynamic import so createBrowserRouter
@@ -43,6 +46,18 @@ const routes = [
       { path: "faq", ...page(() => import("@/pages/FaqPage")) },
       { path: "contact", ...page(() => import("@/pages/ContactPage")) },
       { path: "demo", ...page(() => import("@/pages/DemoPage")) },
+      {
+        path: "sign-in",
+        ...(features.authPages
+          ? page(() => import("@/pages/SignInPage"))
+          : { element: <ExternalRedirect to={site.externalSignUpUrl || "https://login.nelias.app/"} /> }),
+      },
+      {
+        path: "sign-up",
+        ...(features.authPages
+          ? page(() => import("@/pages/SignUpPage"))
+          : { element: <ExternalRedirect to={site.externalSignUpUrl || "https://login.nelias.app/"} /> }),
+      },
       { path: "terms", ...page(() => import("@/pages/TermsPage")) },
       { path: "dpa", ...page(() => import("@/pages/DpaPage")) },
       { path: "privacy", ...page(() => import("@/pages/PrivacyPage")) },

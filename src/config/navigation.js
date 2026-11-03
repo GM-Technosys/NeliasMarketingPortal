@@ -50,16 +50,16 @@ export const legalNav = [
 ];
 
 /**
- * Sign In and Sign Up are external links.
+ * Sign In and Sign Up navigation items.
  */
 export const signUpLink = {
   key: "signUp",
   href: site.signUpUrl,
-  external: true,
+  external: !site.signUpUrl.startsWith("/"),
 };
 
 export const signInLink = {
   key: "signIn",
   href: site.loginUrl,
-  external: true,
+  external: !site.loginUrl.startsWith("/"),
 };

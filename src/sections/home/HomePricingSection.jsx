@@ -17,6 +17,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SegmentedControl } from "@/components/ui/SegmentedControl";
 import { buttonStyles } from "@/components/ui/button-styles";
 import { features } from "@/config/features";
+import { site } from "@/config/site";
 import { useFormat } from "@/hooks/useFormat";
 import { getHomePricing, MODULES_INCLUDED } from "@/data/home-pricing";
 import { EVENTS, track } from "@/lib/analytics";
@@ -51,8 +52,8 @@ export function HomePricingSection() {
       engine: t("home:pricing.table.included"),
       level: t("home:pricing.table.levels.start"),
       cta: t("common:cta.configure"),
-      href: "https://login.nelias.app/",
-      isExternal: true,
+      href: site.signUpUrl,
+      isExternal: !site.signUpUrl.startsWith("/"),
       buttonVariant: "outline",
     },
     {
@@ -69,8 +70,8 @@ export function HomePricingSection() {
       engine: t("home:pricing.table.included"),
       level: t("home:pricing.table.levels.business"),
       cta: t("common:cta.configure"),
-      href: "https://login.nelias.app/",
-      isExternal: true,
+      href: site.signUpUrl,
+      isExternal: !site.signUpUrl.startsWith("/"),
       buttonVariant: "primary",
     },
     {
@@ -90,8 +91,8 @@ export function HomePricingSection() {
       engine: t("home:pricing.table.included"),
       level: t("home:pricing.table.levels.professional"),
       cta: t("common:cta.configure"),
-      href: "https://login.nelias.app/",
-      isExternal: true,
+      href: site.signUpUrl,
+      isExternal: !site.signUpUrl.startsWith("/"),
       buttonVariant: "outline",
     },
     {

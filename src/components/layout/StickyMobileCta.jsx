@@ -7,14 +7,18 @@ import { cn } from "@/lib/cn";
 /**
  * Sticky bottom CTA bar for mobile screens (below md).
  * Shown after scrolling 480px, automatically hides when the footer is in view
- * or when the user is on /demo or /contact.
+ * or when the user is on /demo, /contact, /sign-in, or /sign-up.
  */
 export function StickyMobileCta() {
   const { pathname } = useLocation();
   const isScrolled = useScrolled(480);
   const [footerIntersecting, setFooterIntersecting] = useState(false);
 
-  const isExcludedRoute = pathname === "/demo" || pathname === "/contact";
+  const isExcludedRoute =
+    pathname === "/demo" ||
+    pathname === "/contact" ||
+    pathname === "/sign-in" ||
+    pathname === "/sign-up";
 
   useEffect(() => {
     const footer = document.getElementById("site-footer");

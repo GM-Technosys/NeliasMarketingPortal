@@ -10,8 +10,9 @@ import { site } from "@/config/site";
  * @param {string} [props.title] - Override title
  * @param {string} [props.description] - Override description
  * @param {boolean} [props.noIndex] - Force noindex on this page
+ * @param {boolean} [props.noindex=false] - Force noindex on this page
  */
-export function Seo({ pageKey, title, description, noIndex }) {
+export function Seo({ pageKey, title, description, noIndex, noindex = false }) {
   const { t, i18n } = useTranslation("seo");
   const { pathname } = useLocation();
 
@@ -25,7 +26,7 @@ export function Seo({ pageKey, title, description, noIndex }) {
   // Canonical URL: site base + pathname without trailing slash
   const canonical = site.url + (pathname === "/" ? "" : pathname.replace(/\/+$/, ""));
 
-  const shouldNoIndex = noIndex || site.noindex;
+  const shouldNoIndex = noindex || noIndex || site.noindex;
   const currentLang = i18n.resolvedLanguage || i18n.language || "en";
   const ogLocale = currentLang === "fr" ? "fr_FR" : "en_US";
 

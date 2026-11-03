@@ -6,4 +6,5 @@ export { Select } from "./Select";
 export { Checkbox } from "./Checkbox";
 export { ChoiceCard } from "./ChoiceCard";
 export { NumberStepper } from "./NumberStepper";
+export { PasswordField } from "./PasswordField";
 export { fieldControlClasses } from "./field-styles";

@@ -292,3 +292,17 @@ npm run format      # Prettier
 - The Industries page (October 2026) shows the eight industries as cards; clicking one opens its detail inline under its grid row (one at a time, hash `#<slug>`, focus moves to the detail). There are NO per-industry pages: `/industries/<slug>` redirects to `/industries#<slug>`. The page then has "Sector configurations and Industry+ Packs" (reused `FeaturesSectors`), "Why NELIAS" (reused `WhySection`) and a closing band with Request a Demo and Sign Up. No FAQ, no configuration button.
 - To change an industry's content, edit `industries.json`, `home-content.js` (`industryProfiles`) and the other existing industry data; the inline detail reads them. Links to an industry use `/industries#<slug>`.
 - Open items for Debass (marked `TODO(Debass)`): per-industry copy beyond the existing summaries and headlines; pack pages; redirect confirmation; French review.
+
+## Auth Pages & Auth Kit Guidelines
+
+- Auth pages (`/sign-in`, and `/sign-up` after the next step) are behind `features.authPages` (`VITE_FEATURE_AUTH_PAGES`, default false): when off, both routes redirect to `site.signUpUrl` (`https://login.nelias.app/`). Sign Up buttons elsewhere stay plain external links (`SignUpLink`); to point them to the internal page, change `site.signUpUrl` only after enabling the flag.
+- All submission goes through `src/lib/auth/auth-client.js` (`VITE_AUTH_API_URL`, assumed JSON contract, marked `TODO(Debass)`); passwords are never stored, logged, put in URLs or sent to analytics; analytics receive only a result code. Validation logic is pure and tested in `npm run check:auth` (part of `verify`).
+- Redirects after sign-in are followed only when `isSafeRedirect` accepts them (https, `nelias.app` or a subdomain).
+- Open items for Debass (marked `TODO(Debass)`): backend contract and address, password reset, captcha and server-side rate limiting, French review.
+
+## Sign Up Page Guidelines
+
+- `/sign-up` follows the same rules as `/sign-in`: behind `features.authPages`, redirect to `site.signUpUrl` when off, adapter-only submission, no password or personal data in storage, URLs, logs or analytics.
+- Sign-up fields and rules: full name, work email, company, country (from the country list), optional phone (international format), password (10 to 128 characters, upper and lower case, a digit, not containing the email local part, no common fragments), confirmation, terms checkbox (unticked by default; links to the Terms of Use and the Privacy Policy), hidden honeypot. All rules live in `validators.js` and are tested by `npm run check:auth`.
+- The submitted payload carries the legal versions (`LEGAL_VERSIONS`); keep them in sync with the published legal documents.
+- Open items for Debass (marked `TODO(Debass)`): backend contract and address, post-sign-up journey, account-enumeration policy, captcha and server rate limiting, marketing consent, whether free-mail addresses are accepted, French review.

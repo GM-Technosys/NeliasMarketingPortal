@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { X } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
@@ -122,30 +122,56 @@ export function MobileMenu({ open, onClose }) {
 
       {/* Secondary utility group: Sign Up, Sign In, Language and Theme */}
       <div className="flex shrink-0 flex-col gap-1 border-b border-line px-5 py-3">
-        <a
-          href={site.signUpUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => {
-            track(EVENTS.NAV_CLICK, { key: "signUp" });
-            onClose();
-          }}
-          className="flex min-h-11 items-center rounded-md px-2 text-[15px] font-semibold text-fg-strong transition-colors hover:text-link"
-        >
-          {t("nav.signUp")}
-        </a>
-        <a
-          href={site.loginUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => {
-            track(EVENTS.NAV_CLICK, { key: "signIn" });
-            onClose();
-          }}
-          className="flex min-h-11 items-center rounded-md px-2 text-[15px] font-semibold text-fg-strong transition-colors hover:text-link"
-        >
-          {t("nav.signIn")}
-        </a>
+        {site.signUpUrl.startsWith("/") ? (
+          <Link
+            to={site.signUpUrl}
+            onClick={() => {
+              track(EVENTS.NAV_CLICK, { key: "signUp" });
+              onClose();
+            }}
+            className="flex min-h-11 items-center rounded-md px-2 text-[15px] font-semibold text-fg-strong transition-colors hover:text-link"
+          >
+            {t("nav.signUp")}
+          </Link>
+        ) : (
+          <a
+            href={site.signUpUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => {
+              track(EVENTS.NAV_CLICK, { key: "signUp" });
+              onClose();
+            }}
+            className="flex min-h-11 items-center rounded-md px-2 text-[15px] font-semibold text-fg-strong transition-colors hover:text-link"
+          >
+            {t("nav.signUp")}
+          </a>
+        )}
+        {site.loginUrl.startsWith("/") ? (
+          <Link
+            to={site.loginUrl}
+            onClick={() => {
+              track(EVENTS.NAV_CLICK, { key: "signIn" });
+              onClose();
+            }}
+            className="flex min-h-11 items-center rounded-md px-2 text-[15px] font-semibold text-fg-strong transition-colors hover:text-link"
+          >
+            {t("nav.signIn")}
+          </Link>
+        ) : (
+          <a
+            href={site.loginUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => {
+              track(EVENTS.NAV_CLICK, { key: "signIn" });
+              onClose();
+            }}
+            className="flex min-h-11 items-center rounded-md px-2 text-[15px] font-semibold text-fg-strong transition-colors hover:text-link"
+          >
+            {t("nav.signIn")}
+          </a>
+        )}
         <div className="flex items-center justify-between pt-2">
           <LanguageSwitcher variant="default" />
           <ThemeToggle size="md" />

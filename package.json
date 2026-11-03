@@ -18,7 +18,8 @@
     "check:industries": "node scripts/check-industries.mjs",
     "check:docs": "node scripts/check-docs.mjs",
     "check:home": "node scripts/check-home-content.mjs",
-    "verify": "npm run lint && npm run build && npm run check:copy && npm run check:i18n && npm run check:theme && npm run check:contrast && npm run check:legal && npm run check:industries && npm run check:docs && npm run check:home"
+    "check:auth": "node scripts/check-auth.mjs",
+    "verify": "npm run lint && npm run build && npm run check:copy && npm run check:i18n && npm run check:theme && npm run check:contrast && npm run check:legal && npm run check:industries && npm run check:docs && npm run check:home && npm run check:auth"
   },
   "dependencies": {
     "@fontsource-variable/outfit": "^5.3.0",

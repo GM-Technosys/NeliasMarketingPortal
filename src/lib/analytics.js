@@ -14,6 +14,8 @@ export const EVENTS = Object.freeze({
   THEME_CHANGE: "theme_change",
   FILTER_CHANGE: "filter_change",
   BILLING_CHANGE: "billing_change",
+  AUTH_SIGN_IN_RESULT: "auth_sign_in_result",
+  AUTH_SIGN_UP_RESULT: "auth_sign_up_result",
 });
 
 /**

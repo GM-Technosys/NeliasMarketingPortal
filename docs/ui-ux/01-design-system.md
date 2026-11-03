@@ -206,9 +206,10 @@ Line Length Constraint: Max `65ch` - `70ch` for continuous prose to maintain hig
 4. **`Fieldset.jsx`**: Semantic grouping for related inputs (`<fieldset>` and `<legend>`).
 5. **`Input.jsx`**: Text and email input element styled with `--field` borders and 16px minimum font size.
 6. **`NumberStepper.jsx`**: Stepper widget with increment/decrement buttons and accessible direct input.
-7. **`Select.jsx`**: Native `<select>` element styled with custom arrow chevron.
-8. **`Textarea.jsx`**: Multi-line text field with vertical resize and character count support.
-9. **`field-styles.js`**: Shared focus, disabled, and error styling classes for form inputs.
+7. **`PasswordField.jsx`**: Password input with integrated show/hide visibility toggle and accessible states.
+8. **`Select.jsx`**: Native `<select>` element styled with custom arrow chevron.
+9. **`Textarea.jsx`**: Multi-line text field with vertical resize and character count support.
+10. **`field-styles.js`**: Shared focus, disabled, and error styling classes for form inputs.
 
 ---
 
