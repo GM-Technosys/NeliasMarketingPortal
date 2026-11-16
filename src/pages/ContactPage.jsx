@@ -7,7 +7,7 @@ import { ContactLocation } from "@/sections/contact/ContactLocation.jsx";
 // TODO(Debass): the PDF gives no SEO copy for Contact and Demo; titles follow the approved "<Page> | NELIAS BMP" pattern and the description is the first approved sentence of the body.
 
 /**
- * Contact page with hero header, 2-column contact form layout, and interactive location map.
+ * Contact page with hero header, 2-contact form layout, and interactive location map.
  *
  * @returns {import("react").JSX.Element}
  */
